@@ -4,6 +4,7 @@
 }
 
 .pixel-body {
+  padding-top: 1em;
   background-color: #222;
   color: white;
   display: flex;

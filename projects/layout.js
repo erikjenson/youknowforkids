@@ -8,7 +8,7 @@ module.exports = (content) => html`<!DOCTYPE html>
         name="viewport"
         content="width=device-width, initial-scale=1, shrink-to-fit=no"
       />
-      <title>Dad is so cool</title>
+      <title>your dad is so cool</title>
 
       <link
         rel="stylesheet"
@@ -25,8 +25,6 @@ module.exports = (content) => html`<!DOCTYPE html>
 
       <link href="/pixelstyle.css" rel="stylesheet" />
       <link href="/golstyle.css" rel="stylesheet" />
-
-      <script src="/golScript.js" defer></script>
     </head>
     <body>
       <div
@@ -56,7 +54,6 @@ module.exports = (content) => html`<!DOCTYPE html>
       <div class="content">
         $${content}
       </div>
-      <hr />
     </body>
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
