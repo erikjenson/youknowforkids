@@ -5,6 +5,7 @@ const path = require('path');
 const main = require('../projects/main');
 const pixelate = require('../projects/pixelate');
 const gol = require('../projects/gol');
+const coffee = require('../projects/coffee-clicker');
 
 module.exports = app;
 
@@ -21,6 +22,9 @@ app.get('/pixelate', (req, res, next) => {
 });
 app.get('/gol', (req, res, next) => {
   res.send(gol());
+});
+app.get('/coffee-clicker', (req, res, next) => {
+  res.send(coffee());
 });
 
 const PORT = process.env.PORT || 8080;

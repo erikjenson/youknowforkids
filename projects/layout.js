@@ -25,6 +25,7 @@ module.exports = (content) => html`<!DOCTYPE html>
 
       <link href="/pixelstyle.css" rel="stylesheet" />
       <link href="/golstyle.css" rel="stylesheet" />
+      <link href="/coffeestyle.css" rel="stylesheet" />
     </head>
     <body>
       <div
@@ -47,6 +48,9 @@ module.exports = (content) => html`<!DOCTYPE html>
           <div class="navbar-nav">
             <a class="nav-item nav-link" href="/gol">Game Of Life</a>
             <a class="nav-item nav-link" href="/pixelate">Pixelate</a>
+            <a class="nav-item nav-link" href="/coffee-clicker"
+              >Coffee Clicker</a
+            >
           </div>
         </div>
       </div>
