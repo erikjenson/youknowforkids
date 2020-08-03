@@ -1,4 +1,6 @@
-const table = document.getElementsByTagName('table')[0];
+//add edit width and height, clear board
+
+const table = document.getElementsByClassName('pix')[0];
 
 let input = document.getElementsByClassName('num-col')[0];
 

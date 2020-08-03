@@ -1,0 +1,17 @@
+body {
+  font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00b7ff;
+}
+
+img {
+  padding: 10px 10px 10px 10px;
+  width: 100%;
+}
+
+.img-container {
+  display: flex;
+  align-self: center;
+}

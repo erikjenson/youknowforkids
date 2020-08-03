@@ -1,13 +1,13 @@
-body {
+.gol-body {
   font-family: Futura, Helvetica, Arial, sans-serif;
   color: #444;
 }
 
-h1 {
+.gol-body h1 {
   font-weight: normal;
 }
 
-#container {
+#gol-container {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -32,7 +32,7 @@ td.alive {
 }
 
 .button {
-  padding: 0.85em 1em;
+  padding: 0.85em 0.75em;
   border: 1px solid transparent;
   border-radius: 3px;
   font-size: 0.9em;

@@ -1,10 +1,14 @@
+// add edit width and height dimensions of the board
+// add load images
+
 const width = 25;
 const height = 20;
-// width and height dimensions of the board
 
 /**
  * Create a Game of Life instance
  */
+
+// const gol = new (require('.golscript'))(25, 20);
 
 const gol = new GameOfLife(width, height);
 
@@ -17,6 +21,7 @@ const tds = [];
 
 // <table> element
 const table = document.createElement('tbody');
+table.className = 'gol';
 // build a table row <tr>
 for (let h = 0; h < height; h++) {
   const tr = document.createElement('tr');
