@@ -2,40 +2,63 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');
 const path = require('path');
+const {db} = require('./db');
+const PORT = process.env.PORT || 8080;
+const session = require('express-session');
+const passport = require('passport');
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const sessionStore = new SequelizeStore({db});
+
 // const main = require('../projects/main');
 // const pixelate = require('../projects/pixelate');
 // const gol = require('../projects/gol');
 // const coffee = require('../projects/coffee-clicker');
 // const connect4 = require('../projects/connect4');
 
-module.exports = app;
+//set up passport functions
+passport.serializeUser((user, done) => done(null, user.id));
+passport.deserializeUser(async (id, done) => {
+  try {
+    const user = await db.models.user.findByPk(id);
+    done(null, user);
+  } catch (err) {
+    done(err);
+  }
+});
 
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+//session middleware with passport
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET || 'not very secret',
+    store: sessionStore,
+    resave: false,
+    saveUninitialized: false
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use('/auth', require('./auth'));
+//app.use('/api', require('./api'));
+
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
-// app.get('/', (req, res, next) => {
-//   res.send(new Game(7,6));
-// });
-// app.get('/pixelate', (req, res, next) => {
-//   res.send(pixelate());
-// });
-// app.get('/gol', (req, res, next) => {
-//   res.send(gol());
-// });
-// app.get('/coffee-clicker', (req, res, next) => {
-//   res.send(coffee());
-// });
-// app.get('/connect4', (req, res, next) => {
-//   res.send(connect4());
-// });
 app.use('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', '/public/index.html'))
-})
+  res.sendFile(path.join(__dirname, '..', '/public/index.html'));
+});
 
-const PORT = process.env.PORT || 8080;
+const syncDB = async () => {
+await db.sync({ force: true });
+};
+
+syncDB();
 
 app.listen(PORT, () => {
   console.log(`Friendly service from port: ${PORT}`);
 });
+
+module.exports = app;
