@@ -1,6 +1,7 @@
+
 node_modules
 .DS_Store
-./server/db/seed.js
-./public/bundle.js
-./public/bundle.js.map
-./server/projects
+seed.js
+bundle.js
+bundle.js.map
+projects/*
