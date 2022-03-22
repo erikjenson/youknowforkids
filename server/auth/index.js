@@ -4,6 +4,7 @@ const {User} = require('../db');
 router.post('/login', async (req, res, next) => {
   try {
     const user = await User.findOne({where: {email: req.body.email}});
+
     if (!user){
       console.log('No such user found:', req.body.email);
       res.status(401).send('Wrong username and/or password');
@@ -32,13 +33,14 @@ router.post('/signup', async (req, res, next) => {
   }
 });
 
+//close session
 router.post('/logout', (req, res) => {
   req.logout();
   req.session.destroy();
   res.redirect('/');
 });
 
-//how will this be used and what is on the req.user object?
+//used to see if a session is open for a user. {createdAd, email, id, name, updatedAt}
 router.get('/me', (req, res) => {
   res.json(req.user);
 });

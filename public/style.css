@@ -1,11 +1,69 @@
 /* react refactor */
-.nav-container{
+
+#main {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 
+#main a {
+  cursor: pointer;
+}
 
+#nav-container{
+  max-width: 800px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+#nav-container .nav-btn{
+  color: black;
+}
+
+#loginOrSignup {
+  max-width: 400px;
+  width: 90%;
+  margin-top: 100px;
+  border: 0.5rem outset pink;
+  border-radius: 20px;
+}
+
+#loginOrSignup form input {
+  width: 250px;
+}
+
+#loginOrSignup form label {
+  padding-right: 6px;
+}
+
+#loginOrSignup form .field {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#loginOrSignup form .auth-btns {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+}
+
+#loginOrSignup form .auth-btns .auth-option {
+  display: flex;
+  align-items: flex-end;
+
+}
+
+#loginOrSignup form .submit {
+  text-emphasis: bold;
+  border-radius: 8px;
+  background-color: pink;
+  padding: 8px;
+  cursor: pointer;
+}
 /* old stylz */
 
 body {

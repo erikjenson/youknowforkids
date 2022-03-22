@@ -8,7 +8,7 @@ module.exports = {
     filename: 'bundle.js'
   },
   externals: {
-    express: 'express',
+    express: 'express'
   },
 
   mode: 'development',

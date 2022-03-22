@@ -35,7 +35,7 @@ const User = db.define("User",{
 */
 
 User.prototype.confirmPwd = function (pwdToCheck){
-  return User.encryptPassword(pwdToCheck, this.salt);
+  return User.encryptPassword(pwdToCheck, this.salt()) === this.password();
 };
 
 /**

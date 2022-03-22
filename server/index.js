@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');
 const path = require('path');
-const {db} = require('./db');
+const {db, User} = require('./db');
 const PORT = process.env.PORT || 8080;
 const session = require('express-session');
 const passport = require('passport');
@@ -19,7 +19,7 @@ const sessionStore = new SequelizeStore({db});
 passport.serializeUser((user, done) => done(null, user.id));
 passport.deserializeUser(async (id, done) => {
   try {
-    const user = await db.models.user.findByPk(id);
+    const user = await User.findByPk(id);
     done(null, user);
   } catch (err) {
     done(err);
@@ -52,7 +52,7 @@ app.use('*', (req, res) => {
 });
 
 const syncDB = async () => {
-await db.sync({ force: true });
+await db.sync();
 };
 
 syncDB();
