@@ -8,6 +8,21 @@ const session = require('express-session');
 const passport = require('passport');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const sessionStore = new SequelizeStore({db});
+const config = require('../secrets');
+// Import the functions you need from the SDKs you need
+const { initializeApp } = require("firebase/app");
+const { getAnalytics } = require("firebase/analytics");
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = config();
+
+// Initialize Firebase
+const fbapp = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
 
 // const main = require('../projects/main');
 // const pixelate = require('../projects/pixelate');
@@ -57,7 +72,7 @@ await db.sync();
 
 syncDB();
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`Friendly service from port: ${PORT}`);
 });
 

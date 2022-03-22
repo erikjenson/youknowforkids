@@ -63,6 +63,12 @@ class App extends React.Component {
       <Navbar handleAuthClick={this.handleAuthClick} authOption={this.state.authOption}/>
 
      {!isLoggedIn && (<AuthForm name={this.state.authOption} handleAuthClick={this.handleAuthClick} handleSubmit={this.handleSubmit} />)}
+
+     <div>Start Game or Join Game</div>
+     <div>(first just generate a random num) start will say, Text a game code to your friend and there will be a select box and send button. also add new friend button. back button</div>
+     <div>hitting send will put the code on state for now</div>
+     <div>join will say, Enter your code here: field. start button. back button.</div>
+     <div>start button will put code on state for now</div>
      </div>
     );
   }

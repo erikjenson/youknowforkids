@@ -5,3 +5,4 @@ seed.js
 bundle.js
 bundle.js.map
 projects/*
+secrets.js
