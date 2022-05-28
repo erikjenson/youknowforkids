@@ -3,13 +3,60 @@ import axios from 'axios';
 // import ConnectGame from './connect-game';
 import {AuthForm} from './auth-form';
 import Navbar from './navbar';
+import StartGame from './start-game';
+import ConnectGame from './connect-game';
+
+import { initializeApp } from "firebase/app";
+import { getMessaging, getToken } from "firebase/messaging";
+import {fbConfig, vapidKey} from '../secrets';
+
+// TODO: Replace the following with your app's Firebase project configuration
+// See: https://firebase.google.com/docs/web/learn-more#config-object
+//const firebaseConfig = fbConfig()();
+
+// Initialize Firebase
+//const app = initializeApp(firebaseConfig);
+
+
+// Initialize Firebase Cloud Messaging and get a reference to the service
+//const messaging = getMessaging(app);
+//messaging.getToken({vapidKey: vapidKey()()});
+
+
+// Get registration token. Initially this makes a network call, once retrieved
+// subsequent calls to getToken will return from cache.
+
+// getToken(messaging, { vapidKey: '<YOUR_PUBLIC_VAPID_KEY_HERE>' }).then((currentToken) => {
+//   if (currentToken) {
+//     // Send the token to your server and update the UI if necessary
+//     // ...
+//   } else {
+//     // Show permission request UI
+//     console.log('No registration token available. Request permission to generate one.');
+//     // ...
+//   }
+// }).catch((err) => {
+//   console.log('An error occurred while retrieving token. ', err);
+//   // ...
+// });
+
+//tryc and send token to server to store in db. should we see if they have a token already?
+//is each token for each client or app?
+
+
+
+
+
 
 class App extends React.Component {
   constructor(props){
     super(props);
-    this.state = {user: {}, gameID: '', authOption: 'login'};
+    this.state = {user: {}, joinCode: '', startType: '', gameID: 0, authOption: 'login'};
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleAuthClick = this.handleAuthClick.bind(this);
+    this.handleStart = this.handleStart.bind(this);
+    this.toggleStartType = this.toggleStartType.bind(this);
+    this.handleJoinCode = this.handleJoinCode.bind(this);
   }
 
   async componentDidMount() {
@@ -56,20 +103,35 @@ class App extends React.Component {
     }
   }
 
+  handleStart(code){
+    this.setState({gameID: code});
+  }
+  toggleStartType(type){
+    this.setState({startType: type});
+  }
+  handleJoinCode(evt){
+    const join = evt.target.value;
+    this.setState({joinCode: join});
+  }
+
   render(){
     const isLoggedIn = this.state.user? this.state.user.email: null;
+    const hasGameId = this.state.gameID? this.state.gameID: null;
+
     return (
     <div id='main'>
-      <Navbar handleAuthClick={this.handleAuthClick} authOption={this.state.authOption}/>
+    <React.StrictMode>
+
+    <Navbar handleAuthClick={this.handleAuthClick} authOption={this.state.authOption}/>
 
      {!isLoggedIn && (<AuthForm name={this.state.authOption} handleAuthClick={this.handleAuthClick} handleSubmit={this.handleSubmit} />)}
 
-     <div>Start Game or Join Game</div>
-     <div>(first just generate a random num) start will say, Text a game code to your friend and there will be a select box and send button. also add new friend button. back button</div>
-     <div>hitting send will put the code on state for now</div>
-     <div>join will say, Enter your code here: field. start button. back button.</div>
-     <div>start button will put code on state for now</div>
-     </div>
+     {!hasGameId && isLoggedIn && (<StartGame joinCode={this.state.joinCode} handleJoinCode={this.handleJoinCode} startType={this.state.startType} handleStart={this.handleStart} toggleStartType={this.toggleStartType}/>)}
+
+    {hasGameId && isLoggedIn && (<ConnectGame />)}
+
+    </React.StrictMode>
+    </div>
     );
   }
 }
