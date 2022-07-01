@@ -1,2115 +1,6 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./node_modules/@firebase/util/dist/index.esm2017.js":
-/*!***********************************************************!*\
-  !*** ./node_modules/@firebase/util/dist/index.esm2017.js ***!
-  \***********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "CONSTANTS": () => (/* binding */ CONSTANTS),
-/* harmony export */   "DBWrapper": () => (/* binding */ DBWrapper),
-/* harmony export */   "Deferred": () => (/* binding */ Deferred),
-/* harmony export */   "ErrorFactory": () => (/* binding */ ErrorFactory),
-/* harmony export */   "FirebaseError": () => (/* binding */ FirebaseError),
-/* harmony export */   "MAX_VALUE_MILLIS": () => (/* binding */ MAX_VALUE_MILLIS),
-/* harmony export */   "RANDOM_FACTOR": () => (/* binding */ RANDOM_FACTOR),
-/* harmony export */   "Sha1": () => (/* binding */ Sha1),
-/* harmony export */   "areCookiesEnabled": () => (/* binding */ areCookiesEnabled),
-/* harmony export */   "assert": () => (/* binding */ assert),
-/* harmony export */   "assertionError": () => (/* binding */ assertionError),
-/* harmony export */   "async": () => (/* binding */ async),
-/* harmony export */   "base64": () => (/* binding */ base64),
-/* harmony export */   "base64Decode": () => (/* binding */ base64Decode),
-/* harmony export */   "base64Encode": () => (/* binding */ base64Encode),
-/* harmony export */   "base64urlEncodeWithoutPadding": () => (/* binding */ base64urlEncodeWithoutPadding),
-/* harmony export */   "calculateBackoffMillis": () => (/* binding */ calculateBackoffMillis),
-/* harmony export */   "contains": () => (/* binding */ contains),
-/* harmony export */   "createMockUserToken": () => (/* binding */ createMockUserToken),
-/* harmony export */   "createSubscribe": () => (/* binding */ createSubscribe),
-/* harmony export */   "decode": () => (/* binding */ decode),
-/* harmony export */   "deepCopy": () => (/* binding */ deepCopy),
-/* harmony export */   "deepEqual": () => (/* binding */ deepEqual),
-/* harmony export */   "deepExtend": () => (/* binding */ deepExtend),
-/* harmony export */   "deleteDB": () => (/* binding */ deleteDB),
-/* harmony export */   "errorPrefix": () => (/* binding */ errorPrefix),
-/* harmony export */   "extractQuerystring": () => (/* binding */ extractQuerystring),
-/* harmony export */   "getGlobal": () => (/* binding */ getGlobal),
-/* harmony export */   "getModularInstance": () => (/* binding */ getModularInstance),
-/* harmony export */   "getUA": () => (/* binding */ getUA),
-/* harmony export */   "isAdmin": () => (/* binding */ isAdmin),
-/* harmony export */   "isBrowser": () => (/* binding */ isBrowser),
-/* harmony export */   "isBrowserExtension": () => (/* binding */ isBrowserExtension),
-/* harmony export */   "isElectron": () => (/* binding */ isElectron),
-/* harmony export */   "isEmpty": () => (/* binding */ isEmpty),
-/* harmony export */   "isIE": () => (/* binding */ isIE),
-/* harmony export */   "isIndexedDBAvailable": () => (/* binding */ isIndexedDBAvailable),
-/* harmony export */   "isMobileCordova": () => (/* binding */ isMobileCordova),
-/* harmony export */   "isNode": () => (/* binding */ isNode),
-/* harmony export */   "isNodeSdk": () => (/* binding */ isNodeSdk),
-/* harmony export */   "isReactNative": () => (/* binding */ isReactNative),
-/* harmony export */   "isSafari": () => (/* binding */ isSafari),
-/* harmony export */   "isUWP": () => (/* binding */ isUWP),
-/* harmony export */   "isValidFormat": () => (/* binding */ isValidFormat),
-/* harmony export */   "isValidTimestamp": () => (/* binding */ isValidTimestamp),
-/* harmony export */   "issuedAtTime": () => (/* binding */ issuedAtTime),
-/* harmony export */   "jsonEval": () => (/* binding */ jsonEval),
-/* harmony export */   "map": () => (/* binding */ map),
-/* harmony export */   "openDB": () => (/* binding */ openDB),
-/* harmony export */   "ordinal": () => (/* binding */ ordinal),
-/* harmony export */   "querystring": () => (/* binding */ querystring),
-/* harmony export */   "querystringDecode": () => (/* binding */ querystringDecode),
-/* harmony export */   "safeGet": () => (/* binding */ safeGet),
-/* harmony export */   "stringLength": () => (/* binding */ stringLength),
-/* harmony export */   "stringToByteArray": () => (/* binding */ stringToByteArray),
-/* harmony export */   "stringify": () => (/* binding */ stringify),
-/* harmony export */   "validateArgCount": () => (/* binding */ validateArgCount),
-/* harmony export */   "validateCallback": () => (/* binding */ validateCallback),
-/* harmony export */   "validateContextObject": () => (/* binding */ validateContextObject),
-/* harmony export */   "validateIndexedDBOpenable": () => (/* binding */ validateIndexedDBOpenable),
-/* harmony export */   "validateNamespace": () => (/* binding */ validateNamespace)
-/* harmony export */ });
-/**
- * @license
- * Copyright 2017 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/**
- * @fileoverview Firebase constants.  Some of these (@defines) can be overridden at compile-time.
- */
-const CONSTANTS = {
-    /**
-     * @define {boolean} Whether this is the client Node.js SDK.
-     */
-    NODE_CLIENT: false,
-    /**
-     * @define {boolean} Whether this is the Admin Node.js SDK.
-     */
-    NODE_ADMIN: false,
-    /**
-     * Firebase SDK Version
-     */
-    SDK_VERSION: '${JSCORE_VERSION}'
-};
-
-/**
- * @license
- * Copyright 2017 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/**
- * Throws an error if the provided assertion is falsy
- */
-const assert = function (assertion, message) {
-    if (!assertion) {
-        throw assertionError(message);
-    }
-};
-/**
- * Returns an Error object suitable for throwing.
- */
-const assertionError = function (message) {
-    return new Error('Firebase Database (' +
-        CONSTANTS.SDK_VERSION +
-        ') INTERNAL ASSERT FAILED: ' +
-        message);
-};
-
-/**
- * @license
- * Copyright 2017 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-const stringToByteArray$1 = function (str) {
-    // TODO(user): Use native implementations if/when available
-    const out = [];
-    let p = 0;
-    for (let i = 0; i < str.length; i++) {
-        let c = str.charCodeAt(i);
-        if (c < 128) {
-            out[p++] = c;
-        }
-        else if (c < 2048) {
-            out[p++] = (c >> 6) | 192;
-            out[p++] = (c & 63) | 128;
-        }
-        else if ((c & 0xfc00) === 0xd800 &&
-            i + 1 < str.length &&
-            (str.charCodeAt(i + 1) & 0xfc00) === 0xdc00) {
-            // Surrogate Pair
-            c = 0x10000 + ((c & 0x03ff) << 10) + (str.charCodeAt(++i) & 0x03ff);
-            out[p++] = (c >> 18) | 240;
-            out[p++] = ((c >> 12) & 63) | 128;
-            out[p++] = ((c >> 6) & 63) | 128;
-            out[p++] = (c & 63) | 128;
-        }
-        else {
-            out[p++] = (c >> 12) | 224;
-            out[p++] = ((c >> 6) & 63) | 128;
-            out[p++] = (c & 63) | 128;
-        }
-    }
-    return out;
-};
-/**
- * Turns an array of numbers into the string given by the concatenation of the
- * characters to which the numbers correspond.
- * @param bytes Array of numbers representing characters.
- * @return Stringification of the array.
- */
-const byteArrayToString = function (bytes) {
-    // TODO(user): Use native implementations if/when available
-    const out = [];
-    let pos = 0, c = 0;
-    while (pos < bytes.length) {
-        const c1 = bytes[pos++];
-        if (c1 < 128) {
-            out[c++] = String.fromCharCode(c1);
-        }
-        else if (c1 > 191 && c1 < 224) {
-            const c2 = bytes[pos++];
-            out[c++] = String.fromCharCode(((c1 & 31) << 6) | (c2 & 63));
-        }
-        else if (c1 > 239 && c1 < 365) {
-            // Surrogate Pair
-            const c2 = bytes[pos++];
-            const c3 = bytes[pos++];
-            const c4 = bytes[pos++];
-            const u = (((c1 & 7) << 18) | ((c2 & 63) << 12) | ((c3 & 63) << 6) | (c4 & 63)) -
-                0x10000;
-            out[c++] = String.fromCharCode(0xd800 + (u >> 10));
-            out[c++] = String.fromCharCode(0xdc00 + (u & 1023));
-        }
-        else {
-            const c2 = bytes[pos++];
-            const c3 = bytes[pos++];
-            out[c++] = String.fromCharCode(((c1 & 15) << 12) | ((c2 & 63) << 6) | (c3 & 63));
-        }
-    }
-    return out.join('');
-};
-// We define it as an object literal instead of a class because a class compiled down to es5 can't
-// be treeshaked. https://github.com/rollup/rollup/issues/1691
-// Static lookup maps, lazily populated by init_()
-const base64 = {
-    /**
-     * Maps bytes to characters.
-     */
-    byteToCharMap_: null,
-    /**
-     * Maps characters to bytes.
-     */
-    charToByteMap_: null,
-    /**
-     * Maps bytes to websafe characters.
-     * @private
-     */
-    byteToCharMapWebSafe_: null,
-    /**
-     * Maps websafe characters to bytes.
-     * @private
-     */
-    charToByteMapWebSafe_: null,
-    /**
-     * Our default alphabet, shared between
-     * ENCODED_VALS and ENCODED_VALS_WEBSAFE
-     */
-    ENCODED_VALS_BASE: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' + 'abcdefghijklmnopqrstuvwxyz' + '0123456789',
-    /**
-     * Our default alphabet. Value 64 (=) is special; it means "nothing."
-     */
-    get ENCODED_VALS() {
-        return this.ENCODED_VALS_BASE + '+/=';
-    },
-    /**
-     * Our websafe alphabet.
-     */
-    get ENCODED_VALS_WEBSAFE() {
-        return this.ENCODED_VALS_BASE + '-_.';
-    },
-    /**
-     * Whether this browser supports the atob and btoa functions. This extension
-     * started at Mozilla but is now implemented by many browsers. We use the
-     * ASSUME_* variables to avoid pulling in the full useragent detection library
-     * but still allowing the standard per-browser compilations.
-     *
-     */
-    HAS_NATIVE_SUPPORT: typeof atob === 'function',
-    /**
-     * Base64-encode an array of bytes.
-     *
-     * @param input An array of bytes (numbers with
-     *     value in [0, 255]) to encode.
-     * @param webSafe Boolean indicating we should use the
-     *     alternative alphabet.
-     * @return The base64 encoded string.
-     */
-    encodeByteArray(input, webSafe) {
-        if (!Array.isArray(input)) {
-            throw Error('encodeByteArray takes an array as a parameter');
-        }
-        this.init_();
-        const byteToCharMap = webSafe
-            ? this.byteToCharMapWebSafe_
-            : this.byteToCharMap_;
-        const output = [];
-        for (let i = 0; i < input.length; i += 3) {
-            const byte1 = input[i];
-            const haveByte2 = i + 1 < input.length;
-            const byte2 = haveByte2 ? input[i + 1] : 0;
-            const haveByte3 = i + 2 < input.length;
-            const byte3 = haveByte3 ? input[i + 2] : 0;
-            const outByte1 = byte1 >> 2;
-            const outByte2 = ((byte1 & 0x03) << 4) | (byte2 >> 4);
-            let outByte3 = ((byte2 & 0x0f) << 2) | (byte3 >> 6);
-            let outByte4 = byte3 & 0x3f;
-            if (!haveByte3) {
-                outByte4 = 64;
-                if (!haveByte2) {
-                    outByte3 = 64;
-                }
-            }
-            output.push(byteToCharMap[outByte1], byteToCharMap[outByte2], byteToCharMap[outByte3], byteToCharMap[outByte4]);
-        }
-        return output.join('');
-    },
-    /**
-     * Base64-encode a string.
-     *
-     * @param input A string to encode.
-     * @param webSafe If true, we should use the
-     *     alternative alphabet.
-     * @return The base64 encoded string.
-     */
-    encodeString(input, webSafe) {
-        // Shortcut for Mozilla browsers that implement
-        // a native base64 encoder in the form of "btoa/atob"
-        if (this.HAS_NATIVE_SUPPORT && !webSafe) {
-            return btoa(input);
-        }
-        return this.encodeByteArray(stringToByteArray$1(input), webSafe);
-    },
-    /**
-     * Base64-decode a string.
-     *
-     * @param input to decode.
-     * @param webSafe True if we should use the
-     *     alternative alphabet.
-     * @return string representing the decoded value.
-     */
-    decodeString(input, webSafe) {
-        // Shortcut for Mozilla browsers that implement
-        // a native base64 encoder in the form of "btoa/atob"
-        if (this.HAS_NATIVE_SUPPORT && !webSafe) {
-            return atob(input);
-        }
-        return byteArrayToString(this.decodeStringToByteArray(input, webSafe));
-    },
-    /**
-     * Base64-decode a string.
-     *
-     * In base-64 decoding, groups of four characters are converted into three
-     * bytes.  If the encoder did not apply padding, the input length may not
-     * be a multiple of 4.
-     *
-     * In this case, the last group will have fewer than 4 characters, and
-     * padding will be inferred.  If the group has one or two characters, it decodes
-     * to one byte.  If the group has three characters, it decodes to two bytes.
-     *
-     * @param input Input to decode.
-     * @param webSafe True if we should use the web-safe alphabet.
-     * @return bytes representing the decoded value.
-     */
-    decodeStringToByteArray(input, webSafe) {
-        this.init_();
-        const charToByteMap = webSafe
-            ? this.charToByteMapWebSafe_
-            : this.charToByteMap_;
-        const output = [];
-        for (let i = 0; i < input.length;) {
-            const byte1 = charToByteMap[input.charAt(i++)];
-            const haveByte2 = i < input.length;
-            const byte2 = haveByte2 ? charToByteMap[input.charAt(i)] : 0;
-            ++i;
-            const haveByte3 = i < input.length;
-            const byte3 = haveByte3 ? charToByteMap[input.charAt(i)] : 64;
-            ++i;
-            const haveByte4 = i < input.length;
-            const byte4 = haveByte4 ? charToByteMap[input.charAt(i)] : 64;
-            ++i;
-            if (byte1 == null || byte2 == null || byte3 == null || byte4 == null) {
-                throw Error();
-            }
-            const outByte1 = (byte1 << 2) | (byte2 >> 4);
-            output.push(outByte1);
-            if (byte3 !== 64) {
-                const outByte2 = ((byte2 << 4) & 0xf0) | (byte3 >> 2);
-                output.push(outByte2);
-                if (byte4 !== 64) {
-                    const outByte3 = ((byte3 << 6) & 0xc0) | byte4;
-                    output.push(outByte3);
-                }
-            }
-        }
-        return output;
-    },
-    /**
-     * Lazy static initialization function. Called before
-     * accessing any of the static map variables.
-     * @private
-     */
-    init_() {
-        if (!this.byteToCharMap_) {
-            this.byteToCharMap_ = {};
-            this.charToByteMap_ = {};
-            this.byteToCharMapWebSafe_ = {};
-            this.charToByteMapWebSafe_ = {};
-            // We want quick mappings back and forth, so we precompute two maps.
-            for (let i = 0; i < this.ENCODED_VALS.length; i++) {
-                this.byteToCharMap_[i] = this.ENCODED_VALS.charAt(i);
-                this.charToByteMap_[this.byteToCharMap_[i]] = i;
-                this.byteToCharMapWebSafe_[i] = this.ENCODED_VALS_WEBSAFE.charAt(i);
-                this.charToByteMapWebSafe_[this.byteToCharMapWebSafe_[i]] = i;
-                // Be forgiving when decoding and correctly decode both encodings.
-                if (i >= this.ENCODED_VALS_BASE.length) {
-                    this.charToByteMap_[this.ENCODED_VALS_WEBSAFE.charAt(i)] = i;
-                    this.charToByteMapWebSafe_[this.ENCODED_VALS.charAt(i)] = i;
-                }
-            }
-        }
-    }
-};
-/**
- * URL-safe base64 encoding
- */
-const base64Encode = function (str) {
-    const utf8Bytes = stringToByteArray$1(str);
-    return base64.encodeByteArray(utf8Bytes, true);
-};
-/**
- * URL-safe base64 encoding (without "." padding in the end).
- * e.g. Used in JSON Web Token (JWT) parts.
- */
-const base64urlEncodeWithoutPadding = function (str) {
-    // Use base64url encoding and remove padding in the end (dot characters).
-    return base64Encode(str).replace(/\./g, '');
-};
-/**
- * URL-safe base64 decoding
- *
- * NOTE: DO NOT use the global atob() function - it does NOT support the
- * base64Url variant encoding.
- *
- * @param str To be decoded
- * @return Decoded result, if possible
- */
-const base64Decode = function (str) {
-    try {
-        return base64.decodeString(str, true);
-    }
-    catch (e) {
-        console.error('base64Decode failed: ', e);
-    }
-    return null;
-};
-
-/**
- * @license
- * Copyright 2017 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/**
- * Do a deep-copy of basic JavaScript Objects or Arrays.
- */
-function deepCopy(value) {
-    return deepExtend(undefined, value);
-}
-/**
- * Copy properties from source to target (recursively allows extension
- * of Objects and Arrays).  Scalar values in the target are over-written.
- * If target is undefined, an object of the appropriate type will be created
- * (and returned).
- *
- * We recursively copy all child properties of plain Objects in the source- so
- * that namespace- like dictionaries are merged.
- *
- * Note that the target can be a function, in which case the properties in
- * the source Object are copied onto it as static properties of the Function.
- *
- * Note: we don't merge __proto__ to prevent prototype pollution
- */
-function deepExtend(target, source) {
-    if (!(source instanceof Object)) {
-        return source;
-    }
-    switch (source.constructor) {
-        case Date:
-            // Treat Dates like scalars; if the target date object had any child
-            // properties - they will be lost!
-            const dateValue = source;
-            return new Date(dateValue.getTime());
-        case Object:
-            if (target === undefined) {
-                target = {};
-            }
-            break;
-        case Array:
-            // Always copy the array source and overwrite the target.
-            target = [];
-            break;
-        default:
-            // Not a plain Object - treat it as a scalar.
-            return source;
-    }
-    for (const prop in source) {
-        // use isValidKey to guard against prototype pollution. See https://snyk.io/vuln/SNYK-JS-LODASH-450202
-        if (!source.hasOwnProperty(prop) || !isValidKey(prop)) {
-            continue;
-        }
-        target[prop] = deepExtend(target[prop], source[prop]);
-    }
-    return target;
-}
-function isValidKey(key) {
-    return key !== '__proto__';
-}
-
-/**
- * @license
- * Copyright 2017 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-class Deferred {
-    constructor() {
-        this.reject = () => { };
-        this.resolve = () => { };
-        this.promise = new Promise((resolve, reject) => {
-            this.resolve = resolve;
-            this.reject = reject;
-        });
-    }
-    /**
-     * Our API internals are not promiseified and cannot because our callback APIs have subtle expectations around
-     * invoking promises inline, which Promises are forbidden to do. This method accepts an optional node-style callback
-     * and returns a node-style callback which will resolve or reject the Deferred's promise.
-     */
-    wrapCallback(callback) {
-        return (error, value) => {
-            if (error) {
-                this.reject(error);
-            }
-            else {
-                this.resolve(value);
-            }
-            if (typeof callback === 'function') {
-                // Attaching noop handler just in case developer wasn't expecting
-                // promises
-                this.promise.catch(() => { });
-                // Some of our callbacks don't expect a value and our own tests
-                // assert that the parameter length is 1
-                if (callback.length === 1) {
-                    callback(error);
-                }
-                else {
-                    callback(error, value);
-                }
-            }
-        };
-    }
-}
-
-/**
- * @license
- * Copyright 2021 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-function createMockUserToken(token, projectId) {
-    if (token.uid) {
-        throw new Error('The "uid" field is no longer supported by mockUserToken. Please use "sub" instead for Firebase Auth User ID.');
-    }
-    // Unsecured JWTs use "none" as the algorithm.
-    const header = {
-        alg: 'none',
-        type: 'JWT'
-    };
-    const project = projectId || 'demo-project';
-    const iat = token.iat || 0;
-    const sub = token.sub || token.user_id;
-    if (!sub) {
-        throw new Error("mockUserToken must contain 'sub' or 'user_id' field!");
-    }
-    const payload = Object.assign({ 
-        // Set all required fields to decent defaults
-        iss: `https://securetoken.google.com/${project}`, aud: project, iat, exp: iat + 3600, auth_time: iat, sub, user_id: sub, firebase: {
-            sign_in_provider: 'custom',
-            identities: {}
-        } }, token);
-    // Unsecured JWTs use the empty string as a signature.
-    const signature = '';
-    return [
-        base64urlEncodeWithoutPadding(JSON.stringify(header)),
-        base64urlEncodeWithoutPadding(JSON.stringify(payload)),
-        signature
-    ].join('.');
-}
-
-/**
- * @license
- * Copyright 2017 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/**
- * Returns navigator.userAgent string or '' if it's not defined.
- * @return user agent string
- */
-function getUA() {
-    if (typeof navigator !== 'undefined' &&
-        typeof navigator['userAgent'] === 'string') {
-        return navigator['userAgent'];
-    }
-    else {
-        return '';
-    }
-}
-/**
- * Detect Cordova / PhoneGap / Ionic frameworks on a mobile device.
- *
- * Deliberately does not rely on checking `file://` URLs (as this fails PhoneGap
- * in the Ripple emulator) nor Cordova `onDeviceReady`, which would normally
- * wait for a callback.
- */
-function isMobileCordova() {
-    return (typeof window !== 'undefined' &&
-        // @ts-ignore Setting up an broadly applicable index signature for Window
-        // just to deal with this case would probably be a bad idea.
-        !!(window['cordova'] || window['phonegap'] || window['PhoneGap']) &&
-        /ios|iphone|ipod|ipad|android|blackberry|iemobile/i.test(getUA()));
-}
-/**
- * Detect Node.js.
- *
- * @return true if Node.js environment is detected.
- */
-// Node detection logic from: https://github.com/iliakan/detect-node/
-function isNode() {
-    try {
-        return (Object.prototype.toString.call(__webpack_require__.g.process) === '[object process]');
-    }
-    catch (e) {
-        return false;
-    }
-}
-/**
- * Detect Browser Environment
- */
-function isBrowser() {
-    return typeof self === 'object' && self.self === self;
-}
-function isBrowserExtension() {
-    const runtime = typeof chrome === 'object'
-        ? chrome.runtime
-        : typeof browser === 'object'
-            ? browser.runtime
-            : undefined;
-    return typeof runtime === 'object' && runtime.id !== undefined;
-}
-/**
- * Detect React Native.
- *
- * @return true if ReactNative environment is detected.
- */
-function isReactNative() {
-    return (typeof navigator === 'object' && navigator['product'] === 'ReactNative');
-}
-/** Detects Electron apps. */
-function isElectron() {
-    return getUA().indexOf('Electron/') >= 0;
-}
-/** Detects Internet Explorer. */
-function isIE() {
-    const ua = getUA();
-    return ua.indexOf('MSIE ') >= 0 || ua.indexOf('Trident/') >= 0;
-}
-/** Detects Universal Windows Platform apps. */
-function isUWP() {
-    return getUA().indexOf('MSAppHost/') >= 0;
-}
-/**
- * Detect whether the current SDK build is the Node version.
- *
- * @return true if it's the Node SDK build.
- */
-function isNodeSdk() {
-    return CONSTANTS.NODE_CLIENT === true || CONSTANTS.NODE_ADMIN === true;
-}
-/** Returns true if we are running in Safari. */
-function isSafari() {
-    return (!isNode() &&
-        navigator.userAgent.includes('Safari') &&
-        !navigator.userAgent.includes('Chrome'));
-}
-/**
- * This method checks if indexedDB is supported by current browser/service worker context
- * @return true if indexedDB is supported by current browser/service worker context
- */
-function isIndexedDBAvailable() {
-    return typeof indexedDB === 'object';
-}
-/**
- * This method validates browser/sw context for indexedDB by opening a dummy indexedDB database and reject
- * if errors occur during the database open operation.
- *
- * @throws exception if current browser/sw context can't run idb.open (ex: Safari iframe, Firefox
- * private browsing)
- */
-function validateIndexedDBOpenable() {
-    return new Promise((resolve, reject) => {
-        try {
-            let preExist = true;
-            const DB_CHECK_NAME = 'validate-browser-context-for-indexeddb-analytics-module';
-            const request = self.indexedDB.open(DB_CHECK_NAME);
-            request.onsuccess = () => {
-                request.result.close();
-                // delete database only when it doesn't pre-exist
-                if (!preExist) {
-                    self.indexedDB.deleteDatabase(DB_CHECK_NAME);
-                }
-                resolve(true);
-            };
-            request.onupgradeneeded = () => {
-                preExist = false;
-            };
-            request.onerror = () => {
-                var _a;
-                reject(((_a = request.error) === null || _a === void 0 ? void 0 : _a.message) || '');
-            };
-        }
-        catch (error) {
-            reject(error);
-        }
-    });
-}
-/**
- *
- * This method checks whether cookie is enabled within current browser
- * @return true if cookie is enabled within current browser
- */
-function areCookiesEnabled() {
-    if (typeof navigator === 'undefined' || !navigator.cookieEnabled) {
-        return false;
-    }
-    return true;
-}
-/**
- * Polyfill for `globalThis` object.
- * @returns the `globalThis` object for the given environment.
- */
-function getGlobal() {
-    if (typeof self !== 'undefined') {
-        return self;
-    }
-    if (typeof window !== 'undefined') {
-        return window;
-    }
-    if (typeof __webpack_require__.g !== 'undefined') {
-        return __webpack_require__.g;
-    }
-    throw new Error('Unable to locate global object.');
-}
-
-/**
- * @license
- * Copyright 2017 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/**
- * @fileoverview Standardized Firebase Error.
- *
- * Usage:
- *
- *   // Typescript string literals for type-safe codes
- *   type Err =
- *     'unknown' |
- *     'object-not-found'
- *     ;
- *
- *   // Closure enum for type-safe error codes
- *   // at-enum {string}
- *   var Err = {
- *     UNKNOWN: 'unknown',
- *     OBJECT_NOT_FOUND: 'object-not-found',
- *   }
- *
- *   let errors: Map<Err, string> = {
- *     'generic-error': "Unknown error",
- *     'file-not-found': "Could not find file: {$file}",
- *   };
- *
- *   // Type-safe function - must pass a valid error code as param.
- *   let error = new ErrorFactory<Err>('service', 'Service', errors);
- *
- *   ...
- *   throw error.create(Err.GENERIC);
- *   ...
- *   throw error.create(Err.FILE_NOT_FOUND, {'file': fileName});
- *   ...
- *   // Service: Could not file file: foo.txt (service/file-not-found).
- *
- *   catch (e) {
- *     assert(e.message === "Could not find file: foo.txt.");
- *     if (e.code === 'service/file-not-found') {
- *       console.log("Could not read file: " + e['file']);
- *     }
- *   }
- */
-const ERROR_NAME = 'FirebaseError';
-// Based on code from:
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error#Custom_Error_Types
-class FirebaseError extends Error {
-    constructor(
-    /** The error code for this error. */
-    code, message, 
-    /** Custom data for this error. */
-    customData) {
-        super(message);
-        this.code = code;
-        this.customData = customData;
-        /** The custom name for all FirebaseErrors. */
-        this.name = ERROR_NAME;
-        // Fix For ES5
-        // https://github.com/Microsoft/TypeScript-wiki/blob/master/Breaking-Changes.md#extending-built-ins-like-error-array-and-map-may-no-longer-work
-        Object.setPrototypeOf(this, FirebaseError.prototype);
-        // Maintains proper stack trace for where our error was thrown.
-        // Only available on V8.
-        if (Error.captureStackTrace) {
-            Error.captureStackTrace(this, ErrorFactory.prototype.create);
-        }
-    }
-}
-class ErrorFactory {
-    constructor(service, serviceName, errors) {
-        this.service = service;
-        this.serviceName = serviceName;
-        this.errors = errors;
-    }
-    create(code, ...data) {
-        const customData = data[0] || {};
-        const fullCode = `${this.service}/${code}`;
-        const template = this.errors[code];
-        const message = template ? replaceTemplate(template, customData) : 'Error';
-        // Service Name: Error message (service/code).
-        const fullMessage = `${this.serviceName}: ${message} (${fullCode}).`;
-        const error = new FirebaseError(fullCode, fullMessage, customData);
-        return error;
-    }
-}
-function replaceTemplate(template, data) {
-    return template.replace(PATTERN, (_, key) => {
-        const value = data[key];
-        return value != null ? String(value) : `<${key}?>`;
-    });
-}
-const PATTERN = /\{\$([^}]+)}/g;
-
-/**
- * @license
- * Copyright 2017 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/**
- * Evaluates a JSON string into a javascript object.
- *
- * @param {string} str A string containing JSON.
- * @return {*} The javascript object representing the specified JSON.
- */
-function jsonEval(str) {
-    return JSON.parse(str);
-}
-/**
- * Returns JSON representing a javascript object.
- * @param {*} data Javascript object to be stringified.
- * @return {string} The JSON contents of the object.
- */
-function stringify(data) {
-    return JSON.stringify(data);
-}
-
-/**
- * @license
- * Copyright 2017 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/**
- * Decodes a Firebase auth. token into constituent parts.
- *
- * Notes:
- * - May return with invalid / incomplete claims if there's no native base64 decoding support.
- * - Doesn't check if the token is actually valid.
- */
-const decode = function (token) {
-    let header = {}, claims = {}, data = {}, signature = '';
-    try {
-        const parts = token.split('.');
-        header = jsonEval(base64Decode(parts[0]) || '');
-        claims = jsonEval(base64Decode(parts[1]) || '');
-        signature = parts[2];
-        data = claims['d'] || {};
-        delete claims['d'];
-    }
-    catch (e) { }
-    return {
-        header,
-        claims,
-        data,
-        signature
-    };
-};
-/**
- * Decodes a Firebase auth. token and checks the validity of its time-based claims. Will return true if the
- * token is within the time window authorized by the 'nbf' (not-before) and 'iat' (issued-at) claims.
- *
- * Notes:
- * - May return a false negative if there's no native base64 decoding support.
- * - Doesn't check if the token is actually valid.
- */
-const isValidTimestamp = function (token) {
-    const claims = decode(token).claims;
-    const now = Math.floor(new Date().getTime() / 1000);
-    let validSince = 0, validUntil = 0;
-    if (typeof claims === 'object') {
-        if (claims.hasOwnProperty('nbf')) {
-            validSince = claims['nbf'];
-        }
-        else if (claims.hasOwnProperty('iat')) {
-            validSince = claims['iat'];
-        }
-        if (claims.hasOwnProperty('exp')) {
-            validUntil = claims['exp'];
-        }
-        else {
-            // token will expire after 24h by default
-            validUntil = validSince + 86400;
-        }
-    }
-    return (!!now &&
-        !!validSince &&
-        !!validUntil &&
-        now >= validSince &&
-        now <= validUntil);
-};
-/**
- * Decodes a Firebase auth. token and returns its issued at time if valid, null otherwise.
- *
- * Notes:
- * - May return null if there's no native base64 decoding support.
- * - Doesn't check if the token is actually valid.
- */
-const issuedAtTime = function (token) {
-    const claims = decode(token).claims;
-    if (typeof claims === 'object' && claims.hasOwnProperty('iat')) {
-        return claims['iat'];
-    }
-    return null;
-};
-/**
- * Decodes a Firebase auth. token and checks the validity of its format. Expects a valid issued-at time.
- *
- * Notes:
- * - May return a false negative if there's no native base64 decoding support.
- * - Doesn't check if the token is actually valid.
- */
-const isValidFormat = function (token) {
-    const decoded = decode(token), claims = decoded.claims;
-    return !!claims && typeof claims === 'object' && claims.hasOwnProperty('iat');
-};
-/**
- * Attempts to peer into an auth token and determine if it's an admin auth token by looking at the claims portion.
- *
- * Notes:
- * - May return a false negative if there's no native base64 decoding support.
- * - Doesn't check if the token is actually valid.
- */
-const isAdmin = function (token) {
-    const claims = decode(token).claims;
-    return typeof claims === 'object' && claims['admin'] === true;
-};
-
-/**
- * @license
- * Copyright 2017 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-function contains(obj, key) {
-    return Object.prototype.hasOwnProperty.call(obj, key);
-}
-function safeGet(obj, key) {
-    if (Object.prototype.hasOwnProperty.call(obj, key)) {
-        return obj[key];
-    }
-    else {
-        return undefined;
-    }
-}
-function isEmpty(obj) {
-    for (const key in obj) {
-        if (Object.prototype.hasOwnProperty.call(obj, key)) {
-            return false;
-        }
-    }
-    return true;
-}
-function map(obj, fn, contextObj) {
-    const res = {};
-    for (const key in obj) {
-        if (Object.prototype.hasOwnProperty.call(obj, key)) {
-            res[key] = fn.call(contextObj, obj[key], key, obj);
-        }
-    }
-    return res;
-}
-/**
- * Deep equal two objects. Support Arrays and Objects.
- */
-function deepEqual(a, b) {
-    if (a === b) {
-        return true;
-    }
-    const aKeys = Object.keys(a);
-    const bKeys = Object.keys(b);
-    for (const k of aKeys) {
-        if (!bKeys.includes(k)) {
-            return false;
-        }
-        const aProp = a[k];
-        const bProp = b[k];
-        if (isObject(aProp) && isObject(bProp)) {
-            if (!deepEqual(aProp, bProp)) {
-                return false;
-            }
-        }
-        else if (aProp !== bProp) {
-            return false;
-        }
-    }
-    for (const k of bKeys) {
-        if (!aKeys.includes(k)) {
-            return false;
-        }
-    }
-    return true;
-}
-function isObject(thing) {
-    return thing !== null && typeof thing === 'object';
-}
-
-/**
- * @license
- * Copyright 2017 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/**
- * Returns a querystring-formatted string (e.g. &arg=val&arg2=val2) from a
- * params object (e.g. {arg: 'val', arg2: 'val2'})
- * Note: You must prepend it with ? when adding it to a URL.
- */
-function querystring(querystringParams) {
-    const params = [];
-    for (const [key, value] of Object.entries(querystringParams)) {
-        if (Array.isArray(value)) {
-            value.forEach(arrayVal => {
-                params.push(encodeURIComponent(key) + '=' + encodeURIComponent(arrayVal));
-            });
-        }
-        else {
-            params.push(encodeURIComponent(key) + '=' + encodeURIComponent(value));
-        }
-    }
-    return params.length ? '&' + params.join('&') : '';
-}
-/**
- * Decodes a querystring (e.g. ?arg=val&arg2=val2) into a params object
- * (e.g. {arg: 'val', arg2: 'val2'})
- */
-function querystringDecode(querystring) {
-    const obj = {};
-    const tokens = querystring.replace(/^\?/, '').split('&');
-    tokens.forEach(token => {
-        if (token) {
-            const [key, value] = token.split('=');
-            obj[decodeURIComponent(key)] = decodeURIComponent(value);
-        }
-    });
-    return obj;
-}
-/**
- * Extract the query string part of a URL, including the leading question mark (if present).
- */
-function extractQuerystring(url) {
-    const queryStart = url.indexOf('?');
-    if (!queryStart) {
-        return '';
-    }
-    const fragmentStart = url.indexOf('#', queryStart);
-    return url.substring(queryStart, fragmentStart > 0 ? fragmentStart : undefined);
-}
-
-/**
- * @license
- * Copyright 2017 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/**
- * @fileoverview SHA-1 cryptographic hash.
- * Variable names follow the notation in FIPS PUB 180-3:
- * http://csrc.nist.gov/publications/fips/fips180-3/fips180-3_final.pdf.
- *
- * Usage:
- *   var sha1 = new sha1();
- *   sha1.update(bytes);
- *   var hash = sha1.digest();
- *
- * Performance:
- *   Chrome 23:   ~400 Mbit/s
- *   Firefox 16:  ~250 Mbit/s
- *
- */
-/**
- * SHA-1 cryptographic hash constructor.
- *
- * The properties declared here are discussed in the above algorithm document.
- * @constructor
- * @final
- * @struct
- */
-class Sha1 {
-    constructor() {
-        /**
-         * Holds the previous values of accumulated variables a-e in the compress_
-         * function.
-         * @private
-         */
-        this.chain_ = [];
-        /**
-         * A buffer holding the partially computed hash result.
-         * @private
-         */
-        this.buf_ = [];
-        /**
-         * An array of 80 bytes, each a part of the message to be hashed.  Referred to
-         * as the message schedule in the docs.
-         * @private
-         */
-        this.W_ = [];
-        /**
-         * Contains data needed to pad messages less than 64 bytes.
-         * @private
-         */
-        this.pad_ = [];
-        /**
-         * @private {number}
-         */
-        this.inbuf_ = 0;
-        /**
-         * @private {number}
-         */
-        this.total_ = 0;
-        this.blockSize = 512 / 8;
-        this.pad_[0] = 128;
-        for (let i = 1; i < this.blockSize; ++i) {
-            this.pad_[i] = 0;
-        }
-        this.reset();
-    }
-    reset() {
-        this.chain_[0] = 0x67452301;
-        this.chain_[1] = 0xefcdab89;
-        this.chain_[2] = 0x98badcfe;
-        this.chain_[3] = 0x10325476;
-        this.chain_[4] = 0xc3d2e1f0;
-        this.inbuf_ = 0;
-        this.total_ = 0;
-    }
-    /**
-     * Internal compress helper function.
-     * @param buf Block to compress.
-     * @param offset Offset of the block in the buffer.
-     * @private
-     */
-    compress_(buf, offset) {
-        if (!offset) {
-            offset = 0;
-        }
-        const W = this.W_;
-        // get 16 big endian words
-        if (typeof buf === 'string') {
-            for (let i = 0; i < 16; i++) {
-                // TODO(user): [bug 8140122] Recent versions of Safari for Mac OS and iOS
-                // have a bug that turns the post-increment ++ operator into pre-increment
-                // during JIT compilation.  We have code that depends heavily on SHA-1 for
-                // correctness and which is affected by this bug, so I've removed all uses
-                // of post-increment ++ in which the result value is used.  We can revert
-                // this change once the Safari bug
-                // (https://bugs.webkit.org/show_bug.cgi?id=109036) has been fixed and
-                // most clients have been updated.
-                W[i] =
-                    (buf.charCodeAt(offset) << 24) |
-                        (buf.charCodeAt(offset + 1) << 16) |
-                        (buf.charCodeAt(offset + 2) << 8) |
-                        buf.charCodeAt(offset + 3);
-                offset += 4;
-            }
-        }
-        else {
-            for (let i = 0; i < 16; i++) {
-                W[i] =
-                    (buf[offset] << 24) |
-                        (buf[offset + 1] << 16) |
-                        (buf[offset + 2] << 8) |
-                        buf[offset + 3];
-                offset += 4;
-            }
-        }
-        // expand to 80 words
-        for (let i = 16; i < 80; i++) {
-            const t = W[i - 3] ^ W[i - 8] ^ W[i - 14] ^ W[i - 16];
-            W[i] = ((t << 1) | (t >>> 31)) & 0xffffffff;
-        }
-        let a = this.chain_[0];
-        let b = this.chain_[1];
-        let c = this.chain_[2];
-        let d = this.chain_[3];
-        let e = this.chain_[4];
-        let f, k;
-        // TODO(user): Try to unroll this loop to speed up the computation.
-        for (let i = 0; i < 80; i++) {
-            if (i < 40) {
-                if (i < 20) {
-                    f = d ^ (b & (c ^ d));
-                    k = 0x5a827999;
-                }
-                else {
-                    f = b ^ c ^ d;
-                    k = 0x6ed9eba1;
-                }
-            }
-            else {
-                if (i < 60) {
-                    f = (b & c) | (d & (b | c));
-                    k = 0x8f1bbcdc;
-                }
-                else {
-                    f = b ^ c ^ d;
-                    k = 0xca62c1d6;
-                }
-            }
-            const t = (((a << 5) | (a >>> 27)) + f + e + k + W[i]) & 0xffffffff;
-            e = d;
-            d = c;
-            c = ((b << 30) | (b >>> 2)) & 0xffffffff;
-            b = a;
-            a = t;
-        }
-        this.chain_[0] = (this.chain_[0] + a) & 0xffffffff;
-        this.chain_[1] = (this.chain_[1] + b) & 0xffffffff;
-        this.chain_[2] = (this.chain_[2] + c) & 0xffffffff;
-        this.chain_[3] = (this.chain_[3] + d) & 0xffffffff;
-        this.chain_[4] = (this.chain_[4] + e) & 0xffffffff;
-    }
-    update(bytes, length) {
-        // TODO(johnlenz): tighten the function signature and remove this check
-        if (bytes == null) {
-            return;
-        }
-        if (length === undefined) {
-            length = bytes.length;
-        }
-        const lengthMinusBlock = length - this.blockSize;
-        let n = 0;
-        // Using local instead of member variables gives ~5% speedup on Firefox 16.
-        const buf = this.buf_;
-        let inbuf = this.inbuf_;
-        // The outer while loop should execute at most twice.
-        while (n < length) {
-            // When we have no data in the block to top up, we can directly process the
-            // input buffer (assuming it contains sufficient data). This gives ~25%
-            // speedup on Chrome 23 and ~15% speedup on Firefox 16, but requires that
-            // the data is provided in large chunks (or in multiples of 64 bytes).
-            if (inbuf === 0) {
-                while (n <= lengthMinusBlock) {
-                    this.compress_(bytes, n);
-                    n += this.blockSize;
-                }
-            }
-            if (typeof bytes === 'string') {
-                while (n < length) {
-                    buf[inbuf] = bytes.charCodeAt(n);
-                    ++inbuf;
-                    ++n;
-                    if (inbuf === this.blockSize) {
-                        this.compress_(buf);
-                        inbuf = 0;
-                        // Jump to the outer loop so we use the full-block optimization.
-                        break;
-                    }
-                }
-            }
-            else {
-                while (n < length) {
-                    buf[inbuf] = bytes[n];
-                    ++inbuf;
-                    ++n;
-                    if (inbuf === this.blockSize) {
-                        this.compress_(buf);
-                        inbuf = 0;
-                        // Jump to the outer loop so we use the full-block optimization.
-                        break;
-                    }
-                }
-            }
-        }
-        this.inbuf_ = inbuf;
-        this.total_ += length;
-    }
-    /** @override */
-    digest() {
-        const digest = [];
-        let totalBits = this.total_ * 8;
-        // Add pad 0x80 0x00*.
-        if (this.inbuf_ < 56) {
-            this.update(this.pad_, 56 - this.inbuf_);
-        }
-        else {
-            this.update(this.pad_, this.blockSize - (this.inbuf_ - 56));
-        }
-        // Add # bits.
-        for (let i = this.blockSize - 1; i >= 56; i--) {
-            this.buf_[i] = totalBits & 255;
-            totalBits /= 256; // Don't use bit-shifting here!
-        }
-        this.compress_(this.buf_);
-        let n = 0;
-        for (let i = 0; i < 5; i++) {
-            for (let j = 24; j >= 0; j -= 8) {
-                digest[n] = (this.chain_[i] >> j) & 255;
-                ++n;
-            }
-        }
-        return digest;
-    }
-}
-
-/**
- * Helper to make a Subscribe function (just like Promise helps make a
- * Thenable).
- *
- * @param executor Function which can make calls to a single Observer
- *     as a proxy.
- * @param onNoObservers Callback when count of Observers goes to zero.
- */
-function createSubscribe(executor, onNoObservers) {
-    const proxy = new ObserverProxy(executor, onNoObservers);
-    return proxy.subscribe.bind(proxy);
-}
-/**
- * Implement fan-out for any number of Observers attached via a subscribe
- * function.
- */
-class ObserverProxy {
-    /**
-     * @param executor Function which can make calls to a single Observer
-     *     as a proxy.
-     * @param onNoObservers Callback when count of Observers goes to zero.
-     */
-    constructor(executor, onNoObservers) {
-        this.observers = [];
-        this.unsubscribes = [];
-        this.observerCount = 0;
-        // Micro-task scheduling by calling task.then().
-        this.task = Promise.resolve();
-        this.finalized = false;
-        this.onNoObservers = onNoObservers;
-        // Call the executor asynchronously so subscribers that are called
-        // synchronously after the creation of the subscribe function
-        // can still receive the very first value generated in the executor.
-        this.task
-            .then(() => {
-            executor(this);
-        })
-            .catch(e => {
-            this.error(e);
-        });
-    }
-    next(value) {
-        this.forEachObserver((observer) => {
-            observer.next(value);
-        });
-    }
-    error(error) {
-        this.forEachObserver((observer) => {
-            observer.error(error);
-        });
-        this.close(error);
-    }
-    complete() {
-        this.forEachObserver((observer) => {
-            observer.complete();
-        });
-        this.close();
-    }
-    /**
-     * Subscribe function that can be used to add an Observer to the fan-out list.
-     *
-     * - We require that no event is sent to a subscriber sychronously to their
-     *   call to subscribe().
-     */
-    subscribe(nextOrObserver, error, complete) {
-        let observer;
-        if (nextOrObserver === undefined &&
-            error === undefined &&
-            complete === undefined) {
-            throw new Error('Missing Observer.');
-        }
-        // Assemble an Observer object when passed as callback functions.
-        if (implementsAnyMethods(nextOrObserver, [
-            'next',
-            'error',
-            'complete'
-        ])) {
-            observer = nextOrObserver;
-        }
-        else {
-            observer = {
-                next: nextOrObserver,
-                error,
-                complete
-            };
-        }
-        if (observer.next === undefined) {
-            observer.next = noop;
-        }
-        if (observer.error === undefined) {
-            observer.error = noop;
-        }
-        if (observer.complete === undefined) {
-            observer.complete = noop;
-        }
-        const unsub = this.unsubscribeOne.bind(this, this.observers.length);
-        // Attempt to subscribe to a terminated Observable - we
-        // just respond to the Observer with the final error or complete
-        // event.
-        if (this.finalized) {
-            // eslint-disable-next-line @typescript-eslint/no-floating-promises
-            this.task.then(() => {
-                try {
-                    if (this.finalError) {
-                        observer.error(this.finalError);
-                    }
-                    else {
-                        observer.complete();
-                    }
-                }
-                catch (e) {
-                    // nothing
-                }
-                return;
-            });
-        }
-        this.observers.push(observer);
-        return unsub;
-    }
-    // Unsubscribe is synchronous - we guarantee that no events are sent to
-    // any unsubscribed Observer.
-    unsubscribeOne(i) {
-        if (this.observers === undefined || this.observers[i] === undefined) {
-            return;
-        }
-        delete this.observers[i];
-        this.observerCount -= 1;
-        if (this.observerCount === 0 && this.onNoObservers !== undefined) {
-            this.onNoObservers(this);
-        }
-    }
-    forEachObserver(fn) {
-        if (this.finalized) {
-            // Already closed by previous event....just eat the additional values.
-            return;
-        }
-        // Since sendOne calls asynchronously - there is no chance that
-        // this.observers will become undefined.
-        for (let i = 0; i < this.observers.length; i++) {
-            this.sendOne(i, fn);
-        }
-    }
-    // Call the Observer via one of it's callback function. We are careful to
-    // confirm that the observe has not been unsubscribed since this asynchronous
-    // function had been queued.
-    sendOne(i, fn) {
-        // Execute the callback asynchronously
-        // eslint-disable-next-line @typescript-eslint/no-floating-promises
-        this.task.then(() => {
-            if (this.observers !== undefined && this.observers[i] !== undefined) {
-                try {
-                    fn(this.observers[i]);
-                }
-                catch (e) {
-                    // Ignore exceptions raised in Observers or missing methods of an
-                    // Observer.
-                    // Log error to console. b/31404806
-                    if (typeof console !== 'undefined' && console.error) {
-                        console.error(e);
-                    }
-                }
-            }
-        });
-    }
-    close(err) {
-        if (this.finalized) {
-            return;
-        }
-        this.finalized = true;
-        if (err !== undefined) {
-            this.finalError = err;
-        }
-        // Proxy is no longer needed - garbage collect references
-        // eslint-disable-next-line @typescript-eslint/no-floating-promises
-        this.task.then(() => {
-            this.observers = undefined;
-            this.onNoObservers = undefined;
-        });
-    }
-}
-/** Turn synchronous function into one called asynchronously. */
-// eslint-disable-next-line @typescript-eslint/ban-types
-function async(fn, onError) {
-    return (...args) => {
-        Promise.resolve(true)
-            .then(() => {
-            fn(...args);
-        })
-            .catch((error) => {
-            if (onError) {
-                onError(error);
-            }
-        });
-    };
-}
-/**
- * Return true if the object passed in implements any of the named methods.
- */
-function implementsAnyMethods(obj, methods) {
-    if (typeof obj !== 'object' || obj === null) {
-        return false;
-    }
-    for (const method of methods) {
-        if (method in obj && typeof obj[method] === 'function') {
-            return true;
-        }
-    }
-    return false;
-}
-function noop() {
-    // do nothing
-}
-
-/**
- * @license
- * Copyright 2017 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/**
- * Check to make sure the appropriate number of arguments are provided for a public function.
- * Throws an error if it fails.
- *
- * @param fnName The function name
- * @param minCount The minimum number of arguments to allow for the function call
- * @param maxCount The maximum number of argument to allow for the function call
- * @param argCount The actual number of arguments provided.
- */
-const validateArgCount = function (fnName, minCount, maxCount, argCount) {
-    let argError;
-    if (argCount < minCount) {
-        argError = 'at least ' + minCount;
-    }
-    else if (argCount > maxCount) {
-        argError = maxCount === 0 ? 'none' : 'no more than ' + maxCount;
-    }
-    if (argError) {
-        const error = fnName +
-            ' failed: Was called with ' +
-            argCount +
-            (argCount === 1 ? ' argument.' : ' arguments.') +
-            ' Expects ' +
-            argError +
-            '.';
-        throw new Error(error);
-    }
-};
-/**
- * Generates a string to prefix an error message about failed argument validation
- *
- * @param fnName The function name
- * @param argName The name of the argument
- * @return The prefix to add to the error thrown for validation.
- */
-function errorPrefix(fnName, argName) {
-    return `${fnName} failed: ${argName} argument `;
-}
-/**
- * @param fnName
- * @param argumentNumber
- * @param namespace
- * @param optional
- */
-function validateNamespace(fnName, namespace, optional) {
-    if (optional && !namespace) {
-        return;
-    }
-    if (typeof namespace !== 'string') {
-        //TODO: I should do more validation here. We only allow certain chars in namespaces.
-        throw new Error(errorPrefix(fnName, 'namespace') + 'must be a valid firebase namespace.');
-    }
-}
-function validateCallback(fnName, argumentName, 
-// eslint-disable-next-line @typescript-eslint/ban-types
-callback, optional) {
-    if (optional && !callback) {
-        return;
-    }
-    if (typeof callback !== 'function') {
-        throw new Error(errorPrefix(fnName, argumentName) + 'must be a valid function.');
-    }
-}
-function validateContextObject(fnName, argumentName, context, optional) {
-    if (optional && !context) {
-        return;
-    }
-    if (typeof context !== 'object' || context === null) {
-        throw new Error(errorPrefix(fnName, argumentName) + 'must be a valid context object.');
-    }
-}
-
-/**
- * @license
- * Copyright 2017 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-// Code originally came from goog.crypt.stringToUtf8ByteArray, but for some reason they
-// automatically replaced '\r\n' with '\n', and they didn't handle surrogate pairs,
-// so it's been modified.
-// Note that not all Unicode characters appear as single characters in JavaScript strings.
-// fromCharCode returns the UTF-16 encoding of a character - so some Unicode characters
-// use 2 characters in Javascript.  All 4-byte UTF-8 characters begin with a first
-// character in the range 0xD800 - 0xDBFF (the first character of a so-called surrogate
-// pair).
-// See http://www.ecma-international.org/ecma-262/5.1/#sec-15.1.3
-/**
- * @param {string} str
- * @return {Array}
- */
-const stringToByteArray = function (str) {
-    const out = [];
-    let p = 0;
-    for (let i = 0; i < str.length; i++) {
-        let c = str.charCodeAt(i);
-        // Is this the lead surrogate in a surrogate pair?
-        if (c >= 0xd800 && c <= 0xdbff) {
-            const high = c - 0xd800; // the high 10 bits.
-            i++;
-            assert(i < str.length, 'Surrogate pair missing trail surrogate.');
-            const low = str.charCodeAt(i) - 0xdc00; // the low 10 bits.
-            c = 0x10000 + (high << 10) + low;
-        }
-        if (c < 128) {
-            out[p++] = c;
-        }
-        else if (c < 2048) {
-            out[p++] = (c >> 6) | 192;
-            out[p++] = (c & 63) | 128;
-        }
-        else if (c < 65536) {
-            out[p++] = (c >> 12) | 224;
-            out[p++] = ((c >> 6) & 63) | 128;
-            out[p++] = (c & 63) | 128;
-        }
-        else {
-            out[p++] = (c >> 18) | 240;
-            out[p++] = ((c >> 12) & 63) | 128;
-            out[p++] = ((c >> 6) & 63) | 128;
-            out[p++] = (c & 63) | 128;
-        }
-    }
-    return out;
-};
-/**
- * Calculate length without actually converting; useful for doing cheaper validation.
- * @param {string} str
- * @return {number}
- */
-const stringLength = function (str) {
-    let p = 0;
-    for (let i = 0; i < str.length; i++) {
-        const c = str.charCodeAt(i);
-        if (c < 128) {
-            p++;
-        }
-        else if (c < 2048) {
-            p += 2;
-        }
-        else if (c >= 0xd800 && c <= 0xdbff) {
-            // Lead surrogate of a surrogate pair.  The pair together will take 4 bytes to represent.
-            p += 4;
-            i++; // skip trail surrogate.
-        }
-        else {
-            p += 3;
-        }
-    }
-    return p;
-};
-
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/**
- * The amount of milliseconds to exponentially increase.
- */
-const DEFAULT_INTERVAL_MILLIS = 1000;
-/**
- * The factor to backoff by.
- * Should be a number greater than 1.
- */
-const DEFAULT_BACKOFF_FACTOR = 2;
-/**
- * The maximum milliseconds to increase to.
- *
- * <p>Visible for testing
- */
-const MAX_VALUE_MILLIS = 4 * 60 * 60 * 1000; // Four hours, like iOS and Android.
-/**
- * The percentage of backoff time to randomize by.
- * See
- * http://go/safe-client-behavior#step-1-determine-the-appropriate-retry-interval-to-handle-spike-traffic
- * for context.
- *
- * <p>Visible for testing
- */
-const RANDOM_FACTOR = 0.5;
-/**
- * Based on the backoff method from
- * https://github.com/google/closure-library/blob/master/closure/goog/math/exponentialbackoff.js.
- * Extracted here so we don't need to pass metadata and a stateful ExponentialBackoff object around.
- */
-function calculateBackoffMillis(backoffCount, intervalMillis = DEFAULT_INTERVAL_MILLIS, backoffFactor = DEFAULT_BACKOFF_FACTOR) {
-    // Calculates an exponentially increasing value.
-    // Deviation: calculates value from count and a constant interval, so we only need to save value
-    // and count to restore state.
-    const currBaseValue = intervalMillis * Math.pow(backoffFactor, backoffCount);
-    // A random "fuzz" to avoid waves of retries.
-    // Deviation: randomFactor is required.
-    const randomWait = Math.round(
-    // A fraction of the backoff value to add/subtract.
-    // Deviation: changes multiplication order to improve readability.
-    RANDOM_FACTOR *
-        currBaseValue *
-        // A random float (rounded to int by Math.round above) in the range [-1, 1]. Determines
-        // if we add or subtract.
-        (Math.random() - 0.5) *
-        2);
-    // Limits backoff to max to avoid effectively permanent backoff.
-    return Math.min(MAX_VALUE_MILLIS, currBaseValue + randomWait);
-}
-
-/**
- * @license
- * Copyright 2020 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/**
- * Provide English ordinal letters after a number
- */
-function ordinal(i) {
-    if (!Number.isFinite(i)) {
-        return `${i}`;
-    }
-    return i + indicator(i);
-}
-function indicator(i) {
-    i = Math.abs(i);
-    const cent = i % 100;
-    if (cent >= 10 && cent <= 20) {
-        return 'th';
-    }
-    const dec = i % 10;
-    if (dec === 1) {
-        return 'st';
-    }
-    if (dec === 2) {
-        return 'nd';
-    }
-    if (dec === 3) {
-        return 'rd';
-    }
-    return 'th';
-}
-
-/**
- * @license
- * Copyright 2021 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-function getModularInstance(service) {
-    if (service && service._delegate) {
-        return service._delegate;
-    }
-    else {
-        return service;
-    }
-}
-
-/**
- * @license
- * Copyright 2022 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-function promisifyRequest(request, errorMessage) {
-    return new Promise((resolve, reject) => {
-        request.onsuccess = event => {
-            resolve(event.target.result);
-        };
-        request.onerror = event => {
-            var _a;
-            reject(`${errorMessage}: ${(_a = event.target.error) === null || _a === void 0 ? void 0 : _a.message}`);
-        };
-    });
-}
-class DBWrapper {
-    constructor(_db) {
-        this._db = _db;
-        this.objectStoreNames = this._db.objectStoreNames;
-    }
-    transaction(storeNames, mode) {
-        return new TransactionWrapper(this._db.transaction.call(this._db, storeNames, mode));
-    }
-    createObjectStore(storeName, options) {
-        return new ObjectStoreWrapper(this._db.createObjectStore(storeName, options));
-    }
-    close() {
-        this._db.close();
-    }
-}
-class TransactionWrapper {
-    constructor(_transaction) {
-        this._transaction = _transaction;
-        this.complete = new Promise((resolve, reject) => {
-            this._transaction.oncomplete = function () {
-                resolve();
-            };
-            this._transaction.onerror = () => {
-                reject(this._transaction.error);
-            };
-            this._transaction.onabort = () => {
-                reject(this._transaction.error);
-            };
-        });
-    }
-    objectStore(storeName) {
-        return new ObjectStoreWrapper(this._transaction.objectStore(storeName));
-    }
-}
-class ObjectStoreWrapper {
-    constructor(_store) {
-        this._store = _store;
-    }
-    index(name) {
-        return new IndexWrapper(this._store.index(name));
-    }
-    createIndex(name, keypath, options) {
-        return new IndexWrapper(this._store.createIndex(name, keypath, options));
-    }
-    get(key) {
-        const request = this._store.get(key);
-        return promisifyRequest(request, 'Error reading from IndexedDB');
-    }
-    put(value, key) {
-        const request = this._store.put(value, key);
-        return promisifyRequest(request, 'Error writing to IndexedDB');
-    }
-    delete(key) {
-        const request = this._store.delete(key);
-        return promisifyRequest(request, 'Error deleting from IndexedDB');
-    }
-    clear() {
-        const request = this._store.clear();
-        return promisifyRequest(request, 'Error clearing IndexedDB object store');
-    }
-}
-class IndexWrapper {
-    constructor(_index) {
-        this._index = _index;
-    }
-    get(key) {
-        const request = this._index.get(key);
-        return promisifyRequest(request, 'Error reading from IndexedDB');
-    }
-}
-function openDB(dbName, dbVersion, upgradeCallback) {
-    return new Promise((resolve, reject) => {
-        try {
-            const request = indexedDB.open(dbName, dbVersion);
-            request.onsuccess = event => {
-                resolve(new DBWrapper(event.target.result));
-            };
-            request.onerror = event => {
-                var _a;
-                reject(`Error opening indexedDB: ${(_a = event.target.error) === null || _a === void 0 ? void 0 : _a.message}`);
-            };
-            request.onupgradeneeded = event => {
-                upgradeCallback(new DBWrapper(request.result), event.oldVersion, event.newVersion, new TransactionWrapper(request.transaction));
-            };
-        }
-        catch (e) {
-            reject(`Error opening indexedDB: ${e.message}`);
-        }
-    });
-}
-async function deleteDB(dbName) {
-    return new Promise((resolve, reject) => {
-        try {
-            const request = indexedDB.deleteDatabase(dbName);
-            request.onsuccess = () => {
-                resolve();
-            };
-            request.onerror = event => {
-                var _a;
-                reject(`Error deleting indexedDB database "${dbName}": ${(_a = event.target.error) === null || _a === void 0 ? void 0 : _a.message}`);
-            };
-        }
-        catch (e) {
-            reject(`Error deleting indexedDB database "${dbName}": ${e.message}`);
-        }
-    });
-}
-
-
-//# sourceMappingURL=index.esm2017.js.map
-
-
-/***/ }),
-
 /***/ "./node_modules/axios/index.js":
 /*!*************************************!*\
   !*** ./node_modules/axios/index.js ***!
@@ -4328,10 +2219,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _navbar__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./navbar */ "./client/navbar.js");
 /* harmony import */ var _start_game__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./start-game */ "./client/start-game.js");
 /* harmony import */ var _connect_game__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./connect-game */ "./client/connect-game.js");
-/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! firebase/app */ "./node_modules/firebase/app/dist/index.esm.js");
-/* harmony import */ var firebase_messaging__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! firebase/messaging */ "./node_modules/firebase/messaging/dist/index.esm.js");
-/* harmony import */ var _secrets__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ../secrets */ "./secrets.js");
-/* harmony import */ var _secrets__WEBPACK_IMPORTED_MODULE_27___default = /*#__PURE__*/__webpack_require__.n(_secrets__WEBPACK_IMPORTED_MODULE_27__);
+/* harmony import */ var _socket__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./socket */ "./client/socket.js");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
 
@@ -4380,39 +2268,12 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 
- // import ConnectGame from './connect-game';
 
 
 
 
 
 
-
- // TODO: Replace the following with your app's Firebase project configuration
-// See: https://firebase.google.com/docs/web/learn-more#config-object
-//const firebaseConfig = fbConfig()();
-// Initialize Firebase
-//const app = initializeApp(firebaseConfig);
-// Initialize Firebase Cloud Messaging and get a reference to the service
-//const messaging = getMessaging(app);
-//messaging.getToken({vapidKey: vapidKey()()});
-// Get registration token. Initially this makes a network call, once retrieved
-// subsequent calls to getToken will return from cache.
-// getToken(messaging, { vapidKey: '<YOUR_PUBLIC_VAPID_KEY_HERE>' }).then((currentToken) => {
-//   if (currentToken) {
-//     // Send the token to your server and update the UI if necessary
-//     // ...
-//   } else {
-//     // Show permission request UI
-//     console.log('No registration token available. Request permission to generate one.');
-//     // ...
-//   }
-// }).catch((err) => {
-//   console.log('An error occurred while retrieving token. ', err);
-//   // ...
-// });
-//tryc and send token to server to store in db. should we see if they have a token already?
-//is each token for each client or app?
 
 var App = /*#__PURE__*/function (_React$Component) {
   _inherits(App, _React$Component);
@@ -4427,6 +2288,7 @@ var App = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
     _this.state = {
       user: {},
+      player: '',
       joinCode: '',
       startType: '',
       gameID: 0,
@@ -4438,7 +2300,8 @@ var App = /*#__PURE__*/function (_React$Component) {
     _this.toggleStartType = _this.toggleStartType.bind(_assertThisInitialized(_this));
     _this.handleJoinCode = _this.handleJoinCode.bind(_assertThisInitialized(_this));
     return _this;
-  }
+  } //grabs user from session on mount
+
 
   _createClass(App, [{
     key: "componentDidMount",
@@ -4465,21 +2328,20 @@ var App = /*#__PURE__*/function (_React$Component) {
                   });
                 }
 
-                console.log("data", res.data);
-                _context.next = 11;
+                _context.next = 10;
                 break;
 
-              case 8:
-                _context.prev = 8;
+              case 7:
+                _context.prev = 7;
                 _context.t0 = _context["catch"](0);
                 console.error(_context.t0);
 
-              case 11:
+              case 10:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this, [[0, 8]]);
+        }, _callee, this, [[0, 7]]);
       }));
 
       function componentDidMount() {
@@ -4487,7 +2349,8 @@ var App = /*#__PURE__*/function (_React$Component) {
       }
 
       return componentDidMount;
-    }()
+    }() //logout api call - toggles login/logout option
+
   }, {
     key: "handleAuthClick",
     value: function () {
@@ -4506,7 +2369,7 @@ var App = /*#__PURE__*/function (_React$Component) {
                 }) : this.setState({
                   authOption: 'login'
                 });
-                _context2.next = 15;
+                _context2.next = 14;
                 break;
 
               case 4:
@@ -4521,21 +2384,20 @@ var App = /*#__PURE__*/function (_React$Component) {
                 this.setState({
                   authOption: 'login'
                 });
-                console.log("logged out");
-                _context2.next = 15;
+                _context2.next = 14;
                 break;
 
-              case 12:
-                _context2.prev = 12;
+              case 11:
+                _context2.prev = 11;
                 _context2.t0 = _context2["catch"](4);
                 console.error(_context2.t0);
 
-              case 15:
+              case 14:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, this, [[4, 12]]);
+        }, _callee2, this, [[4, 11]]);
       }));
 
       function handleAuthClick() {
@@ -4543,7 +2405,8 @@ var App = /*#__PURE__*/function (_React$Component) {
       }
 
       return handleAuthClick;
-    }()
+    }() //sign-up / login api call
+
   }, {
     key: "handleSubmit",
     value: function () {
@@ -4569,7 +2432,6 @@ var App = /*#__PURE__*/function (_React$Component) {
                 res = _context3.sent;
 
                 if (res.data) {
-                  console.log("logged in");
                   this.setState({
                     user: res.data
                   });
@@ -4592,19 +2454,30 @@ var App = /*#__PURE__*/function (_React$Component) {
       }
 
       return handleSubmit;
-    }()
+    }() //update this so it renders the first board for both players
+
   }, {
     key: "handleStart",
     value: function handleStart(code) {
       this.setState({
         gameID: code
-      });
+      }); //connect to socket.. don't really care who they are so long as 2 and only 2 join a room/gameID
+
+      _socket__WEBPACK_IMPORTED_MODULE_25__["default"].auth = {
+        gameID: code,
+        userID: this.state.user.id
+      };
+      _socket__WEBPACK_IMPORTED_MODULE_25__["default"].connect(); //joins room/gameID on the server
     }
   }, {
     key: "toggleStartType",
     value: function toggleStartType(type) {
       this.setState({
         startType: type
+      });
+      var player = type === 'start' ? 'r' : 'y';
+      this.setState({
+        player: player
       });
     }
   }, {
@@ -4635,7 +2508,10 @@ var App = /*#__PURE__*/function (_React$Component) {
         startType: this.state.startType,
         handleStart: this.handleStart,
         toggleStartType: this.toggleStartType
-      }), hasGameId && isLoggedIn && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_19__.createElement(_connect_game__WEBPACK_IMPORTED_MODULE_24__["default"], null)));
+      }), hasGameId && isLoggedIn && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_19__.createElement(_connect_game__WEBPACK_IMPORTED_MODULE_24__["default"], {
+        player: this.state.player,
+        gameID: this.state.gameID
+      })));
     }
   }]);
 
@@ -4733,45 +2609,42 @@ var AuthForm = function AuthForm(props) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ ConnectGame)
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var core_js_modules_es_function_bind_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.function.bind.js */ "./node_modules/core-js/modules/es.function.bind.js");
-/* harmony import */ var core_js_modules_es_function_bind_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_function_bind_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var core_js_modules_es_array_index_of_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.array.index-of.js */ "./node_modules/core-js/modules/es.array.index-of.js");
-/* harmony import */ var core_js_modules_es_array_index_of_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_index_of_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var core_js_modules_es_object_set_prototype_of_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/es.object.set-prototype-of.js */ "./node_modules/core-js/modules/es.object.set-prototype-of.js");
-/* harmony import */ var core_js_modules_es_object_set_prototype_of_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_set_prototype_of_js__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var core_js_modules_es_object_get_prototype_of_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! core-js/modules/es.object.get-prototype-of.js */ "./node_modules/core-js/modules/es.object.get-prototype-of.js");
-/* harmony import */ var core_js_modules_es_object_get_prototype_of_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_get_prototype_of_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var core_js_modules_es_array_index_of_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.array.index-of.js */ "./node_modules/core-js/modules/es.array.index-of.js");
+/* harmony import */ var core_js_modules_es_array_index_of_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_index_of_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var core_js_modules_es_array_is_array_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.array.is-array.js */ "./node_modules/core-js/modules/es.array.is-array.js");
+/* harmony import */ var core_js_modules_es_array_is_array_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_is_array_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/es.symbol.js */ "./node_modules/core-js/modules/es.symbol.js");
+/* harmony import */ var core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! core-js/modules/es.symbol.description.js */ "./node_modules/core-js/modules/es.symbol.description.js");
+/* harmony import */ var core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! core-js/modules/es.object.to-string.js */ "./node_modules/core-js/modules/es.object.to-string.js");
 /* harmony import */ var core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var core_js_modules_es_reflect_to_string_tag_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! core-js/modules/es.reflect.to-string-tag.js */ "./node_modules/core-js/modules/es.reflect.to-string-tag.js");
-/* harmony import */ var core_js_modules_es_reflect_to_string_tag_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_reflect_to_string_tag_js__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var core_js_modules_es_reflect_construct_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! core-js/modules/es.reflect.construct.js */ "./node_modules/core-js/modules/es.reflect.construct.js");
-/* harmony import */ var core_js_modules_es_reflect_construct_js__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_reflect_construct_js__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var core_js_modules_es_error_cause_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! core-js/modules/es.error.cause.js */ "./node_modules/core-js/modules/es.error.cause.js");
-/* harmony import */ var core_js_modules_es_error_cause_js__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_error_cause_js__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var core_js_modules_es_error_to_string_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! core-js/modules/es.error.to-string.js */ "./node_modules/core-js/modules/es.error.to-string.js");
-/* harmony import */ var core_js_modules_es_error_to_string_js__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_error_to_string_js__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var core_js_modules_es_object_create_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! core-js/modules/es.object.create.js */ "./node_modules/core-js/modules/es.object.create.js");
-/* harmony import */ var core_js_modules_es_object_create_js__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_create_js__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var core_js_modules_es_object_define_property_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! core-js/modules/es.object.define-property.js */ "./node_modules/core-js/modules/es.object.define-property.js");
-/* harmony import */ var core_js_modules_es_object_define_property_js__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_define_property_js__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! core-js/modules/es.symbol.js */ "./node_modules/core-js/modules/es.symbol.js");
-/* harmony import */ var core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! core-js/modules/es.symbol.description.js */ "./node_modules/core-js/modules/es.symbol.description.js");
-/* harmony import */ var core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_12__);
-/* harmony import */ var core_js_modules_es_symbol_iterator_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! core-js/modules/es.symbol.iterator.js */ "./node_modules/core-js/modules/es.symbol.iterator.js");
-/* harmony import */ var core_js_modules_es_symbol_iterator_js__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_iterator_js__WEBPACK_IMPORTED_MODULE_13__);
-/* harmony import */ var core_js_modules_es_array_iterator_js__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! core-js/modules/es.array.iterator.js */ "./node_modules/core-js/modules/es.array.iterator.js");
-/* harmony import */ var core_js_modules_es_array_iterator_js__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_iterator_js__WEBPACK_IMPORTED_MODULE_14__);
-/* harmony import */ var core_js_modules_es_string_iterator_js__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! core-js/modules/es.string.iterator.js */ "./node_modules/core-js/modules/es.string.iterator.js");
-/* harmony import */ var core_js_modules_es_string_iterator_js__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_iterator_js__WEBPACK_IMPORTED_MODULE_15__);
-/* harmony import */ var core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! core-js/modules/web.dom-collections.iterator.js */ "./node_modules/core-js/modules/web.dom-collections.iterator.js");
-/* harmony import */ var core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_16__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _connect__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./connect */ "./client/connect.js");
-function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+/* harmony import */ var core_js_modules_es_symbol_iterator_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! core-js/modules/es.symbol.iterator.js */ "./node_modules/core-js/modules/es.symbol.iterator.js");
+/* harmony import */ var core_js_modules_es_symbol_iterator_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_iterator_js__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var core_js_modules_es_array_iterator_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! core-js/modules/es.array.iterator.js */ "./node_modules/core-js/modules/es.array.iterator.js");
+/* harmony import */ var core_js_modules_es_array_iterator_js__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_iterator_js__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var core_js_modules_es_string_iterator_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! core-js/modules/es.string.iterator.js */ "./node_modules/core-js/modules/es.string.iterator.js");
+/* harmony import */ var core_js_modules_es_string_iterator_js__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_iterator_js__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! core-js/modules/web.dom-collections.iterator.js */ "./node_modules/core-js/modules/web.dom-collections.iterator.js");
+/* harmony import */ var core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var core_js_modules_es_array_slice_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! core-js/modules/es.array.slice.js */ "./node_modules/core-js/modules/es.array.slice.js");
+/* harmony import */ var core_js_modules_es_array_slice_js__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_slice_js__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var core_js_modules_es_function_name_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! core-js/modules/es.function.name.js */ "./node_modules/core-js/modules/es.function.name.js");
+/* harmony import */ var core_js_modules_es_function_name_js__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_function_name_js__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var core_js_modules_es_array_from_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! core-js/modules/es.array.from.js */ "./node_modules/core-js/modules/es.array.from.js");
+/* harmony import */ var core_js_modules_es_array_from_js__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_from_js__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! core-js/modules/es.regexp.exec.js */ "./node_modules/core-js/modules/es.regexp.exec.js");
+/* harmony import */ var core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var core_js_modules_es_regexp_test_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! core-js/modules/es.regexp.test.js */ "./node_modules/core-js/modules/es.regexp.test.js");
+/* harmony import */ var core_js_modules_es_regexp_test_js__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_regexp_test_js__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony import */ var core_js_modules_es_error_cause_js__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! core-js/modules/es.error.cause.js */ "./node_modules/core-js/modules/es.error.cause.js");
+/* harmony import */ var core_js_modules_es_error_cause_js__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_error_cause_js__WEBPACK_IMPORTED_MODULE_14__);
+/* harmony import */ var core_js_modules_es_error_to_string_js__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! core-js/modules/es.error.to-string.js */ "./node_modules/core-js/modules/es.error.to-string.js");
+/* harmony import */ var core_js_modules_es_error_to_string_js__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_error_to_string_js__WEBPACK_IMPORTED_MODULE_15__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _socket__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./socket */ "./client/socket.js");
 
 
 
@@ -4789,45 +2662,64 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
 
 
 
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+ // import Game from './connect';
 
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-
-
+ //board component
 
 function Board(props) {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_17__.createElement("table", {
+  var boardData = props.boardData;
+  var table = []; //draw a new board from game array
+
+  for (var h = 0; h < boardData.length; h++) {
+    var tr = [];
+
+    for (var w = 0; w < boardData[0].length; w++) {
+      var className = '';
+
+      if (boardData[h][w]) {
+        className = boardData[h][w];
+      }
+
+      var td = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_16__.createElement("td", {
+        key: h + w,
+        "data-r": h,
+        "data-c": w,
+        className: className
+      });
+      tr.push(td);
+    }
+
+    table.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_16__.createElement("tr", {
+      key: h
+    }, tr));
+  }
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_16__.createElement("table", {
     id: "connect"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_17__.createElement("tbody", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_16__.createElement("tbody", {
     className: "gol",
     onClick: function onClick(e) {
       props.dropChip(e.target);
     }
-  }, props.board));
+  }, table));
 }
 
-;
+; // message component
 
 var Notice = function Notice(props) {
+  //display whose turn it is or another message
   var message = "Red's Turn";
 
   if (props.message.length) {
@@ -4836,378 +2728,271 @@ var Notice = function Notice(props) {
     message = "Yellow's Turn";
   }
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_17__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_17__.createElement("h1", null, message));
-};
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_16__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_16__.createElement("h1", null, message));
+}; //start game component
+
 
 var StartNew = function StartNew(props) {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_17__.createElement("div", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_16__.createElement("div", {
     id: "control_panel"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_17__.createElement("button", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_16__.createElement("button", {
     id: "restart_btn",
     type: "button",
     onClick: props.startNewGame,
     className: "button"
   }, "Start New Game"));
-};
+}; //connect 4 functional game component with state
 
-var ConnectGame = /*#__PURE__*/function (_React$Component) {
-  _inherits(ConnectGame, _React$Component);
 
-  var _super = _createSuper(ConnectGame);
+function ConnectGame(props) {
+  var player = props.player;
+  var gameID = props.gameID;
 
-  function ConnectGame(props) {
-    var _this;
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_16__.useState)(gameID),
+      _useState2 = _slicedToArray(_useState, 2),
+      roomID = _useState2[0],
+      setRoomID = _useState2[1];
 
-    _classCallCheck(this, ConnectGame);
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_16__.useState)(player),
+      _useState4 = _slicedToArray(_useState3, 2),
+      gamePlayer = _useState4[0],
+      setGamePlayer = _useState4[1];
 
-    _this = _super.call(this, props);
-    _this.state = {
-      player: 'r',
-      message: '',
-      board: [],
-      game: {}
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_16__.useState)('r'),
+      _useState6 = _slicedToArray(_useState5, 2),
+      turn = _useState6[0],
+      setTurn = _useState6[1];
+
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_16__.useState)(''),
+      _useState8 = _slicedToArray(_useState7, 2),
+      message = _useState8[0],
+      setMessage = _useState8[1];
+
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_16__.useState)([]),
+      _useState10 = _slicedToArray(_useState9, 2),
+      gameData = _useState10[0],
+      setGameData = _useState10[1];
+
+  (0,react__WEBPACK_IMPORTED_MODULE_16__.useEffect)(function () {
+    //update local state upon hearing from socket
+    function handleGameChange(content) {
+      setTurn(content.turn);
+      setMessage(content.message);
+      setGameData(content.gameData);
+    }
+
+    _socket__WEBPACK_IMPORTED_MODULE_17__["default"].on('move', function (content) {
+      handleGameChange(content);
+    });
+    return function () {
+      _socket__WEBPACK_IMPORTED_MODULE_17__["default"].off('move');
     };
-    _this.dropChip = _this.dropChip.bind(_assertThisInitialized(_this));
-    _this.startNewGame = _this.startNewGame.bind(_assertThisInitialized(_this));
-    _this.renderBoard = _this.renderBoard.bind(_assertThisInitialized(_this));
-    return _this;
-  }
+  }, []);
 
-  _createClass(ConnectGame, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      this.startNewGame();
+  function sendGameState(game) {
+    _socket__WEBPACK_IMPORTED_MODULE_17__["default"].emit("drop_chip", {
+      turn: game.turn,
+      message: game.message,
+      gameData: game.gameData
+    });
+  } //starts a new game in same room / gameID
+
+
+  function startNewGame() {
+    var height = 6;
+    var width = 7;
+    var table = [];
+
+    for (var i = 0; i < height; i++) {
+      var row = [];
+
+      for (var j = 0; j < width; j++) {
+        row.push(0);
+      }
+
+      table.push(row);
     }
-  }, {
-    key: "startNewGame",
-    value: function startNewGame() {
-      var height = 6;
-      var width = 7;
-      this.setState({
-        player: 'r',
-        message: '',
-        game: new _connect__WEBPACK_IMPORTED_MODULE_18__["default"](width, height)
-      });
-      var table = [];
 
-      for (var h = 0; h < height; h++) {
-        var tr = [];
+    var game = {
+      turn: turn,
+      message: '',
+      gameData: table
+    };
+    setGameData(table);
+    setMessage('');
+    sendGameState(game);
+  } //called when a move is made
 
-        for (var w = 0; w < width; w++) {
-          var td = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_17__.createElement("td", {
-            key: h + w,
-            "data-r": h,
-            "data-c": w
-          });
-          tr.push(td);
+
+  function dropChip(elem) {
+    //not if out of turn or if someone already won
+    if (gamePlayer === turn && message.indexOf('W') < 0) {
+      //Helper functions to check board for win
+      var getCell = function getCell(row, col) {
+        //this returns a value for the cell and 0 if invalid
+        if (row < 0 || row > data.length - 1) {
+          return 0;
         }
 
-        table.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_17__.createElement("tr", {
-          key: h
-        }, tr));
-      }
-
-      this.setState({
-        board: table
-      });
-    }
-  }, {
-    key: "renderBoard",
-    value: function renderBoard(x, y) {
-      var table = [];
-
-      for (var h = 0; h < this.state.game.height; h++) {
-        var tr = [];
-
-        for (var w = 0; w < this.state.game.width; w++) {
-          var className = '';
-
-          if (this.state.game.board[h][w]) {
-            className = this.state.game.board[h][w];
-          } else if (x == h && y == w) {
-            className = this.state.game.player;
-          }
-
-          var td = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_17__.createElement("td", {
-            key: h + w,
-            "data-r": h,
-            "data-c": w,
-            className: className
-          });
-          tr.push(td);
+        if (col < 0 || col > data[0].length - 1) {
+          return 0;
         }
 
-        table.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_17__.createElement("tr", {
-          key: h
-        }, tr));
-      }
+        return data[row][col];
+      };
 
-      this.setState({
-        board: table
-      });
-    }
-  }, {
-    key: "dropChip",
-    value: function dropChip(elem) {
-      var coords = this.state.game.setCell(elem.dataset.c);
+      var checkHorizontal = function checkHorizontal(val) {
+        for (var _i2 = 0; _i2 < data.length; _i2++) {
+          var count = 0;
 
-      if (this.state.message.indexOf('W') > -1) {
-        return;
-      }
+          for (var j = 0; j < data[0].length; j++) {
+            if (data[_i2][j] === val && count > 0) {
+              count++;
+            } else if (data[_i2][j] === val && count === 0) {
+              count = 1;
+            } else if (data[_i2][j] !== val) {
+              count = 0;
+            }
 
-      ;
-
-      if (!coords) {
-        this.setState({
-          message: "That's full!"
-        });
-        return;
-      }
-
-      ;
-      var x = coords[0];
-      var y = coords[1];
-      this.renderBoard(x, y);
-
-      if (this.state.game.checkBoard(this.state.game.player) === "Win") {
-        var message = this.state.game.player === 'y' ? 'Yellow Wins!' : 'Red Wins!';
-        this.setState({
-          message: message
-        });
-      } else {
-        this.state.game.changePlayer();
-        var nextPlayer = this.state.game.player;
-        this.setState({
-          message: ''
-        });
-        this.setState({
-          player: nextPlayer
-        });
-      }
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_17__.createElement("div", {
-        className: "gol-body"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_17__.createElement("div", {
-        id: "gol-container"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_17__.createElement("h1", null, "Connect 4"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_17__.createElement(Notice, {
-        player: this.state.player,
-        message: this.state.message
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_17__.createElement(Board, {
-        board: this.state.board,
-        dropChip: this.dropChip
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_17__.createElement(StartNew, {
-        startNewGame: this.startNewGame
-      })));
-    }
-  }]);
-
-  return ConnectGame;
-}(react__WEBPACK_IMPORTED_MODULE_17__.Component);
-
-
-
-/***/ }),
-
-/***/ "./client/connect.js":
-/*!***************************!*\
-  !*** ./client/connect.js ***!
-  \***************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var core_js_modules_es_object_define_property_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.object.define-property.js */ "./node_modules/core-js/modules/es.object.define-property.js");
-/* harmony import */ var core_js_modules_es_object_define_property_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_define_property_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var core_js_modules_es_error_cause_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.error.cause.js */ "./node_modules/core-js/modules/es.error.cause.js");
-/* harmony import */ var core_js_modules_es_error_cause_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_error_cause_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var core_js_modules_es_error_to_string_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/es.error.to-string.js */ "./node_modules/core-js/modules/es.error.to-string.js");
-/* harmony import */ var core_js_modules_es_error_to_string_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_error_to_string_js__WEBPACK_IMPORTED_MODULE_2__);
-
-
-
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
-
-var Game = /*#__PURE__*/function () {
-  function Game(width, height) {
-    _classCallCheck(this, Game);
-
-    this.height = height;
-    this.width = width;
-    this.board = this.makeBoard();
-    this.player = 'r';
-  }
-
-  _createClass(Game, [{
-    key: "makeBoard",
-    value: function makeBoard() {
-      var board = [];
-
-      for (var i = 0; i < this.height; i++) {
-        var row = [];
-
-        for (var j = 0; j < this.width; j++) {
-          row.push(0);
-        }
-
-        board.push(row);
-      }
-
-      return board;
-    } //function to see if the col is open
-
-  }, {
-    key: "setCell",
-    value: function setCell(col) {
-      for (var i = this.height - 1; i >= 0; i--) {
-        if (this.board[i][col] === 0) {
-          this.board[i][col] = this.player;
-          return [i + '', col];
-        }
-      } //have gone through col and it is full
-
-    }
-  }, {
-    key: "changePlayer",
-    value: function changePlayer() {
-      if (this.player === 'r') {
-        this.player = 'y';
-      } else {
-        this.player = 'r';
-      }
-    } // eslint-disable-next-line complexity
-
-  }, {
-    key: "checkHorizontal",
-    value: function checkHorizontal(val) {
-      for (var i = 0; i < this.height; i++) {
-        var count = 0;
-
-        for (var j = 0; j < this.width; j++) {
-          if (this.board[i][j] === val && count > 0) {
-            count++;
-          } else if (this.board[i][j] === val && count === 0) {
-            count = 1;
-          } else if (this.board[i][j] !== val) {
-            count = 0;
-          }
-
-          if (count === 4) {
-            return "Win";
-          }
-        }
-      }
-    } // eslint-disable-next-line complexity
-
-  }, {
-    key: "checkVertical",
-    value: function checkVertical(val) {
-      for (var j = 0; j < this.width; j++) {
-        var count = 0;
-
-        for (var i = 0; i < this.height; i++) {
-          if (this.board[i][j] === val && count > 0) {
-            count++;
-          } else if (this.board[i][j] === val && count === 0) {
-            count = 1;
-          } else if (this.board[i][j] !== val) {
-            count = 0;
-          }
-
-          if (count === 4) {
-            return "Win";
-          }
-        }
-      }
-    }
-  }, {
-    key: "getCell",
-    value: function getCell(row, col) {
-      //this returns a value for the cell and 0 if invalid
-      if (row < 0 || row > this.height - 1) {
-        return 0;
-      }
-
-      if (col < 0 || col > this.width - 1) {
-        return 0;
-      }
-
-      return this.board[row][col];
-    }
-  }, {
-    key: "checkDiagonal",
-    value: function checkDiagonal(val) {
-      for (var i = 0; i < this.height; i++) {
-        for (var j = 0; j < this.width; j++) {
-          if (this.board[i][j] === val) {
-            var left = this.searchDiagLeft(val, 1, i, j);
-            var right = this.searchDiagRight(val, 1, i, j);
-
-            if (left === "Win" || right === "Win") {
+            if (count === 4) {
               return "Win";
-            } // return this.searchDiagLeft(val, 1, i, j) === "Win" ? "Win"
-            // : this.searchDiagRight(val, 1, i, j) === "Win" ? "Win"
-            // : null;
-
+            }
           }
         }
+      }; // eslint-disable-next-line complexity
+
+
+      var checkVertical = function checkVertical(val) {
+        for (var j = 0; j < data[0].length; j++) {
+          var count = 0;
+
+          for (var _i3 = 0; _i3 < data.length; _i3++) {
+            if (data[_i3][j] === val && count > 0) {
+              count++;
+            } else if (data[_i3][j] === val && count === 0) {
+              count = 1;
+            } else if (data[_i3][j] !== val) {
+              count = 0;
+            }
+
+            if (count === 4) {
+              return "Win";
+            }
+          }
+        }
+      };
+
+      var checkDiagonal = function checkDiagonal(val) {
+        for (var _i4 = 0; _i4 < data.length; _i4++) {
+          for (var j = 0; j < data[0].length; j++) {
+            if (data[_i4][j] === val) {
+              var left = searchDiagLeft(val, 1, _i4, j);
+              var right = searchDiagRight(val, 1, _i4, j);
+
+              if (left === "Win" || right === "Win") {
+                return "Win";
+              }
+            }
+          }
+        }
+      };
+
+      var searchDiagLeft = function searchDiagLeft(val, count, i, j) {
+        if (count === 4) {
+          return 'Win';
+        }
+
+        if (getCell(i + 1, j - 1) === val) {
+          count++;
+          return searchDiagLeft(val, count, i + 1, j - 1);
+        }
+      };
+
+      var searchDiagRight = function searchDiagRight(val, count, i, j) {
+        if (count === 4) {
+          return 'Win';
+        }
+
+        if (getCell(i + 1, j + 1) === val) {
+          count++;
+          return searchDiagRight(val, count, i + 1, j + 1);
+        }
+      };
+
+      var checkBoard = function checkBoard(val) {
+        if (checkDiagonal(val) === 'Win') {
+          return 'Win';
+        }
+
+        if (checkHorizontal(val) === 'Win') {
+          return 'Win';
+        }
+
+        if (checkVertical(val) === 'Win') {
+          return 'Win';
+        }
+      };
+
+      var column = elem.dataset.c;
+      var data = gameData;
+      var placedChip = false; //place the 'chip' if an empty spot is available
+
+      for (var i = data.length - 1; i >= 0; i--) {
+        if (data[i][column] === 0) {
+          data[i][column] = turn;
+          placedChip = true;
+          break;
+        }
       }
+
+      if (!placedChip) {
+        setMessage("That's full!");
+        return;
+      }
+
+      ;
+      var result = checkBoard(turn);
+      var _message = '';
+      var nextPlayer = turn;
+
+      if (result === "Win") {
+        _message = turn === 'y' ? 'Yellow Wins!' : 'Red Wins!';
+        setMessage(_message);
+      } else {
+        nextPlayer = turn === 'r' ? 'y' : 'r';
+        _message = '';
+      } //update local state
+
+
+      setMessage(_message);
+      setTurn(nextPlayer);
+      setGameData(data); //send new gameData
+
+      var game = {
+        turn: nextPlayer,
+        message: _message,
+        gameData: data
+      };
+      sendGameState(game);
     }
-  }, {
-    key: "searchDiagLeft",
-    value: function searchDiagLeft(val, count, i, j) {
-      if (count === 4) {
-        return 'Win';
-      }
+  }
 
-      if (this.getCell(i + 1, j - 1) === val) {
-        count++;
-        return this.searchDiagLeft(val, count, i + 1, j - 1);
-      }
-    }
-  }, {
-    key: "searchDiagRight",
-    value: function searchDiagRight(val, count, i, j) {
-      if (count === 4) {
-        return 'Win';
-      }
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_16__.createElement("div", {
+    className: "gol-body"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_16__.createElement("div", {
+    id: "gol-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_16__.createElement("h1", null, "Connect 4"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_16__.createElement(Notice, {
+    player: turn,
+    message: message
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_16__.createElement(Board, {
+    boardData: gameData,
+    dropChip: dropChip
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_16__.createElement(StartNew, {
+    startNewGame: startNewGame
+  })));
+}
 
-      if (this.getCell(i + 1, j + 1) === val) {
-        count++;
-        return this.searchDiagRight(val, count, i + 1, j + 1);
-      }
-    }
-  }, {
-    key: "checkBoard",
-    value: function checkBoard(val) {
-      if (this.checkDiagonal(val) === 'Win') {
-        return 'Win';
-      }
-
-      if (this.checkHorizontal(val) === 'Win') {
-        return 'Win';
-      }
-
-      if (this.checkVertical(val) === 'Win') {
-        return 'Win';
-      }
-    }
-  }]);
-
-  return Game;
-}();
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Game);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ConnectGame);
 
 /***/ }),
 
@@ -5237,6 +3022,54 @@ function Navbar(props) {
     onClick: handleAuthClick
   }, displayName)));
 }
+
+/***/ }),
+
+/***/ "./client/socket.js":
+/*!**************************!*\
+  !*** ./client/socket.js ***!
+  \**************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var socket_io_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! socket.io-client */ "./node_modules/socket.io-client/build/esm/index.js");
+
+var URL = "http://localhost:8080";
+var socket = (0,socket_io_client__WEBPACK_IMPORTED_MODULE_0__.io)({
+  URL: URL,
+  autoConnect: false
+}); // socket.onAny((event, ...args) => {
+//   //logs client socket events
+//  console.log("client socket event", event, args);
+// });
+//add session data for re-connecting to sockets
+//include game id
+
+socket.on("connect_error", function (err) {
+  console.log("connect_error due to ".concat(err.message));
+}); // socket.on("users", (users) => {
+//   users.forEach((user) => {
+//     user.self = user.userID === socket.id;
+//     // initReactiveProperties(user);
+//   });
+// put the current user first, and then sort by username
+// this.users.sort((a, b) => {
+//   if (a.self) return -1;
+//   if (b.self) return 1;
+//   if (a.username < b.username) return -1;
+//   return a.username > b.username ? 1 : 0;
+// });
+// });
+// socket.on("user connected", (user) => {
+//   // initReactiveProperties(user);
+// //use this to notify users of new login
+// });
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (socket);
 
 /***/ }),
 
@@ -5284,41 +3117,6 @@ function StartGame(props) {
     }
   }, "Play")));
 }
-
-/***/ }),
-
-/***/ "./secrets.js":
-/*!********************!*\
-  !*** ./secrets.js ***!
-  \********************/
-/***/ ((module) => {
-
-function fbConfig() {
-  return function () {
-    return {
-      apiKey: "AIzaSyCaWy0nw_oVrF-mK1Z-r0iqOAW_xl_HJFw",
-      authDomain: "youknowforkids-34f80.firebaseapp.com",
-      projectId: "youknowforkids-34f80",
-      storageBucket: "youknowforkids-34f80.appspot.com",
-      messagingSenderId: "66563787307",
-      appId: "1:66563787307:web:742ba0c8dd4bb31444b86e",
-      measurementId: "G-FC5WSQKG8L"
-    };
-  };
-}
-
-function vapidKey() {
-  return function () {
-    return {
-      apiKey: "BM54JUcGKxIDDdT6eNTeelC1vgz91Vl2dy_74x7QKpVWIIXrRAGWfVIzeB_Whv63ZHxoPEhNp5bW1QaAwKZNG_E"
-    };
-  };
-}
-
-module.exports = {
-  fbConfig: fbConfig,
-  vapidKey: vapidKey
-};
 
 /***/ }),
 
@@ -5454,6 +3252,64 @@ module.exports = function (argument) {
 
 /***/ }),
 
+/***/ "./node_modules/core-js/internals/array-from.js":
+/*!******************************************************!*\
+  !*** ./node_modules/core-js/internals/array-from.js ***!
+  \******************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
+var bind = __webpack_require__(/*! ../internals/function-bind-context */ "./node_modules/core-js/internals/function-bind-context.js");
+var call = __webpack_require__(/*! ../internals/function-call */ "./node_modules/core-js/internals/function-call.js");
+var toObject = __webpack_require__(/*! ../internals/to-object */ "./node_modules/core-js/internals/to-object.js");
+var callWithSafeIterationClosing = __webpack_require__(/*! ../internals/call-with-safe-iteration-closing */ "./node_modules/core-js/internals/call-with-safe-iteration-closing.js");
+var isArrayIteratorMethod = __webpack_require__(/*! ../internals/is-array-iterator-method */ "./node_modules/core-js/internals/is-array-iterator-method.js");
+var isConstructor = __webpack_require__(/*! ../internals/is-constructor */ "./node_modules/core-js/internals/is-constructor.js");
+var lengthOfArrayLike = __webpack_require__(/*! ../internals/length-of-array-like */ "./node_modules/core-js/internals/length-of-array-like.js");
+var createProperty = __webpack_require__(/*! ../internals/create-property */ "./node_modules/core-js/internals/create-property.js");
+var getIterator = __webpack_require__(/*! ../internals/get-iterator */ "./node_modules/core-js/internals/get-iterator.js");
+var getIteratorMethod = __webpack_require__(/*! ../internals/get-iterator-method */ "./node_modules/core-js/internals/get-iterator-method.js");
+
+var Array = global.Array;
+
+// `Array.from` method implementation
+// https://tc39.es/ecma262/#sec-array.from
+module.exports = function from(arrayLike /* , mapfn = undefined, thisArg = undefined */) {
+  var O = toObject(arrayLike);
+  var IS_CONSTRUCTOR = isConstructor(this);
+  var argumentsLength = arguments.length;
+  var mapfn = argumentsLength > 1 ? arguments[1] : undefined;
+  var mapping = mapfn !== undefined;
+  if (mapping) mapfn = bind(mapfn, argumentsLength > 2 ? arguments[2] : undefined);
+  var iteratorMethod = getIteratorMethod(O);
+  var index = 0;
+  var length, result, step, iterator, next, value;
+  // if the target is not iterable or it's an array with the default iterator - use a simple case
+  if (iteratorMethod && !(this == Array && isArrayIteratorMethod(iteratorMethod))) {
+    iterator = getIterator(O, iteratorMethod);
+    next = iterator.next;
+    result = IS_CONSTRUCTOR ? new this() : [];
+    for (;!(step = call(next, iterator)).done; index++) {
+      value = mapping ? callWithSafeIterationClosing(iterator, mapfn, [step.value, index], true) : step.value;
+      createProperty(result, index, value);
+    }
+  } else {
+    length = lengthOfArrayLike(O);
+    result = IS_CONSTRUCTOR ? new this(length) : Array(length);
+    for (;length > index; index++) {
+      value = mapping ? mapfn(O[index], index) : O[index];
+      createProperty(result, index, value);
+    }
+  }
+  result.length = index;
+  return result;
+};
+
+
+/***/ }),
+
 /***/ "./node_modules/core-js/internals/array-includes.js":
 /*!**********************************************************!*\
   !*** ./node_modules/core-js/internals/array-includes.js ***!
@@ -5579,6 +3435,35 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/core-js/internals/array-method-has-species-support.js":
+/*!****************************************************************************!*\
+  !*** ./node_modules/core-js/internals/array-method-has-species-support.js ***!
+  \****************************************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
+var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
+var V8_VERSION = __webpack_require__(/*! ../internals/engine-v8-version */ "./node_modules/core-js/internals/engine-v8-version.js");
+
+var SPECIES = wellKnownSymbol('species');
+
+module.exports = function (METHOD_NAME) {
+  // We can't use this feature detection in V8 since it causes
+  // deoptimization and serious performance degradation
+  // https://github.com/zloirock/core-js/issues/677
+  return V8_VERSION >= 51 || !fails(function () {
+    var array = [];
+    var constructor = array.constructor = {};
+    constructor[SPECIES] = function () {
+      return { foo: 1 };
+    };
+    return array[METHOD_NAME](Boolean).foo !== 1;
+  });
+};
+
+
+/***/ }),
+
 /***/ "./node_modules/core-js/internals/array-method-is-strict.js":
 /*!******************************************************************!*\
   !*** ./node_modules/core-js/internals/array-method-is-strict.js ***!
@@ -5685,6 +3570,27 @@ var arraySpeciesConstructor = __webpack_require__(/*! ../internals/array-species
 // https://tc39.es/ecma262/#sec-arrayspeciescreate
 module.exports = function (originalArray, length) {
   return new (arraySpeciesConstructor(originalArray))(length === 0 ? 0 : length);
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/call-with-safe-iteration-closing.js":
+/*!****************************************************************************!*\
+  !*** ./node_modules/core-js/internals/call-with-safe-iteration-closing.js ***!
+  \****************************************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
+var iteratorClose = __webpack_require__(/*! ../internals/iterator-close */ "./node_modules/core-js/internals/iterator-close.js");
+
+// call something on iterator step with safe closing on error
+module.exports = function (iterator, fn, value, ENTRIES) {
+  try {
+    return ENTRIES ? fn(anObject(value)[0], value[1]) : fn(value);
+  } catch (error) {
+    iteratorClose(iterator, 'throw', error);
+  }
 };
 
 
@@ -8240,6 +6146,242 @@ var TEMPLATE = String(String).split('String');
 
 /***/ }),
 
+/***/ "./node_modules/core-js/internals/regexp-exec.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/core-js/internals/regexp-exec.js ***!
+  \*******************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+/* eslint-disable regexp/no-empty-capturing-group, regexp/no-empty-group, regexp/no-lazy-ends -- testing */
+/* eslint-disable regexp/no-useless-quantifier -- testing */
+var call = __webpack_require__(/*! ../internals/function-call */ "./node_modules/core-js/internals/function-call.js");
+var uncurryThis = __webpack_require__(/*! ../internals/function-uncurry-this */ "./node_modules/core-js/internals/function-uncurry-this.js");
+var toString = __webpack_require__(/*! ../internals/to-string */ "./node_modules/core-js/internals/to-string.js");
+var regexpFlags = __webpack_require__(/*! ../internals/regexp-flags */ "./node_modules/core-js/internals/regexp-flags.js");
+var stickyHelpers = __webpack_require__(/*! ../internals/regexp-sticky-helpers */ "./node_modules/core-js/internals/regexp-sticky-helpers.js");
+var shared = __webpack_require__(/*! ../internals/shared */ "./node_modules/core-js/internals/shared.js");
+var create = __webpack_require__(/*! ../internals/object-create */ "./node_modules/core-js/internals/object-create.js");
+var getInternalState = (__webpack_require__(/*! ../internals/internal-state */ "./node_modules/core-js/internals/internal-state.js").get);
+var UNSUPPORTED_DOT_ALL = __webpack_require__(/*! ../internals/regexp-unsupported-dot-all */ "./node_modules/core-js/internals/regexp-unsupported-dot-all.js");
+var UNSUPPORTED_NCG = __webpack_require__(/*! ../internals/regexp-unsupported-ncg */ "./node_modules/core-js/internals/regexp-unsupported-ncg.js");
+
+var nativeReplace = shared('native-string-replace', String.prototype.replace);
+var nativeExec = RegExp.prototype.exec;
+var patchedExec = nativeExec;
+var charAt = uncurryThis(''.charAt);
+var indexOf = uncurryThis(''.indexOf);
+var replace = uncurryThis(''.replace);
+var stringSlice = uncurryThis(''.slice);
+
+var UPDATES_LAST_INDEX_WRONG = (function () {
+  var re1 = /a/;
+  var re2 = /b*/g;
+  call(nativeExec, re1, 'a');
+  call(nativeExec, re2, 'a');
+  return re1.lastIndex !== 0 || re2.lastIndex !== 0;
+})();
+
+var UNSUPPORTED_Y = stickyHelpers.BROKEN_CARET;
+
+// nonparticipating capturing group, copied from es5-shim's String#split patch.
+var NPCG_INCLUDED = /()??/.exec('')[1] !== undefined;
+
+var PATCH = UPDATES_LAST_INDEX_WRONG || NPCG_INCLUDED || UNSUPPORTED_Y || UNSUPPORTED_DOT_ALL || UNSUPPORTED_NCG;
+
+if (PATCH) {
+  patchedExec = function exec(string) {
+    var re = this;
+    var state = getInternalState(re);
+    var str = toString(string);
+    var raw = state.raw;
+    var result, reCopy, lastIndex, match, i, object, group;
+
+    if (raw) {
+      raw.lastIndex = re.lastIndex;
+      result = call(patchedExec, raw, str);
+      re.lastIndex = raw.lastIndex;
+      return result;
+    }
+
+    var groups = state.groups;
+    var sticky = UNSUPPORTED_Y && re.sticky;
+    var flags = call(regexpFlags, re);
+    var source = re.source;
+    var charsAdded = 0;
+    var strCopy = str;
+
+    if (sticky) {
+      flags = replace(flags, 'y', '');
+      if (indexOf(flags, 'g') === -1) {
+        flags += 'g';
+      }
+
+      strCopy = stringSlice(str, re.lastIndex);
+      // Support anchored sticky behavior.
+      if (re.lastIndex > 0 && (!re.multiline || re.multiline && charAt(str, re.lastIndex - 1) !== '\n')) {
+        source = '(?: ' + source + ')';
+        strCopy = ' ' + strCopy;
+        charsAdded++;
+      }
+      // ^(? + rx + ) is needed, in combination with some str slicing, to
+      // simulate the 'y' flag.
+      reCopy = new RegExp('^(?:' + source + ')', flags);
+    }
+
+    if (NPCG_INCLUDED) {
+      reCopy = new RegExp('^' + source + '$(?!\\s)', flags);
+    }
+    if (UPDATES_LAST_INDEX_WRONG) lastIndex = re.lastIndex;
+
+    match = call(nativeExec, sticky ? reCopy : re, strCopy);
+
+    if (sticky) {
+      if (match) {
+        match.input = stringSlice(match.input, charsAdded);
+        match[0] = stringSlice(match[0], charsAdded);
+        match.index = re.lastIndex;
+        re.lastIndex += match[0].length;
+      } else re.lastIndex = 0;
+    } else if (UPDATES_LAST_INDEX_WRONG && match) {
+      re.lastIndex = re.global ? match.index + match[0].length : lastIndex;
+    }
+    if (NPCG_INCLUDED && match && match.length > 1) {
+      // Fix browsers whose `exec` methods don't consistently return `undefined`
+      // for NPCG, like IE8. NOTE: This doesn' work for /(.?)?/
+      call(nativeReplace, match[0], reCopy, function () {
+        for (i = 1; i < arguments.length - 2; i++) {
+          if (arguments[i] === undefined) match[i] = undefined;
+        }
+      });
+    }
+
+    if (match && groups) {
+      match.groups = object = create(null);
+      for (i = 0; i < groups.length; i++) {
+        group = groups[i];
+        object[group[0]] = match[group[1]];
+      }
+    }
+
+    return match;
+  };
+}
+
+module.exports = patchedExec;
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/regexp-flags.js":
+/*!********************************************************!*\
+  !*** ./node_modules/core-js/internals/regexp-flags.js ***!
+  \********************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
+
+// `RegExp.prototype.flags` getter implementation
+// https://tc39.es/ecma262/#sec-get-regexp.prototype.flags
+module.exports = function () {
+  var that = anObject(this);
+  var result = '';
+  if (that.global) result += 'g';
+  if (that.ignoreCase) result += 'i';
+  if (that.multiline) result += 'm';
+  if (that.dotAll) result += 's';
+  if (that.unicode) result += 'u';
+  if (that.sticky) result += 'y';
+  return result;
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/regexp-sticky-helpers.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/core-js/internals/regexp-sticky-helpers.js ***!
+  \*****************************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
+var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
+
+// babel-minify and Closure Compiler transpiles RegExp('a', 'y') -> /a/y and it causes SyntaxError
+var $RegExp = global.RegExp;
+
+var UNSUPPORTED_Y = fails(function () {
+  var re = $RegExp('a', 'y');
+  re.lastIndex = 2;
+  return re.exec('abcd') != null;
+});
+
+// UC Browser bug
+// https://github.com/zloirock/core-js/issues/1008
+var MISSED_STICKY = UNSUPPORTED_Y || fails(function () {
+  return !$RegExp('a', 'y').sticky;
+});
+
+var BROKEN_CARET = UNSUPPORTED_Y || fails(function () {
+  // https://bugzilla.mozilla.org/show_bug.cgi?id=773687
+  var re = $RegExp('^r', 'gy');
+  re.lastIndex = 2;
+  return re.exec('str') != null;
+});
+
+module.exports = {
+  BROKEN_CARET: BROKEN_CARET,
+  MISSED_STICKY: MISSED_STICKY,
+  UNSUPPORTED_Y: UNSUPPORTED_Y
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/regexp-unsupported-dot-all.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/core-js/internals/regexp-unsupported-dot-all.js ***!
+  \**********************************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
+var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
+
+// babel-minify and Closure Compiler transpiles RegExp('.', 's') -> /./s and it causes SyntaxError
+var $RegExp = global.RegExp;
+
+module.exports = fails(function () {
+  var re = $RegExp('.', 's');
+  return !(re.dotAll && re.exec('\n') && re.flags === 's');
+});
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/regexp-unsupported-ncg.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/core-js/internals/regexp-unsupported-ncg.js ***!
+  \******************************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
+var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
+
+// babel-minify and Closure Compiler transpiles RegExp('(?<a>b)', 'g') -> /(?<a>b)/g and it causes SyntaxError
+var $RegExp = global.RegExp;
+
+module.exports = fails(function () {
+  var re = $RegExp('(?<a>b)', 'g');
+  return re.exec('b').groups.a !== 'b' ||
+    'b'.replace(re, '$<a>c') !== 'bc';
+});
+
+
+/***/ }),
+
 /***/ "./node_modules/core-js/internals/require-object-coercible.js":
 /*!********************************************************************!*\
   !*** ./node_modules/core-js/internals/require-object-coercible.js ***!
@@ -8990,6 +7132,30 @@ module.exports = function (FULL_NAME, wrapper, FORCED, IS_AGGREGATE_ERROR) {
 
 /***/ }),
 
+/***/ "./node_modules/core-js/modules/es.array.from.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/core-js/modules/es.array.from.js ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var from = __webpack_require__(/*! ../internals/array-from */ "./node_modules/core-js/internals/array-from.js");
+var checkCorrectnessOfIteration = __webpack_require__(/*! ../internals/check-correctness-of-iteration */ "./node_modules/core-js/internals/check-correctness-of-iteration.js");
+
+var INCORRECT_ITERATION = !checkCorrectnessOfIteration(function (iterable) {
+  // eslint-disable-next-line es/no-array-from -- required for testing
+  Array.from(iterable);
+});
+
+// `Array.from` method
+// https://tc39.es/ecma262/#sec-array.from
+$({ target: 'Array', stat: true, forced: INCORRECT_ITERATION }, {
+  from: from
+});
+
+
+/***/ }),
+
 /***/ "./node_modules/core-js/modules/es.array.index-of.js":
 /*!***********************************************************!*\
   !*** ./node_modules/core-js/modules/es.array.index-of.js ***!
@@ -9019,6 +7185,24 @@ $({ target: 'Array', proto: true, forced: NEGATIVE_ZERO || !STRICT_METHOD }, {
       ? un$IndexOf(this, searchElement, fromIndex) || 0
       : $IndexOf(this, searchElement, fromIndex);
   }
+});
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/modules/es.array.is-array.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/core-js/modules/es.array.is-array.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var isArray = __webpack_require__(/*! ../internals/is-array */ "./node_modules/core-js/internals/is-array.js");
+
+// `Array.isArray` method
+// https://tc39.es/ecma262/#sec-array.isarray
+$({ target: 'Array', stat: true }, {
+  isArray: isArray
 });
 
 
@@ -9092,6 +7276,67 @@ addToUnscopables('entries');
 if (!IS_PURE && DESCRIPTORS && values.name !== 'values') try {
   defineProperty(values, 'name', { value: 'values' });
 } catch (error) { /* empty */ }
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/modules/es.array.slice.js":
+/*!********************************************************!*\
+  !*** ./node_modules/core-js/modules/es.array.slice.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
+var isArray = __webpack_require__(/*! ../internals/is-array */ "./node_modules/core-js/internals/is-array.js");
+var isConstructor = __webpack_require__(/*! ../internals/is-constructor */ "./node_modules/core-js/internals/is-constructor.js");
+var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
+var toAbsoluteIndex = __webpack_require__(/*! ../internals/to-absolute-index */ "./node_modules/core-js/internals/to-absolute-index.js");
+var lengthOfArrayLike = __webpack_require__(/*! ../internals/length-of-array-like */ "./node_modules/core-js/internals/length-of-array-like.js");
+var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "./node_modules/core-js/internals/to-indexed-object.js");
+var createProperty = __webpack_require__(/*! ../internals/create-property */ "./node_modules/core-js/internals/create-property.js");
+var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
+var arrayMethodHasSpeciesSupport = __webpack_require__(/*! ../internals/array-method-has-species-support */ "./node_modules/core-js/internals/array-method-has-species-support.js");
+var un$Slice = __webpack_require__(/*! ../internals/array-slice */ "./node_modules/core-js/internals/array-slice.js");
+
+var HAS_SPECIES_SUPPORT = arrayMethodHasSpeciesSupport('slice');
+
+var SPECIES = wellKnownSymbol('species');
+var Array = global.Array;
+var max = Math.max;
+
+// `Array.prototype.slice` method
+// https://tc39.es/ecma262/#sec-array.prototype.slice
+// fallback for not array-like ES3 strings and DOM objects
+$({ target: 'Array', proto: true, forced: !HAS_SPECIES_SUPPORT }, {
+  slice: function slice(start, end) {
+    var O = toIndexedObject(this);
+    var length = lengthOfArrayLike(O);
+    var k = toAbsoluteIndex(start, length);
+    var fin = toAbsoluteIndex(end === undefined ? length : end, length);
+    // inline `ArraySpeciesCreate` for usage native `Array#slice` where it's possible
+    var Constructor, result, n;
+    if (isArray(O)) {
+      Constructor = O.constructor;
+      // cross-realm fallback
+      if (isConstructor(Constructor) && (Constructor === Array || isArray(Constructor.prototype))) {
+        Constructor = undefined;
+      } else if (isObject(Constructor)) {
+        Constructor = Constructor[SPECIES];
+        if (Constructor === null) Constructor = undefined;
+      }
+      if (Constructor === Array || Constructor === undefined) {
+        return un$Slice(O, k, fin);
+      }
+    }
+    result = new (Constructor === undefined ? Array : Constructor)(max(fin - k, 0));
+    for (n = 0; k < fin; k++, n++) if (k in O) createProperty(result, n, O[k]);
+    result.length = n;
+    return result;
+  }
+});
 
 
 /***/ }),
@@ -9835,6 +8080,73 @@ setToStringTag(global.Reflect, 'Reflect', true);
 
 /***/ }),
 
+/***/ "./node_modules/core-js/modules/es.regexp.exec.js":
+/*!********************************************************!*\
+  !*** ./node_modules/core-js/modules/es.regexp.exec.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var exec = __webpack_require__(/*! ../internals/regexp-exec */ "./node_modules/core-js/internals/regexp-exec.js");
+
+// `RegExp.prototype.exec` method
+// https://tc39.es/ecma262/#sec-regexp.prototype.exec
+$({ target: 'RegExp', proto: true, forced: /./.exec !== exec }, {
+  exec: exec
+});
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/modules/es.regexp.test.js":
+/*!********************************************************!*\
+  !*** ./node_modules/core-js/modules/es.regexp.test.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+// TODO: Remove from `core-js@4` since it's moved to entry points
+__webpack_require__(/*! ../modules/es.regexp.exec */ "./node_modules/core-js/modules/es.regexp.exec.js");
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
+var call = __webpack_require__(/*! ../internals/function-call */ "./node_modules/core-js/internals/function-call.js");
+var uncurryThis = __webpack_require__(/*! ../internals/function-uncurry-this */ "./node_modules/core-js/internals/function-uncurry-this.js");
+var isCallable = __webpack_require__(/*! ../internals/is-callable */ "./node_modules/core-js/internals/is-callable.js");
+var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
+
+var DELEGATES_TO_EXEC = function () {
+  var execCalled = false;
+  var re = /[ac]/;
+  re.exec = function () {
+    execCalled = true;
+    return /./.exec.apply(this, arguments);
+  };
+  return re.test('abc') === true && execCalled;
+}();
+
+var Error = global.Error;
+var un$Test = uncurryThis(/./.test);
+
+// `RegExp.prototype.test` method
+// https://tc39.es/ecma262/#sec-regexp.prototype.test
+$({ target: 'RegExp', proto: true, forced: !DELEGATES_TO_EXEC }, {
+  test: function (str) {
+    var exec = this.exec;
+    if (!isCallable(exec)) return un$Test(this, str);
+    var result = call(exec, this, str);
+    if (result !== null && !isObject(result)) {
+      throw new Error('RegExp exec method returned something other than an Object or null');
+    }
+    return !!result;
+  }
+});
+
+
+/***/ }),
+
 /***/ "./node_modules/core-js/modules/es.string.iterator.js":
 /*!************************************************************!*\
   !*** ./node_modules/core-js/modules/es.string.iterator.js ***!
@@ -10341,85 +8653,6 @@ for (var COLLECTION_NAME in DOMIterables) {
 }
 
 handlePrototype(DOMTokenListPrototype, 'DOMTokenList');
-
-
-/***/ }),
-
-/***/ "./node_modules/firebase/app/dist/index.esm.js":
-/*!*****************************************************!*\
-  !*** ./node_modules/firebase/app/dist/index.esm.js ***!
-  \*****************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "FirebaseError": () => (/* reexport safe */ _firebase_app__WEBPACK_IMPORTED_MODULE_0__.FirebaseError),
-/* harmony export */   "SDK_VERSION": () => (/* reexport safe */ _firebase_app__WEBPACK_IMPORTED_MODULE_0__.SDK_VERSION),
-/* harmony export */   "_DEFAULT_ENTRY_NAME": () => (/* reexport safe */ _firebase_app__WEBPACK_IMPORTED_MODULE_0__._DEFAULT_ENTRY_NAME),
-/* harmony export */   "_addComponent": () => (/* reexport safe */ _firebase_app__WEBPACK_IMPORTED_MODULE_0__._addComponent),
-/* harmony export */   "_addOrOverwriteComponent": () => (/* reexport safe */ _firebase_app__WEBPACK_IMPORTED_MODULE_0__._addOrOverwriteComponent),
-/* harmony export */   "_apps": () => (/* reexport safe */ _firebase_app__WEBPACK_IMPORTED_MODULE_0__._apps),
-/* harmony export */   "_clearComponents": () => (/* reexport safe */ _firebase_app__WEBPACK_IMPORTED_MODULE_0__._clearComponents),
-/* harmony export */   "_components": () => (/* reexport safe */ _firebase_app__WEBPACK_IMPORTED_MODULE_0__._components),
-/* harmony export */   "_getProvider": () => (/* reexport safe */ _firebase_app__WEBPACK_IMPORTED_MODULE_0__._getProvider),
-/* harmony export */   "_registerComponent": () => (/* reexport safe */ _firebase_app__WEBPACK_IMPORTED_MODULE_0__._registerComponent),
-/* harmony export */   "_removeServiceInstance": () => (/* reexport safe */ _firebase_app__WEBPACK_IMPORTED_MODULE_0__._removeServiceInstance),
-/* harmony export */   "deleteApp": () => (/* reexport safe */ _firebase_app__WEBPACK_IMPORTED_MODULE_0__.deleteApp),
-/* harmony export */   "getApp": () => (/* reexport safe */ _firebase_app__WEBPACK_IMPORTED_MODULE_0__.getApp),
-/* harmony export */   "getApps": () => (/* reexport safe */ _firebase_app__WEBPACK_IMPORTED_MODULE_0__.getApps),
-/* harmony export */   "initializeApp": () => (/* reexport safe */ _firebase_app__WEBPACK_IMPORTED_MODULE_0__.initializeApp),
-/* harmony export */   "onLog": () => (/* reexport safe */ _firebase_app__WEBPACK_IMPORTED_MODULE_0__.onLog),
-/* harmony export */   "registerVersion": () => (/* reexport safe */ _firebase_app__WEBPACK_IMPORTED_MODULE_0__.registerVersion),
-/* harmony export */   "setLogLevel": () => (/* reexport safe */ _firebase_app__WEBPACK_IMPORTED_MODULE_0__.setLogLevel)
-/* harmony export */ });
-/* harmony import */ var _firebase_app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @firebase/app */ "./node_modules/@firebase/app/dist/esm/index.esm2017.js");
-
-
-
-var name = "firebase";
-var version = "9.6.9";
-
-/**
- * @license
- * Copyright 2020 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-(0,_firebase_app__WEBPACK_IMPORTED_MODULE_0__.registerVersion)(name, version, 'app');
-//# sourceMappingURL=index.esm.js.map
-
-
-/***/ }),
-
-/***/ "./node_modules/firebase/messaging/dist/index.esm.js":
-/*!***********************************************************!*\
-  !*** ./node_modules/firebase/messaging/dist/index.esm.js ***!
-  \***********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "deleteToken": () => (/* reexport safe */ _firebase_messaging__WEBPACK_IMPORTED_MODULE_0__.deleteToken),
-/* harmony export */   "getMessaging": () => (/* reexport safe */ _firebase_messaging__WEBPACK_IMPORTED_MODULE_0__.getMessaging),
-/* harmony export */   "getToken": () => (/* reexport safe */ _firebase_messaging__WEBPACK_IMPORTED_MODULE_0__.getToken),
-/* harmony export */   "isSupported": () => (/* reexport safe */ _firebase_messaging__WEBPACK_IMPORTED_MODULE_0__.isSupported),
-/* harmony export */   "onMessage": () => (/* reexport safe */ _firebase_messaging__WEBPACK_IMPORTED_MODULE_0__.onMessage)
-/* harmony export */ });
-/* harmony import */ var _firebase_messaging__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @firebase/messaging */ "./node_modules/@firebase/messaging/dist/esm/index.esm2017.js");
-
-//# sourceMappingURL=index.esm.js.map
 
 
 /***/ }),
@@ -41008,4028 +39241,3951 @@ if (false) {} else {
 
 /***/ }),
 
-/***/ "./node_modules/@firebase/app/dist/esm/index.esm2017.js":
+/***/ "./node_modules/@socket.io/component-emitter/index.mjs":
+/*!*************************************************************!*\
+  !*** ./node_modules/@socket.io/component-emitter/index.mjs ***!
+  \*************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Emitter": () => (/* binding */ Emitter)
+/* harmony export */ });
+/**
+ * Initialize a new `Emitter`.
+ *
+ * @api public
+ */
+
+function Emitter(obj) {
+  if (obj) return mixin(obj);
+}
+
+/**
+ * Mixin the emitter properties.
+ *
+ * @param {Object} obj
+ * @return {Object}
+ * @api private
+ */
+
+function mixin(obj) {
+  for (var key in Emitter.prototype) {
+    obj[key] = Emitter.prototype[key];
+  }
+  return obj;
+}
+
+/**
+ * Listen on the given `event` with `fn`.
+ *
+ * @param {String} event
+ * @param {Function} fn
+ * @return {Emitter}
+ * @api public
+ */
+
+Emitter.prototype.on =
+Emitter.prototype.addEventListener = function(event, fn){
+  this._callbacks = this._callbacks || {};
+  (this._callbacks['$' + event] = this._callbacks['$' + event] || [])
+    .push(fn);
+  return this;
+};
+
+/**
+ * Adds an `event` listener that will be invoked a single
+ * time then automatically removed.
+ *
+ * @param {String} event
+ * @param {Function} fn
+ * @return {Emitter}
+ * @api public
+ */
+
+Emitter.prototype.once = function(event, fn){
+  function on() {
+    this.off(event, on);
+    fn.apply(this, arguments);
+  }
+
+  on.fn = fn;
+  this.on(event, on);
+  return this;
+};
+
+/**
+ * Remove the given callback for `event` or all
+ * registered callbacks.
+ *
+ * @param {String} event
+ * @param {Function} fn
+ * @return {Emitter}
+ * @api public
+ */
+
+Emitter.prototype.off =
+Emitter.prototype.removeListener =
+Emitter.prototype.removeAllListeners =
+Emitter.prototype.removeEventListener = function(event, fn){
+  this._callbacks = this._callbacks || {};
+
+  // all
+  if (0 == arguments.length) {
+    this._callbacks = {};
+    return this;
+  }
+
+  // specific event
+  var callbacks = this._callbacks['$' + event];
+  if (!callbacks) return this;
+
+  // remove all handlers
+  if (1 == arguments.length) {
+    delete this._callbacks['$' + event];
+    return this;
+  }
+
+  // remove specific handler
+  var cb;
+  for (var i = 0; i < callbacks.length; i++) {
+    cb = callbacks[i];
+    if (cb === fn || cb.fn === fn) {
+      callbacks.splice(i, 1);
+      break;
+    }
+  }
+
+  // Remove event specific arrays for event types that no
+  // one is subscribed for to avoid memory leak.
+  if (callbacks.length === 0) {
+    delete this._callbacks['$' + event];
+  }
+
+  return this;
+};
+
+/**
+ * Emit `event` with the given args.
+ *
+ * @param {String} event
+ * @param {Mixed} ...
+ * @return {Emitter}
+ */
+
+Emitter.prototype.emit = function(event){
+  this._callbacks = this._callbacks || {};
+
+  var args = new Array(arguments.length - 1)
+    , callbacks = this._callbacks['$' + event];
+
+  for (var i = 1; i < arguments.length; i++) {
+    args[i - 1] = arguments[i];
+  }
+
+  if (callbacks) {
+    callbacks = callbacks.slice(0);
+    for (var i = 0, len = callbacks.length; i < len; ++i) {
+      callbacks[i].apply(this, args);
+    }
+  }
+
+  return this;
+};
+
+// alias used for reserved events (protected method)
+Emitter.prototype.emitReserved = Emitter.prototype.emit;
+
+/**
+ * Return array of callbacks for `event`.
+ *
+ * @param {String} event
+ * @return {Array}
+ * @api public
+ */
+
+Emitter.prototype.listeners = function(event){
+  this._callbacks = this._callbacks || {};
+  return this._callbacks['$' + event] || [];
+};
+
+/**
+ * Check if this emitter has `event` handlers.
+ *
+ * @param {String} event
+ * @return {Boolean}
+ * @api public
+ */
+
+Emitter.prototype.hasListeners = function(event){
+  return !! this.listeners(event).length;
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/engine.io-client/build/esm/contrib/has-cors.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/engine.io-client/build/esm/contrib/has-cors.js ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "hasCORS": () => (/* binding */ hasCORS)
+/* harmony export */ });
+// imported from https://github.com/component/has-cors
+let value = false;
+try {
+    value = typeof XMLHttpRequest !== 'undefined' &&
+        'withCredentials' in new XMLHttpRequest();
+}
+catch (err) {
+    // if XMLHttp support is disabled in IE then it will throw
+    // when trying to create
+}
+const hasCORS = value;
+
+
+/***/ }),
+
+/***/ "./node_modules/engine.io-client/build/esm/contrib/parseqs.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/engine.io-client/build/esm/contrib/parseqs.js ***!
+  \********************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "decode": () => (/* binding */ decode),
+/* harmony export */   "encode": () => (/* binding */ encode)
+/* harmony export */ });
+// imported from https://github.com/galkn/querystring
+/**
+ * Compiles a querystring
+ * Returns string representation of the object
+ *
+ * @param {Object}
+ * @api private
+ */
+function encode(obj) {
+    let str = '';
+    for (let i in obj) {
+        if (obj.hasOwnProperty(i)) {
+            if (str.length)
+                str += '&';
+            str += encodeURIComponent(i) + '=' + encodeURIComponent(obj[i]);
+        }
+    }
+    return str;
+}
+/**
+ * Parses a simple querystring into an object
+ *
+ * @param {String} qs
+ * @api private
+ */
+function decode(qs) {
+    let qry = {};
+    let pairs = qs.split('&');
+    for (let i = 0, l = pairs.length; i < l; i++) {
+        let pair = pairs[i].split('=');
+        qry[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]);
+    }
+    return qry;
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/engine.io-client/build/esm/contrib/parseuri.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/engine.io-client/build/esm/contrib/parseuri.js ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "parse": () => (/* binding */ parse)
+/* harmony export */ });
+// imported from https://github.com/galkn/parseuri
+/**
+ * Parses an URI
+ *
+ * @author Steven Levithan <stevenlevithan.com> (MIT license)
+ * @api private
+ */
+const re = /^(?:(?![^:@]+:[^:@\/]*@)(http|https|ws|wss):\/\/)?((?:(([^:@]*)(?::([^:@]*))?)?@)?((?:[a-f0-9]{0,4}:){2,7}[a-f0-9]{0,4}|[^:\/?#]*)(?::(\d*))?)(((\/(?:[^?#](?![^?#\/]*\.[^?#\/.]+(?:[?#]|$)))*\/?)?([^?#\/]*))(?:\?([^#]*))?(?:#(.*))?)/;
+const parts = [
+    'source', 'protocol', 'authority', 'userInfo', 'user', 'password', 'host', 'port', 'relative', 'path', 'directory', 'file', 'query', 'anchor'
+];
+function parse(str) {
+    const src = str, b = str.indexOf('['), e = str.indexOf(']');
+    if (b != -1 && e != -1) {
+        str = str.substring(0, b) + str.substring(b, e).replace(/:/g, ';') + str.substring(e, str.length);
+    }
+    let m = re.exec(str || ''), uri = {}, i = 14;
+    while (i--) {
+        uri[parts[i]] = m[i] || '';
+    }
+    if (b != -1 && e != -1) {
+        uri.source = src;
+        uri.host = uri.host.substring(1, uri.host.length - 1).replace(/;/g, ':');
+        uri.authority = uri.authority.replace('[', '').replace(']', '').replace(/;/g, ':');
+        uri.ipv6uri = true;
+    }
+    uri.pathNames = pathNames(uri, uri['path']);
+    uri.queryKey = queryKey(uri, uri['query']);
+    return uri;
+}
+function pathNames(obj, path) {
+    const regx = /\/{2,9}/g, names = path.replace(regx, "/").split("/");
+    if (path.substr(0, 1) == '/' || path.length === 0) {
+        names.splice(0, 1);
+    }
+    if (path.substr(path.length - 1, 1) == '/') {
+        names.splice(names.length - 1, 1);
+    }
+    return names;
+}
+function queryKey(uri, query) {
+    const data = {};
+    query.replace(/(?:^|&)([^&=]*)=?([^&]*)/g, function ($0, $1, $2) {
+        if ($1) {
+            data[$1] = $2;
+        }
+    });
+    return data;
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/engine.io-client/build/esm/contrib/yeast.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/engine.io-client/build/esm/contrib/yeast.js ***!
+  \******************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "decode": () => (/* binding */ decode),
+/* harmony export */   "encode": () => (/* binding */ encode),
+/* harmony export */   "yeast": () => (/* binding */ yeast)
+/* harmony export */ });
+// imported from https://github.com/unshiftio/yeast
+
+const alphabet = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-_'.split(''), length = 64, map = {};
+let seed = 0, i = 0, prev;
+/**
+ * Return a string representing the specified number.
+ *
+ * @param {Number} num The number to convert.
+ * @returns {String} The string representation of the number.
+ * @api public
+ */
+function encode(num) {
+    let encoded = '';
+    do {
+        encoded = alphabet[num % length] + encoded;
+        num = Math.floor(num / length);
+    } while (num > 0);
+    return encoded;
+}
+/**
+ * Return the integer value specified by the given string.
+ *
+ * @param {String} str The string to convert.
+ * @returns {Number} The integer value represented by the string.
+ * @api public
+ */
+function decode(str) {
+    let decoded = 0;
+    for (i = 0; i < str.length; i++) {
+        decoded = decoded * length + map[str.charAt(i)];
+    }
+    return decoded;
+}
+/**
+ * Yeast: A tiny growing id generator.
+ *
+ * @returns {String} A unique id.
+ * @api public
+ */
+function yeast() {
+    const now = encode(+new Date());
+    if (now !== prev)
+        return seed = 0, prev = now;
+    return now + '.' + encode(seed++);
+}
+//
+// Map each character to its index.
+//
+for (; i < length; i++)
+    map[alphabet[i]] = i;
+
+
+/***/ }),
+
+/***/ "./node_modules/engine.io-client/build/esm/globalThis.browser.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/engine.io-client/build/esm/globalThis.browser.js ***!
+  \***********************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "globalThisShim": () => (/* binding */ globalThisShim)
+/* harmony export */ });
+const globalThisShim = (() => {
+    if (typeof self !== "undefined") {
+        return self;
+    }
+    else if (typeof window !== "undefined") {
+        return window;
+    }
+    else {
+        return Function("return this")();
+    }
+})();
+
+
+/***/ }),
+
+/***/ "./node_modules/engine.io-client/build/esm/index.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/engine.io-client/build/esm/index.js ***!
+  \**********************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Socket": () => (/* reexport safe */ _socket_js__WEBPACK_IMPORTED_MODULE_0__.Socket),
+/* harmony export */   "Transport": () => (/* reexport safe */ _transport_js__WEBPACK_IMPORTED_MODULE_1__.Transport),
+/* harmony export */   "installTimerFunctions": () => (/* reexport safe */ _util_js__WEBPACK_IMPORTED_MODULE_3__.installTimerFunctions),
+/* harmony export */   "parse": () => (/* reexport safe */ _contrib_parseuri_js__WEBPACK_IMPORTED_MODULE_4__.parse),
+/* harmony export */   "protocol": () => (/* binding */ protocol),
+/* harmony export */   "transports": () => (/* reexport safe */ _transports_index_js__WEBPACK_IMPORTED_MODULE_2__.transports)
+/* harmony export */ });
+/* harmony import */ var _socket_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./socket.js */ "./node_modules/engine.io-client/build/esm/socket.js");
+/* harmony import */ var _transport_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./transport.js */ "./node_modules/engine.io-client/build/esm/transport.js");
+/* harmony import */ var _transports_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./transports/index.js */ "./node_modules/engine.io-client/build/esm/transports/index.js");
+/* harmony import */ var _util_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./util.js */ "./node_modules/engine.io-client/build/esm/util.js");
+/* harmony import */ var _contrib_parseuri_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./contrib/parseuri.js */ "./node_modules/engine.io-client/build/esm/contrib/parseuri.js");
+
+
+const protocol = _socket_js__WEBPACK_IMPORTED_MODULE_0__.Socket.protocol;
+
+
+
+
+
+
+/***/ }),
+
+/***/ "./node_modules/engine.io-client/build/esm/socket.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/engine.io-client/build/esm/socket.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Socket": () => (/* binding */ Socket)
+/* harmony export */ });
+/* harmony import */ var _transports_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./transports/index.js */ "./node_modules/engine.io-client/build/esm/transports/index.js");
+/* harmony import */ var _util_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./util.js */ "./node_modules/engine.io-client/build/esm/util.js");
+/* harmony import */ var _contrib_parseqs_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./contrib/parseqs.js */ "./node_modules/engine.io-client/build/esm/contrib/parseqs.js");
+/* harmony import */ var _contrib_parseuri_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./contrib/parseuri.js */ "./node_modules/engine.io-client/build/esm/contrib/parseuri.js");
+/* harmony import */ var _socket_io_component_emitter__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @socket.io/component-emitter */ "./node_modules/@socket.io/component-emitter/index.mjs");
+/* harmony import */ var engine_io_parser__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! engine.io-parser */ "./node_modules/engine.io-parser/build/esm/index.js");
+
+
+
+
+
+
+class Socket extends _socket_io_component_emitter__WEBPACK_IMPORTED_MODULE_4__.Emitter {
+    /**
+     * Socket constructor.
+     *
+     * @param {String|Object} uri or options
+     * @param {Object} opts - options
+     * @api public
+     */
+    constructor(uri, opts = {}) {
+        super();
+        if (uri && "object" === typeof uri) {
+            opts = uri;
+            uri = null;
+        }
+        if (uri) {
+            uri = (0,_contrib_parseuri_js__WEBPACK_IMPORTED_MODULE_3__.parse)(uri);
+            opts.hostname = uri.host;
+            opts.secure = uri.protocol === "https" || uri.protocol === "wss";
+            opts.port = uri.port;
+            if (uri.query)
+                opts.query = uri.query;
+        }
+        else if (opts.host) {
+            opts.hostname = (0,_contrib_parseuri_js__WEBPACK_IMPORTED_MODULE_3__.parse)(opts.host).host;
+        }
+        (0,_util_js__WEBPACK_IMPORTED_MODULE_1__.installTimerFunctions)(this, opts);
+        this.secure =
+            null != opts.secure
+                ? opts.secure
+                : typeof location !== "undefined" && "https:" === location.protocol;
+        if (opts.hostname && !opts.port) {
+            // if no port is specified manually, use the protocol default
+            opts.port = this.secure ? "443" : "80";
+        }
+        this.hostname =
+            opts.hostname ||
+                (typeof location !== "undefined" ? location.hostname : "localhost");
+        this.port =
+            opts.port ||
+                (typeof location !== "undefined" && location.port
+                    ? location.port
+                    : this.secure
+                        ? "443"
+                        : "80");
+        this.transports = opts.transports || ["polling", "websocket"];
+        this.readyState = "";
+        this.writeBuffer = [];
+        this.prevBufferLen = 0;
+        this.opts = Object.assign({
+            path: "/engine.io",
+            agent: false,
+            withCredentials: false,
+            upgrade: true,
+            timestampParam: "t",
+            rememberUpgrade: false,
+            rejectUnauthorized: true,
+            perMessageDeflate: {
+                threshold: 1024
+            },
+            transportOptions: {},
+            closeOnBeforeunload: true
+        }, opts);
+        this.opts.path = this.opts.path.replace(/\/$/, "") + "/";
+        if (typeof this.opts.query === "string") {
+            this.opts.query = (0,_contrib_parseqs_js__WEBPACK_IMPORTED_MODULE_2__.decode)(this.opts.query);
+        }
+        // set on handshake
+        this.id = null;
+        this.upgrades = null;
+        this.pingInterval = null;
+        this.pingTimeout = null;
+        // set on heartbeat
+        this.pingTimeoutTimer = null;
+        if (typeof addEventListener === "function") {
+            if (this.opts.closeOnBeforeunload) {
+                // Firefox closes the connection when the "beforeunload" event is emitted but not Chrome. This event listener
+                // ensures every browser behaves the same (no "disconnect" event at the Socket.IO level when the page is
+                // closed/reloaded)
+                addEventListener("beforeunload", () => {
+                    if (this.transport) {
+                        // silently close the transport
+                        this.transport.removeAllListeners();
+                        this.transport.close();
+                    }
+                }, false);
+            }
+            if (this.hostname !== "localhost") {
+                this.offlineEventListener = () => {
+                    this.onClose("transport close", {
+                        description: "network connection lost"
+                    });
+                };
+                addEventListener("offline", this.offlineEventListener, false);
+            }
+        }
+        this.open();
+    }
+    /**
+     * Creates transport of the given type.
+     *
+     * @param {String} transport name
+     * @return {Transport}
+     * @api private
+     */
+    createTransport(name) {
+        const query = Object.assign({}, this.opts.query);
+        // append engine.io protocol identifier
+        query.EIO = engine_io_parser__WEBPACK_IMPORTED_MODULE_5__.protocol;
+        // transport name
+        query.transport = name;
+        // session id if we already have one
+        if (this.id)
+            query.sid = this.id;
+        const opts = Object.assign({}, this.opts.transportOptions[name], this.opts, {
+            query,
+            socket: this,
+            hostname: this.hostname,
+            secure: this.secure,
+            port: this.port
+        });
+        return new _transports_index_js__WEBPACK_IMPORTED_MODULE_0__.transports[name](opts);
+    }
+    /**
+     * Initializes transport to use and starts probe.
+     *
+     * @api private
+     */
+    open() {
+        let transport;
+        if (this.opts.rememberUpgrade &&
+            Socket.priorWebsocketSuccess &&
+            this.transports.indexOf("websocket") !== -1) {
+            transport = "websocket";
+        }
+        else if (0 === this.transports.length) {
+            // Emit error on next tick so it can be listened to
+            this.setTimeoutFn(() => {
+                this.emitReserved("error", "No transports available");
+            }, 0);
+            return;
+        }
+        else {
+            transport = this.transports[0];
+        }
+        this.readyState = "opening";
+        // Retry with the next transport if the transport is disabled (jsonp: false)
+        try {
+            transport = this.createTransport(transport);
+        }
+        catch (e) {
+            this.transports.shift();
+            this.open();
+            return;
+        }
+        transport.open();
+        this.setTransport(transport);
+    }
+    /**
+     * Sets the current transport. Disables the existing one (if any).
+     *
+     * @api private
+     */
+    setTransport(transport) {
+        if (this.transport) {
+            this.transport.removeAllListeners();
+        }
+        // set up transport
+        this.transport = transport;
+        // set up transport listeners
+        transport
+            .on("drain", this.onDrain.bind(this))
+            .on("packet", this.onPacket.bind(this))
+            .on("error", this.onError.bind(this))
+            .on("close", reason => this.onClose("transport close", reason));
+    }
+    /**
+     * Probes a transport.
+     *
+     * @param {String} transport name
+     * @api private
+     */
+    probe(name) {
+        let transport = this.createTransport(name);
+        let failed = false;
+        Socket.priorWebsocketSuccess = false;
+        const onTransportOpen = () => {
+            if (failed)
+                return;
+            transport.send([{ type: "ping", data: "probe" }]);
+            transport.once("packet", msg => {
+                if (failed)
+                    return;
+                if ("pong" === msg.type && "probe" === msg.data) {
+                    this.upgrading = true;
+                    this.emitReserved("upgrading", transport);
+                    if (!transport)
+                        return;
+                    Socket.priorWebsocketSuccess = "websocket" === transport.name;
+                    this.transport.pause(() => {
+                        if (failed)
+                            return;
+                        if ("closed" === this.readyState)
+                            return;
+                        cleanup();
+                        this.setTransport(transport);
+                        transport.send([{ type: "upgrade" }]);
+                        this.emitReserved("upgrade", transport);
+                        transport = null;
+                        this.upgrading = false;
+                        this.flush();
+                    });
+                }
+                else {
+                    const err = new Error("probe error");
+                    // @ts-ignore
+                    err.transport = transport.name;
+                    this.emitReserved("upgradeError", err);
+                }
+            });
+        };
+        function freezeTransport() {
+            if (failed)
+                return;
+            // Any callback called by transport should be ignored since now
+            failed = true;
+            cleanup();
+            transport.close();
+            transport = null;
+        }
+        // Handle any error that happens while probing
+        const onerror = err => {
+            const error = new Error("probe error: " + err);
+            // @ts-ignore
+            error.transport = transport.name;
+            freezeTransport();
+            this.emitReserved("upgradeError", error);
+        };
+        function onTransportClose() {
+            onerror("transport closed");
+        }
+        // When the socket is closed while we're probing
+        function onclose() {
+            onerror("socket closed");
+        }
+        // When the socket is upgraded while we're probing
+        function onupgrade(to) {
+            if (transport && to.name !== transport.name) {
+                freezeTransport();
+            }
+        }
+        // Remove all listeners on the transport and on self
+        const cleanup = () => {
+            transport.removeListener("open", onTransportOpen);
+            transport.removeListener("error", onerror);
+            transport.removeListener("close", onTransportClose);
+            this.off("close", onclose);
+            this.off("upgrading", onupgrade);
+        };
+        transport.once("open", onTransportOpen);
+        transport.once("error", onerror);
+        transport.once("close", onTransportClose);
+        this.once("close", onclose);
+        this.once("upgrading", onupgrade);
+        transport.open();
+    }
+    /**
+     * Called when connection is deemed open.
+     *
+     * @api private
+     */
+    onOpen() {
+        this.readyState = "open";
+        Socket.priorWebsocketSuccess = "websocket" === this.transport.name;
+        this.emitReserved("open");
+        this.flush();
+        // we check for `readyState` in case an `open`
+        // listener already closed the socket
+        if ("open" === this.readyState &&
+            this.opts.upgrade &&
+            this.transport.pause) {
+            let i = 0;
+            const l = this.upgrades.length;
+            for (; i < l; i++) {
+                this.probe(this.upgrades[i]);
+            }
+        }
+    }
+    /**
+     * Handles a packet.
+     *
+     * @api private
+     */
+    onPacket(packet) {
+        if ("opening" === this.readyState ||
+            "open" === this.readyState ||
+            "closing" === this.readyState) {
+            this.emitReserved("packet", packet);
+            // Socket is live - any packet counts
+            this.emitReserved("heartbeat");
+            switch (packet.type) {
+                case "open":
+                    this.onHandshake(JSON.parse(packet.data));
+                    break;
+                case "ping":
+                    this.resetPingTimeout();
+                    this.sendPacket("pong");
+                    this.emitReserved("ping");
+                    this.emitReserved("pong");
+                    break;
+                case "error":
+                    const err = new Error("server error");
+                    // @ts-ignore
+                    err.code = packet.data;
+                    this.onError(err);
+                    break;
+                case "message":
+                    this.emitReserved("data", packet.data);
+                    this.emitReserved("message", packet.data);
+                    break;
+            }
+        }
+        else {
+        }
+    }
+    /**
+     * Called upon handshake completion.
+     *
+     * @param {Object} data - handshake obj
+     * @api private
+     */
+    onHandshake(data) {
+        this.emitReserved("handshake", data);
+        this.id = data.sid;
+        this.transport.query.sid = data.sid;
+        this.upgrades = this.filterUpgrades(data.upgrades);
+        this.pingInterval = data.pingInterval;
+        this.pingTimeout = data.pingTimeout;
+        this.maxPayload = data.maxPayload;
+        this.onOpen();
+        // In case open handler closes socket
+        if ("closed" === this.readyState)
+            return;
+        this.resetPingTimeout();
+    }
+    /**
+     * Sets and resets ping timeout timer based on server pings.
+     *
+     * @api private
+     */
+    resetPingTimeout() {
+        this.clearTimeoutFn(this.pingTimeoutTimer);
+        this.pingTimeoutTimer = this.setTimeoutFn(() => {
+            this.onClose("ping timeout");
+        }, this.pingInterval + this.pingTimeout);
+        if (this.opts.autoUnref) {
+            this.pingTimeoutTimer.unref();
+        }
+    }
+    /**
+     * Called on `drain` event
+     *
+     * @api private
+     */
+    onDrain() {
+        this.writeBuffer.splice(0, this.prevBufferLen);
+        // setting prevBufferLen = 0 is very important
+        // for example, when upgrading, upgrade packet is sent over,
+        // and a nonzero prevBufferLen could cause problems on `drain`
+        this.prevBufferLen = 0;
+        if (0 === this.writeBuffer.length) {
+            this.emitReserved("drain");
+        }
+        else {
+            this.flush();
+        }
+    }
+    /**
+     * Flush write buffers.
+     *
+     * @api private
+     */
+    flush() {
+        if ("closed" !== this.readyState &&
+            this.transport.writable &&
+            !this.upgrading &&
+            this.writeBuffer.length) {
+            const packets = this.getWritablePackets();
+            this.transport.send(packets);
+            // keep track of current length of writeBuffer
+            // splice writeBuffer and callbackBuffer on `drain`
+            this.prevBufferLen = packets.length;
+            this.emitReserved("flush");
+        }
+    }
+    /**
+     * Ensure the encoded size of the writeBuffer is below the maxPayload value sent by the server (only for HTTP
+     * long-polling)
+     *
+     * @private
+     */
+    getWritablePackets() {
+        const shouldCheckPayloadSize = this.maxPayload &&
+            this.transport.name === "polling" &&
+            this.writeBuffer.length > 1;
+        if (!shouldCheckPayloadSize) {
+            return this.writeBuffer;
+        }
+        let payloadSize = 1; // first packet type
+        for (let i = 0; i < this.writeBuffer.length; i++) {
+            const data = this.writeBuffer[i].data;
+            if (data) {
+                payloadSize += (0,_util_js__WEBPACK_IMPORTED_MODULE_1__.byteLength)(data);
+            }
+            if (i > 0 && payloadSize > this.maxPayload) {
+                return this.writeBuffer.slice(0, i);
+            }
+            payloadSize += 2; // separator + packet type
+        }
+        return this.writeBuffer;
+    }
+    /**
+     * Sends a message.
+     *
+     * @param {String} message.
+     * @param {Function} callback function.
+     * @param {Object} options.
+     * @return {Socket} for chaining.
+     * @api public
+     */
+    write(msg, options, fn) {
+        this.sendPacket("message", msg, options, fn);
+        return this;
+    }
+    send(msg, options, fn) {
+        this.sendPacket("message", msg, options, fn);
+        return this;
+    }
+    /**
+     * Sends a packet.
+     *
+     * @param {String} packet type.
+     * @param {String} data.
+     * @param {Object} options.
+     * @param {Function} callback function.
+     * @api private
+     */
+    sendPacket(type, data, options, fn) {
+        if ("function" === typeof data) {
+            fn = data;
+            data = undefined;
+        }
+        if ("function" === typeof options) {
+            fn = options;
+            options = null;
+        }
+        if ("closing" === this.readyState || "closed" === this.readyState) {
+            return;
+        }
+        options = options || {};
+        options.compress = false !== options.compress;
+        const packet = {
+            type: type,
+            data: data,
+            options: options
+        };
+        this.emitReserved("packetCreate", packet);
+        this.writeBuffer.push(packet);
+        if (fn)
+            this.once("flush", fn);
+        this.flush();
+    }
+    /**
+     * Closes the connection.
+     *
+     * @api public
+     */
+    close() {
+        const close = () => {
+            this.onClose("forced close");
+            this.transport.close();
+        };
+        const cleanupAndClose = () => {
+            this.off("upgrade", cleanupAndClose);
+            this.off("upgradeError", cleanupAndClose);
+            close();
+        };
+        const waitForUpgrade = () => {
+            // wait for upgrade to finish since we can't send packets while pausing a transport
+            this.once("upgrade", cleanupAndClose);
+            this.once("upgradeError", cleanupAndClose);
+        };
+        if ("opening" === this.readyState || "open" === this.readyState) {
+            this.readyState = "closing";
+            if (this.writeBuffer.length) {
+                this.once("drain", () => {
+                    if (this.upgrading) {
+                        waitForUpgrade();
+                    }
+                    else {
+                        close();
+                    }
+                });
+            }
+            else if (this.upgrading) {
+                waitForUpgrade();
+            }
+            else {
+                close();
+            }
+        }
+        return this;
+    }
+    /**
+     * Called upon transport error
+     *
+     * @api private
+     */
+    onError(err) {
+        Socket.priorWebsocketSuccess = false;
+        this.emitReserved("error", err);
+        this.onClose("transport error", err);
+    }
+    /**
+     * Called upon transport close.
+     *
+     * @api private
+     */
+    onClose(reason, description) {
+        if ("opening" === this.readyState ||
+            "open" === this.readyState ||
+            "closing" === this.readyState) {
+            // clear timers
+            this.clearTimeoutFn(this.pingTimeoutTimer);
+            // stop event from firing again for transport
+            this.transport.removeAllListeners("close");
+            // ensure transport won't stay open
+            this.transport.close();
+            // ignore further transport communication
+            this.transport.removeAllListeners();
+            if (typeof removeEventListener === "function") {
+                removeEventListener("offline", this.offlineEventListener, false);
+            }
+            // set ready state
+            this.readyState = "closed";
+            // clear session id
+            this.id = null;
+            // emit close event
+            this.emitReserved("close", reason, description);
+            // clean buffers after, so users can still
+            // grab the buffers on `close` event
+            this.writeBuffer = [];
+            this.prevBufferLen = 0;
+        }
+    }
+    /**
+     * Filters upgrades, returning only those matching client transports.
+     *
+     * @param {Array} server upgrades
+     * @api private
+     *
+     */
+    filterUpgrades(upgrades) {
+        const filteredUpgrades = [];
+        let i = 0;
+        const j = upgrades.length;
+        for (; i < j; i++) {
+            if (~this.transports.indexOf(upgrades[i]))
+                filteredUpgrades.push(upgrades[i]);
+        }
+        return filteredUpgrades;
+    }
+}
+Socket.protocol = engine_io_parser__WEBPACK_IMPORTED_MODULE_5__.protocol;
+
+
+/***/ }),
+
+/***/ "./node_modules/engine.io-client/build/esm/transport.js":
 /*!**************************************************************!*\
-  !*** ./node_modules/@firebase/app/dist/esm/index.esm2017.js ***!
+  !*** ./node_modules/engine.io-client/build/esm/transport.js ***!
   \**************************************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "FirebaseError": () => (/* reexport safe */ _firebase_util__WEBPACK_IMPORTED_MODULE_2__.FirebaseError),
-/* harmony export */   "SDK_VERSION": () => (/* binding */ SDK_VERSION),
-/* harmony export */   "_DEFAULT_ENTRY_NAME": () => (/* binding */ DEFAULT_ENTRY_NAME),
-/* harmony export */   "_addComponent": () => (/* binding */ _addComponent),
-/* harmony export */   "_addOrOverwriteComponent": () => (/* binding */ _addOrOverwriteComponent),
-/* harmony export */   "_apps": () => (/* binding */ _apps),
-/* harmony export */   "_clearComponents": () => (/* binding */ _clearComponents),
-/* harmony export */   "_components": () => (/* binding */ _components),
-/* harmony export */   "_getProvider": () => (/* binding */ _getProvider),
-/* harmony export */   "_registerComponent": () => (/* binding */ _registerComponent),
-/* harmony export */   "_removeServiceInstance": () => (/* binding */ _removeServiceInstance),
-/* harmony export */   "deleteApp": () => (/* binding */ deleteApp),
-/* harmony export */   "getApp": () => (/* binding */ getApp),
-/* harmony export */   "getApps": () => (/* binding */ getApps),
-/* harmony export */   "initializeApp": () => (/* binding */ initializeApp),
-/* harmony export */   "onLog": () => (/* binding */ onLog),
-/* harmony export */   "registerVersion": () => (/* binding */ registerVersion),
-/* harmony export */   "setLogLevel": () => (/* binding */ setLogLevel)
+/* harmony export */   "Transport": () => (/* binding */ Transport)
 /* harmony export */ });
-/* harmony import */ var _firebase_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @firebase/component */ "./node_modules/@firebase/component/dist/esm/index.esm2017.js");
-/* harmony import */ var _firebase_logger__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @firebase/logger */ "./node_modules/@firebase/logger/dist/esm/index.esm2017.js");
-/* harmony import */ var _firebase_util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @firebase/util */ "./node_modules/@firebase/util/dist/index.esm2017.js");
+/* harmony import */ var engine_io_parser__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! engine.io-parser */ "./node_modules/engine.io-parser/build/esm/index.js");
+/* harmony import */ var _socket_io_component_emitter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @socket.io/component-emitter */ "./node_modules/@socket.io/component-emitter/index.mjs");
+/* harmony import */ var _util_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./util.js */ "./node_modules/engine.io-client/build/esm/util.js");
 
 
 
-
-
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-class PlatformLoggerServiceImpl {
-    constructor(container) {
-        this.container = container;
-    }
-    // In initial implementation, this will be called by installations on
-    // auth token refresh, and installations will send this string.
-    getPlatformInfoString() {
-        const providers = this.container.getProviders();
-        // Loop through providers and get library/version pairs from any that are
-        // version components.
-        return providers
-            .map(provider => {
-            if (isVersionServiceProvider(provider)) {
-                const service = provider.getImmediate();
-                return `${service.library}/${service.version}`;
-            }
-            else {
-                return null;
-            }
-        })
-            .filter(logString => logString)
-            .join(' ');
+class TransportError extends Error {
+    constructor(reason, description, context) {
+        super(reason);
+        this.description = description;
+        this.context = context;
+        this.type = "TransportError";
     }
 }
-/**
- *
- * @param provider check if this provider provides a VersionService
- *
- * NOTE: Using Provider<'app-version'> is a hack to indicate that the provider
- * provides VersionService. The provider is not necessarily a 'app-version'
- * provider.
- */
-function isVersionServiceProvider(provider) {
-    const component = provider.getComponent();
-    return (component === null || component === void 0 ? void 0 : component.type) === "VERSION" /* VERSION */;
-}
-
-const name$o = "@firebase/app";
-const version$1 = "0.7.19";
-
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-const logger = new _firebase_logger__WEBPACK_IMPORTED_MODULE_1__.Logger('@firebase/app');
-
-const name$n = "@firebase/app-compat";
-
-const name$m = "@firebase/analytics-compat";
-
-const name$l = "@firebase/analytics";
-
-const name$k = "@firebase/app-check-compat";
-
-const name$j = "@firebase/app-check";
-
-const name$i = "@firebase/auth";
-
-const name$h = "@firebase/auth-compat";
-
-const name$g = "@firebase/database";
-
-const name$f = "@firebase/database-compat";
-
-const name$e = "@firebase/functions";
-
-const name$d = "@firebase/functions-compat";
-
-const name$c = "@firebase/installations";
-
-const name$b = "@firebase/installations-compat";
-
-const name$a = "@firebase/messaging";
-
-const name$9 = "@firebase/messaging-compat";
-
-const name$8 = "@firebase/performance";
-
-const name$7 = "@firebase/performance-compat";
-
-const name$6 = "@firebase/remote-config";
-
-const name$5 = "@firebase/remote-config-compat";
-
-const name$4 = "@firebase/storage";
-
-const name$3 = "@firebase/storage-compat";
-
-const name$2 = "@firebase/firestore";
-
-const name$1 = "@firebase/firestore-compat";
-
-const name = "firebase";
-const version = "9.6.9";
-
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/**
- * The default app name
- *
- * @internal
- */
-const DEFAULT_ENTRY_NAME = '[DEFAULT]';
-const PLATFORM_LOG_STRING = {
-    [name$o]: 'fire-core',
-    [name$n]: 'fire-core-compat',
-    [name$l]: 'fire-analytics',
-    [name$m]: 'fire-analytics-compat',
-    [name$j]: 'fire-app-check',
-    [name$k]: 'fire-app-check-compat',
-    [name$i]: 'fire-auth',
-    [name$h]: 'fire-auth-compat',
-    [name$g]: 'fire-rtdb',
-    [name$f]: 'fire-rtdb-compat',
-    [name$e]: 'fire-fn',
-    [name$d]: 'fire-fn-compat',
-    [name$c]: 'fire-iid',
-    [name$b]: 'fire-iid-compat',
-    [name$a]: 'fire-fcm',
-    [name$9]: 'fire-fcm-compat',
-    [name$8]: 'fire-perf',
-    [name$7]: 'fire-perf-compat',
-    [name$6]: 'fire-rc',
-    [name$5]: 'fire-rc-compat',
-    [name$4]: 'fire-gcs',
-    [name$3]: 'fire-gcs-compat',
-    [name$2]: 'fire-fst',
-    [name$1]: 'fire-fst-compat',
-    'fire-js': 'fire-js',
-    [name]: 'fire-js-all'
-};
-
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/**
- * @internal
- */
-const _apps = new Map();
-/**
- * Registered components.
- *
- * @internal
- */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const _components = new Map();
-/**
- * @param component - the component being added to this app's container
- *
- * @internal
- */
-function _addComponent(app, component) {
-    try {
-        app.container.addComponent(component);
-    }
-    catch (e) {
-        logger.debug(`Component ${component.name} failed to register with FirebaseApp ${app.name}`, e);
-    }
-}
-/**
- *
- * @internal
- */
-function _addOrOverwriteComponent(app, component) {
-    app.container.addOrOverwriteComponent(component);
-}
-/**
- *
- * @param component - the component to register
- * @returns whether or not the component is registered successfully
- *
- * @internal
- */
-function _registerComponent(component) {
-    const componentName = component.name;
-    if (_components.has(componentName)) {
-        logger.debug(`There were multiple attempts to register component ${componentName}.`);
-        return false;
-    }
-    _components.set(componentName, component);
-    // add the component to existing app instances
-    for (const app of _apps.values()) {
-        _addComponent(app, component);
-    }
-    return true;
-}
-/**
- *
- * @param app - FirebaseApp instance
- * @param name - service name
- *
- * @returns the provider for the service with the matching name
- *
- * @internal
- */
-function _getProvider(app, name) {
-    const heartbeatController = app.container
-        .getProvider('heartbeat')
-        .getImmediate({ optional: true });
-    if (heartbeatController) {
-        void heartbeatController.triggerHeartbeat();
-    }
-    return app.container.getProvider(name);
-}
-/**
- *
- * @param app - FirebaseApp instance
- * @param name - service name
- * @param instanceIdentifier - service instance identifier in case the service supports multiple instances
- *
- * @internal
- */
-function _removeServiceInstance(app, name, instanceIdentifier = DEFAULT_ENTRY_NAME) {
-    _getProvider(app, name).clearInstance(instanceIdentifier);
-}
-/**
- * Test only
- *
- * @internal
- */
-function _clearComponents() {
-    _components.clear();
-}
-
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-const ERRORS = {
-    ["no-app" /* NO_APP */]: "No Firebase App '{$appName}' has been created - " +
-        'call Firebase App.initializeApp()',
-    ["bad-app-name" /* BAD_APP_NAME */]: "Illegal App name: '{$appName}",
-    ["duplicate-app" /* DUPLICATE_APP */]: "Firebase App named '{$appName}' already exists with different options or config",
-    ["app-deleted" /* APP_DELETED */]: "Firebase App named '{$appName}' already deleted",
-    ["invalid-app-argument" /* INVALID_APP_ARGUMENT */]: 'firebase.{$appName}() takes either no argument or a ' +
-        'Firebase App instance.',
-    ["invalid-log-argument" /* INVALID_LOG_ARGUMENT */]: 'First argument to `onLog` must be null or a function.',
-    ["storage-open" /* STORAGE_OPEN */]: 'Error thrown when opening storage. Original error: {$originalErrorMessage}.',
-    ["storage-get" /* STORAGE_GET */]: 'Error thrown when reading from storage. Original error: {$originalErrorMessage}.',
-    ["storage-set" /* STORAGE_WRITE */]: 'Error thrown when writing to storage. Original error: {$originalErrorMessage}.',
-    ["storage-delete" /* STORAGE_DELETE */]: 'Error thrown when deleting from storage. Original error: {$originalErrorMessage}.'
-};
-const ERROR_FACTORY = new _firebase_util__WEBPACK_IMPORTED_MODULE_2__.ErrorFactory('app', 'Firebase', ERRORS);
-
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-class FirebaseAppImpl {
-    constructor(options, config, container) {
-        this._isDeleted = false;
-        this._options = Object.assign({}, options);
-        this._config = Object.assign({}, config);
-        this._name = config.name;
-        this._automaticDataCollectionEnabled =
-            config.automaticDataCollectionEnabled;
-        this._container = container;
-        this.container.addComponent(new _firebase_component__WEBPACK_IMPORTED_MODULE_0__.Component('app', () => this, "PUBLIC" /* PUBLIC */));
-    }
-    get automaticDataCollectionEnabled() {
-        this.checkDestroyed();
-        return this._automaticDataCollectionEnabled;
-    }
-    set automaticDataCollectionEnabled(val) {
-        this.checkDestroyed();
-        this._automaticDataCollectionEnabled = val;
-    }
-    get name() {
-        this.checkDestroyed();
-        return this._name;
-    }
-    get options() {
-        this.checkDestroyed();
-        return this._options;
-    }
-    get config() {
-        this.checkDestroyed();
-        return this._config;
-    }
-    get container() {
-        return this._container;
-    }
-    get isDeleted() {
-        return this._isDeleted;
-    }
-    set isDeleted(val) {
-        this._isDeleted = val;
-    }
+class Transport extends _socket_io_component_emitter__WEBPACK_IMPORTED_MODULE_1__.Emitter {
     /**
-     * This function will throw an Error if the App has already been deleted -
-     * use before performing API actions on the App.
-     */
-    checkDestroyed() {
-        if (this.isDeleted) {
-            throw ERROR_FACTORY.create("app-deleted" /* APP_DELETED */, { appName: this._name });
-        }
-    }
-}
-
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/**
- * The current SDK version.
- *
- * @public
- */
-const SDK_VERSION = version;
-function initializeApp(options, rawConfig = {}) {
-    if (typeof rawConfig !== 'object') {
-        const name = rawConfig;
-        rawConfig = { name };
-    }
-    const config = Object.assign({ name: DEFAULT_ENTRY_NAME, automaticDataCollectionEnabled: false }, rawConfig);
-    const name = config.name;
-    if (typeof name !== 'string' || !name) {
-        throw ERROR_FACTORY.create("bad-app-name" /* BAD_APP_NAME */, {
-            appName: String(name)
-        });
-    }
-    const existingApp = _apps.get(name);
-    if (existingApp) {
-        // return the existing app if options and config deep equal the ones in the existing app.
-        if ((0,_firebase_util__WEBPACK_IMPORTED_MODULE_2__.deepEqual)(options, existingApp.options) &&
-            (0,_firebase_util__WEBPACK_IMPORTED_MODULE_2__.deepEqual)(config, existingApp.config)) {
-            return existingApp;
-        }
-        else {
-            throw ERROR_FACTORY.create("duplicate-app" /* DUPLICATE_APP */, { appName: name });
-        }
-    }
-    const container = new _firebase_component__WEBPACK_IMPORTED_MODULE_0__.ComponentContainer(name);
-    for (const component of _components.values()) {
-        container.addComponent(component);
-    }
-    const newApp = new FirebaseAppImpl(options, config, container);
-    _apps.set(name, newApp);
-    return newApp;
-}
-/**
- * Retrieves a {@link @firebase/app#FirebaseApp} instance.
- *
- * When called with no arguments, the default app is returned. When an app name
- * is provided, the app corresponding to that name is returned.
- *
- * An exception is thrown if the app being retrieved has not yet been
- * initialized.
- *
- * @example
- * ```javascript
- * // Return the default app
- * const app = getApp();
- * ```
- *
- * @example
- * ```javascript
- * // Return a named app
- * const otherApp = getApp("otherApp");
- * ```
- *
- * @param name - Optional name of the app to return. If no name is
- *   provided, the default is `"[DEFAULT]"`.
- *
- * @returns The app corresponding to the provided app name.
- *   If no app name is provided, the default app is returned.
- *
- * @public
- */
-function getApp(name = DEFAULT_ENTRY_NAME) {
-    const app = _apps.get(name);
-    if (!app) {
-        throw ERROR_FACTORY.create("no-app" /* NO_APP */, { appName: name });
-    }
-    return app;
-}
-/**
- * A (read-only) array of all initialized apps.
- * @public
- */
-function getApps() {
-    return Array.from(_apps.values());
-}
-/**
- * Renders this app unusable and frees the resources of all associated
- * services.
- *
- * @example
- * ```javascript
- * deleteApp(app)
- *   .then(function() {
- *     console.log("App deleted successfully");
- *   })
- *   .catch(function(error) {
- *     console.log("Error deleting app:", error);
- *   });
- * ```
- *
- * @public
- */
-async function deleteApp(app) {
-    const name = app.name;
-    if (_apps.has(name)) {
-        _apps.delete(name);
-        await Promise.all(app.container
-            .getProviders()
-            .map(provider => provider.delete()));
-        app.isDeleted = true;
-    }
-}
-/**
- * Registers a library's name and version for platform logging purposes.
- * @param library - Name of 1p or 3p library (e.g. firestore, angularfire)
- * @param version - Current version of that library.
- * @param variant - Bundle variant, e.g., node, rn, etc.
- *
- * @public
- */
-function registerVersion(libraryKeyOrName, version, variant) {
-    var _a;
-    // TODO: We can use this check to whitelist strings when/if we set up
-    // a good whitelist system.
-    let library = (_a = PLATFORM_LOG_STRING[libraryKeyOrName]) !== null && _a !== void 0 ? _a : libraryKeyOrName;
-    if (variant) {
-        library += `-${variant}`;
-    }
-    const libraryMismatch = library.match(/\s|\//);
-    const versionMismatch = version.match(/\s|\//);
-    if (libraryMismatch || versionMismatch) {
-        const warning = [
-            `Unable to register library "${library}" with version "${version}":`
-        ];
-        if (libraryMismatch) {
-            warning.push(`library name "${library}" contains illegal characters (whitespace or "/")`);
-        }
-        if (libraryMismatch && versionMismatch) {
-            warning.push('and');
-        }
-        if (versionMismatch) {
-            warning.push(`version name "${version}" contains illegal characters (whitespace or "/")`);
-        }
-        logger.warn(warning.join(' '));
-        return;
-    }
-    _registerComponent(new _firebase_component__WEBPACK_IMPORTED_MODULE_0__.Component(`${library}-version`, () => ({ library, version }), "VERSION" /* VERSION */));
-}
-/**
- * Sets log handler for all Firebase SDKs.
- * @param logCallback - An optional custom log handler that executes user code whenever
- * the Firebase SDK makes a logging call.
- *
- * @public
- */
-function onLog(logCallback, options) {
-    if (logCallback !== null && typeof logCallback !== 'function') {
-        throw ERROR_FACTORY.create("invalid-log-argument" /* INVALID_LOG_ARGUMENT */);
-    }
-    (0,_firebase_logger__WEBPACK_IMPORTED_MODULE_1__.setUserLogHandler)(logCallback, options);
-}
-/**
- * Sets log level for all Firebase SDKs.
- *
- * All of the log types above the current log level are captured (i.e. if
- * you set the log level to `info`, errors are logged, but `debug` and
- * `verbose` logs are not).
- *
- * @public
- */
-function setLogLevel(logLevel) {
-    (0,_firebase_logger__WEBPACK_IMPORTED_MODULE_1__.setLogLevel)(logLevel);
-}
-
-/**
- * @license
- * Copyright 2021 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-const DB_NAME = 'firebase-heartbeat-database';
-const DB_VERSION = 1;
-const STORE_NAME = 'firebase-heartbeat-store';
-let dbPromise = null;
-function getDbPromise() {
-    if (!dbPromise) {
-        dbPromise = (0,_firebase_util__WEBPACK_IMPORTED_MODULE_2__.openDB)(DB_NAME, DB_VERSION, (db, oldVersion) => {
-            // We don't use 'break' in this switch statement, the fall-through
-            // behavior is what we want, because if there are multiple versions between
-            // the old version and the current version, we want ALL the migrations
-            // that correspond to those versions to run, not only the last one.
-            // eslint-disable-next-line default-case
-            switch (oldVersion) {
-                case 0:
-                    db.createObjectStore(STORE_NAME);
-            }
-        }).catch(e => {
-            throw ERROR_FACTORY.create("storage-open" /* STORAGE_OPEN */, {
-                originalErrorMessage: e.message
-            });
-        });
-    }
-    return dbPromise;
-}
-async function readHeartbeatsFromIndexedDB(app) {
-    try {
-        const db = await getDbPromise();
-        return db
-            .transaction(STORE_NAME)
-            .objectStore(STORE_NAME)
-            .get(computeKey(app));
-    }
-    catch (e) {
-        throw ERROR_FACTORY.create("storage-get" /* STORAGE_GET */, {
-            originalErrorMessage: e.message
-        });
-    }
-}
-async function writeHeartbeatsToIndexedDB(app, heartbeatObject) {
-    try {
-        const db = await getDbPromise();
-        const tx = db.transaction(STORE_NAME, 'readwrite');
-        const objectStore = tx.objectStore(STORE_NAME);
-        await objectStore.put(heartbeatObject, computeKey(app));
-        return tx.complete;
-    }
-    catch (e) {
-        throw ERROR_FACTORY.create("storage-set" /* STORAGE_WRITE */, {
-            originalErrorMessage: e.message
-        });
-    }
-}
-function computeKey(app) {
-    return `${app.name}!${app.options.appId}`;
-}
-
-/**
- * @license
- * Copyright 2021 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-const MAX_HEADER_BYTES = 1024;
-// 30 days
-const STORED_HEARTBEAT_RETENTION_MAX_MILLIS = 30 * 24 * 60 * 60 * 1000;
-class HeartbeatServiceImpl {
-    constructor(container) {
-        this.container = container;
-        /**
-         * In-memory cache for heartbeats, used by getHeartbeatsHeader() to generate
-         * the header string.
-         * Stores one record per date. This will be consolidated into the standard
-         * format of one record per user agent string before being sent as a header.
-         * Populated from indexedDB when the controller is instantiated and should
-         * be kept in sync with indexedDB.
-         * Leave public for easier testing.
-         */
-        this._heartbeatsCache = null;
-        const app = this.container.getProvider('app').getImmediate();
-        this._storage = new HeartbeatStorageImpl(app);
-        this._heartbeatsCachePromise = this._storage.read().then(result => {
-            this._heartbeatsCache = result;
-            return result;
-        });
-    }
-    /**
-     * Called to report a heartbeat. The function will generate
-     * a HeartbeatsByUserAgent object, update heartbeatsCache, and persist it
-     * to IndexedDB.
-     * Note that we only store one heartbeat per day. So if a heartbeat for today is
-     * already logged, subsequent calls to this function in the same day will be ignored.
-     */
-    async triggerHeartbeat() {
-        const platformLogger = this.container
-            .getProvider('platform-logger')
-            .getImmediate();
-        // This is the "Firebase user agent" string from the platform logger
-        // service, not the browser user agent.
-        const agent = platformLogger.getPlatformInfoString();
-        const date = getUTCDateString();
-        if (this._heartbeatsCache === null) {
-            this._heartbeatsCache = await this._heartbeatsCachePromise;
-        }
-        // Do not store a heartbeat if one is already stored for this day
-        // or if a header has already been sent today.
-        if (this._heartbeatsCache.lastSentHeartbeatDate === date ||
-            this._heartbeatsCache.heartbeats.some(singleDateHeartbeat => singleDateHeartbeat.date === date)) {
-            return;
-        }
-        else {
-            // There is no entry for this date. Create one.
-            this._heartbeatsCache.heartbeats.push({ date, agent });
-        }
-        // Remove entries older than 30 days.
-        this._heartbeatsCache.heartbeats = this._heartbeatsCache.heartbeats.filter(singleDateHeartbeat => {
-            const hbTimestamp = new Date(singleDateHeartbeat.date).valueOf();
-            const now = Date.now();
-            return now - hbTimestamp <= STORED_HEARTBEAT_RETENTION_MAX_MILLIS;
-        });
-        return this._storage.overwrite(this._heartbeatsCache);
-    }
-    /**
-     * Returns a base64 encoded string which can be attached to the heartbeat-specific header directly.
-     * It also clears all heartbeats from memory as well as in IndexedDB.
+     * Transport abstract constructor.
      *
-     * NOTE: Consuming product SDKs should not send the header if this method
-     * returns an empty string.
+     * @param {Object} options.
+     * @api private
      */
-    async getHeartbeatsHeader() {
-        if (this._heartbeatsCache === null) {
-            await this._heartbeatsCachePromise;
+    constructor(opts) {
+        super();
+        this.writable = false;
+        (0,_util_js__WEBPACK_IMPORTED_MODULE_2__.installTimerFunctions)(this, opts);
+        this.opts = opts;
+        this.query = opts.query;
+        this.readyState = "";
+        this.socket = opts.socket;
+    }
+    /**
+     * Emits an error.
+     *
+     * @param {String} reason
+     * @param description
+     * @param context - the error context
+     * @return {Transport} for chaining
+     * @api protected
+     */
+    onError(reason, description, context) {
+        super.emitReserved("error", new TransportError(reason, description, context));
+        return this;
+    }
+    /**
+     * Opens the transport.
+     *
+     * @api public
+     */
+    open() {
+        if ("closed" === this.readyState || "" === this.readyState) {
+            this.readyState = "opening";
+            this.doOpen();
         }
-        // If it's still null or the array is empty, there is no data to send.
-        if (this._heartbeatsCache === null ||
-            this._heartbeatsCache.heartbeats.length === 0) {
-            return '';
+        return this;
+    }
+    /**
+     * Closes the transport.
+     *
+     * @api public
+     */
+    close() {
+        if ("opening" === this.readyState || "open" === this.readyState) {
+            this.doClose();
+            this.onClose();
         }
-        const date = getUTCDateString();
-        // Extract as many heartbeats from the cache as will fit under the size limit.
-        const { heartbeatsToSend, unsentEntries } = extractHeartbeatsForHeader(this._heartbeatsCache.heartbeats);
-        const headerString = (0,_firebase_util__WEBPACK_IMPORTED_MODULE_2__.base64urlEncodeWithoutPadding)(JSON.stringify({ version: 2, heartbeats: heartbeatsToSend }));
-        // Store last sent date to prevent another being logged/sent for the same day.
-        this._heartbeatsCache.lastSentHeartbeatDate = date;
-        if (unsentEntries.length > 0) {
-            // Store any unsent entries if they exist.
-            this._heartbeatsCache.heartbeats = unsentEntries;
-            // This seems more likely than emptying the array (below) to lead to some odd state
-            // since the cache isn't empty and this will be called again on the next request,
-            // and is probably safest if we await it.
-            await this._storage.overwrite(this._heartbeatsCache);
+        return this;
+    }
+    /**
+     * Sends multiple packets.
+     *
+     * @param {Array} packets
+     * @api public
+     */
+    send(packets) {
+        if ("open" === this.readyState) {
+            this.write(packets);
         }
         else {
-            this._heartbeatsCache.heartbeats = [];
-            // Do not wait for this, to reduce latency.
-            void this._storage.overwrite(this._heartbeatsCache);
-        }
-        return headerString;
-    }
-}
-function getUTCDateString() {
-    const today = new Date();
-    // Returns date format 'YYYY-MM-DD'
-    return today.toISOString().substring(0, 10);
-}
-function extractHeartbeatsForHeader(heartbeatsCache, maxSize = MAX_HEADER_BYTES) {
-    // Heartbeats grouped by user agent in the standard format to be sent in
-    // the header.
-    const heartbeatsToSend = [];
-    // Single date format heartbeats that are not sent.
-    let unsentEntries = heartbeatsCache.slice();
-    for (const singleDateHeartbeat of heartbeatsCache) {
-        // Look for an existing entry with the same user agent.
-        const heartbeatEntry = heartbeatsToSend.find(hb => hb.agent === singleDateHeartbeat.agent);
-        if (!heartbeatEntry) {
-            // If no entry for this user agent exists, create one.
-            heartbeatsToSend.push({
-                agent: singleDateHeartbeat.agent,
-                dates: [singleDateHeartbeat.date]
-            });
-            if (countBytes(heartbeatsToSend) > maxSize) {
-                // If the header would exceed max size, remove the added heartbeat
-                // entry and stop adding to the header.
-                heartbeatsToSend.pop();
-                break;
-            }
-        }
-        else {
-            heartbeatEntry.dates.push(singleDateHeartbeat.date);
-            // If the header would exceed max size, remove the added date
-            // and stop adding to the header.
-            if (countBytes(heartbeatsToSend) > maxSize) {
-                heartbeatEntry.dates.pop();
-                break;
-            }
-        }
-        // Pop unsent entry from queue. (Skipped if adding the entry exceeded
-        // quota and the loop breaks early.)
-        unsentEntries = unsentEntries.slice(1);
-    }
-    return {
-        heartbeatsToSend,
-        unsentEntries
-    };
-}
-class HeartbeatStorageImpl {
-    constructor(app) {
-        this.app = app;
-        this._canUseIndexedDBPromise = this.runIndexedDBEnvironmentCheck();
-    }
-    async runIndexedDBEnvironmentCheck() {
-        if (!(0,_firebase_util__WEBPACK_IMPORTED_MODULE_2__.isIndexedDBAvailable)()) {
-            return false;
-        }
-        else {
-            return (0,_firebase_util__WEBPACK_IMPORTED_MODULE_2__.validateIndexedDBOpenable)()
-                .then(() => true)
-                .catch(() => false);
+            // this might happen if the transport was silently closed in the beforeunload event handler
         }
     }
     /**
-     * Read all heartbeats.
+     * Called upon open
+     *
+     * @api protected
      */
-    async read() {
-        const canUseIndexedDB = await this._canUseIndexedDBPromise;
-        if (!canUseIndexedDB) {
-            return { heartbeats: [] };
-        }
-        else {
-            const idbHeartbeatObject = await readHeartbeatsFromIndexedDB(this.app);
-            return idbHeartbeatObject || { heartbeats: [] };
-        }
+    onOpen() {
+        this.readyState = "open";
+        this.writable = true;
+        super.emitReserved("open");
     }
-    // overwrite the storage with the provided heartbeats
-    async overwrite(heartbeatsObject) {
-        var _a;
-        const canUseIndexedDB = await this._canUseIndexedDBPromise;
-        if (!canUseIndexedDB) {
-            return;
-        }
-        else {
-            const existingHeartbeatsObject = await this.read();
-            return writeHeartbeatsToIndexedDB(this.app, {
-                lastSentHeartbeatDate: (_a = heartbeatsObject.lastSentHeartbeatDate) !== null && _a !== void 0 ? _a : existingHeartbeatsObject.lastSentHeartbeatDate,
-                heartbeats: heartbeatsObject.heartbeats
-            });
-        }
+    /**
+     * Called with data.
+     *
+     * @param {String} data
+     * @api protected
+     */
+    onData(data) {
+        const packet = (0,engine_io_parser__WEBPACK_IMPORTED_MODULE_0__.decodePacket)(data, this.socket.binaryType);
+        this.onPacket(packet);
     }
-    // add heartbeats
-    async add(heartbeatsObject) {
-        var _a;
-        const canUseIndexedDB = await this._canUseIndexedDBPromise;
-        if (!canUseIndexedDB) {
-            return;
-        }
-        else {
-            const existingHeartbeatsObject = await this.read();
-            return writeHeartbeatsToIndexedDB(this.app, {
-                lastSentHeartbeatDate: (_a = heartbeatsObject.lastSentHeartbeatDate) !== null && _a !== void 0 ? _a : existingHeartbeatsObject.lastSentHeartbeatDate,
-                heartbeats: [
-                    ...existingHeartbeatsObject.heartbeats,
-                    ...heartbeatsObject.heartbeats
-                ]
-            });
-        }
+    /**
+     * Called with a decoded packet.
+     *
+     * @api protected
+     */
+    onPacket(packet) {
+        super.emitReserved("packet", packet);
+    }
+    /**
+     * Called upon close.
+     *
+     * @api protected
+     */
+    onClose(details) {
+        this.readyState = "closed";
+        super.emitReserved("close", details);
     }
 }
-/**
- * Calculate bytes of a HeartbeatsByUserAgent array after being wrapped
- * in a platform logging header JSON object, stringified, and converted
- * to base 64.
- */
-function countBytes(heartbeatsCache) {
-    // base64 has a restricted set of characters, all of which should be 1 byte.
-    return (0,_firebase_util__WEBPACK_IMPORTED_MODULE_2__.base64urlEncodeWithoutPadding)(
-    // heartbeatsCache wrapper properties
-    JSON.stringify({ version: 2, heartbeats: heartbeatsCache })).length;
-}
-
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-function registerCoreComponents(variant) {
-    _registerComponent(new _firebase_component__WEBPACK_IMPORTED_MODULE_0__.Component('platform-logger', container => new PlatformLoggerServiceImpl(container), "PRIVATE" /* PRIVATE */));
-    _registerComponent(new _firebase_component__WEBPACK_IMPORTED_MODULE_0__.Component('heartbeat', container => new HeartbeatServiceImpl(container), "PRIVATE" /* PRIVATE */));
-    // Register `app` package.
-    registerVersion(name$o, version$1, variant);
-    // BUILD_TARGET will be replaced by values like esm5, esm2017, cjs5, etc during the compilation
-    registerVersion(name$o, version$1, 'esm2017');
-    // Register platform SDK identifier (no version).
-    registerVersion('fire-js', '');
-}
-
-/**
- * Firebase App
- *
- * @remarks This package coordinates the communication between the different Firebase components
- * @packageDocumentation
- */
-registerCoreComponents('');
-
-
-//# sourceMappingURL=index.esm2017.js.map
 
 
 /***/ }),
 
-/***/ "./node_modules/@firebase/component/dist/esm/index.esm2017.js":
-/*!********************************************************************!*\
-  !*** ./node_modules/@firebase/component/dist/esm/index.esm2017.js ***!
-  \********************************************************************/
+/***/ "./node_modules/engine.io-client/build/esm/transports/index.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/engine.io-client/build/esm/transports/index.js ***!
+  \*********************************************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Component": () => (/* binding */ Component),
-/* harmony export */   "ComponentContainer": () => (/* binding */ ComponentContainer),
-/* harmony export */   "Provider": () => (/* binding */ Provider)
+/* harmony export */   "transports": () => (/* binding */ transports)
 /* harmony export */ });
-/* harmony import */ var _firebase_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @firebase/util */ "./node_modules/@firebase/util/dist/index.esm2017.js");
+/* harmony import */ var _polling_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./polling.js */ "./node_modules/engine.io-client/build/esm/transports/polling.js");
+/* harmony import */ var _websocket_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./websocket.js */ "./node_modules/engine.io-client/build/esm/transports/websocket.js");
 
 
-/**
- * Component for service name T, e.g. `auth`, `auth-internal`
- */
-class Component {
+const transports = {
+    websocket: _websocket_js__WEBPACK_IMPORTED_MODULE_1__.WS,
+    polling: _polling_js__WEBPACK_IMPORTED_MODULE_0__.Polling
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/engine.io-client/build/esm/transports/polling.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/engine.io-client/build/esm/transports/polling.js ***!
+  \***********************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Polling": () => (/* binding */ Polling),
+/* harmony export */   "Request": () => (/* binding */ Request)
+/* harmony export */ });
+/* harmony import */ var _transport_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../transport.js */ "./node_modules/engine.io-client/build/esm/transport.js");
+/* harmony import */ var _contrib_yeast_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../contrib/yeast.js */ "./node_modules/engine.io-client/build/esm/contrib/yeast.js");
+/* harmony import */ var _contrib_parseqs_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../contrib/parseqs.js */ "./node_modules/engine.io-client/build/esm/contrib/parseqs.js");
+/* harmony import */ var engine_io_parser__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! engine.io-parser */ "./node_modules/engine.io-parser/build/esm/index.js");
+/* harmony import */ var _xmlhttprequest_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./xmlhttprequest.js */ "./node_modules/engine.io-client/build/esm/transports/xmlhttprequest.browser.js");
+/* harmony import */ var _socket_io_component_emitter__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @socket.io/component-emitter */ "./node_modules/@socket.io/component-emitter/index.mjs");
+/* harmony import */ var _util_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../util.js */ "./node_modules/engine.io-client/build/esm/util.js");
+/* harmony import */ var _globalThis_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../globalThis.js */ "./node_modules/engine.io-client/build/esm/globalThis.browser.js");
+
+
+
+
+
+
+
+
+function empty() { }
+const hasXHR2 = (function () {
+    const xhr = new _xmlhttprequest_js__WEBPACK_IMPORTED_MODULE_4__.XHR({
+        xdomain: false
+    });
+    return null != xhr.responseType;
+})();
+class Polling extends _transport_js__WEBPACK_IMPORTED_MODULE_0__.Transport {
     /**
+     * XHR Polling constructor.
      *
-     * @param name The public service name, e.g. app, auth, firestore, database
-     * @param instanceFactory Service factory responsible for creating the public interface
-     * @param type whether the service provided by the component is public or private
+     * @param {Object} opts
+     * @api public
      */
-    constructor(name, instanceFactory, type) {
-        this.name = name;
-        this.instanceFactory = instanceFactory;
-        this.type = type;
-        this.multipleInstances = false;
+    constructor(opts) {
+        super(opts);
+        this.polling = false;
+        if (typeof location !== "undefined") {
+            const isSSL = "https:" === location.protocol;
+            let port = location.port;
+            // some user agents have empty `location.port`
+            if (!port) {
+                port = isSSL ? "443" : "80";
+            }
+            this.xd =
+                (typeof location !== "undefined" &&
+                    opts.hostname !== location.hostname) ||
+                    port !== opts.port;
+            this.xs = opts.secure !== isSSL;
+        }
         /**
-         * Properties to be added to the service namespace
+         * XHR supports binary
          */
-        this.serviceProps = {};
-        this.instantiationMode = "LAZY" /* LAZY */;
-        this.onInstanceCreated = null;
+        const forceBase64 = opts && opts.forceBase64;
+        this.supportsBinary = hasXHR2 && !forceBase64;
     }
-    setInstantiationMode(mode) {
-        this.instantiationMode = mode;
-        return this;
+    /**
+     * Transport name.
+     */
+    get name() {
+        return "polling";
     }
-    setMultipleInstances(multipleInstances) {
-        this.multipleInstances = multipleInstances;
-        return this;
+    /**
+     * Opens the socket (triggers polling). We write a PING message to determine
+     * when the transport is open.
+     *
+     * @api private
+     */
+    doOpen() {
+        this.poll();
     }
-    setServiceProps(props) {
-        this.serviceProps = props;
-        return this;
+    /**
+     * Pauses polling.
+     *
+     * @param {Function} callback upon buffers are flushed and transport is paused
+     * @api private
+     */
+    pause(onPause) {
+        this.readyState = "pausing";
+        const pause = () => {
+            this.readyState = "paused";
+            onPause();
+        };
+        if (this.polling || !this.writable) {
+            let total = 0;
+            if (this.polling) {
+                total++;
+                this.once("pollComplete", function () {
+                    --total || pause();
+                });
+            }
+            if (!this.writable) {
+                total++;
+                this.once("drain", function () {
+                    --total || pause();
+                });
+            }
+        }
+        else {
+            pause();
+        }
     }
-    setInstanceCreatedCallback(callback) {
-        this.onInstanceCreated = callback;
-        return this;
+    /**
+     * Starts polling cycle.
+     *
+     * @api public
+     */
+    poll() {
+        this.polling = true;
+        this.doPoll();
+        this.emitReserved("poll");
+    }
+    /**
+     * Overloads onData to detect payloads.
+     *
+     * @api private
+     */
+    onData(data) {
+        const callback = packet => {
+            // if its the first message we consider the transport open
+            if ("opening" === this.readyState && packet.type === "open") {
+                this.onOpen();
+            }
+            // if its a close packet, we close the ongoing requests
+            if ("close" === packet.type) {
+                this.onClose({ description: "transport closed by the server" });
+                return false;
+            }
+            // otherwise bypass onData and handle the message
+            this.onPacket(packet);
+        };
+        // decode payload
+        (0,engine_io_parser__WEBPACK_IMPORTED_MODULE_3__.decodePayload)(data, this.socket.binaryType).forEach(callback);
+        // if an event did not trigger closing
+        if ("closed" !== this.readyState) {
+            // if we got data we're not polling
+            this.polling = false;
+            this.emitReserved("pollComplete");
+            if ("open" === this.readyState) {
+                this.poll();
+            }
+            else {
+            }
+        }
+    }
+    /**
+     * For polling, send a close packet.
+     *
+     * @api private
+     */
+    doClose() {
+        const close = () => {
+            this.write([{ type: "close" }]);
+        };
+        if ("open" === this.readyState) {
+            close();
+        }
+        else {
+            // in case we're trying to close while
+            // handshaking is in progress (GH-164)
+            this.once("open", close);
+        }
+    }
+    /**
+     * Writes a packets payload.
+     *
+     * @param {Array} data packets
+     * @param {Function} drain callback
+     * @api private
+     */
+    write(packets) {
+        this.writable = false;
+        (0,engine_io_parser__WEBPACK_IMPORTED_MODULE_3__.encodePayload)(packets, data => {
+            this.doWrite(data, () => {
+                this.writable = true;
+                this.emitReserved("drain");
+            });
+        });
+    }
+    /**
+     * Generates uri for connection.
+     *
+     * @api private
+     */
+    uri() {
+        let query = this.query || {};
+        const schema = this.opts.secure ? "https" : "http";
+        let port = "";
+        // cache busting is forced
+        if (false !== this.opts.timestampRequests) {
+            query[this.opts.timestampParam] = (0,_contrib_yeast_js__WEBPACK_IMPORTED_MODULE_1__.yeast)();
+        }
+        if (!this.supportsBinary && !query.sid) {
+            query.b64 = 1;
+        }
+        // avoid port if default for schema
+        if (this.opts.port &&
+            (("https" === schema && Number(this.opts.port) !== 443) ||
+                ("http" === schema && Number(this.opts.port) !== 80))) {
+            port = ":" + this.opts.port;
+        }
+        const encodedQuery = (0,_contrib_parseqs_js__WEBPACK_IMPORTED_MODULE_2__.encode)(query);
+        const ipv6 = this.opts.hostname.indexOf(":") !== -1;
+        return (schema +
+            "://" +
+            (ipv6 ? "[" + this.opts.hostname + "]" : this.opts.hostname) +
+            port +
+            this.opts.path +
+            (encodedQuery.length ? "?" + encodedQuery : ""));
+    }
+    /**
+     * Creates a request.
+     *
+     * @param {String} method
+     * @api private
+     */
+    request(opts = {}) {
+        Object.assign(opts, { xd: this.xd, xs: this.xs }, this.opts);
+        return new Request(this.uri(), opts);
+    }
+    /**
+     * Sends data.
+     *
+     * @param {String} data to send.
+     * @param {Function} called upon flush.
+     * @api private
+     */
+    doWrite(data, fn) {
+        const req = this.request({
+            method: "POST",
+            data: data
+        });
+        req.on("success", fn);
+        req.on("error", (xhrStatus, context) => {
+            this.onError("xhr post error", xhrStatus, context);
+        });
+    }
+    /**
+     * Starts a poll cycle.
+     *
+     * @api private
+     */
+    doPoll() {
+        const req = this.request();
+        req.on("data", this.onData.bind(this));
+        req.on("error", (xhrStatus, context) => {
+            this.onError("xhr poll error", xhrStatus, context);
+        });
+        this.pollXhr = req;
+    }
+}
+class Request extends _socket_io_component_emitter__WEBPACK_IMPORTED_MODULE_5__.Emitter {
+    /**
+     * Request constructor
+     *
+     * @param {Object} options
+     * @api public
+     */
+    constructor(uri, opts) {
+        super();
+        (0,_util_js__WEBPACK_IMPORTED_MODULE_6__.installTimerFunctions)(this, opts);
+        this.opts = opts;
+        this.method = opts.method || "GET";
+        this.uri = uri;
+        this.async = false !== opts.async;
+        this.data = undefined !== opts.data ? opts.data : null;
+        this.create();
+    }
+    /**
+     * Creates the XHR object and sends the request.
+     *
+     * @api private
+     */
+    create() {
+        const opts = (0,_util_js__WEBPACK_IMPORTED_MODULE_6__.pick)(this.opts, "agent", "pfx", "key", "passphrase", "cert", "ca", "ciphers", "rejectUnauthorized", "autoUnref");
+        opts.xdomain = !!this.opts.xd;
+        opts.xscheme = !!this.opts.xs;
+        const xhr = (this.xhr = new _xmlhttprequest_js__WEBPACK_IMPORTED_MODULE_4__.XHR(opts));
+        try {
+            xhr.open(this.method, this.uri, this.async);
+            try {
+                if (this.opts.extraHeaders) {
+                    xhr.setDisableHeaderCheck && xhr.setDisableHeaderCheck(true);
+                    for (let i in this.opts.extraHeaders) {
+                        if (this.opts.extraHeaders.hasOwnProperty(i)) {
+                            xhr.setRequestHeader(i, this.opts.extraHeaders[i]);
+                        }
+                    }
+                }
+            }
+            catch (e) { }
+            if ("POST" === this.method) {
+                try {
+                    xhr.setRequestHeader("Content-type", "text/plain;charset=UTF-8");
+                }
+                catch (e) { }
+            }
+            try {
+                xhr.setRequestHeader("Accept", "*/*");
+            }
+            catch (e) { }
+            // ie6 check
+            if ("withCredentials" in xhr) {
+                xhr.withCredentials = this.opts.withCredentials;
+            }
+            if (this.opts.requestTimeout) {
+                xhr.timeout = this.opts.requestTimeout;
+            }
+            xhr.onreadystatechange = () => {
+                if (4 !== xhr.readyState)
+                    return;
+                if (200 === xhr.status || 1223 === xhr.status) {
+                    this.onLoad();
+                }
+                else {
+                    // make sure the `error` event handler that's user-set
+                    // does not throw in the same tick and gets caught here
+                    this.setTimeoutFn(() => {
+                        this.onError(typeof xhr.status === "number" ? xhr.status : 0);
+                    }, 0);
+                }
+            };
+            xhr.send(this.data);
+        }
+        catch (e) {
+            // Need to defer since .create() is called directly from the constructor
+            // and thus the 'error' event can only be only bound *after* this exception
+            // occurs.  Therefore, also, we cannot throw here at all.
+            this.setTimeoutFn(() => {
+                this.onError(e);
+            }, 0);
+            return;
+        }
+        if (typeof document !== "undefined") {
+            this.index = Request.requestsCount++;
+            Request.requests[this.index] = this;
+        }
+    }
+    /**
+     * Called upon error.
+     *
+     * @api private
+     */
+    onError(err) {
+        this.emitReserved("error", err, this.xhr);
+        this.cleanup(true);
+    }
+    /**
+     * Cleans up house.
+     *
+     * @api private
+     */
+    cleanup(fromError) {
+        if ("undefined" === typeof this.xhr || null === this.xhr) {
+            return;
+        }
+        this.xhr.onreadystatechange = empty;
+        if (fromError) {
+            try {
+                this.xhr.abort();
+            }
+            catch (e) { }
+        }
+        if (typeof document !== "undefined") {
+            delete Request.requests[this.index];
+        }
+        this.xhr = null;
+    }
+    /**
+     * Called upon load.
+     *
+     * @api private
+     */
+    onLoad() {
+        const data = this.xhr.responseText;
+        if (data !== null) {
+            this.emitReserved("data", data);
+            this.emitReserved("success");
+            this.cleanup();
+        }
+    }
+    /**
+     * Aborts the request.
+     *
+     * @api public
+     */
+    abort() {
+        this.cleanup();
+    }
+}
+Request.requestsCount = 0;
+Request.requests = {};
+/**
+ * Aborts pending requests when unloading the window. This is needed to prevent
+ * memory leaks (e.g. when using IE) and to ensure that no spurious error is
+ * emitted.
+ */
+if (typeof document !== "undefined") {
+    // @ts-ignore
+    if (typeof attachEvent === "function") {
+        // @ts-ignore
+        attachEvent("onunload", unloadHandler);
+    }
+    else if (typeof addEventListener === "function") {
+        const terminationEvent = "onpagehide" in _globalThis_js__WEBPACK_IMPORTED_MODULE_7__.globalThisShim ? "pagehide" : "unload";
+        addEventListener(terminationEvent, unloadHandler, false);
+    }
+}
+function unloadHandler() {
+    for (let i in Request.requests) {
+        if (Request.requests.hasOwnProperty(i)) {
+            Request.requests[i].abort();
+        }
     }
 }
 
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-const DEFAULT_ENTRY_NAME = '[DEFAULT]';
 
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/**
- * Provider for instance for service name T, e.g. 'auth', 'auth-internal'
- * NameServiceMapping[T] is an alias for the type of the instance
- */
-class Provider {
-    constructor(name, container) {
-        this.name = name;
-        this.container = container;
-        this.component = null;
-        this.instances = new Map();
-        this.instancesDeferred = new Map();
-        this.instancesOptions = new Map();
-        this.onInitCallbacks = new Map();
+/***/ }),
+
+/***/ "./node_modules/engine.io-client/build/esm/transports/websocket-constructor.browser.js":
+/*!*********************************************************************************************!*\
+  !*** ./node_modules/engine.io-client/build/esm/transports/websocket-constructor.browser.js ***!
+  \*********************************************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "WebSocket": () => (/* binding */ WebSocket),
+/* harmony export */   "defaultBinaryType": () => (/* binding */ defaultBinaryType),
+/* harmony export */   "nextTick": () => (/* binding */ nextTick),
+/* harmony export */   "usingBrowserWebSocket": () => (/* binding */ usingBrowserWebSocket)
+/* harmony export */ });
+/* harmony import */ var _globalThis_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../globalThis.js */ "./node_modules/engine.io-client/build/esm/globalThis.browser.js");
+
+const nextTick = (() => {
+    const isPromiseAvailable = typeof Promise === "function" && typeof Promise.resolve === "function";
+    if (isPromiseAvailable) {
+        return cb => Promise.resolve().then(cb);
+    }
+    else {
+        return (cb, setTimeoutFn) => setTimeoutFn(cb, 0);
+    }
+})();
+const WebSocket = _globalThis_js__WEBPACK_IMPORTED_MODULE_0__.globalThisShim.WebSocket || _globalThis_js__WEBPACK_IMPORTED_MODULE_0__.globalThisShim.MozWebSocket;
+const usingBrowserWebSocket = true;
+const defaultBinaryType = "arraybuffer";
+
+
+/***/ }),
+
+/***/ "./node_modules/engine.io-client/build/esm/transports/websocket.js":
+/*!*************************************************************************!*\
+  !*** ./node_modules/engine.io-client/build/esm/transports/websocket.js ***!
+  \*************************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "WS": () => (/* binding */ WS)
+/* harmony export */ });
+/* harmony import */ var _transport_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../transport.js */ "./node_modules/engine.io-client/build/esm/transport.js");
+/* harmony import */ var _contrib_parseqs_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../contrib/parseqs.js */ "./node_modules/engine.io-client/build/esm/contrib/parseqs.js");
+/* harmony import */ var _contrib_yeast_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../contrib/yeast.js */ "./node_modules/engine.io-client/build/esm/contrib/yeast.js");
+/* harmony import */ var _util_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../util.js */ "./node_modules/engine.io-client/build/esm/util.js");
+/* harmony import */ var _websocket_constructor_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./websocket-constructor.js */ "./node_modules/engine.io-client/build/esm/transports/websocket-constructor.browser.js");
+/* harmony import */ var engine_io_parser__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! engine.io-parser */ "./node_modules/engine.io-parser/build/esm/index.js");
+
+
+
+
+
+
+// detect ReactNative environment
+const isReactNative = typeof navigator !== "undefined" &&
+    typeof navigator.product === "string" &&
+    navigator.product.toLowerCase() === "reactnative";
+class WS extends _transport_js__WEBPACK_IMPORTED_MODULE_0__.Transport {
+    /**
+     * WebSocket transport constructor.
+     *
+     * @api {Object} connection options
+     * @api public
+     */
+    constructor(opts) {
+        super(opts);
+        this.supportsBinary = !opts.forceBase64;
     }
     /**
-     * @param identifier A provider can provide mulitple instances of a service
-     * if this.component.multipleInstances is true.
+     * Transport name.
+     *
+     * @api public
      */
-    get(identifier) {
-        // if multipleInstances is not supported, use the default name
-        const normalizedIdentifier = this.normalizeInstanceIdentifier(identifier);
-        if (!this.instancesDeferred.has(normalizedIdentifier)) {
-            const deferred = new _firebase_util__WEBPACK_IMPORTED_MODULE_0__.Deferred();
-            this.instancesDeferred.set(normalizedIdentifier, deferred);
-            if (this.isInitialized(normalizedIdentifier) ||
-                this.shouldAutoInitialize()) {
-                // initialize the service if it can be auto-initialized
+    get name() {
+        return "websocket";
+    }
+    /**
+     * Opens socket.
+     *
+     * @api private
+     */
+    doOpen() {
+        if (!this.check()) {
+            // let probe timeout
+            return;
+        }
+        const uri = this.uri();
+        const protocols = this.opts.protocols;
+        // React Native only supports the 'headers' option, and will print a warning if anything else is passed
+        const opts = isReactNative
+            ? {}
+            : (0,_util_js__WEBPACK_IMPORTED_MODULE_3__.pick)(this.opts, "agent", "perMessageDeflate", "pfx", "key", "passphrase", "cert", "ca", "ciphers", "rejectUnauthorized", "localAddress", "protocolVersion", "origin", "maxPayload", "family", "checkServerIdentity");
+        if (this.opts.extraHeaders) {
+            opts.headers = this.opts.extraHeaders;
+        }
+        try {
+            this.ws =
+                _websocket_constructor_js__WEBPACK_IMPORTED_MODULE_4__.usingBrowserWebSocket && !isReactNative
+                    ? protocols
+                        ? new _websocket_constructor_js__WEBPACK_IMPORTED_MODULE_4__.WebSocket(uri, protocols)
+                        : new _websocket_constructor_js__WEBPACK_IMPORTED_MODULE_4__.WebSocket(uri)
+                    : new _websocket_constructor_js__WEBPACK_IMPORTED_MODULE_4__.WebSocket(uri, protocols, opts);
+        }
+        catch (err) {
+            return this.emitReserved("error", err);
+        }
+        this.ws.binaryType = this.socket.binaryType || _websocket_constructor_js__WEBPACK_IMPORTED_MODULE_4__.defaultBinaryType;
+        this.addEventListeners();
+    }
+    /**
+     * Adds event listeners to the socket
+     *
+     * @api private
+     */
+    addEventListeners() {
+        this.ws.onopen = () => {
+            if (this.opts.autoUnref) {
+                this.ws._socket.unref();
+            }
+            this.onOpen();
+        };
+        this.ws.onclose = closeEvent => this.onClose({
+            description: "websocket connection closed",
+            context: closeEvent
+        });
+        this.ws.onmessage = ev => this.onData(ev.data);
+        this.ws.onerror = e => this.onError("websocket error", e);
+    }
+    /**
+     * Writes data to socket.
+     *
+     * @param {Array} array of packets.
+     * @api private
+     */
+    write(packets) {
+        this.writable = false;
+        // encodePacket efficient as it uses WS framing
+        // no need for encodePayload
+        for (let i = 0; i < packets.length; i++) {
+            const packet = packets[i];
+            const lastPacket = i === packets.length - 1;
+            (0,engine_io_parser__WEBPACK_IMPORTED_MODULE_5__.encodePacket)(packet, this.supportsBinary, data => {
+                // always create a new object (GH-437)
+                const opts = {};
+                if (!_websocket_constructor_js__WEBPACK_IMPORTED_MODULE_4__.usingBrowserWebSocket) {
+                    if (packet.options) {
+                        opts.compress = packet.options.compress;
+                    }
+                    if (this.opts.perMessageDeflate) {
+                        const len = 
+                        // @ts-ignore
+                        "string" === typeof data ? Buffer.byteLength(data) : data.length;
+                        if (len < this.opts.perMessageDeflate.threshold) {
+                            opts.compress = false;
+                        }
+                    }
+                }
+                // Sometimes the websocket has already been closed but the browser didn't
+                // have a chance of informing us about it yet, in that case send will
+                // throw an error
                 try {
-                    const instance = this.getOrInitializeService({
-                        instanceIdentifier: normalizedIdentifier
-                    });
-                    if (instance) {
-                        deferred.resolve(instance);
+                    if (_websocket_constructor_js__WEBPACK_IMPORTED_MODULE_4__.usingBrowserWebSocket) {
+                        // TypeError is thrown when passing the second argument on Safari
+                        this.ws.send(data);
+                    }
+                    else {
+                        this.ws.send(data, opts);
                     }
                 }
                 catch (e) {
-                    // when the instance factory throws an exception during get(), it should not cause
-                    // a fatal error. We just return the unresolved promise in this case.
                 }
-            }
-        }
-        return this.instancesDeferred.get(normalizedIdentifier).promise;
-    }
-    getImmediate(options) {
-        var _a;
-        // if multipleInstances is not supported, use the default name
-        const normalizedIdentifier = this.normalizeInstanceIdentifier(options === null || options === void 0 ? void 0 : options.identifier);
-        const optional = (_a = options === null || options === void 0 ? void 0 : options.optional) !== null && _a !== void 0 ? _a : false;
-        if (this.isInitialized(normalizedIdentifier) ||
-            this.shouldAutoInitialize()) {
-            try {
-                return this.getOrInitializeService({
-                    instanceIdentifier: normalizedIdentifier
-                });
-            }
-            catch (e) {
-                if (optional) {
-                    return null;
+                if (lastPacket) {
+                    // fake drain
+                    // defer to next tick to allow Socket to clear writeBuffer
+                    (0,_websocket_constructor_js__WEBPACK_IMPORTED_MODULE_4__.nextTick)(() => {
+                        this.writable = true;
+                        this.emitReserved("drain");
+                    }, this.setTimeoutFn);
                 }
-                else {
-                    throw e;
-                }
-            }
-        }
-        else {
-            // In case a component is not initialized and should/can not be auto-initialized at the moment, return null if the optional flag is set, or throw
-            if (optional) {
-                return null;
-            }
-            else {
-                throw Error(`Service ${this.name} is not available`);
-            }
-        }
-    }
-    getComponent() {
-        return this.component;
-    }
-    setComponent(component) {
-        if (component.name !== this.name) {
-            throw Error(`Mismatching Component ${component.name} for Provider ${this.name}.`);
-        }
-        if (this.component) {
-            throw Error(`Component for ${this.name} has already been provided`);
-        }
-        this.component = component;
-        // return early without attempting to initialize the component if the component requires explicit initialization (calling `Provider.initialize()`)
-        if (!this.shouldAutoInitialize()) {
-            return;
-        }
-        // if the service is eager, initialize the default instance
-        if (isComponentEager(component)) {
-            try {
-                this.getOrInitializeService({ instanceIdentifier: DEFAULT_ENTRY_NAME });
-            }
-            catch (e) {
-                // when the instance factory for an eager Component throws an exception during the eager
-                // initialization, it should not cause a fatal error.
-                // TODO: Investigate if we need to make it configurable, because some component may want to cause
-                // a fatal error in this case?
-            }
-        }
-        // Create service instances for the pending promises and resolve them
-        // NOTE: if this.multipleInstances is false, only the default instance will be created
-        // and all promises with resolve with it regardless of the identifier.
-        for (const [instanceIdentifier, instanceDeferred] of this.instancesDeferred.entries()) {
-            const normalizedIdentifier = this.normalizeInstanceIdentifier(instanceIdentifier);
-            try {
-                // `getOrInitializeService()` should always return a valid instance since a component is guaranteed. use ! to make typescript happy.
-                const instance = this.getOrInitializeService({
-                    instanceIdentifier: normalizedIdentifier
-                });
-                instanceDeferred.resolve(instance);
-            }
-            catch (e) {
-                // when the instance factory throws an exception, it should not cause
-                // a fatal error. We just leave the promise unresolved.
-            }
-        }
-    }
-    clearInstance(identifier = DEFAULT_ENTRY_NAME) {
-        this.instancesDeferred.delete(identifier);
-        this.instancesOptions.delete(identifier);
-        this.instances.delete(identifier);
-    }
-    // app.delete() will call this method on every provider to delete the services
-    // TODO: should we mark the provider as deleted?
-    async delete() {
-        const services = Array.from(this.instances.values());
-        await Promise.all([
-            ...services
-                .filter(service => 'INTERNAL' in service) // legacy services
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                .map(service => service.INTERNAL.delete()),
-            ...services
-                .filter(service => '_delete' in service) // modularized services
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                .map(service => service._delete())
-        ]);
-    }
-    isComponentSet() {
-        return this.component != null;
-    }
-    isInitialized(identifier = DEFAULT_ENTRY_NAME) {
-        return this.instances.has(identifier);
-    }
-    getOptions(identifier = DEFAULT_ENTRY_NAME) {
-        return this.instancesOptions.get(identifier) || {};
-    }
-    initialize(opts = {}) {
-        const { options = {} } = opts;
-        const normalizedIdentifier = this.normalizeInstanceIdentifier(opts.instanceIdentifier);
-        if (this.isInitialized(normalizedIdentifier)) {
-            throw Error(`${this.name}(${normalizedIdentifier}) has already been initialized`);
-        }
-        if (!this.isComponentSet()) {
-            throw Error(`Component ${this.name} has not been registered yet`);
-        }
-        const instance = this.getOrInitializeService({
-            instanceIdentifier: normalizedIdentifier,
-            options
-        });
-        // resolve any pending promise waiting for the service instance
-        for (const [instanceIdentifier, instanceDeferred] of this.instancesDeferred.entries()) {
-            const normalizedDeferredIdentifier = this.normalizeInstanceIdentifier(instanceIdentifier);
-            if (normalizedIdentifier === normalizedDeferredIdentifier) {
-                instanceDeferred.resolve(instance);
-            }
-        }
-        return instance;
-    }
-    /**
-     *
-     * @param callback - a function that will be invoked  after the provider has been initialized by calling provider.initialize().
-     * The function is invoked SYNCHRONOUSLY, so it should not execute any longrunning tasks in order to not block the program.
-     *
-     * @param identifier An optional instance identifier
-     * @returns a function to unregister the callback
-     */
-    onInit(callback, identifier) {
-        var _a;
-        const normalizedIdentifier = this.normalizeInstanceIdentifier(identifier);
-        const existingCallbacks = (_a = this.onInitCallbacks.get(normalizedIdentifier)) !== null && _a !== void 0 ? _a : new Set();
-        existingCallbacks.add(callback);
-        this.onInitCallbacks.set(normalizedIdentifier, existingCallbacks);
-        const existingInstance = this.instances.get(normalizedIdentifier);
-        if (existingInstance) {
-            callback(existingInstance, normalizedIdentifier);
-        }
-        return () => {
-            existingCallbacks.delete(callback);
-        };
-    }
-    /**
-     * Invoke onInit callbacks synchronously
-     * @param instance the service instance`
-     */
-    invokeOnInitCallbacks(instance, identifier) {
-        const callbacks = this.onInitCallbacks.get(identifier);
-        if (!callbacks) {
-            return;
-        }
-        for (const callback of callbacks) {
-            try {
-                callback(instance, identifier);
-            }
-            catch (_a) {
-                // ignore errors in the onInit callback
-            }
-        }
-    }
-    getOrInitializeService({ instanceIdentifier, options = {} }) {
-        let instance = this.instances.get(instanceIdentifier);
-        if (!instance && this.component) {
-            instance = this.component.instanceFactory(this.container, {
-                instanceIdentifier: normalizeIdentifierForFactory(instanceIdentifier),
-                options
-            });
-            this.instances.set(instanceIdentifier, instance);
-            this.instancesOptions.set(instanceIdentifier, options);
-            /**
-             * Invoke onInit listeners.
-             * Note this.component.onInstanceCreated is different, which is used by the component creator,
-             * while onInit listeners are registered by consumers of the provider.
-             */
-            this.invokeOnInitCallbacks(instance, instanceIdentifier);
-            /**
-             * Order is important
-             * onInstanceCreated() should be called after this.instances.set(instanceIdentifier, instance); which
-             * makes `isInitialized()` return true.
-             */
-            if (this.component.onInstanceCreated) {
-                try {
-                    this.component.onInstanceCreated(this.container, instanceIdentifier, instance);
-                }
-                catch (_a) {
-                    // ignore errors in the onInstanceCreatedCallback
-                }
-            }
-        }
-        return instance || null;
-    }
-    normalizeInstanceIdentifier(identifier = DEFAULT_ENTRY_NAME) {
-        if (this.component) {
-            return this.component.multipleInstances ? identifier : DEFAULT_ENTRY_NAME;
-        }
-        else {
-            return identifier; // assume multiple instances are supported before the component is provided.
-        }
-    }
-    shouldAutoInitialize() {
-        return (!!this.component &&
-            this.component.instantiationMode !== "EXPLICIT" /* EXPLICIT */);
-    }
-}
-// undefined should be passed to the service factory for the default instance
-function normalizeIdentifierForFactory(identifier) {
-    return identifier === DEFAULT_ENTRY_NAME ? undefined : identifier;
-}
-function isComponentEager(component) {
-    return component.instantiationMode === "EAGER" /* EAGER */;
-}
-
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/**
- * ComponentContainer that provides Providers for service name T, e.g. `auth`, `auth-internal`
- */
-class ComponentContainer {
-    constructor(name) {
-        this.name = name;
-        this.providers = new Map();
-    }
-    /**
-     *
-     * @param component Component being added
-     * @param overwrite When a component with the same name has already been registered,
-     * if overwrite is true: overwrite the existing component with the new component and create a new
-     * provider with the new component. It can be useful in tests where you want to use different mocks
-     * for different tests.
-     * if overwrite is false: throw an exception
-     */
-    addComponent(component) {
-        const provider = this.getProvider(component.name);
-        if (provider.isComponentSet()) {
-            throw new Error(`Component ${component.name} has already been registered with ${this.name}`);
-        }
-        provider.setComponent(component);
-    }
-    addOrOverwriteComponent(component) {
-        const provider = this.getProvider(component.name);
-        if (provider.isComponentSet()) {
-            // delete the existing provider from the container, so we can register the new component
-            this.providers.delete(component.name);
-        }
-        this.addComponent(component);
-    }
-    /**
-     * getProvider provides a type safe interface where it can only be called with a field name
-     * present in NameServiceMapping interface.
-     *
-     * Firebase SDKs providing services should extend NameServiceMapping interface to register
-     * themselves.
-     */
-    getProvider(name) {
-        if (this.providers.has(name)) {
-            return this.providers.get(name);
-        }
-        // create a Provider for a service that hasn't registered with Firebase
-        const provider = new Provider(name, this);
-        this.providers.set(name, provider);
-        return provider;
-    }
-    getProviders() {
-        return Array.from(this.providers.values());
-    }
-}
-
-
-//# sourceMappingURL=index.esm2017.js.map
-
-
-/***/ }),
-
-/***/ "./node_modules/@firebase/installations/dist/esm/index.esm2017.js":
-/*!************************************************************************!*\
-  !*** ./node_modules/@firebase/installations/dist/esm/index.esm2017.js ***!
-  \************************************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "deleteInstallations": () => (/* binding */ deleteInstallations),
-/* harmony export */   "getId": () => (/* binding */ getId),
-/* harmony export */   "getInstallations": () => (/* binding */ getInstallations),
-/* harmony export */   "getToken": () => (/* binding */ getToken),
-/* harmony export */   "onIdChange": () => (/* binding */ onIdChange)
-/* harmony export */ });
-/* harmony import */ var _firebase_app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @firebase/app */ "./node_modules/@firebase/app/dist/esm/index.esm2017.js");
-/* harmony import */ var _firebase_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @firebase/component */ "./node_modules/@firebase/component/dist/esm/index.esm2017.js");
-/* harmony import */ var _firebase_util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @firebase/util */ "./node_modules/@firebase/util/dist/index.esm2017.js");
-
-
-
-
-const name = "@firebase/installations";
-const version = "0.5.6";
-
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-const PENDING_TIMEOUT_MS = 10000;
-const PACKAGE_VERSION = `w:${version}`;
-const INTERNAL_AUTH_VERSION = 'FIS_v2';
-const INSTALLATIONS_API_URL = 'https://firebaseinstallations.googleapis.com/v1';
-const TOKEN_EXPIRATION_BUFFER = 60 * 60 * 1000; // One hour
-const SERVICE = 'installations';
-const SERVICE_NAME = 'Installations';
-
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-const ERROR_DESCRIPTION_MAP = {
-    ["missing-app-config-values" /* MISSING_APP_CONFIG_VALUES */]: 'Missing App configuration value: "{$valueName}"',
-    ["not-registered" /* NOT_REGISTERED */]: 'Firebase Installation is not registered.',
-    ["installation-not-found" /* INSTALLATION_NOT_FOUND */]: 'Firebase Installation not found.',
-    ["request-failed" /* REQUEST_FAILED */]: '{$requestName} request failed with error "{$serverCode} {$serverStatus}: {$serverMessage}"',
-    ["app-offline" /* APP_OFFLINE */]: 'Could not process request. Application offline.',
-    ["delete-pending-registration" /* DELETE_PENDING_REGISTRATION */]: "Can't delete installation while there is a pending registration request."
-};
-const ERROR_FACTORY = new _firebase_util__WEBPACK_IMPORTED_MODULE_2__.ErrorFactory(SERVICE, SERVICE_NAME, ERROR_DESCRIPTION_MAP);
-/** Returns true if error is a FirebaseError that is based on an error from the server. */
-function isServerError(error) {
-    return (error instanceof _firebase_util__WEBPACK_IMPORTED_MODULE_2__.FirebaseError &&
-        error.code.includes("request-failed" /* REQUEST_FAILED */));
-}
-
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-function getInstallationsEndpoint({ projectId }) {
-    return `${INSTALLATIONS_API_URL}/projects/${projectId}/installations`;
-}
-function extractAuthTokenInfoFromResponse(response) {
-    return {
-        token: response.token,
-        requestStatus: 2 /* COMPLETED */,
-        expiresIn: getExpiresInFromResponseExpiresIn(response.expiresIn),
-        creationTime: Date.now()
-    };
-}
-async function getErrorFromResponse(requestName, response) {
-    const responseJson = await response.json();
-    const errorData = responseJson.error;
-    return ERROR_FACTORY.create("request-failed" /* REQUEST_FAILED */, {
-        requestName,
-        serverCode: errorData.code,
-        serverMessage: errorData.message,
-        serverStatus: errorData.status
-    });
-}
-function getHeaders({ apiKey }) {
-    return new Headers({
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-        'x-goog-api-key': apiKey
-    });
-}
-function getHeadersWithAuth(appConfig, { refreshToken }) {
-    const headers = getHeaders(appConfig);
-    headers.append('Authorization', getAuthorizationHeader(refreshToken));
-    return headers;
-}
-/**
- * Calls the passed in fetch wrapper and returns the response.
- * If the returned response has a status of 5xx, re-runs the function once and
- * returns the response.
- */
-async function retryIfServerError(fn) {
-    const result = await fn();
-    if (result.status >= 500 && result.status < 600) {
-        // Internal Server Error. Retry request.
-        return fn();
-    }
-    return result;
-}
-function getExpiresInFromResponseExpiresIn(responseExpiresIn) {
-    // This works because the server will never respond with fractions of a second.
-    return Number(responseExpiresIn.replace('s', '000'));
-}
-function getAuthorizationHeader(refreshToken) {
-    return `${INTERNAL_AUTH_VERSION} ${refreshToken}`;
-}
-
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-async function createInstallationRequest({ appConfig, heartbeatServiceProvider }, { fid }) {
-    const endpoint = getInstallationsEndpoint(appConfig);
-    const headers = getHeaders(appConfig);
-    // If heartbeat service exists, add the heartbeat string to the header.
-    const heartbeatService = heartbeatServiceProvider.getImmediate({
-        optional: true
-    });
-    if (heartbeatService) {
-        const heartbeatsHeader = await heartbeatService.getHeartbeatsHeader();
-        if (heartbeatsHeader) {
-            headers.append('x-firebase-client', heartbeatsHeader);
-        }
-    }
-    const body = {
-        fid,
-        authVersion: INTERNAL_AUTH_VERSION,
-        appId: appConfig.appId,
-        sdkVersion: PACKAGE_VERSION
-    };
-    const request = {
-        method: 'POST',
-        headers,
-        body: JSON.stringify(body)
-    };
-    const response = await retryIfServerError(() => fetch(endpoint, request));
-    if (response.ok) {
-        const responseValue = await response.json();
-        const registeredInstallationEntry = {
-            fid: responseValue.fid || fid,
-            registrationStatus: 2 /* COMPLETED */,
-            refreshToken: responseValue.refreshToken,
-            authToken: extractAuthTokenInfoFromResponse(responseValue.authToken)
-        };
-        return registeredInstallationEntry;
-    }
-    else {
-        throw await getErrorFromResponse('Create Installation', response);
-    }
-}
-
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/** Returns a promise that resolves after given time passes. */
-function sleep(ms) {
-    return new Promise(resolve => {
-        setTimeout(resolve, ms);
-    });
-}
-
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-function bufferToBase64UrlSafe(array) {
-    const b64 = btoa(String.fromCharCode(...array));
-    return b64.replace(/\+/g, '-').replace(/\//g, '_');
-}
-
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-const VALID_FID_PATTERN = /^[cdef][\w-]{21}$/;
-const INVALID_FID = '';
-/**
- * Generates a new FID using random values from Web Crypto API.
- * Returns an empty string if FID generation fails for any reason.
- */
-function generateFid() {
-    try {
-        // A valid FID has exactly 22 base64 characters, which is 132 bits, or 16.5
-        // bytes. our implementation generates a 17 byte array instead.
-        const fidByteArray = new Uint8Array(17);
-        const crypto = self.crypto || self.msCrypto;
-        crypto.getRandomValues(fidByteArray);
-        // Replace the first 4 random bits with the constant FID header of 0b0111.
-        fidByteArray[0] = 0b01110000 + (fidByteArray[0] % 0b00010000);
-        const fid = encode(fidByteArray);
-        return VALID_FID_PATTERN.test(fid) ? fid : INVALID_FID;
-    }
-    catch (_a) {
-        // FID generation errored
-        return INVALID_FID;
-    }
-}
-/** Converts a FID Uint8Array to a base64 string representation. */
-function encode(fidByteArray) {
-    const b64String = bufferToBase64UrlSafe(fidByteArray);
-    // Remove the 23rd character that was added because of the extra 4 bits at the
-    // end of our 17 byte array, and the '=' padding.
-    return b64String.substr(0, 22);
-}
-
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/** Returns a string key that can be used to identify the app. */
-function getKey(appConfig) {
-    return `${appConfig.appName}!${appConfig.appId}`;
-}
-
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-const fidChangeCallbacks = new Map();
-/**
- * Calls the onIdChange callbacks with the new FID value, and broadcasts the
- * change to other tabs.
- */
-function fidChanged(appConfig, fid) {
-    const key = getKey(appConfig);
-    callFidChangeCallbacks(key, fid);
-    broadcastFidChange(key, fid);
-}
-function addCallback(appConfig, callback) {
-    // Open the broadcast channel if it's not already open,
-    // to be able to listen to change events from other tabs.
-    getBroadcastChannel();
-    const key = getKey(appConfig);
-    let callbackSet = fidChangeCallbacks.get(key);
-    if (!callbackSet) {
-        callbackSet = new Set();
-        fidChangeCallbacks.set(key, callbackSet);
-    }
-    callbackSet.add(callback);
-}
-function removeCallback(appConfig, callback) {
-    const key = getKey(appConfig);
-    const callbackSet = fidChangeCallbacks.get(key);
-    if (!callbackSet) {
-        return;
-    }
-    callbackSet.delete(callback);
-    if (callbackSet.size === 0) {
-        fidChangeCallbacks.delete(key);
-    }
-    // Close broadcast channel if there are no more callbacks.
-    closeBroadcastChannel();
-}
-function callFidChangeCallbacks(key, fid) {
-    const callbacks = fidChangeCallbacks.get(key);
-    if (!callbacks) {
-        return;
-    }
-    for (const callback of callbacks) {
-        callback(fid);
-    }
-}
-function broadcastFidChange(key, fid) {
-    const channel = getBroadcastChannel();
-    if (channel) {
-        channel.postMessage({ key, fid });
-    }
-    closeBroadcastChannel();
-}
-let broadcastChannel = null;
-/** Opens and returns a BroadcastChannel if it is supported by the browser. */
-function getBroadcastChannel() {
-    if (!broadcastChannel && 'BroadcastChannel' in self) {
-        broadcastChannel = new BroadcastChannel('[Firebase] FID Change');
-        broadcastChannel.onmessage = e => {
-            callFidChangeCallbacks(e.data.key, e.data.fid);
-        };
-    }
-    return broadcastChannel;
-}
-function closeBroadcastChannel() {
-    if (fidChangeCallbacks.size === 0 && broadcastChannel) {
-        broadcastChannel.close();
-        broadcastChannel = null;
-    }
-}
-
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-const DATABASE_NAME = 'firebase-installations-database';
-const DATABASE_VERSION = 1;
-const OBJECT_STORE_NAME = 'firebase-installations-store';
-let dbPromise = null;
-function getDbPromise() {
-    if (!dbPromise) {
-        dbPromise = (0,_firebase_util__WEBPACK_IMPORTED_MODULE_2__.openDB)(DATABASE_NAME, DATABASE_VERSION, (db, oldVersion) => {
-            // We don't use 'break' in this switch statement, the fall-through
-            // behavior is what we want, because if there are multiple versions between
-            // the old version and the current version, we want ALL the migrations
-            // that correspond to those versions to run, not only the last one.
-            // eslint-disable-next-line default-case
-            switch (oldVersion) {
-                case 0:
-                    db.createObjectStore(OBJECT_STORE_NAME);
-            }
-        });
-    }
-    return dbPromise;
-}
-/** Assigns or overwrites the record for the given key with the given value. */
-async function set(appConfig, value) {
-    const key = getKey(appConfig);
-    const db = await getDbPromise();
-    const tx = db.transaction(OBJECT_STORE_NAME, 'readwrite');
-    const objectStore = tx.objectStore(OBJECT_STORE_NAME);
-    const oldValue = (await objectStore.get(key));
-    await objectStore.put(value, key);
-    await tx.complete;
-    if (!oldValue || oldValue.fid !== value.fid) {
-        fidChanged(appConfig, value.fid);
-    }
-    return value;
-}
-/** Removes record(s) from the objectStore that match the given key. */
-async function remove(appConfig) {
-    const key = getKey(appConfig);
-    const db = await getDbPromise();
-    const tx = db.transaction(OBJECT_STORE_NAME, 'readwrite');
-    await tx.objectStore(OBJECT_STORE_NAME).delete(key);
-    await tx.complete;
-}
-/**
- * Atomically updates a record with the result of updateFn, which gets
- * called with the current value. If newValue is undefined, the record is
- * deleted instead.
- * @return Updated value
- */
-async function update(appConfig, updateFn) {
-    const key = getKey(appConfig);
-    const db = await getDbPromise();
-    const tx = db.transaction(OBJECT_STORE_NAME, 'readwrite');
-    const store = tx.objectStore(OBJECT_STORE_NAME);
-    const oldValue = (await store.get(key));
-    const newValue = updateFn(oldValue);
-    if (newValue === undefined) {
-        await store.delete(key);
-    }
-    else {
-        await store.put(newValue, key);
-    }
-    await tx.complete;
-    if (newValue && (!oldValue || oldValue.fid !== newValue.fid)) {
-        fidChanged(appConfig, newValue.fid);
-    }
-    return newValue;
-}
-
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/**
- * Updates and returns the InstallationEntry from the database.
- * Also triggers a registration request if it is necessary and possible.
- */
-async function getInstallationEntry(installations) {
-    let registrationPromise;
-    const installationEntry = await update(installations.appConfig, oldEntry => {
-        const installationEntry = updateOrCreateInstallationEntry(oldEntry);
-        const entryWithPromise = triggerRegistrationIfNecessary(installations, installationEntry);
-        registrationPromise = entryWithPromise.registrationPromise;
-        return entryWithPromise.installationEntry;
-    });
-    if (installationEntry.fid === INVALID_FID) {
-        // FID generation failed. Waiting for the FID from the server.
-        return { installationEntry: await registrationPromise };
-    }
-    return {
-        installationEntry,
-        registrationPromise
-    };
-}
-/**
- * Creates a new Installation Entry if one does not exist.
- * Also clears timed out pending requests.
- */
-function updateOrCreateInstallationEntry(oldEntry) {
-    const entry = oldEntry || {
-        fid: generateFid(),
-        registrationStatus: 0 /* NOT_STARTED */
-    };
-    return clearTimedOutRequest(entry);
-}
-/**
- * If the Firebase Installation is not registered yet, this will trigger the
- * registration and return an InProgressInstallationEntry.
- *
- * If registrationPromise does not exist, the installationEntry is guaranteed
- * to be registered.
- */
-function triggerRegistrationIfNecessary(installations, installationEntry) {
-    if (installationEntry.registrationStatus === 0 /* NOT_STARTED */) {
-        if (!navigator.onLine) {
-            // Registration required but app is offline.
-            const registrationPromiseWithError = Promise.reject(ERROR_FACTORY.create("app-offline" /* APP_OFFLINE */));
-            return {
-                installationEntry,
-                registrationPromise: registrationPromiseWithError
-            };
-        }
-        // Try registering. Change status to IN_PROGRESS.
-        const inProgressEntry = {
-            fid: installationEntry.fid,
-            registrationStatus: 1 /* IN_PROGRESS */,
-            registrationTime: Date.now()
-        };
-        const registrationPromise = registerInstallation(installations, inProgressEntry);
-        return { installationEntry: inProgressEntry, registrationPromise };
-    }
-    else if (installationEntry.registrationStatus === 1 /* IN_PROGRESS */) {
-        return {
-            installationEntry,
-            registrationPromise: waitUntilFidRegistration(installations)
-        };
-    }
-    else {
-        return { installationEntry };
-    }
-}
-/** This will be executed only once for each new Firebase Installation. */
-async function registerInstallation(installations, installationEntry) {
-    try {
-        const registeredInstallationEntry = await createInstallationRequest(installations, installationEntry);
-        return set(installations.appConfig, registeredInstallationEntry);
-    }
-    catch (e) {
-        if (isServerError(e) && e.customData.serverCode === 409) {
-            // Server returned a "FID can not be used" error.
-            // Generate a new ID next time.
-            await remove(installations.appConfig);
-        }
-        else {
-            // Registration failed. Set FID as not registered.
-            await set(installations.appConfig, {
-                fid: installationEntry.fid,
-                registrationStatus: 0 /* NOT_STARTED */
             });
         }
-        throw e;
+    }
+    /**
+     * Closes socket.
+     *
+     * @api private
+     */
+    doClose() {
+        if (typeof this.ws !== "undefined") {
+            this.ws.close();
+            this.ws = null;
+        }
+    }
+    /**
+     * Generates uri for connection.
+     *
+     * @api private
+     */
+    uri() {
+        let query = this.query || {};
+        const schema = this.opts.secure ? "wss" : "ws";
+        let port = "";
+        // avoid port if default for schema
+        if (this.opts.port &&
+            (("wss" === schema && Number(this.opts.port) !== 443) ||
+                ("ws" === schema && Number(this.opts.port) !== 80))) {
+            port = ":" + this.opts.port;
+        }
+        // append timestamp to URI
+        if (this.opts.timestampRequests) {
+            query[this.opts.timestampParam] = (0,_contrib_yeast_js__WEBPACK_IMPORTED_MODULE_2__.yeast)();
+        }
+        // communicate binary support capabilities
+        if (!this.supportsBinary) {
+            query.b64 = 1;
+        }
+        const encodedQuery = (0,_contrib_parseqs_js__WEBPACK_IMPORTED_MODULE_1__.encode)(query);
+        const ipv6 = this.opts.hostname.indexOf(":") !== -1;
+        return (schema +
+            "://" +
+            (ipv6 ? "[" + this.opts.hostname + "]" : this.opts.hostname) +
+            port +
+            this.opts.path +
+            (encodedQuery.length ? "?" + encodedQuery : ""));
+    }
+    /**
+     * Feature detection for WebSocket.
+     *
+     * @return {Boolean} whether this transport is available.
+     * @api public
+     */
+    check() {
+        return !!_websocket_constructor_js__WEBPACK_IMPORTED_MODULE_4__.WebSocket;
     }
 }
-/** Call if FID registration is pending in another request. */
-async function waitUntilFidRegistration(installations) {
-    // Unfortunately, there is no way of reliably observing when a value in
-    // IndexedDB changes (yet, see https://github.com/WICG/indexed-db-observers),
-    // so we need to poll.
-    let entry = await updateInstallationRequest(installations.appConfig);
-    while (entry.registrationStatus === 1 /* IN_PROGRESS */) {
-        // createInstallation request still in progress.
-        await sleep(100);
-        entry = await updateInstallationRequest(installations.appConfig);
+
+
+/***/ }),
+
+/***/ "./node_modules/engine.io-client/build/esm/transports/xmlhttprequest.browser.js":
+/*!**************************************************************************************!*\
+  !*** ./node_modules/engine.io-client/build/esm/transports/xmlhttprequest.browser.js ***!
+  \**************************************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "XHR": () => (/* binding */ XHR)
+/* harmony export */ });
+/* harmony import */ var _contrib_has_cors_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../contrib/has-cors.js */ "./node_modules/engine.io-client/build/esm/contrib/has-cors.js");
+/* harmony import */ var _globalThis_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../globalThis.js */ "./node_modules/engine.io-client/build/esm/globalThis.browser.js");
+// browser shim for xmlhttprequest module
+
+
+function XHR(opts) {
+    const xdomain = opts.xdomain;
+    // XMLHttpRequest can be disabled on IE
+    try {
+        if ("undefined" !== typeof XMLHttpRequest && (!xdomain || _contrib_has_cors_js__WEBPACK_IMPORTED_MODULE_0__.hasCORS)) {
+            return new XMLHttpRequest();
+        }
     }
-    if (entry.registrationStatus === 0 /* NOT_STARTED */) {
-        // The request timed out or failed in a different call. Try again.
-        const { installationEntry, registrationPromise } = await getInstallationEntry(installations);
-        if (registrationPromise) {
-            return registrationPromise;
+    catch (e) { }
+    if (!xdomain) {
+        try {
+            return new _globalThis_js__WEBPACK_IMPORTED_MODULE_1__.globalThisShim[["Active"].concat("Object").join("X")]("Microsoft.XMLHTTP");
+        }
+        catch (e) { }
+    }
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/engine.io-client/build/esm/util.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/engine.io-client/build/esm/util.js ***!
+  \*********************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "byteLength": () => (/* binding */ byteLength),
+/* harmony export */   "installTimerFunctions": () => (/* binding */ installTimerFunctions),
+/* harmony export */   "pick": () => (/* binding */ pick)
+/* harmony export */ });
+/* harmony import */ var _globalThis_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./globalThis.js */ "./node_modules/engine.io-client/build/esm/globalThis.browser.js");
+
+function pick(obj, ...attr) {
+    return attr.reduce((acc, k) => {
+        if (obj.hasOwnProperty(k)) {
+            acc[k] = obj[k];
+        }
+        return acc;
+    }, {});
+}
+// Keep a reference to the real timeout functions so they can be used when overridden
+const NATIVE_SET_TIMEOUT = setTimeout;
+const NATIVE_CLEAR_TIMEOUT = clearTimeout;
+function installTimerFunctions(obj, opts) {
+    if (opts.useNativeTimers) {
+        obj.setTimeoutFn = NATIVE_SET_TIMEOUT.bind(_globalThis_js__WEBPACK_IMPORTED_MODULE_0__.globalThisShim);
+        obj.clearTimeoutFn = NATIVE_CLEAR_TIMEOUT.bind(_globalThis_js__WEBPACK_IMPORTED_MODULE_0__.globalThisShim);
+    }
+    else {
+        obj.setTimeoutFn = setTimeout.bind(_globalThis_js__WEBPACK_IMPORTED_MODULE_0__.globalThisShim);
+        obj.clearTimeoutFn = clearTimeout.bind(_globalThis_js__WEBPACK_IMPORTED_MODULE_0__.globalThisShim);
+    }
+}
+// base64 encoded buffers are about 33% bigger (https://en.wikipedia.org/wiki/Base64)
+const BASE64_OVERHEAD = 1.33;
+// we could also have used `new Blob([obj]).size`, but it isn't supported in IE9
+function byteLength(obj) {
+    if (typeof obj === "string") {
+        return utf8Length(obj);
+    }
+    // arraybuffer or blob
+    return Math.ceil((obj.byteLength || obj.size) * BASE64_OVERHEAD);
+}
+function utf8Length(str) {
+    let c = 0, length = 0;
+    for (let i = 0, l = str.length; i < l; i++) {
+        c = str.charCodeAt(i);
+        if (c < 0x80) {
+            length += 1;
+        }
+        else if (c < 0x800) {
+            length += 2;
+        }
+        else if (c < 0xd800 || c >= 0xe000) {
+            length += 3;
         }
         else {
-            // if there is no registrationPromise, entry is registered.
-            return installationEntry;
+            i++;
+            length += 4;
         }
     }
-    return entry;
+    return length;
 }
-/**
- * Called only if there is a CreateInstallation request in progress.
- *
- * Updates the InstallationEntry in the DB based on the status of the
- * CreateInstallation request.
- *
- * Returns the updated InstallationEntry.
- */
-function updateInstallationRequest(appConfig) {
-    return update(appConfig, oldEntry => {
-        if (!oldEntry) {
-            throw ERROR_FACTORY.create("installation-not-found" /* INSTALLATION_NOT_FOUND */);
+
+
+/***/ }),
+
+/***/ "./node_modules/engine.io-parser/build/esm/commons.js":
+/*!************************************************************!*\
+  !*** ./node_modules/engine.io-parser/build/esm/commons.js ***!
+  \************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ERROR_PACKET": () => (/* binding */ ERROR_PACKET),
+/* harmony export */   "PACKET_TYPES": () => (/* binding */ PACKET_TYPES),
+/* harmony export */   "PACKET_TYPES_REVERSE": () => (/* binding */ PACKET_TYPES_REVERSE)
+/* harmony export */ });
+const PACKET_TYPES = Object.create(null); // no Map = no polyfill
+PACKET_TYPES["open"] = "0";
+PACKET_TYPES["close"] = "1";
+PACKET_TYPES["ping"] = "2";
+PACKET_TYPES["pong"] = "3";
+PACKET_TYPES["message"] = "4";
+PACKET_TYPES["upgrade"] = "5";
+PACKET_TYPES["noop"] = "6";
+const PACKET_TYPES_REVERSE = Object.create(null);
+Object.keys(PACKET_TYPES).forEach(key => {
+    PACKET_TYPES_REVERSE[PACKET_TYPES[key]] = key;
+});
+const ERROR_PACKET = { type: "error", data: "parser error" };
+
+
+
+/***/ }),
+
+/***/ "./node_modules/engine.io-parser/build/esm/contrib/base64-arraybuffer.js":
+/*!*******************************************************************************!*\
+  !*** ./node_modules/engine.io-parser/build/esm/contrib/base64-arraybuffer.js ***!
+  \*******************************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "decode": () => (/* binding */ decode),
+/* harmony export */   "encode": () => (/* binding */ encode)
+/* harmony export */ });
+const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
+// Use a lookup table to find the index.
+const lookup = typeof Uint8Array === 'undefined' ? [] : new Uint8Array(256);
+for (let i = 0; i < chars.length; i++) {
+    lookup[chars.charCodeAt(i)] = i;
+}
+const encode = (arraybuffer) => {
+    let bytes = new Uint8Array(arraybuffer), i, len = bytes.length, base64 = '';
+    for (i = 0; i < len; i += 3) {
+        base64 += chars[bytes[i] >> 2];
+        base64 += chars[((bytes[i] & 3) << 4) | (bytes[i + 1] >> 4)];
+        base64 += chars[((bytes[i + 1] & 15) << 2) | (bytes[i + 2] >> 6)];
+        base64 += chars[bytes[i + 2] & 63];
+    }
+    if (len % 3 === 2) {
+        base64 = base64.substring(0, base64.length - 1) + '=';
+    }
+    else if (len % 3 === 1) {
+        base64 = base64.substring(0, base64.length - 2) + '==';
+    }
+    return base64;
+};
+const decode = (base64) => {
+    let bufferLength = base64.length * 0.75, len = base64.length, i, p = 0, encoded1, encoded2, encoded3, encoded4;
+    if (base64[base64.length - 1] === '=') {
+        bufferLength--;
+        if (base64[base64.length - 2] === '=') {
+            bufferLength--;
         }
-        return clearTimedOutRequest(oldEntry);
-    });
-}
-function clearTimedOutRequest(entry) {
-    if (hasInstallationRequestTimedOut(entry)) {
+    }
+    const arraybuffer = new ArrayBuffer(bufferLength), bytes = new Uint8Array(arraybuffer);
+    for (i = 0; i < len; i += 4) {
+        encoded1 = lookup[base64.charCodeAt(i)];
+        encoded2 = lookup[base64.charCodeAt(i + 1)];
+        encoded3 = lookup[base64.charCodeAt(i + 2)];
+        encoded4 = lookup[base64.charCodeAt(i + 3)];
+        bytes[p++] = (encoded1 << 2) | (encoded2 >> 4);
+        bytes[p++] = ((encoded2 & 15) << 4) | (encoded3 >> 2);
+        bytes[p++] = ((encoded3 & 3) << 6) | (encoded4 & 63);
+    }
+    return arraybuffer;
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/engine.io-parser/build/esm/decodePacket.browser.js":
+/*!*************************************************************************!*\
+  !*** ./node_modules/engine.io-parser/build/esm/decodePacket.browser.js ***!
+  \*************************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _commons_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./commons.js */ "./node_modules/engine.io-parser/build/esm/commons.js");
+/* harmony import */ var _contrib_base64_arraybuffer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./contrib/base64-arraybuffer.js */ "./node_modules/engine.io-parser/build/esm/contrib/base64-arraybuffer.js");
+
+
+const withNativeArrayBuffer = typeof ArrayBuffer === "function";
+const decodePacket = (encodedPacket, binaryType) => {
+    if (typeof encodedPacket !== "string") {
         return {
-            fid: entry.fid,
-            registrationStatus: 0 /* NOT_STARTED */
+            type: "message",
+            data: mapBinary(encodedPacket, binaryType)
         };
     }
-    return entry;
-}
-function hasInstallationRequestTimedOut(installationEntry) {
-    return (installationEntry.registrationStatus === 1 /* IN_PROGRESS */ &&
-        installationEntry.registrationTime + PENDING_TIMEOUT_MS < Date.now());
-}
-
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-async function generateAuthTokenRequest({ appConfig, heartbeatServiceProvider }, installationEntry) {
-    const endpoint = getGenerateAuthTokenEndpoint(appConfig, installationEntry);
-    const headers = getHeadersWithAuth(appConfig, installationEntry);
-    // If heartbeat service exists, add the heartbeat string to the header.
-    const heartbeatService = heartbeatServiceProvider.getImmediate({
-        optional: true
-    });
-    if (heartbeatService) {
-        const heartbeatsHeader = await heartbeatService.getHeartbeatsHeader();
-        if (heartbeatsHeader) {
-            headers.append('x-firebase-client', heartbeatsHeader);
-        }
+    const type = encodedPacket.charAt(0);
+    if (type === "b") {
+        return {
+            type: "message",
+            data: decodeBase64Packet(encodedPacket.substring(1), binaryType)
+        };
     }
-    const body = {
-        installation: {
-            sdkVersion: PACKAGE_VERSION,
-            appId: appConfig.appId
+    const packetType = _commons_js__WEBPACK_IMPORTED_MODULE_0__.PACKET_TYPES_REVERSE[type];
+    if (!packetType) {
+        return _commons_js__WEBPACK_IMPORTED_MODULE_0__.ERROR_PACKET;
+    }
+    return encodedPacket.length > 1
+        ? {
+            type: _commons_js__WEBPACK_IMPORTED_MODULE_0__.PACKET_TYPES_REVERSE[type],
+            data: encodedPacket.substring(1)
         }
-    };
-    const request = {
-        method: 'POST',
-        headers,
-        body: JSON.stringify(body)
-    };
-    const response = await retryIfServerError(() => fetch(endpoint, request));
-    if (response.ok) {
-        const responseValue = await response.json();
-        const completedAuthToken = extractAuthTokenInfoFromResponse(responseValue);
-        return completedAuthToken;
+        : {
+            type: _commons_js__WEBPACK_IMPORTED_MODULE_0__.PACKET_TYPES_REVERSE[type]
+        };
+};
+const decodeBase64Packet = (data, binaryType) => {
+    if (withNativeArrayBuffer) {
+        const decoded = (0,_contrib_base64_arraybuffer_js__WEBPACK_IMPORTED_MODULE_1__.decode)(data);
+        return mapBinary(decoded, binaryType);
     }
     else {
-        throw await getErrorFromResponse('Generate Auth Token', response);
+        return { base64: true, data }; // fallback for old browsers
     }
-}
-function getGenerateAuthTokenEndpoint(appConfig, { fid }) {
-    return `${getInstallationsEndpoint(appConfig)}/${fid}/authTokens:generate`;
-}
+};
+const mapBinary = (data, binaryType) => {
+    switch (binaryType) {
+        case "blob":
+            return data instanceof ArrayBuffer ? new Blob([data]) : data;
+        case "arraybuffer":
+        default:
+            return data; // assuming the data is already an ArrayBuffer
+    }
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (decodePacket);
 
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/**
- * Returns a valid authentication token for the installation. Generates a new
- * token if one doesn't exist, is expired or about to expire.
- *
- * Should only be called if the Firebase Installation is registered.
- */
-async function refreshAuthToken(installations, forceRefresh = false) {
-    let tokenPromise;
-    const entry = await update(installations.appConfig, oldEntry => {
-        if (!isEntryRegistered(oldEntry)) {
-            throw ERROR_FACTORY.create("not-registered" /* NOT_REGISTERED */);
-        }
-        const oldAuthToken = oldEntry.authToken;
-        if (!forceRefresh && isAuthTokenValid(oldAuthToken)) {
-            // There is a valid token in the DB.
-            return oldEntry;
-        }
-        else if (oldAuthToken.requestStatus === 1 /* IN_PROGRESS */) {
-            // There already is a token request in progress.
-            tokenPromise = waitUntilAuthTokenRequest(installations, forceRefresh);
-            return oldEntry;
+
+/***/ }),
+
+/***/ "./node_modules/engine.io-parser/build/esm/encodePacket.browser.js":
+/*!*************************************************************************!*\
+  !*** ./node_modules/engine.io-parser/build/esm/encodePacket.browser.js ***!
+  \*************************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _commons_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./commons.js */ "./node_modules/engine.io-parser/build/esm/commons.js");
+
+const withNativeBlob = typeof Blob === "function" ||
+    (typeof Blob !== "undefined" &&
+        Object.prototype.toString.call(Blob) === "[object BlobConstructor]");
+const withNativeArrayBuffer = typeof ArrayBuffer === "function";
+// ArrayBuffer.isView method is not defined in IE10
+const isView = obj => {
+    return typeof ArrayBuffer.isView === "function"
+        ? ArrayBuffer.isView(obj)
+        : obj && obj.buffer instanceof ArrayBuffer;
+};
+const encodePacket = ({ type, data }, supportsBinary, callback) => {
+    if (withNativeBlob && data instanceof Blob) {
+        if (supportsBinary) {
+            return callback(data);
         }
         else {
-            // No token or token expired.
-            if (!navigator.onLine) {
-                throw ERROR_FACTORY.create("app-offline" /* APP_OFFLINE */);
+            return encodeBlobAsBase64(data, callback);
+        }
+    }
+    else if (withNativeArrayBuffer &&
+        (data instanceof ArrayBuffer || isView(data))) {
+        if (supportsBinary) {
+            return callback(data);
+        }
+        else {
+            return encodeBlobAsBase64(new Blob([data]), callback);
+        }
+    }
+    // plain string
+    return callback(_commons_js__WEBPACK_IMPORTED_MODULE_0__.PACKET_TYPES[type] + (data || ""));
+};
+const encodeBlobAsBase64 = (data, callback) => {
+    const fileReader = new FileReader();
+    fileReader.onload = function () {
+        const content = fileReader.result.split(",")[1];
+        callback("b" + content);
+    };
+    return fileReader.readAsDataURL(data);
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (encodePacket);
+
+
+/***/ }),
+
+/***/ "./node_modules/engine.io-parser/build/esm/index.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/engine.io-parser/build/esm/index.js ***!
+  \**********************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "decodePacket": () => (/* reexport safe */ _decodePacket_js__WEBPACK_IMPORTED_MODULE_1__["default"]),
+/* harmony export */   "decodePayload": () => (/* binding */ decodePayload),
+/* harmony export */   "encodePacket": () => (/* reexport safe */ _encodePacket_js__WEBPACK_IMPORTED_MODULE_0__["default"]),
+/* harmony export */   "encodePayload": () => (/* binding */ encodePayload),
+/* harmony export */   "protocol": () => (/* binding */ protocol)
+/* harmony export */ });
+/* harmony import */ var _encodePacket_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./encodePacket.js */ "./node_modules/engine.io-parser/build/esm/encodePacket.browser.js");
+/* harmony import */ var _decodePacket_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./decodePacket.js */ "./node_modules/engine.io-parser/build/esm/decodePacket.browser.js");
+
+
+const SEPARATOR = String.fromCharCode(30); // see https://en.wikipedia.org/wiki/Delimiter#ASCII_delimited_text
+const encodePayload = (packets, callback) => {
+    // some packets may be added to the array while encoding, so the initial length must be saved
+    const length = packets.length;
+    const encodedPackets = new Array(length);
+    let count = 0;
+    packets.forEach((packet, i) => {
+        // force base64 encoding for binary packets
+        (0,_encodePacket_js__WEBPACK_IMPORTED_MODULE_0__["default"])(packet, false, encodedPacket => {
+            encodedPackets[i] = encodedPacket;
+            if (++count === length) {
+                callback(encodedPackets.join(SEPARATOR));
             }
-            const inProgressEntry = makeAuthTokenRequestInProgressEntry(oldEntry);
-            tokenPromise = fetchAuthTokenFromServer(installations, inProgressEntry);
-            return inProgressEntry;
-        }
+        });
     });
-    const authToken = tokenPromise
-        ? await tokenPromise
-        : entry.authToken;
-    return authToken;
+};
+const decodePayload = (encodedPayload, binaryType) => {
+    const encodedPackets = encodedPayload.split(SEPARATOR);
+    const packets = [];
+    for (let i = 0; i < encodedPackets.length; i++) {
+        const decodedPacket = (0,_decodePacket_js__WEBPACK_IMPORTED_MODULE_1__["default"])(encodedPackets[i], binaryType);
+        packets.push(decodedPacket);
+        if (decodedPacket.type === "error") {
+            break;
+        }
+    }
+    return packets;
+};
+const protocol = 4;
+
+
+
+/***/ }),
+
+/***/ "./node_modules/socket.io-client/build/esm/contrib/backo2.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/socket.io-client/build/esm/contrib/backo2.js ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Backoff": () => (/* binding */ Backoff)
+/* harmony export */ });
+/**
+ * Initialize backoff timer with `opts`.
+ *
+ * - `min` initial timeout in milliseconds [100]
+ * - `max` max timeout [10000]
+ * - `jitter` [0]
+ * - `factor` [2]
+ *
+ * @param {Object} opts
+ * @api public
+ */
+function Backoff(opts) {
+    opts = opts || {};
+    this.ms = opts.min || 100;
+    this.max = opts.max || 10000;
+    this.factor = opts.factor || 2;
+    this.jitter = opts.jitter > 0 && opts.jitter <= 1 ? opts.jitter : 0;
+    this.attempts = 0;
 }
 /**
- * Call only if FID is registered and Auth Token request is in progress.
+ * Return the backoff duration.
  *
- * Waits until the current pending request finishes. If the request times out,
- * tries once in this thread as well.
+ * @return {Number}
+ * @api public
  */
-async function waitUntilAuthTokenRequest(installations, forceRefresh) {
-    // Unfortunately, there is no way of reliably observing when a value in
-    // IndexedDB changes (yet, see https://github.com/WICG/indexed-db-observers),
-    // so we need to poll.
-    let entry = await updateAuthTokenRequest(installations.appConfig);
-    while (entry.authToken.requestStatus === 1 /* IN_PROGRESS */) {
-        // generateAuthToken still in progress.
-        await sleep(100);
-        entry = await updateAuthTokenRequest(installations.appConfig);
+Backoff.prototype.duration = function () {
+    var ms = this.ms * Math.pow(this.factor, this.attempts++);
+    if (this.jitter) {
+        var rand = Math.random();
+        var deviation = Math.floor(rand * this.jitter * ms);
+        ms = (Math.floor(rand * 10) & 1) == 0 ? ms - deviation : ms + deviation;
     }
-    const authToken = entry.authToken;
-    if (authToken.requestStatus === 0 /* NOT_STARTED */) {
-        // The request timed out or failed in a different call. Try again.
-        return refreshAuthToken(installations, forceRefresh);
+    return Math.min(ms, this.max) | 0;
+};
+/**
+ * Reset the number of attempts.
+ *
+ * @api public
+ */
+Backoff.prototype.reset = function () {
+    this.attempts = 0;
+};
+/**
+ * Set the minimum duration
+ *
+ * @api public
+ */
+Backoff.prototype.setMin = function (min) {
+    this.ms = min;
+};
+/**
+ * Set the maximum duration
+ *
+ * @api public
+ */
+Backoff.prototype.setMax = function (max) {
+    this.max = max;
+};
+/**
+ * Set the jitter
+ *
+ * @api public
+ */
+Backoff.prototype.setJitter = function (jitter) {
+    this.jitter = jitter;
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/socket.io-client/build/esm/index.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/socket.io-client/build/esm/index.js ***!
+  \**********************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Manager": () => (/* reexport safe */ _manager_js__WEBPACK_IMPORTED_MODULE_1__.Manager),
+/* harmony export */   "Socket": () => (/* reexport safe */ _socket_js__WEBPACK_IMPORTED_MODULE_2__.Socket),
+/* harmony export */   "connect": () => (/* binding */ lookup),
+/* harmony export */   "default": () => (/* binding */ lookup),
+/* harmony export */   "io": () => (/* binding */ lookup),
+/* harmony export */   "protocol": () => (/* reexport safe */ socket_io_parser__WEBPACK_IMPORTED_MODULE_3__.protocol)
+/* harmony export */ });
+/* harmony import */ var _url_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./url.js */ "./node_modules/socket.io-client/build/esm/url.js");
+/* harmony import */ var _manager_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./manager.js */ "./node_modules/socket.io-client/build/esm/manager.js");
+/* harmony import */ var _socket_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./socket.js */ "./node_modules/socket.io-client/build/esm/socket.js");
+/* harmony import */ var socket_io_parser__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! socket.io-parser */ "./node_modules/socket.io-client/node_modules/socket.io-parser/build/esm/index.js");
+
+
+
+/**
+ * Managers cache.
+ */
+const cache = {};
+function lookup(uri, opts) {
+    if (typeof uri === "object") {
+        opts = uri;
+        uri = undefined;
+    }
+    opts = opts || {};
+    const parsed = (0,_url_js__WEBPACK_IMPORTED_MODULE_0__.url)(uri, opts.path || "/socket.io");
+    const source = parsed.source;
+    const id = parsed.id;
+    const path = parsed.path;
+    const sameNamespace = cache[id] && path in cache[id]["nsps"];
+    const newConnection = opts.forceNew ||
+        opts["force new connection"] ||
+        false === opts.multiplex ||
+        sameNamespace;
+    let io;
+    if (newConnection) {
+        io = new _manager_js__WEBPACK_IMPORTED_MODULE_1__.Manager(source, opts);
     }
     else {
-        return authToken;
+        if (!cache[id]) {
+            cache[id] = new _manager_js__WEBPACK_IMPORTED_MODULE_1__.Manager(source, opts);
+        }
+        io = cache[id];
     }
-}
-/**
- * Called only if there is a GenerateAuthToken request in progress.
- *
- * Updates the InstallationEntry in the DB based on the status of the
- * GenerateAuthToken request.
- *
- * Returns the updated InstallationEntry.
- */
-function updateAuthTokenRequest(appConfig) {
-    return update(appConfig, oldEntry => {
-        if (!isEntryRegistered(oldEntry)) {
-            throw ERROR_FACTORY.create("not-registered" /* NOT_REGISTERED */);
-        }
-        const oldAuthToken = oldEntry.authToken;
-        if (hasAuthTokenRequestTimedOut(oldAuthToken)) {
-            return Object.assign(Object.assign({}, oldEntry), { authToken: { requestStatus: 0 /* NOT_STARTED */ } });
-        }
-        return oldEntry;
-    });
-}
-async function fetchAuthTokenFromServer(installations, installationEntry) {
-    try {
-        const authToken = await generateAuthTokenRequest(installations, installationEntry);
-        const updatedInstallationEntry = Object.assign(Object.assign({}, installationEntry), { authToken });
-        await set(installations.appConfig, updatedInstallationEntry);
-        return authToken;
+    if (parsed.query && !opts.query) {
+        opts.query = parsed.queryKey;
     }
-    catch (e) {
-        if (isServerError(e) &&
-            (e.customData.serverCode === 401 || e.customData.serverCode === 404)) {
-            // Server returned a "FID not found" or a "Invalid authentication" error.
-            // Generate a new ID next time.
-            await remove(installations.appConfig);
-        }
-        else {
-            const updatedInstallationEntry = Object.assign(Object.assign({}, installationEntry), { authToken: { requestStatus: 0 /* NOT_STARTED */ } });
-            await set(installations.appConfig, updatedInstallationEntry);
-        }
-        throw e;
-    }
+    return io.socket(parsed.path, opts);
 }
-function isEntryRegistered(installationEntry) {
-    return (installationEntry !== undefined &&
-        installationEntry.registrationStatus === 2 /* COMPLETED */);
-}
-function isAuthTokenValid(authToken) {
-    return (authToken.requestStatus === 2 /* COMPLETED */ &&
-        !isAuthTokenExpired(authToken));
-}
-function isAuthTokenExpired(authToken) {
-    const now = Date.now();
-    return (now < authToken.creationTime ||
-        authToken.creationTime + authToken.expiresIn < now + TOKEN_EXPIRATION_BUFFER);
-}
-/** Returns an updated InstallationEntry with an InProgressAuthToken. */
-function makeAuthTokenRequestInProgressEntry(oldEntry) {
-    const inProgressAuthToken = {
-        requestStatus: 1 /* IN_PROGRESS */,
-        requestTime: Date.now()
-    };
-    return Object.assign(Object.assign({}, oldEntry), { authToken: inProgressAuthToken });
-}
-function hasAuthTokenRequestTimedOut(authToken) {
-    return (authToken.requestStatus === 1 /* IN_PROGRESS */ &&
-        authToken.requestTime + PENDING_TIMEOUT_MS < Date.now());
-}
-
+// so that "lookup" can be used both as a function (e.g. `io(...)`) and as a
+// namespace (e.g. `io.connect(...)`), for backward compatibility
+Object.assign(lookup, {
+    Manager: _manager_js__WEBPACK_IMPORTED_MODULE_1__.Manager,
+    Socket: _socket_js__WEBPACK_IMPORTED_MODULE_2__.Socket,
+    io: lookup,
+    connect: lookup,
+});
 /**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/**
- * Creates a Firebase Installation if there isn't one for the app and
- * returns the Installation ID.
- * @param installations - The `Installations` instance.
+ * Protocol version.
  *
  * @public
  */
-async function getId(installations) {
-    const installationsImpl = installations;
-    const { installationEntry, registrationPromise } = await getInstallationEntry(installationsImpl);
-    if (registrationPromise) {
-        registrationPromise.catch(console.error);
-    }
-    else {
-        // If the installation is already registered, update the authentication
-        // token if needed.
-        refreshAuthToken(installationsImpl).catch(console.error);
-    }
-    return installationEntry.fid;
-}
 
 /**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/**
- * Returns a Firebase Installations auth token, identifying the current
- * Firebase Installation.
- * @param installations - The `Installations` instance.
- * @param forceRefresh - Force refresh regardless of token expiration.
+ * Expose constructors for standalone build.
  *
  * @public
  */
-async function getToken(installations, forceRefresh = false) {
-    const installationsImpl = installations;
-    await completeInstallationRegistration(installationsImpl);
-    // At this point we either have a Registered Installation in the DB, or we've
-    // already thrown an error.
-    const authToken = await refreshAuthToken(installationsImpl, forceRefresh);
-    return authToken.token;
-}
-async function completeInstallationRegistration(installations) {
-    const { registrationPromise } = await getInstallationEntry(installations);
-    if (registrationPromise) {
-        // A createInstallation request is in progress. Wait until it finishes.
-        await registrationPromise;
-    }
-}
 
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-async function deleteInstallationRequest(appConfig, installationEntry) {
-    const endpoint = getDeleteEndpoint(appConfig, installationEntry);
-    const headers = getHeadersWithAuth(appConfig, installationEntry);
-    const request = {
-        method: 'DELETE',
-        headers
-    };
-    const response = await retryIfServerError(() => fetch(endpoint, request));
-    if (!response.ok) {
-        throw await getErrorFromResponse('Delete Installation', response);
-    }
-}
-function getDeleteEndpoint(appConfig, { fid }) {
-    return `${getInstallationsEndpoint(appConfig)}/${fid}`;
-}
 
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/**
- * Deletes the Firebase Installation and all associated data.
- * @param installations - The `Installations` instance.
- *
- * @public
- */
-async function deleteInstallations(installations) {
-    const { appConfig } = installations;
-    const entry = await update(appConfig, oldEntry => {
-        if (oldEntry && oldEntry.registrationStatus === 0 /* NOT_STARTED */) {
-            // Delete the unregistered entry without sending a deleteInstallation request.
-            return undefined;
+
+/***/ }),
+
+/***/ "./node_modules/socket.io-client/build/esm/manager.js":
+/*!************************************************************!*\
+  !*** ./node_modules/socket.io-client/build/esm/manager.js ***!
+  \************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Manager": () => (/* binding */ Manager)
+/* harmony export */ });
+/* harmony import */ var engine_io_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! engine.io-client */ "./node_modules/engine.io-client/build/esm/index.js");
+/* harmony import */ var _socket_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./socket.js */ "./node_modules/socket.io-client/build/esm/socket.js");
+/* harmony import */ var socket_io_parser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! socket.io-parser */ "./node_modules/socket.io-client/node_modules/socket.io-parser/build/esm/index.js");
+/* harmony import */ var _on_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./on.js */ "./node_modules/socket.io-client/build/esm/on.js");
+/* harmony import */ var _contrib_backo2_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./contrib/backo2.js */ "./node_modules/socket.io-client/build/esm/contrib/backo2.js");
+/* harmony import */ var _socket_io_component_emitter__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @socket.io/component-emitter */ "./node_modules/@socket.io/component-emitter/index.mjs");
+
+
+
+
+
+
+class Manager extends _socket_io_component_emitter__WEBPACK_IMPORTED_MODULE_5__.Emitter {
+    constructor(uri, opts) {
+        var _a;
+        super();
+        this.nsps = {};
+        this.subs = [];
+        if (uri && "object" === typeof uri) {
+            opts = uri;
+            uri = undefined;
         }
-        return oldEntry;
-    });
-    if (entry) {
-        if (entry.registrationStatus === 1 /* IN_PROGRESS */) {
-            // Can't delete while trying to register.
-            throw ERROR_FACTORY.create("delete-pending-registration" /* DELETE_PENDING_REGISTRATION */);
+        opts = opts || {};
+        opts.path = opts.path || "/socket.io";
+        this.opts = opts;
+        (0,engine_io_client__WEBPACK_IMPORTED_MODULE_0__.installTimerFunctions)(this, opts);
+        this.reconnection(opts.reconnection !== false);
+        this.reconnectionAttempts(opts.reconnectionAttempts || Infinity);
+        this.reconnectionDelay(opts.reconnectionDelay || 1000);
+        this.reconnectionDelayMax(opts.reconnectionDelayMax || 5000);
+        this.randomizationFactor((_a = opts.randomizationFactor) !== null && _a !== void 0 ? _a : 0.5);
+        this.backoff = new _contrib_backo2_js__WEBPACK_IMPORTED_MODULE_4__.Backoff({
+            min: this.reconnectionDelay(),
+            max: this.reconnectionDelayMax(),
+            jitter: this.randomizationFactor(),
+        });
+        this.timeout(null == opts.timeout ? 20000 : opts.timeout);
+        this._readyState = "closed";
+        this.uri = uri;
+        const _parser = opts.parser || socket_io_parser__WEBPACK_IMPORTED_MODULE_2__;
+        this.encoder = new _parser.Encoder();
+        this.decoder = new _parser.Decoder();
+        this._autoConnect = opts.autoConnect !== false;
+        if (this._autoConnect)
+            this.open();
+    }
+    reconnection(v) {
+        if (!arguments.length)
+            return this._reconnection;
+        this._reconnection = !!v;
+        return this;
+    }
+    reconnectionAttempts(v) {
+        if (v === undefined)
+            return this._reconnectionAttempts;
+        this._reconnectionAttempts = v;
+        return this;
+    }
+    reconnectionDelay(v) {
+        var _a;
+        if (v === undefined)
+            return this._reconnectionDelay;
+        this._reconnectionDelay = v;
+        (_a = this.backoff) === null || _a === void 0 ? void 0 : _a.setMin(v);
+        return this;
+    }
+    randomizationFactor(v) {
+        var _a;
+        if (v === undefined)
+            return this._randomizationFactor;
+        this._randomizationFactor = v;
+        (_a = this.backoff) === null || _a === void 0 ? void 0 : _a.setJitter(v);
+        return this;
+    }
+    reconnectionDelayMax(v) {
+        var _a;
+        if (v === undefined)
+            return this._reconnectionDelayMax;
+        this._reconnectionDelayMax = v;
+        (_a = this.backoff) === null || _a === void 0 ? void 0 : _a.setMax(v);
+        return this;
+    }
+    timeout(v) {
+        if (!arguments.length)
+            return this._timeout;
+        this._timeout = v;
+        return this;
+    }
+    /**
+     * Starts trying to reconnect if reconnection is enabled and we have not
+     * started reconnecting yet
+     *
+     * @private
+     */
+    maybeReconnectOnOpen() {
+        // Only try to reconnect if it's the first time we're connecting
+        if (!this._reconnecting &&
+            this._reconnection &&
+            this.backoff.attempts === 0) {
+            // keeps reconnection from firing twice for the same reconnection loop
+            this.reconnect();
         }
-        else if (entry.registrationStatus === 2 /* COMPLETED */) {
-            if (!navigator.onLine) {
-                throw ERROR_FACTORY.create("app-offline" /* APP_OFFLINE */);
+    }
+    /**
+     * Sets the current transport `socket`.
+     *
+     * @param {Function} fn - optional, callback
+     * @return self
+     * @public
+     */
+    open(fn) {
+        if (~this._readyState.indexOf("open"))
+            return this;
+        this.engine = new engine_io_client__WEBPACK_IMPORTED_MODULE_0__.Socket(this.uri, this.opts);
+        const socket = this.engine;
+        const self = this;
+        this._readyState = "opening";
+        this.skipReconnect = false;
+        // emit `open`
+        const openSubDestroy = (0,_on_js__WEBPACK_IMPORTED_MODULE_3__.on)(socket, "open", function () {
+            self.onopen();
+            fn && fn();
+        });
+        // emit `error`
+        const errorSub = (0,_on_js__WEBPACK_IMPORTED_MODULE_3__.on)(socket, "error", (err) => {
+            self.cleanup();
+            self._readyState = "closed";
+            this.emitReserved("error", err);
+            if (fn) {
+                fn(err);
             }
             else {
-                await deleteInstallationRequest(appConfig, entry);
-                await remove(appConfig);
+                // Only do this if there is no fn to handle the error
+                self.maybeReconnectOnOpen();
             }
+        });
+        if (false !== this._timeout) {
+            const timeout = this._timeout;
+            if (timeout === 0) {
+                openSubDestroy(); // prevents a race condition with the 'open' event
+            }
+            // set timer
+            const timer = this.setTimeoutFn(() => {
+                openSubDestroy();
+                socket.close();
+                // @ts-ignore
+                socket.emit("error", new Error("timeout"));
+            }, timeout);
+            if (this.opts.autoUnref) {
+                timer.unref();
+            }
+            this.subs.push(function subDestroy() {
+                clearTimeout(timer);
+            });
         }
+        this.subs.push(openSubDestroy);
+        this.subs.push(errorSub);
+        return this;
     }
-}
-
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/**
- * Sets a new callback that will get called when Installation ID changes.
- * Returns an unsubscribe function that will remove the callback when called.
- * @param installations - The `Installations` instance.
- * @param callback - The callback function that is invoked when FID changes.
- * @returns A function that can be called to unsubscribe.
- *
- * @public
- */
-function onIdChange(installations, callback) {
-    const { appConfig } = installations;
-    addCallback(appConfig, callback);
-    return () => {
-        removeCallback(appConfig, callback);
-    };
-}
-
-/**
- * @license
- * Copyright 2020 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/**
- * Returns an instance of {@link Installations} associated with the given
- * {@link @firebase/app#FirebaseApp} instance.
- * @param app - The {@link @firebase/app#FirebaseApp} instance.
- *
- * @public
- */
-function getInstallations(app = (0,_firebase_app__WEBPACK_IMPORTED_MODULE_0__.getApp)()) {
-    const installationsImpl = (0,_firebase_app__WEBPACK_IMPORTED_MODULE_0__._getProvider)(app, 'installations').getImmediate();
-    return installationsImpl;
-}
-
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-function extractAppConfig(app) {
-    if (!app || !app.options) {
-        throw getMissingValueError('App Configuration');
-    }
-    if (!app.name) {
-        throw getMissingValueError('App Name');
-    }
-    // Required app config keys
-    const configKeys = [
-        'projectId',
-        'apiKey',
-        'appId'
-    ];
-    for (const keyName of configKeys) {
-        if (!app.options[keyName]) {
-            throw getMissingValueError(keyName);
-        }
-    }
-    return {
-        appName: app.name,
-        projectId: app.options.projectId,
-        apiKey: app.options.apiKey,
-        appId: app.options.appId
-    };
-}
-function getMissingValueError(valueName) {
-    return ERROR_FACTORY.create("missing-app-config-values" /* MISSING_APP_CONFIG_VALUES */, {
-        valueName
-    });
-}
-
-/**
- * @license
- * Copyright 2020 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-const INSTALLATIONS_NAME = 'installations';
-const INSTALLATIONS_NAME_INTERNAL = 'installations-internal';
-const publicFactory = (container) => {
-    const app = container.getProvider('app').getImmediate();
-    // Throws if app isn't configured properly.
-    const appConfig = extractAppConfig(app);
-    const heartbeatServiceProvider = (0,_firebase_app__WEBPACK_IMPORTED_MODULE_0__._getProvider)(app, 'heartbeat');
-    const installationsImpl = {
-        app,
-        appConfig,
-        heartbeatServiceProvider,
-        _delete: () => Promise.resolve()
-    };
-    return installationsImpl;
-};
-const internalFactory = (container) => {
-    const app = container.getProvider('app').getImmediate();
-    // Internal FIS instance relies on public FIS instance.
-    const installations = (0,_firebase_app__WEBPACK_IMPORTED_MODULE_0__._getProvider)(app, INSTALLATIONS_NAME).getImmediate();
-    const installationsInternal = {
-        getId: () => getId(installations),
-        getToken: (forceRefresh) => getToken(installations, forceRefresh)
-    };
-    return installationsInternal;
-};
-function registerInstallations() {
-    (0,_firebase_app__WEBPACK_IMPORTED_MODULE_0__._registerComponent)(new _firebase_component__WEBPACK_IMPORTED_MODULE_1__.Component(INSTALLATIONS_NAME, publicFactory, "PUBLIC" /* PUBLIC */));
-    (0,_firebase_app__WEBPACK_IMPORTED_MODULE_0__._registerComponent)(new _firebase_component__WEBPACK_IMPORTED_MODULE_1__.Component(INSTALLATIONS_NAME_INTERNAL, internalFactory, "PRIVATE" /* PRIVATE */));
-}
-
-/**
- * Firebase Installations
- *
- * @packageDocumentation
- */
-registerInstallations();
-(0,_firebase_app__WEBPACK_IMPORTED_MODULE_0__.registerVersion)(name, version);
-// BUILD_TARGET will be replaced by values like esm5, esm2017, cjs5, etc during the compilation
-(0,_firebase_app__WEBPACK_IMPORTED_MODULE_0__.registerVersion)(name, version, 'esm2017');
-
-
-//# sourceMappingURL=index.esm2017.js.map
-
-
-/***/ }),
-
-/***/ "./node_modules/@firebase/logger/dist/esm/index.esm2017.js":
-/*!*****************************************************************!*\
-  !*** ./node_modules/@firebase/logger/dist/esm/index.esm2017.js ***!
-  \*****************************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "LogLevel": () => (/* binding */ LogLevel),
-/* harmony export */   "Logger": () => (/* binding */ Logger),
-/* harmony export */   "setLogLevel": () => (/* binding */ setLogLevel),
-/* harmony export */   "setUserLogHandler": () => (/* binding */ setUserLogHandler)
-/* harmony export */ });
-/**
- * @license
- * Copyright 2017 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/**
- * A container for all of the Logger instances
- */
-const instances = [];
-/**
- * The JS SDK supports 5 log levels and also allows a user the ability to
- * silence the logs altogether.
- *
- * The order is a follows:
- * DEBUG < VERBOSE < INFO < WARN < ERROR
- *
- * All of the log types above the current log level will be captured (i.e. if
- * you set the log level to `INFO`, errors will still be logged, but `DEBUG` and
- * `VERBOSE` logs will not)
- */
-var LogLevel;
-(function (LogLevel) {
-    LogLevel[LogLevel["DEBUG"] = 0] = "DEBUG";
-    LogLevel[LogLevel["VERBOSE"] = 1] = "VERBOSE";
-    LogLevel[LogLevel["INFO"] = 2] = "INFO";
-    LogLevel[LogLevel["WARN"] = 3] = "WARN";
-    LogLevel[LogLevel["ERROR"] = 4] = "ERROR";
-    LogLevel[LogLevel["SILENT"] = 5] = "SILENT";
-})(LogLevel || (LogLevel = {}));
-const levelStringToEnum = {
-    'debug': LogLevel.DEBUG,
-    'verbose': LogLevel.VERBOSE,
-    'info': LogLevel.INFO,
-    'warn': LogLevel.WARN,
-    'error': LogLevel.ERROR,
-    'silent': LogLevel.SILENT
-};
-/**
- * The default log level
- */
-const defaultLogLevel = LogLevel.INFO;
-/**
- * By default, `console.debug` is not displayed in the developer console (in
- * chrome). To avoid forcing users to have to opt-in to these logs twice
- * (i.e. once for firebase, and once in the console), we are sending `DEBUG`
- * logs to the `console.log` function.
- */
-const ConsoleMethod = {
-    [LogLevel.DEBUG]: 'log',
-    [LogLevel.VERBOSE]: 'log',
-    [LogLevel.INFO]: 'info',
-    [LogLevel.WARN]: 'warn',
-    [LogLevel.ERROR]: 'error'
-};
-/**
- * The default log handler will forward DEBUG, VERBOSE, INFO, WARN, and ERROR
- * messages on to their corresponding console counterparts (if the log method
- * is supported by the current log level)
- */
-const defaultLogHandler = (instance, logType, ...args) => {
-    if (logType < instance.logLevel) {
-        return;
-    }
-    const now = new Date().toISOString();
-    const method = ConsoleMethod[logType];
-    if (method) {
-        console[method](`[${now}]  ${instance.name}:`, ...args);
-    }
-    else {
-        throw new Error(`Attempted to log a message with an invalid logType (value: ${logType})`);
-    }
-};
-class Logger {
     /**
-     * Gives you an instance of a Logger to capture messages according to
-     * Firebase's logging scheme.
+     * Alias for open()
      *
-     * @param name The name that the logs will be associated with
+     * @return self
+     * @public
      */
-    constructor(name) {
-        this.name = name;
-        /**
-         * The log level of the given Logger instance.
-         */
-        this._logLevel = defaultLogLevel;
-        /**
-         * The main (internal) log handler for the Logger instance.
-         * Can be set to a new function in internal package code but not by user.
-         */
-        this._logHandler = defaultLogHandler;
-        /**
-         * The optional, additional, user-defined log handler for the Logger instance.
-         */
-        this._userLogHandler = null;
-        /**
-         * Capture the current instance for later use
-         */
-        instances.push(this);
-    }
-    get logLevel() {
-        return this._logLevel;
-    }
-    set logLevel(val) {
-        if (!(val in LogLevel)) {
-            throw new TypeError(`Invalid value "${val}" assigned to \`logLevel\``);
-        }
-        this._logLevel = val;
-    }
-    // Workaround for setter/getter having to be the same type.
-    setLogLevel(val) {
-        this._logLevel = typeof val === 'string' ? levelStringToEnum[val] : val;
-    }
-    get logHandler() {
-        return this._logHandler;
-    }
-    set logHandler(val) {
-        if (typeof val !== 'function') {
-            throw new TypeError('Value assigned to `logHandler` must be a function');
-        }
-        this._logHandler = val;
-    }
-    get userLogHandler() {
-        return this._userLogHandler;
-    }
-    set userLogHandler(val) {
-        this._userLogHandler = val;
+    connect(fn) {
+        return this.open(fn);
     }
     /**
-     * The functions below are all based on the `console` interface
+     * Called upon transport open.
+     *
+     * @private
      */
-    debug(...args) {
-        this._userLogHandler && this._userLogHandler(this, LogLevel.DEBUG, ...args);
-        this._logHandler(this, LogLevel.DEBUG, ...args);
+    onopen() {
+        // clear old subs
+        this.cleanup();
+        // mark as open
+        this._readyState = "open";
+        this.emitReserved("open");
+        // add new subs
+        const socket = this.engine;
+        this.subs.push((0,_on_js__WEBPACK_IMPORTED_MODULE_3__.on)(socket, "ping", this.onping.bind(this)), (0,_on_js__WEBPACK_IMPORTED_MODULE_3__.on)(socket, "data", this.ondata.bind(this)), (0,_on_js__WEBPACK_IMPORTED_MODULE_3__.on)(socket, "error", this.onerror.bind(this)), (0,_on_js__WEBPACK_IMPORTED_MODULE_3__.on)(socket, "close", this.onclose.bind(this)), (0,_on_js__WEBPACK_IMPORTED_MODULE_3__.on)(this.decoder, "decoded", this.ondecoded.bind(this)));
     }
-    log(...args) {
-        this._userLogHandler &&
-            this._userLogHandler(this, LogLevel.VERBOSE, ...args);
-        this._logHandler(this, LogLevel.VERBOSE, ...args);
+    /**
+     * Called upon a ping.
+     *
+     * @private
+     */
+    onping() {
+        this.emitReserved("ping");
     }
-    info(...args) {
-        this._userLogHandler && this._userLogHandler(this, LogLevel.INFO, ...args);
-        this._logHandler(this, LogLevel.INFO, ...args);
+    /**
+     * Called with data.
+     *
+     * @private
+     */
+    ondata(data) {
+        this.decoder.add(data);
     }
-    warn(...args) {
-        this._userLogHandler && this._userLogHandler(this, LogLevel.WARN, ...args);
-        this._logHandler(this, LogLevel.WARN, ...args);
+    /**
+     * Called when parser fully decodes a packet.
+     *
+     * @private
+     */
+    ondecoded(packet) {
+        this.emitReserved("packet", packet);
     }
-    error(...args) {
-        this._userLogHandler && this._userLogHandler(this, LogLevel.ERROR, ...args);
-        this._logHandler(this, LogLevel.ERROR, ...args);
+    /**
+     * Called upon socket error.
+     *
+     * @private
+     */
+    onerror(err) {
+        this.emitReserved("error", err);
     }
-}
-function setLogLevel(level) {
-    instances.forEach(inst => {
-        inst.setLogLevel(level);
-    });
-}
-function setUserLogHandler(logCallback, options) {
-    for (const instance of instances) {
-        let customLogLevel = null;
-        if (options && options.level) {
-            customLogLevel = levelStringToEnum[options.level];
+    /**
+     * Creates a new socket for the given `nsp`.
+     *
+     * @return {Socket}
+     * @public
+     */
+    socket(nsp, opts) {
+        let socket = this.nsps[nsp];
+        if (!socket) {
+            socket = new _socket_js__WEBPACK_IMPORTED_MODULE_1__.Socket(this, nsp, opts);
+            this.nsps[nsp] = socket;
         }
-        if (logCallback === null) {
-            instance.userLogHandler = null;
-        }
-        else {
-            instance.userLogHandler = (instance, level, ...args) => {
-                const message = args
-                    .map(arg => {
-                    if (arg == null) {
-                        return null;
-                    }
-                    else if (typeof arg === 'string') {
-                        return arg;
-                    }
-                    else if (typeof arg === 'number' || typeof arg === 'boolean') {
-                        return arg.toString();
-                    }
-                    else if (arg instanceof Error) {
-                        return arg.message;
-                    }
-                    else {
-                        try {
-                            return JSON.stringify(arg);
-                        }
-                        catch (ignored) {
-                            return null;
-                        }
-                    }
-                })
-                    .filter(arg => arg)
-                    .join(' ');
-                if (level >= (customLogLevel !== null && customLogLevel !== void 0 ? customLogLevel : instance.logLevel)) {
-                    logCallback({
-                        level: LogLevel[level].toLowerCase(),
-                        message,
-                        args,
-                        type: instance.name
-                    });
-                }
-            };
-        }
+        return socket;
     }
-}
-
-
-//# sourceMappingURL=index.esm2017.js.map
-
-
-/***/ }),
-
-/***/ "./node_modules/@firebase/messaging/dist/esm/index.esm2017.js":
-/*!********************************************************************!*\
-  !*** ./node_modules/@firebase/messaging/dist/esm/index.esm2017.js ***!
-  \********************************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "deleteToken": () => (/* binding */ deleteToken),
-/* harmony export */   "getMessaging": () => (/* binding */ getMessagingInWindow),
-/* harmony export */   "getToken": () => (/* binding */ getToken),
-/* harmony export */   "isSupported": () => (/* binding */ isWindowSupported),
-/* harmony export */   "onMessage": () => (/* binding */ onMessage)
-/* harmony export */ });
-/* harmony import */ var _firebase_installations__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @firebase/installations */ "./node_modules/@firebase/installations/dist/esm/index.esm2017.js");
-/* harmony import */ var _firebase_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @firebase/component */ "./node_modules/@firebase/component/dist/esm/index.esm2017.js");
-/* harmony import */ var _firebase_util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @firebase/util */ "./node_modules/@firebase/util/dist/index.esm2017.js");
-/* harmony import */ var _firebase_app__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @firebase/app */ "./node_modules/@firebase/app/dist/esm/index.esm2017.js");
-
-
-
-
-
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-const DEFAULT_SW_PATH = '/firebase-messaging-sw.js';
-const DEFAULT_SW_SCOPE = '/firebase-cloud-messaging-push-scope';
-const DEFAULT_VAPID_KEY = 'BDOU99-h67HcA6JeFXHbSNMu7e2yNNu3RzoMj8TM4W88jITfq7ZmPvIM1Iv-4_l2LxQcYwhqby2xGpWwzjfAnG4';
-const ENDPOINT = 'https://fcmregistrations.googleapis.com/v1';
-const CONSOLE_CAMPAIGN_ID = 'google.c.a.c_id';
-const CONSOLE_CAMPAIGN_NAME = 'google.c.a.c_l';
-const CONSOLE_CAMPAIGN_TIME = 'google.c.a.ts';
-/** Set to '1' if Analytics is enabled for the campaign */
-const CONSOLE_CAMPAIGN_ANALYTICS_ENABLED = 'google.c.a.e';
-var MessageType$1;
-(function (MessageType) {
-    MessageType[MessageType["DATA_MESSAGE"] = 1] = "DATA_MESSAGE";
-    MessageType[MessageType["DISPLAY_NOTIFICATION"] = 3] = "DISPLAY_NOTIFICATION";
-})(MessageType$1 || (MessageType$1 = {}));
-
-/**
- * @license
- * Copyright 2018 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- */
-var MessageType;
-(function (MessageType) {
-    MessageType["PUSH_RECEIVED"] = "push-received";
-    MessageType["NOTIFICATION_CLICKED"] = "notification-clicked";
-})(MessageType || (MessageType = {}));
-
-/**
- * @license
- * Copyright 2017 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-function arrayToBase64(array) {
-    const uint8Array = new Uint8Array(array);
-    const base64String = btoa(String.fromCharCode(...uint8Array));
-    return base64String.replace(/=/g, '').replace(/\+/g, '-').replace(/\//g, '_');
-}
-function base64ToArray(base64String) {
-    const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
-    const base64 = (base64String + padding)
-        .replace(/\-/g, '+')
-        .replace(/_/g, '/');
-    const rawData = atob(base64);
-    const outputArray = new Uint8Array(rawData.length);
-    for (let i = 0; i < rawData.length; ++i) {
-        outputArray[i] = rawData.charCodeAt(i);
-    }
-    return outputArray;
-}
-
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-const OLD_DB_NAME = 'fcm_token_details_db';
-/**
- * The last DB version of 'fcm_token_details_db' was 4. This is one higher, so that the upgrade
- * callback is called for all versions of the old DB.
- */
-const OLD_DB_VERSION = 5;
-const OLD_OBJECT_STORE_NAME = 'fcm_token_object_Store';
-async function migrateOldDatabase(senderId) {
-    if ('databases' in indexedDB) {
-        // indexedDb.databases() is an IndexedDB v3 API and does not exist in all browsers. TODO: Remove
-        // typecast when it lands in TS types.
-        const databases = await indexedDB.databases();
-        const dbNames = databases.map(db => db.name);
-        if (!dbNames.includes(OLD_DB_NAME)) {
-            // old DB didn't exist, no need to open.
-            return null;
-        }
-    }
-    let tokenDetails = null;
-    const db = await (0,_firebase_util__WEBPACK_IMPORTED_MODULE_2__.openDB)(OLD_DB_NAME, OLD_DB_VERSION, async (db, oldVersion, newVersion, upgradeTransaction) => {
-        var _a;
-        if (oldVersion < 2) {
-            // Database too old, skip migration.
-            return;
-        }
-        if (!db.objectStoreNames.contains(OLD_OBJECT_STORE_NAME)) {
-            // Database did not exist. Nothing to do.
-            return;
-        }
-        const objectStore = upgradeTransaction.objectStore(OLD_OBJECT_STORE_NAME);
-        const value = await objectStore.index('fcmSenderId').get(senderId);
-        await objectStore.clear();
-        if (!value) {
-            // No entry in the database, nothing to migrate.
-            return;
-        }
-        if (oldVersion === 2) {
-            const oldDetails = value;
-            if (!oldDetails.auth || !oldDetails.p256dh || !oldDetails.endpoint) {
+    /**
+     * Called upon a socket close.
+     *
+     * @param socket
+     * @private
+     */
+    _destroy(socket) {
+        const nsps = Object.keys(this.nsps);
+        for (const nsp of nsps) {
+            const socket = this.nsps[nsp];
+            if (socket.active) {
                 return;
             }
-            tokenDetails = {
-                token: oldDetails.fcmToken,
-                createTime: (_a = oldDetails.createTime) !== null && _a !== void 0 ? _a : Date.now(),
-                subscriptionOptions: {
-                    auth: oldDetails.auth,
-                    p256dh: oldDetails.p256dh,
-                    endpoint: oldDetails.endpoint,
-                    swScope: oldDetails.swScope,
-                    vapidKey: typeof oldDetails.vapidKey === 'string'
-                        ? oldDetails.vapidKey
-                        : arrayToBase64(oldDetails.vapidKey)
-                }
-            };
         }
-        else if (oldVersion === 3) {
-            const oldDetails = value;
-            tokenDetails = {
-                token: oldDetails.fcmToken,
-                createTime: oldDetails.createTime,
-                subscriptionOptions: {
-                    auth: arrayToBase64(oldDetails.auth),
-                    p256dh: arrayToBase64(oldDetails.p256dh),
-                    endpoint: oldDetails.endpoint,
-                    swScope: oldDetails.swScope,
-                    vapidKey: arrayToBase64(oldDetails.vapidKey)
-                }
-            };
-        }
-        else if (oldVersion === 4) {
-            const oldDetails = value;
-            tokenDetails = {
-                token: oldDetails.fcmToken,
-                createTime: oldDetails.createTime,
-                subscriptionOptions: {
-                    auth: arrayToBase64(oldDetails.auth),
-                    p256dh: arrayToBase64(oldDetails.p256dh),
-                    endpoint: oldDetails.endpoint,
-                    swScope: oldDetails.swScope,
-                    vapidKey: arrayToBase64(oldDetails.vapidKey)
-                }
-            };
-        }
-    });
-    db.close();
-    // Delete all old databases.
-    await (0,_firebase_util__WEBPACK_IMPORTED_MODULE_2__.deleteDB)(OLD_DB_NAME);
-    await (0,_firebase_util__WEBPACK_IMPORTED_MODULE_2__.deleteDB)('fcm_vapid_details_db');
-    await (0,_firebase_util__WEBPACK_IMPORTED_MODULE_2__.deleteDB)('undefined');
-    return checkTokenDetails(tokenDetails) ? tokenDetails : null;
-}
-function checkTokenDetails(tokenDetails) {
-    if (!tokenDetails || !tokenDetails.subscriptionOptions) {
-        return false;
+        this._close();
     }
-    const { subscriptionOptions } = tokenDetails;
-    return (typeof tokenDetails.createTime === 'number' &&
-        tokenDetails.createTime > 0 &&
-        typeof tokenDetails.token === 'string' &&
-        tokenDetails.token.length > 0 &&
-        typeof subscriptionOptions.auth === 'string' &&
-        subscriptionOptions.auth.length > 0 &&
-        typeof subscriptionOptions.p256dh === 'string' &&
-        subscriptionOptions.p256dh.length > 0 &&
-        typeof subscriptionOptions.endpoint === 'string' &&
-        subscriptionOptions.endpoint.length > 0 &&
-        typeof subscriptionOptions.swScope === 'string' &&
-        subscriptionOptions.swScope.length > 0 &&
-        typeof subscriptionOptions.vapidKey === 'string' &&
-        subscriptionOptions.vapidKey.length > 0);
-}
-
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-// Exported for tests.
-const DATABASE_NAME = 'firebase-messaging-database';
-const DATABASE_VERSION = 1;
-const OBJECT_STORE_NAME = 'firebase-messaging-store';
-let dbPromise = null;
-function getDbPromise() {
-    if (!dbPromise) {
-        dbPromise = (0,_firebase_util__WEBPACK_IMPORTED_MODULE_2__.openDB)(DATABASE_NAME, DATABASE_VERSION, (upgradeDb, oldVersion) => {
-            // We don't use 'break' in this switch statement, the fall-through behavior is what we want,
-            // because if there are multiple versions between the old version and the current version, we
-            // want ALL the migrations that correspond to those versions to run, not only the last one.
-            // eslint-disable-next-line default-case
-            switch (oldVersion) {
-                case 0:
-                    upgradeDb.createObjectStore(OBJECT_STORE_NAME);
+    /**
+     * Writes a packet.
+     *
+     * @param packet
+     * @private
+     */
+    _packet(packet) {
+        const encodedPackets = this.encoder.encode(packet);
+        for (let i = 0; i < encodedPackets.length; i++) {
+            this.engine.write(encodedPackets[i], packet.options);
+        }
+    }
+    /**
+     * Clean up transport subscriptions and packet buffer.
+     *
+     * @private
+     */
+    cleanup() {
+        this.subs.forEach((subDestroy) => subDestroy());
+        this.subs.length = 0;
+        this.decoder.destroy();
+    }
+    /**
+     * Close the current socket.
+     *
+     * @private
+     */
+    _close() {
+        this.skipReconnect = true;
+        this._reconnecting = false;
+        this.onclose("forced close");
+        if (this.engine)
+            this.engine.close();
+    }
+    /**
+     * Alias for close()
+     *
+     * @private
+     */
+    disconnect() {
+        return this._close();
+    }
+    /**
+     * Called upon engine close.
+     *
+     * @private
+     */
+    onclose(reason, description) {
+        this.cleanup();
+        this.backoff.reset();
+        this._readyState = "closed";
+        this.emitReserved("close", reason, description);
+        if (this._reconnection && !this.skipReconnect) {
+            this.reconnect();
+        }
+    }
+    /**
+     * Attempt a reconnection.
+     *
+     * @private
+     */
+    reconnect() {
+        if (this._reconnecting || this.skipReconnect)
+            return this;
+        const self = this;
+        if (this.backoff.attempts >= this._reconnectionAttempts) {
+            this.backoff.reset();
+            this.emitReserved("reconnect_failed");
+            this._reconnecting = false;
+        }
+        else {
+            const delay = this.backoff.duration();
+            this._reconnecting = true;
+            const timer = this.setTimeoutFn(() => {
+                if (self.skipReconnect)
+                    return;
+                this.emitReserved("reconnect_attempt", self.backoff.attempts);
+                // check again for the case socket closed in above events
+                if (self.skipReconnect)
+                    return;
+                self.open((err) => {
+                    if (err) {
+                        self._reconnecting = false;
+                        self.reconnect();
+                        this.emitReserved("reconnect_error", err);
+                    }
+                    else {
+                        self.onreconnect();
+                    }
+                });
+            }, delay);
+            if (this.opts.autoUnref) {
+                timer.unref();
             }
-        });
-    }
-    return dbPromise;
-}
-/** Gets record(s) from the objectStore that match the given key. */
-async function dbGet(firebaseDependencies) {
-    const key = getKey(firebaseDependencies);
-    const db = await getDbPromise();
-    const tokenDetails = (await db
-        .transaction(OBJECT_STORE_NAME)
-        .objectStore(OBJECT_STORE_NAME)
-        .get(key));
-    if (tokenDetails) {
-        return tokenDetails;
-    }
-    else {
-        // Check if there is a tokenDetails object in the old DB.
-        const oldTokenDetails = await migrateOldDatabase(firebaseDependencies.appConfig.senderId);
-        if (oldTokenDetails) {
-            await dbSet(firebaseDependencies, oldTokenDetails);
-            return oldTokenDetails;
-        }
-    }
-}
-/** Assigns or overwrites the record for the given key with the given value. */
-async function dbSet(firebaseDependencies, tokenDetails) {
-    const key = getKey(firebaseDependencies);
-    const db = await getDbPromise();
-    const tx = db.transaction(OBJECT_STORE_NAME, 'readwrite');
-    await tx.objectStore(OBJECT_STORE_NAME).put(tokenDetails, key);
-    await tx.complete;
-    return tokenDetails;
-}
-/** Removes record(s) from the objectStore that match the given key. */
-async function dbRemove(firebaseDependencies) {
-    const key = getKey(firebaseDependencies);
-    const db = await getDbPromise();
-    const tx = db.transaction(OBJECT_STORE_NAME, 'readwrite');
-    await tx.objectStore(OBJECT_STORE_NAME).delete(key);
-    await tx.complete;
-}
-function getKey({ appConfig }) {
-    return appConfig.appId;
-}
-
-/**
- * @license
- * Copyright 2017 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-const ERROR_MAP = {
-    ["missing-app-config-values" /* MISSING_APP_CONFIG_VALUES */]: 'Missing App configuration value: "{$valueName}"',
-    ["only-available-in-window" /* AVAILABLE_IN_WINDOW */]: 'This method is available in a Window context.',
-    ["only-available-in-sw" /* AVAILABLE_IN_SW */]: 'This method is available in a service worker context.',
-    ["permission-default" /* PERMISSION_DEFAULT */]: 'The notification permission was not granted and dismissed instead.',
-    ["permission-blocked" /* PERMISSION_BLOCKED */]: 'The notification permission was not granted and blocked instead.',
-    ["unsupported-browser" /* UNSUPPORTED_BROWSER */]: "This browser doesn't support the API's required to use the Firebase SDK.",
-    ["indexed-db-unsupported" /* INDEXED_DB_UNSUPPORTED */]: "This browser doesn't support indexedDb.open() (ex. Safari iFrame, Firefox Private Browsing, etc)",
-    ["failed-service-worker-registration" /* FAILED_DEFAULT_REGISTRATION */]: 'We are unable to register the default service worker. {$browserErrorMessage}',
-    ["token-subscribe-failed" /* TOKEN_SUBSCRIBE_FAILED */]: 'A problem occurred while subscribing the user to FCM: {$errorInfo}',
-    ["token-subscribe-no-token" /* TOKEN_SUBSCRIBE_NO_TOKEN */]: 'FCM returned no token when subscribing the user to push.',
-    ["token-unsubscribe-failed" /* TOKEN_UNSUBSCRIBE_FAILED */]: 'A problem occurred while unsubscribing the ' +
-        'user from FCM: {$errorInfo}',
-    ["token-update-failed" /* TOKEN_UPDATE_FAILED */]: 'A problem occurred while updating the user from FCM: {$errorInfo}',
-    ["token-update-no-token" /* TOKEN_UPDATE_NO_TOKEN */]: 'FCM returned no token when updating the user to push.',
-    ["use-sw-after-get-token" /* USE_SW_AFTER_GET_TOKEN */]: 'The useServiceWorker() method may only be called once and must be ' +
-        'called before calling getToken() to ensure your service worker is used.',
-    ["invalid-sw-registration" /* INVALID_SW_REGISTRATION */]: 'The input to useServiceWorker() must be a ServiceWorkerRegistration.',
-    ["invalid-bg-handler" /* INVALID_BG_HANDLER */]: 'The input to setBackgroundMessageHandler() must be a function.',
-    ["invalid-vapid-key" /* INVALID_VAPID_KEY */]: 'The public VAPID key must be a string.',
-    ["use-vapid-key-after-get-token" /* USE_VAPID_KEY_AFTER_GET_TOKEN */]: 'The usePublicVapidKey() method may only be called once and must be ' +
-        'called before calling getToken() to ensure your VAPID key is used.'
-};
-const ERROR_FACTORY = new _firebase_util__WEBPACK_IMPORTED_MODULE_2__.ErrorFactory('messaging', 'Messaging', ERROR_MAP);
-
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-async function requestGetToken(firebaseDependencies, subscriptionOptions) {
-    const headers = await getHeaders(firebaseDependencies);
-    const body = getBody(subscriptionOptions);
-    const subscribeOptions = {
-        method: 'POST',
-        headers,
-        body: JSON.stringify(body)
-    };
-    let responseData;
-    try {
-        const response = await fetch(getEndpoint(firebaseDependencies.appConfig), subscribeOptions);
-        responseData = await response.json();
-    }
-    catch (err) {
-        throw ERROR_FACTORY.create("token-subscribe-failed" /* TOKEN_SUBSCRIBE_FAILED */, {
-            errorInfo: err
-        });
-    }
-    if (responseData.error) {
-        const message = responseData.error.message;
-        throw ERROR_FACTORY.create("token-subscribe-failed" /* TOKEN_SUBSCRIBE_FAILED */, {
-            errorInfo: message
-        });
-    }
-    if (!responseData.token) {
-        throw ERROR_FACTORY.create("token-subscribe-no-token" /* TOKEN_SUBSCRIBE_NO_TOKEN */);
-    }
-    return responseData.token;
-}
-async function requestUpdateToken(firebaseDependencies, tokenDetails) {
-    const headers = await getHeaders(firebaseDependencies);
-    const body = getBody(tokenDetails.subscriptionOptions);
-    const updateOptions = {
-        method: 'PATCH',
-        headers,
-        body: JSON.stringify(body)
-    };
-    let responseData;
-    try {
-        const response = await fetch(`${getEndpoint(firebaseDependencies.appConfig)}/${tokenDetails.token}`, updateOptions);
-        responseData = await response.json();
-    }
-    catch (err) {
-        throw ERROR_FACTORY.create("token-update-failed" /* TOKEN_UPDATE_FAILED */, {
-            errorInfo: err
-        });
-    }
-    if (responseData.error) {
-        const message = responseData.error.message;
-        throw ERROR_FACTORY.create("token-update-failed" /* TOKEN_UPDATE_FAILED */, {
-            errorInfo: message
-        });
-    }
-    if (!responseData.token) {
-        throw ERROR_FACTORY.create("token-update-no-token" /* TOKEN_UPDATE_NO_TOKEN */);
-    }
-    return responseData.token;
-}
-async function requestDeleteToken(firebaseDependencies, token) {
-    const headers = await getHeaders(firebaseDependencies);
-    const unsubscribeOptions = {
-        method: 'DELETE',
-        headers
-    };
-    try {
-        const response = await fetch(`${getEndpoint(firebaseDependencies.appConfig)}/${token}`, unsubscribeOptions);
-        const responseData = await response.json();
-        if (responseData.error) {
-            const message = responseData.error.message;
-            throw ERROR_FACTORY.create("token-unsubscribe-failed" /* TOKEN_UNSUBSCRIBE_FAILED */, {
-                errorInfo: message
+            this.subs.push(function subDestroy() {
+                clearTimeout(timer);
             });
         }
     }
-    catch (err) {
-        throw ERROR_FACTORY.create("token-unsubscribe-failed" /* TOKEN_UNSUBSCRIBE_FAILED */, {
-            errorInfo: err
-        });
-    }
-}
-function getEndpoint({ projectId }) {
-    return `${ENDPOINT}/projects/${projectId}/registrations`;
-}
-async function getHeaders({ appConfig, installations }) {
-    const authToken = await installations.getToken();
-    return new Headers({
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-        'x-goog-api-key': appConfig.apiKey,
-        'x-goog-firebase-installations-auth': `FIS ${authToken}`
-    });
-}
-function getBody({ p256dh, auth, endpoint, vapidKey }) {
-    const body = {
-        web: {
-            endpoint,
-            auth,
-            p256dh
-        }
-    };
-    if (vapidKey !== DEFAULT_VAPID_KEY) {
-        body.web.applicationPubKey = vapidKey;
-    }
-    return body;
-}
-
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-// UpdateRegistration will be called once every week.
-const TOKEN_EXPIRATION_MS = 7 * 24 * 60 * 60 * 1000; // 7 days
-async function getTokenInternal(messaging) {
-    const pushSubscription = await getPushSubscription(messaging.swRegistration, messaging.vapidKey);
-    const subscriptionOptions = {
-        vapidKey: messaging.vapidKey,
-        swScope: messaging.swRegistration.scope,
-        endpoint: pushSubscription.endpoint,
-        auth: arrayToBase64(pushSubscription.getKey('auth')),
-        p256dh: arrayToBase64(pushSubscription.getKey('p256dh'))
-    };
-    const tokenDetails = await dbGet(messaging.firebaseDependencies);
-    if (!tokenDetails) {
-        // No token, get a new one.
-        return getNewToken(messaging.firebaseDependencies, subscriptionOptions);
-    }
-    else if (!isTokenValid(tokenDetails.subscriptionOptions, subscriptionOptions)) {
-        // Invalid token, get a new one.
-        try {
-            await requestDeleteToken(messaging.firebaseDependencies, tokenDetails.token);
-        }
-        catch (e) {
-            // Suppress errors because of #2364
-            console.warn(e);
-        }
-        return getNewToken(messaging.firebaseDependencies, subscriptionOptions);
-    }
-    else if (Date.now() >= tokenDetails.createTime + TOKEN_EXPIRATION_MS) {
-        // Weekly token refresh
-        return updateToken(messaging, {
-            token: tokenDetails.token,
-            createTime: Date.now(),
-            subscriptionOptions
-        });
-    }
-    else {
-        // Valid token, nothing to do.
-        return tokenDetails.token;
-    }
-}
-/**
- * This method deletes the token from the database, unsubscribes the token from FCM, and unregisters
- * the push subscription if it exists.
- */
-async function deleteTokenInternal(messaging) {
-    const tokenDetails = await dbGet(messaging.firebaseDependencies);
-    if (tokenDetails) {
-        await requestDeleteToken(messaging.firebaseDependencies, tokenDetails.token);
-        await dbRemove(messaging.firebaseDependencies);
-    }
-    // Unsubscribe from the push subscription.
-    const pushSubscription = await messaging.swRegistration.pushManager.getSubscription();
-    if (pushSubscription) {
-        return pushSubscription.unsubscribe();
-    }
-    // If there's no SW, consider it a success.
-    return true;
-}
-async function updateToken(messaging, tokenDetails) {
-    try {
-        const updatedToken = await requestUpdateToken(messaging.firebaseDependencies, tokenDetails);
-        const updatedTokenDetails = Object.assign(Object.assign({}, tokenDetails), { token: updatedToken, createTime: Date.now() });
-        await dbSet(messaging.firebaseDependencies, updatedTokenDetails);
-        return updatedToken;
-    }
-    catch (e) {
-        await deleteTokenInternal(messaging);
-        throw e;
-    }
-}
-async function getNewToken(firebaseDependencies, subscriptionOptions) {
-    const token = await requestGetToken(firebaseDependencies, subscriptionOptions);
-    const tokenDetails = {
-        token,
-        createTime: Date.now(),
-        subscriptionOptions
-    };
-    await dbSet(firebaseDependencies, tokenDetails);
-    return tokenDetails.token;
-}
-/**
- * Gets a PushSubscription for the current user.
- */
-async function getPushSubscription(swRegistration, vapidKey) {
-    const subscription = await swRegistration.pushManager.getSubscription();
-    if (subscription) {
-        return subscription;
-    }
-    return swRegistration.pushManager.subscribe({
-        userVisibleOnly: true,
-        // Chrome <= 75 doesn't support base64-encoded VAPID key. For backward compatibility, VAPID key
-        // submitted to pushManager#subscribe must be of type Uint8Array.
-        applicationServerKey: base64ToArray(vapidKey)
-    });
-}
-/**
- * Checks if the saved tokenDetails object matches the configuration provided.
- */
-function isTokenValid(dbOptions, currentOptions) {
-    const isVapidKeyEqual = currentOptions.vapidKey === dbOptions.vapidKey;
-    const isEndpointEqual = currentOptions.endpoint === dbOptions.endpoint;
-    const isAuthEqual = currentOptions.auth === dbOptions.auth;
-    const isP256dhEqual = currentOptions.p256dh === dbOptions.p256dh;
-    return isVapidKeyEqual && isEndpointEqual && isAuthEqual && isP256dhEqual;
-}
-
-/**
- * @license
- * Copyright 2020 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-function externalizePayload(internalPayload) {
-    const payload = {
-        from: internalPayload.from,
-        // eslint-disable-next-line camelcase
-        collapseKey: internalPayload.collapse_key,
-        // eslint-disable-next-line camelcase
-        messageId: internalPayload.fcmMessageId
-    };
-    propagateNotificationPayload(payload, internalPayload);
-    propagateDataPayload(payload, internalPayload);
-    propagateFcmOptions(payload, internalPayload);
-    return payload;
-}
-function propagateNotificationPayload(payload, messagePayloadInternal) {
-    if (!messagePayloadInternal.notification) {
-        return;
-    }
-    payload.notification = {};
-    const title = messagePayloadInternal.notification.title;
-    if (!!title) {
-        payload.notification.title = title;
-    }
-    const body = messagePayloadInternal.notification.body;
-    if (!!body) {
-        payload.notification.body = body;
-    }
-    const image = messagePayloadInternal.notification.image;
-    if (!!image) {
-        payload.notification.image = image;
-    }
-}
-function propagateDataPayload(payload, messagePayloadInternal) {
-    if (!messagePayloadInternal.data) {
-        return;
-    }
-    payload.data = messagePayloadInternal.data;
-}
-function propagateFcmOptions(payload, messagePayloadInternal) {
-    if (!messagePayloadInternal.fcmOptions) {
-        return;
-    }
-    payload.fcmOptions = {};
-    const link = messagePayloadInternal.fcmOptions.link;
-    if (!!link) {
-        payload.fcmOptions.link = link;
-    }
-    // eslint-disable-next-line camelcase
-    const analyticsLabel = messagePayloadInternal.fcmOptions.analytics_label;
-    if (!!analyticsLabel) {
-        payload.fcmOptions.analyticsLabel = analyticsLabel;
+    /**
+     * Called upon successful reconnect.
+     *
+     * @private
+     */
+    onreconnect() {
+        const attempt = this.backoff.attempts;
+        this._reconnecting = false;
+        this.backoff.reset();
+        this.emitReserved("reconnect", attempt);
     }
 }
 
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-function isConsoleMessage(data) {
-    // This message has a campaign ID, meaning it was sent using the Firebase Console.
-    return typeof data === 'object' && !!data && CONSOLE_CAMPAIGN_ID in data;
-}
 
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-_mergeStrings('hts/frbslgigp.ogepscmv/ieo/eaylg', 'tp:/ieaeogn-agolai.o/1frlglgc/o');
-_mergeStrings('AzSCbw63g1R0nCw85jG8', 'Iaya3yLKwmgvh7cF0q4');
-function _mergeStrings(s1, s2) {
-    const resultArray = [];
-    for (let i = 0; i < s1.length; i++) {
-        resultArray.push(s1.charAt(i));
-        if (i < s2.length) {
-            resultArray.push(s2.charAt(i));
-        }
-    }
-    return resultArray.join('');
-}
+/***/ }),
 
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-function extractAppConfig(app) {
-    if (!app || !app.options) {
-        throw getMissingValueError('App Configuration Object');
-    }
-    if (!app.name) {
-        throw getMissingValueError('App Name');
-    }
-    // Required app config keys
-    const configKeys = [
-        'projectId',
-        'apiKey',
-        'appId',
-        'messagingSenderId'
-    ];
-    const { options } = app;
-    for (const keyName of configKeys) {
-        if (!options[keyName]) {
-            throw getMissingValueError(keyName);
-        }
-    }
-    return {
-        appName: app.name,
-        projectId: options.projectId,
-        apiKey: options.apiKey,
-        appId: options.appId,
-        senderId: options.messagingSenderId
+/***/ "./node_modules/socket.io-client/build/esm/on.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/socket.io-client/build/esm/on.js ***!
+  \*******************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "on": () => (/* binding */ on)
+/* harmony export */ });
+function on(obj, ev, fn) {
+    obj.on(ev, fn);
+    return function subDestroy() {
+        obj.off(ev, fn);
     };
 }
-function getMissingValueError(valueName) {
-    return ERROR_FACTORY.create("missing-app-config-values" /* MISSING_APP_CONFIG_VALUES */, {
-        valueName
-    });
-}
+
+
+/***/ }),
+
+/***/ "./node_modules/socket.io-client/build/esm/socket.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/socket.io-client/build/esm/socket.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Socket": () => (/* binding */ Socket)
+/* harmony export */ });
+/* harmony import */ var socket_io_parser__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! socket.io-parser */ "./node_modules/socket.io-client/node_modules/socket.io-parser/build/esm/index.js");
+/* harmony import */ var _on_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./on.js */ "./node_modules/socket.io-client/build/esm/on.js");
+/* harmony import */ var _socket_io_component_emitter__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @socket.io/component-emitter */ "./node_modules/@socket.io/component-emitter/index.mjs");
+
+
 
 /**
- * @license
- * Copyright 2020 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Internal events.
+ * These events can't be emitted by the user.
  */
-class MessagingService {
-    constructor(app, installations, analyticsProvider) {
-        // logging is only done with end user consent. Default to false.
-        this.deliveryMetricsExportedToBigQueryEnabled = false;
-        this.onBackgroundMessageHandler = null;
-        this.onMessageHandler = null;
-        this.logEvents = [];
-        this.isLogServiceStarted = false;
-        const appConfig = extractAppConfig(app);
-        this.firebaseDependencies = {
-            app,
-            appConfig,
-            installations,
-            analyticsProvider
+const RESERVED_EVENTS = Object.freeze({
+    connect: 1,
+    connect_error: 1,
+    disconnect: 1,
+    disconnecting: 1,
+    // EventEmitter reserved events: https://nodejs.org/api/events.html#events_event_newlistener
+    newListener: 1,
+    removeListener: 1,
+});
+class Socket extends _socket_io_component_emitter__WEBPACK_IMPORTED_MODULE_2__.Emitter {
+    /**
+     * `Socket` constructor.
+     *
+     * @public
+     */
+    constructor(io, nsp, opts) {
+        super();
+        this.connected = false;
+        this.receiveBuffer = [];
+        this.sendBuffer = [];
+        this.ids = 0;
+        this.acks = {};
+        this.flags = {};
+        this.io = io;
+        this.nsp = nsp;
+        if (opts && opts.auth) {
+            this.auth = opts.auth;
+        }
+        if (this.io._autoConnect)
+            this.open();
+    }
+    /**
+     * Whether the socket is currently disconnected
+     */
+    get disconnected() {
+        return !this.connected;
+    }
+    /**
+     * Subscribe to open, close and packet events
+     *
+     * @private
+     */
+    subEvents() {
+        if (this.subs)
+            return;
+        const io = this.io;
+        this.subs = [
+            (0,_on_js__WEBPACK_IMPORTED_MODULE_1__.on)(io, "open", this.onopen.bind(this)),
+            (0,_on_js__WEBPACK_IMPORTED_MODULE_1__.on)(io, "packet", this.onpacket.bind(this)),
+            (0,_on_js__WEBPACK_IMPORTED_MODULE_1__.on)(io, "error", this.onerror.bind(this)),
+            (0,_on_js__WEBPACK_IMPORTED_MODULE_1__.on)(io, "close", this.onclose.bind(this)),
+        ];
+    }
+    /**
+     * Whether the Socket will try to reconnect when its Manager connects or reconnects
+     */
+    get active() {
+        return !!this.subs;
+    }
+    /**
+     * "Opens" the socket.
+     *
+     * @public
+     */
+    connect() {
+        if (this.connected)
+            return this;
+        this.subEvents();
+        if (!this.io["_reconnecting"])
+            this.io.open(); // ensure open
+        if ("open" === this.io._readyState)
+            this.onopen();
+        return this;
+    }
+    /**
+     * Alias for connect()
+     */
+    open() {
+        return this.connect();
+    }
+    /**
+     * Sends a `message` event.
+     *
+     * @return self
+     * @public
+     */
+    send(...args) {
+        args.unshift("message");
+        this.emit.apply(this, args);
+        return this;
+    }
+    /**
+     * Override `emit`.
+     * If the event is in `events`, it's emitted normally.
+     *
+     * @return self
+     * @public
+     */
+    emit(ev, ...args) {
+        if (RESERVED_EVENTS.hasOwnProperty(ev)) {
+            throw new Error('"' + ev + '" is a reserved event name');
+        }
+        args.unshift(ev);
+        const packet = {
+            type: socket_io_parser__WEBPACK_IMPORTED_MODULE_0__.PacketType.EVENT,
+            data: args,
         };
-    }
-    _delete() {
-        return Promise.resolve();
-    }
-}
-
-/**
- * @license
- * Copyright 2020 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-async function registerDefaultSw(messaging) {
-    try {
-        messaging.swRegistration = await navigator.serviceWorker.register(DEFAULT_SW_PATH, {
-            scope: DEFAULT_SW_SCOPE
-        });
-        // The timing when browser updates sw when sw has an update is unreliable from experiment. It
-        // leads to version conflict when the SDK upgrades to a newer version in the main page, but sw
-        // is stuck with the old version. For example,
-        // https://github.com/firebase/firebase-js-sdk/issues/2590 The following line reliably updates
-        // sw if there was an update.
-        messaging.swRegistration.update().catch(() => {
-            /* it is non blocking and we don't care if it failed */
-        });
-    }
-    catch (e) {
-        throw ERROR_FACTORY.create("failed-service-worker-registration" /* FAILED_DEFAULT_REGISTRATION */, {
-            browserErrorMessage: e.message
-        });
-    }
-}
-
-/**
- * @license
- * Copyright 2020 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-async function updateSwReg(messaging, swRegistration) {
-    if (!swRegistration && !messaging.swRegistration) {
-        await registerDefaultSw(messaging);
-    }
-    if (!swRegistration && !!messaging.swRegistration) {
-        return;
-    }
-    if (!(swRegistration instanceof ServiceWorkerRegistration)) {
-        throw ERROR_FACTORY.create("invalid-sw-registration" /* INVALID_SW_REGISTRATION */);
-    }
-    messaging.swRegistration = swRegistration;
-}
-
-/**
- * @license
- * Copyright 2020 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-async function updateVapidKey(messaging, vapidKey) {
-    if (!!vapidKey) {
-        messaging.vapidKey = vapidKey;
-    }
-    else if (!messaging.vapidKey) {
-        messaging.vapidKey = DEFAULT_VAPID_KEY;
-    }
-}
-
-/**
- * @license
- * Copyright 2020 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-async function getToken$1(messaging, options) {
-    if (!navigator) {
-        throw ERROR_FACTORY.create("only-available-in-window" /* AVAILABLE_IN_WINDOW */);
-    }
-    if (Notification.permission === 'default') {
-        await Notification.requestPermission();
-    }
-    if (Notification.permission !== 'granted') {
-        throw ERROR_FACTORY.create("permission-blocked" /* PERMISSION_BLOCKED */);
-    }
-    await updateVapidKey(messaging, options === null || options === void 0 ? void 0 : options.vapidKey);
-    await updateSwReg(messaging, options === null || options === void 0 ? void 0 : options.serviceWorkerRegistration);
-    return getTokenInternal(messaging);
-}
-
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-async function logToScion(messaging, messageType, data) {
-    const eventType = getEventType(messageType);
-    const analytics = await messaging.firebaseDependencies.analyticsProvider.get();
-    analytics.logEvent(eventType, {
-        /* eslint-disable camelcase */
-        message_id: data[CONSOLE_CAMPAIGN_ID],
-        message_name: data[CONSOLE_CAMPAIGN_NAME],
-        message_time: data[CONSOLE_CAMPAIGN_TIME],
-        message_device_time: Math.floor(Date.now() / 1000)
-        /* eslint-enable camelcase */
-    });
-}
-function getEventType(messageType) {
-    switch (messageType) {
-        case MessageType.NOTIFICATION_CLICKED:
-            return 'notification_open';
-        case MessageType.PUSH_RECEIVED:
-            return 'notification_foreground';
-        default:
-            throw new Error();
-    }
-}
-
-/**
- * @license
- * Copyright 2017 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-async function messageEventListener(messaging, event) {
-    const internalPayload = event.data;
-    if (!internalPayload.isFirebaseMessaging) {
-        return;
-    }
-    if (messaging.onMessageHandler &&
-        internalPayload.messageType === MessageType.PUSH_RECEIVED) {
-        if (typeof messaging.onMessageHandler === 'function') {
-            messaging.onMessageHandler(externalizePayload(internalPayload));
+        packet.options = {};
+        packet.options.compress = this.flags.compress !== false;
+        // event ack callback
+        if ("function" === typeof args[args.length - 1]) {
+            const id = this.ids++;
+            const ack = args.pop();
+            this._registerAckCallback(id, ack);
+            packet.id = id;
+        }
+        const isTransportWritable = this.io.engine &&
+            this.io.engine.transport &&
+            this.io.engine.transport.writable;
+        const discardPacket = this.flags.volatile && (!isTransportWritable || !this.connected);
+        if (discardPacket) {
+        }
+        else if (this.connected) {
+            this.notifyOutgoingListeners(packet);
+            this.packet(packet);
         }
         else {
-            messaging.onMessageHandler.next(externalizePayload(internalPayload));
+            this.sendBuffer.push(packet);
+        }
+        this.flags = {};
+        return this;
+    }
+    /**
+     * @private
+     */
+    _registerAckCallback(id, ack) {
+        const timeout = this.flags.timeout;
+        if (timeout === undefined) {
+            this.acks[id] = ack;
+            return;
+        }
+        // @ts-ignore
+        const timer = this.io.setTimeoutFn(() => {
+            delete this.acks[id];
+            for (let i = 0; i < this.sendBuffer.length; i++) {
+                if (this.sendBuffer[i].id === id) {
+                    this.sendBuffer.splice(i, 1);
+                }
+            }
+            ack.call(this, new Error("operation has timed out"));
+        }, timeout);
+        this.acks[id] = (...args) => {
+            // @ts-ignore
+            this.io.clearTimeoutFn(timer);
+            ack.apply(this, [null, ...args]);
+        };
+    }
+    /**
+     * Sends a packet.
+     *
+     * @param packet
+     * @private
+     */
+    packet(packet) {
+        packet.nsp = this.nsp;
+        this.io._packet(packet);
+    }
+    /**
+     * Called upon engine `open`.
+     *
+     * @private
+     */
+    onopen() {
+        if (typeof this.auth == "function") {
+            this.auth((data) => {
+                this.packet({ type: socket_io_parser__WEBPACK_IMPORTED_MODULE_0__.PacketType.CONNECT, data });
+            });
+        }
+        else {
+            this.packet({ type: socket_io_parser__WEBPACK_IMPORTED_MODULE_0__.PacketType.CONNECT, data: this.auth });
         }
     }
-    // Log to Scion if applicable
-    const dataPayload = internalPayload.data;
-    if (isConsoleMessage(dataPayload) &&
-        dataPayload[CONSOLE_CAMPAIGN_ANALYTICS_ENABLED] === '1') {
-        await logToScion(messaging, internalPayload.messageType, dataPayload);
+    /**
+     * Called upon engine or manager `error`.
+     *
+     * @param err
+     * @private
+     */
+    onerror(err) {
+        if (!this.connected) {
+            this.emitReserved("connect_error", err);
+        }
+    }
+    /**
+     * Called upon engine `close`.
+     *
+     * @param reason
+     * @param description
+     * @private
+     */
+    onclose(reason, description) {
+        this.connected = false;
+        delete this.id;
+        this.emitReserved("disconnect", reason, description);
+    }
+    /**
+     * Called with socket packet.
+     *
+     * @param packet
+     * @private
+     */
+    onpacket(packet) {
+        const sameNamespace = packet.nsp === this.nsp;
+        if (!sameNamespace)
+            return;
+        switch (packet.type) {
+            case socket_io_parser__WEBPACK_IMPORTED_MODULE_0__.PacketType.CONNECT:
+                if (packet.data && packet.data.sid) {
+                    const id = packet.data.sid;
+                    this.onconnect(id);
+                }
+                else {
+                    this.emitReserved("connect_error", new Error("It seems you are trying to reach a Socket.IO server in v2.x with a v3.x client, but they are not compatible (more information here: https://socket.io/docs/v3/migrating-from-2-x-to-3-0/)"));
+                }
+                break;
+            case socket_io_parser__WEBPACK_IMPORTED_MODULE_0__.PacketType.EVENT:
+            case socket_io_parser__WEBPACK_IMPORTED_MODULE_0__.PacketType.BINARY_EVENT:
+                this.onevent(packet);
+                break;
+            case socket_io_parser__WEBPACK_IMPORTED_MODULE_0__.PacketType.ACK:
+            case socket_io_parser__WEBPACK_IMPORTED_MODULE_0__.PacketType.BINARY_ACK:
+                this.onack(packet);
+                break;
+            case socket_io_parser__WEBPACK_IMPORTED_MODULE_0__.PacketType.DISCONNECT:
+                this.ondisconnect();
+                break;
+            case socket_io_parser__WEBPACK_IMPORTED_MODULE_0__.PacketType.CONNECT_ERROR:
+                this.destroy();
+                const err = new Error(packet.data.message);
+                // @ts-ignore
+                err.data = packet.data.data;
+                this.emitReserved("connect_error", err);
+                break;
+        }
+    }
+    /**
+     * Called upon a server event.
+     *
+     * @param packet
+     * @private
+     */
+    onevent(packet) {
+        const args = packet.data || [];
+        if (null != packet.id) {
+            args.push(this.ack(packet.id));
+        }
+        if (this.connected) {
+            this.emitEvent(args);
+        }
+        else {
+            this.receiveBuffer.push(Object.freeze(args));
+        }
+    }
+    emitEvent(args) {
+        if (this._anyListeners && this._anyListeners.length) {
+            const listeners = this._anyListeners.slice();
+            for (const listener of listeners) {
+                listener.apply(this, args);
+            }
+        }
+        super.emit.apply(this, args);
+    }
+    /**
+     * Produces an ack callback to emit with an event.
+     *
+     * @private
+     */
+    ack(id) {
+        const self = this;
+        let sent = false;
+        return function (...args) {
+            // prevent double callbacks
+            if (sent)
+                return;
+            sent = true;
+            self.packet({
+                type: socket_io_parser__WEBPACK_IMPORTED_MODULE_0__.PacketType.ACK,
+                id: id,
+                data: args,
+            });
+        };
+    }
+    /**
+     * Called upon a server acknowlegement.
+     *
+     * @param packet
+     * @private
+     */
+    onack(packet) {
+        const ack = this.acks[packet.id];
+        if ("function" === typeof ack) {
+            ack.apply(this, packet.data);
+            delete this.acks[packet.id];
+        }
+        else {
+        }
+    }
+    /**
+     * Called upon server connect.
+     *
+     * @private
+     */
+    onconnect(id) {
+        this.id = id;
+        this.connected = true;
+        this.emitBuffered();
+        this.emitReserved("connect");
+    }
+    /**
+     * Emit buffered events (received and emitted).
+     *
+     * @private
+     */
+    emitBuffered() {
+        this.receiveBuffer.forEach((args) => this.emitEvent(args));
+        this.receiveBuffer = [];
+        this.sendBuffer.forEach((packet) => {
+            this.notifyOutgoingListeners(packet);
+            this.packet(packet);
+        });
+        this.sendBuffer = [];
+    }
+    /**
+     * Called upon server disconnect.
+     *
+     * @private
+     */
+    ondisconnect() {
+        this.destroy();
+        this.onclose("io server disconnect");
+    }
+    /**
+     * Called upon forced client/server side disconnections,
+     * this method ensures the manager stops tracking us and
+     * that reconnections don't get triggered for this.
+     *
+     * @private
+     */
+    destroy() {
+        if (this.subs) {
+            // clean subscriptions to avoid reconnections
+            this.subs.forEach((subDestroy) => subDestroy());
+            this.subs = undefined;
+        }
+        this.io["_destroy"](this);
+    }
+    /**
+     * Disconnects the socket manually.
+     *
+     * @return self
+     * @public
+     */
+    disconnect() {
+        if (this.connected) {
+            this.packet({ type: socket_io_parser__WEBPACK_IMPORTED_MODULE_0__.PacketType.DISCONNECT });
+        }
+        // remove socket from pool
+        this.destroy();
+        if (this.connected) {
+            // fire events
+            this.onclose("io client disconnect");
+        }
+        return this;
+    }
+    /**
+     * Alias for disconnect()
+     *
+     * @return self
+     * @public
+     */
+    close() {
+        return this.disconnect();
+    }
+    /**
+     * Sets the compress flag.
+     *
+     * @param compress - if `true`, compresses the sending data
+     * @return self
+     * @public
+     */
+    compress(compress) {
+        this.flags.compress = compress;
+        return this;
+    }
+    /**
+     * Sets a modifier for a subsequent event emission that the event message will be dropped when this socket is not
+     * ready to send messages.
+     *
+     * @returns self
+     * @public
+     */
+    get volatile() {
+        this.flags.volatile = true;
+        return this;
+    }
+    /**
+     * Sets a modifier for a subsequent event emission that the callback will be called with an error when the
+     * given number of milliseconds have elapsed without an acknowledgement from the server:
+     *
+     * ```
+     * socket.timeout(5000).emit("my-event", (err) => {
+     *   if (err) {
+     *     // the server did not acknowledge the event in the given delay
+     *   }
+     * });
+     * ```
+     *
+     * @returns self
+     * @public
+     */
+    timeout(timeout) {
+        this.flags.timeout = timeout;
+        return this;
+    }
+    /**
+     * Adds a listener that will be fired when any event is emitted. The event name is passed as the first argument to the
+     * callback.
+     *
+     * @param listener
+     * @public
+     */
+    onAny(listener) {
+        this._anyListeners = this._anyListeners || [];
+        this._anyListeners.push(listener);
+        return this;
+    }
+    /**
+     * Adds a listener that will be fired when any event is emitted. The event name is passed as the first argument to the
+     * callback. The listener is added to the beginning of the listeners array.
+     *
+     * @param listener
+     * @public
+     */
+    prependAny(listener) {
+        this._anyListeners = this._anyListeners || [];
+        this._anyListeners.unshift(listener);
+        return this;
+    }
+    /**
+     * Removes the listener that will be fired when any event is emitted.
+     *
+     * @param listener
+     * @public
+     */
+    offAny(listener) {
+        if (!this._anyListeners) {
+            return this;
+        }
+        if (listener) {
+            const listeners = this._anyListeners;
+            for (let i = 0; i < listeners.length; i++) {
+                if (listener === listeners[i]) {
+                    listeners.splice(i, 1);
+                    return this;
+                }
+            }
+        }
+        else {
+            this._anyListeners = [];
+        }
+        return this;
+    }
+    /**
+     * Returns an array of listeners that are listening for any event that is specified. This array can be manipulated,
+     * e.g. to remove listeners.
+     *
+     * @public
+     */
+    listenersAny() {
+        return this._anyListeners || [];
+    }
+    /**
+     * Adds a listener that will be fired when any event is emitted. The event name is passed as the first argument to the
+     * callback.
+     *
+     * @param listener
+     *
+     * <pre><code>
+     *
+     * socket.onAnyOutgoing((event, ...args) => {
+     *   console.log(event);
+     * });
+     *
+     * </pre></code>
+     *
+     * @public
+     */
+    onAnyOutgoing(listener) {
+        this._anyOutgoingListeners = this._anyOutgoingListeners || [];
+        this._anyOutgoingListeners.push(listener);
+        return this;
+    }
+    /**
+     * Adds a listener that will be fired when any event is emitted. The event name is passed as the first argument to the
+     * callback. The listener is added to the beginning of the listeners array.
+     *
+     * @param listener
+     *
+     * <pre><code>
+     *
+     * socket.prependAnyOutgoing((event, ...args) => {
+     *   console.log(event);
+     * });
+     *
+     * </pre></code>
+     *
+     * @public
+     */
+    prependAnyOutgoing(listener) {
+        this._anyOutgoingListeners = this._anyOutgoingListeners || [];
+        this._anyOutgoingListeners.unshift(listener);
+        return this;
+    }
+    /**
+     * Removes the listener that will be fired when any event is emitted.
+     *
+     * @param listener
+     *
+     * <pre><code>
+     *
+     * const handler = (event, ...args) => {
+     *   console.log(event);
+     * }
+     *
+     * socket.onAnyOutgoing(handler);
+     *
+     * // then later
+     * socket.offAnyOutgoing(handler);
+     *
+     * </pre></code>
+     *
+     * @public
+     */
+    offAnyOutgoing(listener) {
+        if (!this._anyOutgoingListeners) {
+            return this;
+        }
+        if (listener) {
+            const listeners = this._anyOutgoingListeners;
+            for (let i = 0; i < listeners.length; i++) {
+                if (listener === listeners[i]) {
+                    listeners.splice(i, 1);
+                    return this;
+                }
+            }
+        }
+        else {
+            this._anyOutgoingListeners = [];
+        }
+        return this;
+    }
+    /**
+     * Returns an array of listeners that are listening for any event that is specified. This array can be manipulated,
+     * e.g. to remove listeners.
+     *
+     * @public
+     */
+    listenersAnyOutgoing() {
+        return this._anyOutgoingListeners || [];
+    }
+    /**
+     * Notify the listeners for each packet sent
+     *
+     * @param packet
+     *
+     * @private
+     */
+    notifyOutgoingListeners(packet) {
+        if (this._anyOutgoingListeners && this._anyOutgoingListeners.length) {
+            const listeners = this._anyOutgoingListeners.slice();
+            for (const listener of listeners) {
+                listener.apply(this, packet.data);
+            }
+        }
     }
 }
 
-const name = "@firebase/messaging";
-const version = "0.9.10";
+
+/***/ }),
+
+/***/ "./node_modules/socket.io-client/build/esm/url.js":
+/*!********************************************************!*\
+  !*** ./node_modules/socket.io-client/build/esm/url.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "url": () => (/* binding */ url)
+/* harmony export */ });
+/* harmony import */ var engine_io_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! engine.io-client */ "./node_modules/engine.io-client/build/esm/index.js");
 
 /**
- * @license
- * Copyright 2020 Google LLC
+ * URL parser.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * @param uri - url
+ * @param path - the request path of the connection
+ * @param loc - An object meant to mimic window.location.
+ *        Defaults to window.location.
+ * @public
  */
-const WindowMessagingFactory = (container) => {
-    const messaging = new MessagingService(container.getProvider('app').getImmediate(), container.getProvider('installations-internal').getImmediate(), container.getProvider('analytics-internal'));
-    navigator.serviceWorker.addEventListener('message', e => messageEventListener(messaging, e));
-    return messaging;
-};
-const WindowMessagingInternalFactory = (container) => {
-    const messaging = container
-        .getProvider('messaging')
-        .getImmediate();
-    const messagingInternal = {
-        getToken: (options) => getToken$1(messaging, options)
-    };
-    return messagingInternal;
-};
-function registerMessagingInWindow() {
-    (0,_firebase_app__WEBPACK_IMPORTED_MODULE_3__._registerComponent)(new _firebase_component__WEBPACK_IMPORTED_MODULE_1__.Component('messaging', WindowMessagingFactory, "PUBLIC" /* PUBLIC */));
-    (0,_firebase_app__WEBPACK_IMPORTED_MODULE_3__._registerComponent)(new _firebase_component__WEBPACK_IMPORTED_MODULE_1__.Component('messaging-internal', WindowMessagingInternalFactory, "PRIVATE" /* PRIVATE */));
-    (0,_firebase_app__WEBPACK_IMPORTED_MODULE_3__.registerVersion)(name, version);
-    // BUILD_TARGET will be replaced by values like esm5, esm2017, cjs5, etc during the compilation
-    (0,_firebase_app__WEBPACK_IMPORTED_MODULE_3__.registerVersion)(name, version, 'esm2017');
+function url(uri, path = "", loc) {
+    let obj = uri;
+    // default to window.location
+    loc = loc || (typeof location !== "undefined" && location);
+    if (null == uri)
+        uri = loc.protocol + "//" + loc.host;
+    // relative path support
+    if (typeof uri === "string") {
+        if ("/" === uri.charAt(0)) {
+            if ("/" === uri.charAt(1)) {
+                uri = loc.protocol + uri;
+            }
+            else {
+                uri = loc.host + uri;
+            }
+        }
+        if (!/^(https?|wss?):\/\//.test(uri)) {
+            if ("undefined" !== typeof loc) {
+                uri = loc.protocol + "//" + uri;
+            }
+            else {
+                uri = "https://" + uri;
+            }
+        }
+        // parse
+        obj = (0,engine_io_client__WEBPACK_IMPORTED_MODULE_0__.parse)(uri);
+    }
+    // make sure we treat `localhost:80` and `localhost` equally
+    if (!obj.port) {
+        if (/^(http|ws)$/.test(obj.protocol)) {
+            obj.port = "80";
+        }
+        else if (/^(http|ws)s$/.test(obj.protocol)) {
+            obj.port = "443";
+        }
+    }
+    obj.path = obj.path || "/";
+    const ipv6 = obj.host.indexOf(":") !== -1;
+    const host = ipv6 ? "[" + obj.host + "]" : obj.host;
+    // define unique id
+    obj.id = obj.protocol + "://" + host + ":" + obj.port + path;
+    // define href
+    obj.href =
+        obj.protocol +
+            "://" +
+            host +
+            (loc && loc.port === obj.port ? "" : ":" + obj.port);
+    return obj;
 }
 
+
+/***/ }),
+
+/***/ "./node_modules/socket.io-client/node_modules/socket.io-parser/build/esm/binary.js":
+/*!*****************************************************************************************!*\
+  !*** ./node_modules/socket.io-client/node_modules/socket.io-parser/build/esm/binary.js ***!
+  \*****************************************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "deconstructPacket": () => (/* binding */ deconstructPacket),
+/* harmony export */   "reconstructPacket": () => (/* binding */ reconstructPacket)
+/* harmony export */ });
+/* harmony import */ var _is_binary_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./is-binary.js */ "./node_modules/socket.io-client/node_modules/socket.io-parser/build/esm/is-binary.js");
+
 /**
- * @license
- * Copyright 2020 Google LLC
+ * Replaces every Buffer | ArrayBuffer | Blob | File in packet with a numbered placeholder.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * @param {Object} packet - socket.io event packet
+ * @return {Object} with deconstructed packet and list of buffers
+ * @public
  */
+function deconstructPacket(packet) {
+    const buffers = [];
+    const packetData = packet.data;
+    const pack = packet;
+    pack.data = _deconstructPacket(packetData, buffers);
+    pack.attachments = buffers.length; // number of binary 'attachments'
+    return { packet: pack, buffers: buffers };
+}
+function _deconstructPacket(data, buffers) {
+    if (!data)
+        return data;
+    if ((0,_is_binary_js__WEBPACK_IMPORTED_MODULE_0__.isBinary)(data)) {
+        const placeholder = { _placeholder: true, num: buffers.length };
+        buffers.push(data);
+        return placeholder;
+    }
+    else if (Array.isArray(data)) {
+        const newData = new Array(data.length);
+        for (let i = 0; i < data.length; i++) {
+            newData[i] = _deconstructPacket(data[i], buffers);
+        }
+        return newData;
+    }
+    else if (typeof data === "object" && !(data instanceof Date)) {
+        const newData = {};
+        for (const key in data) {
+            if (Object.prototype.hasOwnProperty.call(data, key)) {
+                newData[key] = _deconstructPacket(data[key], buffers);
+            }
+        }
+        return newData;
+    }
+    return data;
+}
 /**
- * Checks if all required APIs exist in the browser.
- * @returns a Promise that resolves to a boolean.
+ * Reconstructs a binary packet from its placeholder packet and buffers
+ *
+ * @param {Object} packet - event packet with placeholders
+ * @param {Array} buffers - binary buffers to put in placeholder positions
+ * @return {Object} reconstructed packet
+ * @public
+ */
+function reconstructPacket(packet, buffers) {
+    packet.data = _reconstructPacket(packet.data, buffers);
+    packet.attachments = undefined; // no longer useful
+    return packet;
+}
+function _reconstructPacket(data, buffers) {
+    if (!data)
+        return data;
+    if (data && data._placeholder) {
+        return buffers[data.num]; // appropriate buffer (should be natural order anyway)
+    }
+    else if (Array.isArray(data)) {
+        for (let i = 0; i < data.length; i++) {
+            data[i] = _reconstructPacket(data[i], buffers);
+        }
+    }
+    else if (typeof data === "object") {
+        for (const key in data) {
+            if (Object.prototype.hasOwnProperty.call(data, key)) {
+                data[key] = _reconstructPacket(data[key], buffers);
+            }
+        }
+    }
+    return data;
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/socket.io-client/node_modules/socket.io-parser/build/esm/index.js":
+/*!****************************************************************************************!*\
+  !*** ./node_modules/socket.io-client/node_modules/socket.io-parser/build/esm/index.js ***!
+  \****************************************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Decoder": () => (/* binding */ Decoder),
+/* harmony export */   "Encoder": () => (/* binding */ Encoder),
+/* harmony export */   "PacketType": () => (/* binding */ PacketType),
+/* harmony export */   "protocol": () => (/* binding */ protocol)
+/* harmony export */ });
+/* harmony import */ var _socket_io_component_emitter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @socket.io/component-emitter */ "./node_modules/@socket.io/component-emitter/index.mjs");
+/* harmony import */ var _binary_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./binary.js */ "./node_modules/socket.io-client/node_modules/socket.io-parser/build/esm/binary.js");
+/* harmony import */ var _is_binary_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./is-binary.js */ "./node_modules/socket.io-client/node_modules/socket.io-parser/build/esm/is-binary.js");
+
+
+
+/**
+ * Protocol version.
  *
  * @public
  */
-async function isWindowSupported() {
-    try {
-        // This throws if open() is unsupported, so adding it to the conditional
-        // statement below can cause an uncaught error.
-        await (0,_firebase_util__WEBPACK_IMPORTED_MODULE_2__.validateIndexedDBOpenable)();
+const protocol = 5;
+var PacketType;
+(function (PacketType) {
+    PacketType[PacketType["CONNECT"] = 0] = "CONNECT";
+    PacketType[PacketType["DISCONNECT"] = 1] = "DISCONNECT";
+    PacketType[PacketType["EVENT"] = 2] = "EVENT";
+    PacketType[PacketType["ACK"] = 3] = "ACK";
+    PacketType[PacketType["CONNECT_ERROR"] = 4] = "CONNECT_ERROR";
+    PacketType[PacketType["BINARY_EVENT"] = 5] = "BINARY_EVENT";
+    PacketType[PacketType["BINARY_ACK"] = 6] = "BINARY_ACK";
+})(PacketType || (PacketType = {}));
+/**
+ * A socket.io Encoder instance
+ */
+class Encoder {
+    /**
+     * Encoder constructor
+     *
+     * @param {function} replacer - custom replacer to pass down to JSON.parse
+     */
+    constructor(replacer) {
+        this.replacer = replacer;
     }
-    catch (e) {
+    /**
+     * Encode a packet as a single string if non-binary, or as a
+     * buffer sequence, depending on packet type.
+     *
+     * @param {Object} obj - packet object
+     */
+    encode(obj) {
+        if (obj.type === PacketType.EVENT || obj.type === PacketType.ACK) {
+            if ((0,_is_binary_js__WEBPACK_IMPORTED_MODULE_2__.hasBinary)(obj)) {
+                obj.type =
+                    obj.type === PacketType.EVENT
+                        ? PacketType.BINARY_EVENT
+                        : PacketType.BINARY_ACK;
+                return this.encodeAsBinary(obj);
+            }
+        }
+        return [this.encodeAsString(obj)];
+    }
+    /**
+     * Encode packet as string.
+     */
+    encodeAsString(obj) {
+        // first is type
+        let str = "" + obj.type;
+        // attachments if we have them
+        if (obj.type === PacketType.BINARY_EVENT ||
+            obj.type === PacketType.BINARY_ACK) {
+            str += obj.attachments + "-";
+        }
+        // if we have a namespace other than `/`
+        // we append it followed by a comma `,`
+        if (obj.nsp && "/" !== obj.nsp) {
+            str += obj.nsp + ",";
+        }
+        // immediately followed by the id
+        if (null != obj.id) {
+            str += obj.id;
+        }
+        // json data
+        if (null != obj.data) {
+            str += JSON.stringify(obj.data, this.replacer);
+        }
+        return str;
+    }
+    /**
+     * Encode packet as 'buffer sequence' by removing blobs, and
+     * deconstructing packet into object with placeholders and
+     * a list of buffers.
+     */
+    encodeAsBinary(obj) {
+        const deconstruction = (0,_binary_js__WEBPACK_IMPORTED_MODULE_1__.deconstructPacket)(obj);
+        const pack = this.encodeAsString(deconstruction.packet);
+        const buffers = deconstruction.buffers;
+        buffers.unshift(pack); // add packet info to beginning of data list
+        return buffers; // write all the buffers
+    }
+}
+/**
+ * A socket.io Decoder instance
+ *
+ * @return {Object} decoder
+ */
+class Decoder extends _socket_io_component_emitter__WEBPACK_IMPORTED_MODULE_0__.Emitter {
+    /**
+     * Decoder constructor
+     *
+     * @param {function} reviver - custom reviver to pass down to JSON.stringify
+     */
+    constructor(reviver) {
+        super();
+        this.reviver = reviver;
+    }
+    /**
+     * Decodes an encoded packet string into packet JSON.
+     *
+     * @param {String} obj - encoded packet
+     */
+    add(obj) {
+        let packet;
+        if (typeof obj === "string") {
+            packet = this.decodeString(obj);
+            if (packet.type === PacketType.BINARY_EVENT ||
+                packet.type === PacketType.BINARY_ACK) {
+                // binary packet's json
+                this.reconstructor = new BinaryReconstructor(packet);
+                // no attachments, labeled binary but no binary data to follow
+                if (packet.attachments === 0) {
+                    super.emitReserved("decoded", packet);
+                }
+            }
+            else {
+                // non-binary full packet
+                super.emitReserved("decoded", packet);
+            }
+        }
+        else if ((0,_is_binary_js__WEBPACK_IMPORTED_MODULE_2__.isBinary)(obj) || obj.base64) {
+            // raw binary data
+            if (!this.reconstructor) {
+                throw new Error("got binary data when not reconstructing a packet");
+            }
+            else {
+                packet = this.reconstructor.takeBinaryData(obj);
+                if (packet) {
+                    // received final buffer
+                    this.reconstructor = null;
+                    super.emitReserved("decoded", packet);
+                }
+            }
+        }
+        else {
+            throw new Error("Unknown type: " + obj);
+        }
+    }
+    /**
+     * Decode a packet String (JSON data)
+     *
+     * @param {String} str
+     * @return {Object} packet
+     */
+    decodeString(str) {
+        let i = 0;
+        // look up type
+        const p = {
+            type: Number(str.charAt(0)),
+        };
+        if (PacketType[p.type] === undefined) {
+            throw new Error("unknown packet type " + p.type);
+        }
+        // look up attachments if type binary
+        if (p.type === PacketType.BINARY_EVENT ||
+            p.type === PacketType.BINARY_ACK) {
+            const start = i + 1;
+            while (str.charAt(++i) !== "-" && i != str.length) { }
+            const buf = str.substring(start, i);
+            if (buf != Number(buf) || str.charAt(i) !== "-") {
+                throw new Error("Illegal attachments");
+            }
+            p.attachments = Number(buf);
+        }
+        // look up namespace (if any)
+        if ("/" === str.charAt(i + 1)) {
+            const start = i + 1;
+            while (++i) {
+                const c = str.charAt(i);
+                if ("," === c)
+                    break;
+                if (i === str.length)
+                    break;
+            }
+            p.nsp = str.substring(start, i);
+        }
+        else {
+            p.nsp = "/";
+        }
+        // look up id
+        const next = str.charAt(i + 1);
+        if ("" !== next && Number(next) == next) {
+            const start = i + 1;
+            while (++i) {
+                const c = str.charAt(i);
+                if (null == c || Number(c) != c) {
+                    --i;
+                    break;
+                }
+                if (i === str.length)
+                    break;
+            }
+            p.id = Number(str.substring(start, i + 1));
+        }
+        // look up json data
+        if (str.charAt(++i)) {
+            const payload = this.tryParse(str.substr(i));
+            if (Decoder.isPayloadValid(p.type, payload)) {
+                p.data = payload;
+            }
+            else {
+                throw new Error("invalid payload");
+            }
+        }
+        return p;
+    }
+    tryParse(str) {
+        try {
+            return JSON.parse(str, this.reviver);
+        }
+        catch (e) {
+            return false;
+        }
+    }
+    static isPayloadValid(type, payload) {
+        switch (type) {
+            case PacketType.CONNECT:
+                return typeof payload === "object";
+            case PacketType.DISCONNECT:
+                return payload === undefined;
+            case PacketType.CONNECT_ERROR:
+                return typeof payload === "string" || typeof payload === "object";
+            case PacketType.EVENT:
+            case PacketType.BINARY_EVENT:
+                return Array.isArray(payload) && payload.length > 0;
+            case PacketType.ACK:
+            case PacketType.BINARY_ACK:
+                return Array.isArray(payload);
+        }
+    }
+    /**
+     * Deallocates a parser's resources
+     */
+    destroy() {
+        if (this.reconstructor) {
+            this.reconstructor.finishedReconstruction();
+        }
+    }
+}
+/**
+ * A manager of a binary event's 'buffer sequence'. Should
+ * be constructed whenever a packet of type BINARY_EVENT is
+ * decoded.
+ *
+ * @param {Object} packet
+ * @return {BinaryReconstructor} initialized reconstructor
+ */
+class BinaryReconstructor {
+    constructor(packet) {
+        this.packet = packet;
+        this.buffers = [];
+        this.reconPack = packet;
+    }
+    /**
+     * Method to be called when binary data received from connection
+     * after a BINARY_EVENT packet.
+     *
+     * @param {Buffer | ArrayBuffer} binData - the raw binary data received
+     * @return {null | Object} returns null if more binary data is expected or
+     *   a reconstructed packet object if all buffers have been received.
+     */
+    takeBinaryData(binData) {
+        this.buffers.push(binData);
+        if (this.buffers.length === this.reconPack.attachments) {
+            // done with buffer list
+            const packet = (0,_binary_js__WEBPACK_IMPORTED_MODULE_1__.reconstructPacket)(this.reconPack, this.buffers);
+            this.finishedReconstruction();
+            return packet;
+        }
+        return null;
+    }
+    /**
+     * Cleans up binary packet reconstruction variables.
+     */
+    finishedReconstruction() {
+        this.reconPack = null;
+        this.buffers = [];
+    }
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/socket.io-client/node_modules/socket.io-parser/build/esm/is-binary.js":
+/*!********************************************************************************************!*\
+  !*** ./node_modules/socket.io-client/node_modules/socket.io-parser/build/esm/is-binary.js ***!
+  \********************************************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "hasBinary": () => (/* binding */ hasBinary),
+/* harmony export */   "isBinary": () => (/* binding */ isBinary)
+/* harmony export */ });
+const withNativeArrayBuffer = typeof ArrayBuffer === "function";
+const isView = (obj) => {
+    return typeof ArrayBuffer.isView === "function"
+        ? ArrayBuffer.isView(obj)
+        : obj.buffer instanceof ArrayBuffer;
+};
+const toString = Object.prototype.toString;
+const withNativeBlob = typeof Blob === "function" ||
+    (typeof Blob !== "undefined" &&
+        toString.call(Blob) === "[object BlobConstructor]");
+const withNativeFile = typeof File === "function" ||
+    (typeof File !== "undefined" &&
+        toString.call(File) === "[object FileConstructor]");
+/**
+ * Returns true if obj is a Buffer, an ArrayBuffer, a Blob or a File.
+ *
+ * @private
+ */
+function isBinary(obj) {
+    return ((withNativeArrayBuffer && (obj instanceof ArrayBuffer || isView(obj))) ||
+        (withNativeBlob && obj instanceof Blob) ||
+        (withNativeFile && obj instanceof File));
+}
+function hasBinary(obj, toJSON) {
+    if (!obj || typeof obj !== "object") {
         return false;
     }
-    // firebase-js-sdk/issues/2393 reveals that idb#open in Safari iframe and Firefox private browsing
-    // might be prohibited to run. In these contexts, an error would be thrown during the messaging
-    // instantiating phase, informing the developers to import/call isSupported for special handling.
-    return (typeof window !== 'undefined' &&
-        (0,_firebase_util__WEBPACK_IMPORTED_MODULE_2__.isIndexedDBAvailable)() &&
-        (0,_firebase_util__WEBPACK_IMPORTED_MODULE_2__.areCookiesEnabled)() &&
-        'serviceWorker' in navigator &&
-        'PushManager' in window &&
-        'Notification' in window &&
-        'fetch' in window &&
-        ServiceWorkerRegistration.prototype.hasOwnProperty('showNotification') &&
-        PushSubscription.prototype.hasOwnProperty('getKey'));
-}
-
-/**
- * @license
- * Copyright 2020 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-async function deleteToken$1(messaging) {
-    if (!navigator) {
-        throw ERROR_FACTORY.create("only-available-in-window" /* AVAILABLE_IN_WINDOW */);
-    }
-    if (!messaging.swRegistration) {
-        await registerDefaultSw(messaging);
-    }
-    return deleteTokenInternal(messaging);
-}
-
-/**
- * @license
- * Copyright 2020 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-function onMessage$1(messaging, nextOrObserver) {
-    if (!navigator) {
-        throw ERROR_FACTORY.create("only-available-in-window" /* AVAILABLE_IN_WINDOW */);
-    }
-    messaging.onMessageHandler = nextOrObserver;
-    return () => {
-        messaging.onMessageHandler = null;
-    };
-}
-
-/**
- * @license
- * Copyright 2017 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/**
- * Retrieves a Firebase Cloud Messaging instance.
- *
- * @returns The Firebase Cloud Messaging instance associated with the provided firebase app.
- *
- * @public
- */
-function getMessagingInWindow(app = (0,_firebase_app__WEBPACK_IMPORTED_MODULE_3__.getApp)()) {
-    // Conscious decision to make this async check non-blocking during the messaging instance
-    // initialization phase for performance consideration. An error would be thrown latter for
-    // developer's information. Developers can then choose to import and call `isSupported` for
-    // special handling.
-    isWindowSupported().then(isSupported => {
-        // If `isWindowSupported()` resolved, but returned false.
-        if (!isSupported) {
-            throw ERROR_FACTORY.create("unsupported-browser" /* UNSUPPORTED_BROWSER */);
+    if (Array.isArray(obj)) {
+        for (let i = 0, l = obj.length; i < l; i++) {
+            if (hasBinary(obj[i])) {
+                return true;
+            }
         }
-    }, _ => {
-        // If `isWindowSupported()` rejected.
-        throw ERROR_FACTORY.create("indexed-db-unsupported" /* INDEXED_DB_UNSUPPORTED */);
-    });
-    return (0,_firebase_app__WEBPACK_IMPORTED_MODULE_3__._getProvider)((0,_firebase_util__WEBPACK_IMPORTED_MODULE_2__.getModularInstance)(app), 'messaging').getImmediate();
+        return false;
+    }
+    if (isBinary(obj)) {
+        return true;
+    }
+    if (obj.toJSON &&
+        typeof obj.toJSON === "function" &&
+        arguments.length === 1) {
+        return hasBinary(obj.toJSON(), true);
+    }
+    for (const key in obj) {
+        if (Object.prototype.hasOwnProperty.call(obj, key) && hasBinary(obj[key])) {
+            return true;
+        }
+    }
+    return false;
 }
-/**
- * Subscribes the {@link Messaging} instance to push notifications. Returns an Firebase Cloud
- * Messaging registration token that can be used to send push messages to that {@link Messaging}
- * instance.
- *
- * If a notification permission isn't already granted, this method asks the user for permission. The
- * returned promise rejects if the user does not allow the app to show notifications.
- *
- * @param messaging - The {@link Messaging} instance.
- * @param options - Provides an optional vapid key and an optinoal service worker registration
- *
- * @returns The promise resolves with an FCM registration token.
- *
- * @public
- */
-async function getToken(messaging, options) {
-    messaging = (0,_firebase_util__WEBPACK_IMPORTED_MODULE_2__.getModularInstance)(messaging);
-    return getToken$1(messaging, options);
-}
-/**
- * Deletes the registration token associated with this {@link Messaging} instance and unsubscribes
- * the {@link Messaging} instance from the push subscription.
- *
- * @param messaging - The {@link Messaging} instance.
- *
- * @returns The promise resolves when the token has been successfully deleted.
- *
- * @public
- */
-function deleteToken(messaging) {
-    messaging = (0,_firebase_util__WEBPACK_IMPORTED_MODULE_2__.getModularInstance)(messaging);
-    return deleteToken$1(messaging);
-}
-/**
- * When a push message is received and the user is currently on a page for your origin, the
- * message is passed to the page and an `onMessage()` event is dispatched with the payload of
- * the push message.
- *
- *
- * @param messaging - The {@link Messaging} instance.
- * @param nextOrObserver - This function, or observer object with `next` defined,
- *     is called when a message is received and the user is currently viewing your page.
- * @returns To stop listening for messages execute this returned function.
- *
- * @public
- */
-function onMessage(messaging, nextOrObserver) {
-    messaging = (0,_firebase_util__WEBPACK_IMPORTED_MODULE_2__.getModularInstance)(messaging);
-    return onMessage$1(messaging, nextOrObserver);
-}
-
-/**
- * Firebase Cloud Messaging
- *
- * @packageDocumentation
- */
-registerMessagingInWindow();
-
-
-//# sourceMappingURL=index.esm2017.js.map
 
 
 /***/ })

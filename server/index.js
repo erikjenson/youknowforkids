@@ -8,23 +8,7 @@ const session = require('express-session');
 const passport = require('passport');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const sessionStore = new SequelizeStore({db});
-const {fbConfig} = require('../secrets');
-// Import the functions you need from the SDKs you need
-const { initializeApp } = require("firebase/app");
-const { getAnalytics } = require("firebase/analytics");
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-//const firebaseConfig = fbConfig()();
-
-// Initialize Firebase
-//const fbapp = initializeApp(firebaseConfig);
-//const analytics = getAnalytics(app);
-
-
-
+//const {Game} = require("/connect");
 
 //set up passport functions
 passport.serializeUser((user, done) => done(null, user.id));
@@ -70,6 +54,62 @@ syncDB();
 
 const server = app.listen(PORT, () => {
   console.log(`Friendly service from port: ${PORT}`);
+});
+
+const io = require('socket.io')(server);
+
+io.on('connection', (socket) => {
+
+  //on connection, there is a socket id for every client server connection. these ids can be used to send messages to specific users. because connections are dropped and remade, we need to replace the user's socket id that we use for connections. in this example we use a gameID for our room. on a game move we send the new game object to the room and update all state for listeners to the room. to make sure the object is sent to the correct room... join? update socket ids?
+
+  socket.join(socket.handshake.auth.gameID);
+
+  console.log("socket room name on server connection", socket.handshake.auth.gameID);
+  console.log("socket id on server connection", socket.id);
+  console.log("socket room on server connection", socket.room);
+  // const users = [];
+  // for (let [socket] of io.of("/").sockets) {
+  //   users.push({
+  //     userID: socket.userID,
+  //     gameID: socket.gameID,
+  //   });
+  // }
+  //send out all users to all users
+  // socket.emit("users", users);
+
+ //add user to gameID room
+
+
+
+  // notify existing users when a new one joins
+  // socket.broadcast.emit("user connected", {
+  //   userID: socket.userID,
+  //   gameID: socket.gameID,
+  // });
+
+  //on drop chip send move obj to room
+  socket.on('drop_chip', (content)=>{
+
+    socket.to(socket.gameID).emit("move", content);
+    //send to api to update game data
+  });
+
+  socket.on("disconnect", (reason) => {
+    console.log("socket server DISconnection", reason);
+  });
+
+
+});
+//
+io.use((socket, next) => {
+  const gameID = socket.handshake.auth.gameID;
+  const userID = socket.handshake.auth.userID;
+  if (!gameID || !userID) {
+    return next(new Error("missing game code"));
+  }
+  socket.gameID = gameID;
+  socket.userID = userID;
+  next();
 });
 
 module.exports = app;

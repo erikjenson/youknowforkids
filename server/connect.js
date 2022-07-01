@@ -101,8 +101,8 @@ class Game {
           // : null;
         }
       }
-    }
   }
+}
 
   searchDiagLeft(val, count, i, j){
     if(count === 4){

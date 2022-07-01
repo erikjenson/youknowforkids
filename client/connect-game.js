@@ -1,15 +1,36 @@
-import React from 'react';
-import Game from './connect';
+import React, {useEffect, useState} from 'react';
+// import Game from './connect';
+import socket from './socket';
 
+//board component
 function Board (props) {
+
+  const boardData = props.boardData;
+  let table = [];
+  //draw a new board from game array
+  for (let h = 0; h < boardData.length; h++) {
+    let tr = [];
+    for (let w = 0; w < boardData[0].length; w++) {
+      let className = '';
+      if(boardData[h][w]){
+        className = boardData[h][w];
+      }
+      const td = <td key={h+w} data-r={h} data-c={w} className={className}/>;
+      tr.push(td);
+    }
+    table.push(<tr key={h}>{tr}</tr>);
+  }
+
   return (
     <table id="connect">
-      <tbody className='gol' onClick={(e)=>{props.dropChip(e.target);}}>{props.board}</tbody>
+      <tbody className='gol' onClick={(e)=>{props.dropChip(e.target);}}>{table}</tbody>
     </table>
   );
 };
 
+// message component
 const Notice = (props) => {
+  //display whose turn it is or another message
   let message = "Red's Turn";
   if(props.message.length){
     message = props.message;
@@ -23,6 +44,7 @@ const Notice = (props) => {
   )
 }
 
+//start game component
 const StartNew = (props) => {
   return(
     <div id="control_panel">
@@ -31,89 +53,214 @@ const StartNew = (props) => {
   )
 }
 
-export default class ConnectGame extends React.Component {
-  constructor(props){
-    super(props);
-    this.state = {player: 'r', message: '', board: [], game: {}};
-    this.dropChip = this.dropChip.bind(this);
-    this.startNewGame = this.startNewGame.bind(this);
-    this.renderBoard = this.renderBoard.bind(this);
+//connect 4 functional game component with state
+function ConnectGame (props) {
+
+  const player = props.player;
+  const gameID = props.gameID;
+
+  const [roomID, setRoomID] = useState(gameID);
+  const [gamePlayer, setGamePlayer] = useState(player);
+  const [turn, setTurn] = useState('r');
+  const [message, setMessage] = useState('');
+  const [gameData, setGameData] = useState([]);
+
+  useEffect(() => {
+    //update local state upon hearing from socket
+    function handleGameChange(content) {
+      setTurn(content.turn);
+      setMessage(content.message);
+      setGameData(content.gameData);
+    }
+
+    socket.on('move', content => {
+      handleGameChange(content);
+    })
+
+    return () => {
+      socket.off('move');
+    }
+  }, []);
+
+  function sendGameState(game){
+    socket.emit("drop_chip", {turn: game.turn, message: game.message, gameData: game.gameData});
   }
 
-  componentDidMount() {
-    this.startNewGame();
-  }
-
-  startNewGame(){
+  //starts a new game in same room / gameID
+  function startNewGame(){
     const height = 6;
     const width = 7;
-    this.setState({player: 'r', message: '', game: new Game(width,height)});
-    const table = [];
-    for (let h = 0; h < height; h++) {
-      let tr = [];
-      for (let w = 0; w < width; w++) {
-        const td = <td key={h+w} data-r={h} data-c={w}/>;
-        tr.push(td);
-      }
-      table.push(<tr key={h}>{tr}</tr>);
-    }
-    this.setState({board: table});
-  }
 
-  renderBoard(x,y){
     let table = [];
-    for (let h = 0; h < this.state.game.height; h++) {
-      let tr = [];
-      for (let w = 0; w < this.state.game.width; w++) {
-        let className = '';
-        if(this.state.game.board[h][w]){
-          className = this.state.game.board[h][w];
-        }else if( x == h && y == w){
-          className = this.state.game.player;
-        }
-        const td = <td key={h+w} data-r={h} data-c={w} className={className}/>;
-
-        tr.push(td);
+    for(let i = 0; i<height; i++){
+      let row = [];
+      for(let j = 0; j<width; j++){
+        row.push(0);
       }
-      table.push(<tr key={h}>{tr}</tr>);
+      table.push(row);
     }
-    this.setState({board: table});
+
+    const game = {
+      turn: turn,
+      message: '',
+      gameData: table
+    }
+    setGameData(table);
+    setMessage('');
+
+    sendGameState(game);
   }
 
-  dropChip(elem) {
-    const coords = this.state.game.setCell(elem.dataset.c);
-    if(this.state.message.indexOf('W') > -1){
-      return
-    };
-    if(!coords){
-      this.setState({message: "That's full!"})
-      return
-    };
+  //called when a move is made
+  function dropChip(elem) {
 
-    const x = coords[0];
-    const y = coords[1];
-    this.renderBoard(x,y);
-    if(this.state.game.checkBoard(this.state.game.player) === "Win"){
-      const message = this.state.game.player === 'y'? 'Yellow Wins!' : 'Red Wins!';
-      this.setState({message: message});
-    }else{
-      this.state.game.changePlayer();
-      const nextPlayer = this.state.game.player;
-      this.setState({message: ''})
-      this.setState({player: nextPlayer});
+    //not if out of turn or if someone already won
+    if(gamePlayer === turn && message.indexOf('W') < 0){
+
+      const column = elem.dataset.c;
+      let data = gameData;
+      let placedChip = false;
+
+      //place the 'chip' if an empty spot is available
+      for(let i=data.length-1; i>=0; i--){
+        if(data[i][column] === 0){
+          data[i][column] = turn;
+          placedChip = true;
+          break;
+        }
+      }
+
+      if(!placedChip){
+        setMessage("That's full!");
+        return
+      };
+
+      //Helper functions to check board for win
+      function getCell(row, col) {
+        //this returns a value for the cell and 0 if invalid
+        if (row < 0 || row > data.length - 1) {
+          return 0;
+        }
+        if (col < 0 || col > data[0].length - 1) {
+          return 0;
+        }
+        return data[row][col];
+      }
+      function checkHorizontal(val){
+        for(let i = 0; i<data.length; i++){
+          let count = 0;
+          for(let j = 0; j<data[0].length; j++){
+            if(data[i][j] === val && count > 0){
+              count++;
+            }else if(data[i][j] === val && count === 0){
+              count = 1;
+            }else if(data[i][j] !== val){
+              count = 0;
+            }
+            if(count === 4){
+              return "Win";
+            }
+          }
+        }
+      }
+      // eslint-disable-next-line complexity
+      function checkVertical(val){
+        for(let j = 0; j<data[0].length; j++){
+          let count = 0;
+          for(let i = 0; i<data.length; i++){
+            if(data[i][j] === val && count > 0){
+              count++;
+            }else if(data[i][j] === val && count === 0){
+              count = 1;
+            }else if(data[i][j] !== val){
+              count = 0;
+            }
+            if(count === 4){
+              return "Win";
+            }
+          }
+        }
+      }
+      function checkDiagonal(val){
+        for(let i=0; i<data.length; i++){
+          for(let j=0; j<data[0].length; j++){
+            if(data[i][j] === val){
+              let left = searchDiagLeft(val, 1, i, j);
+              let right = searchDiagRight(val, 1, i, j);
+              if(left === "Win" || right === "Win"){
+                return "Win";
+              }
+            }
+          }
+        }
+      }
+      function searchDiagLeft(val, count, i, j){
+        if(count === 4){
+          return 'Win';
+        }
+        if(getCell(i+1, j-1) === val){
+          count++;
+          return searchDiagLeft(val, count, i+1, j-1);
+        }
+      }
+      function searchDiagRight(val, count, i, j){
+        if(count === 4){
+          return 'Win';
+        }
+        if(getCell(i+1, j+1) === val){
+          count++;
+          return searchDiagRight(val, count, i+1, j+1);
+        }
+      }
+      function checkBoard(val){
+        if(checkDiagonal(val) === 'Win'){
+          return 'Win';
+        }
+        if(checkHorizontal(val) === 'Win'){
+          return 'Win';
+        }
+        if(checkVertical(val) === 'Win'){
+          return 'Win';
+        }
+      }
+
+      const result = checkBoard(turn);
+      let message = '';
+      let nextPlayer = turn;
+
+      if(result === "Win"){
+        message = turn === 'y'? 'Yellow Wins!' : 'Red Wins!';
+        setMessage(message);
+      }else{
+        nextPlayer = turn === 'r' ? 'y' : 'r';
+        message = '';
+      }
+
+      //update local state
+      setMessage(message)
+      setTurn(nextPlayer);
+      setGameData(data);
+
+      //send new gameData
+      const game = {
+        turn: nextPlayer,
+        message: message,
+        gameData: data
+      }
+      sendGameState(game);
     }
   }
 
-  render(){
-      return (
-      <div className="gol-body">
-        <div id="gol-container">
-          <h1>Connect 4</h1>
-          <Notice player={this.state.player} message={this.state.message} />
-          <Board board={this.state.board} dropChip={this.dropChip}/>
-          <StartNew startNewGame={this.startNewGame} />
-        </div>
+  return (
+    <div className="gol-body">
+      <div id="gol-container">
+        <h1>Connect 4</h1>
+        <Notice player={turn} message={message} />
+        <Board boardData={gameData} dropChip={dropChip}/>
+        <StartNew startNewGame={startNewGame} />
       </div>
-    );
-  }
+    </div>
+  );
 }
+
+export default ConnectGame;
