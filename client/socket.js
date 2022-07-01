@@ -15,6 +15,7 @@ const socket = io({ URL, autoConnect: false });
 
 socket.on("connect_error", (err) => {
   console.log(`connect_error due to ${err.message}`);
+  //disconnect socket here?
 });
 
 // socket.on("users", (users) => {

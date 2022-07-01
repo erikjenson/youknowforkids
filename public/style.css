@@ -117,6 +117,13 @@ img {
   height: 80px;
 }
 
+@media (max-width: 625px) {
+  #connect td {
+    width: 40px;
+    height: 40px;
+   }
+ }
+
 #board td {
   border: 1px solid #ddd;
   width: 18px;
@@ -142,12 +149,12 @@ td.alive {
 
 td.y {
   background-image: url(yellow.png);
-  background-size: cover;
+  background-size: contain;
 }
 
 td.r{
   background-image: url(red.jpg);
-  background-size: cover;
+  background-size: contain;
 }
 
 .hidden{

@@ -3050,7 +3050,7 @@ var socket = (0,socket_io_client__WEBPACK_IMPORTED_MODULE_0__.io)({
 //include game id
 
 socket.on("connect_error", function (err) {
-  console.log("connect_error due to ".concat(err.message));
+  console.log("connect_error due to ".concat(err.message)); //disconnect socket here?
 }); // socket.on("users", (users) => {
 //   users.forEach((user) => {
 //     user.self = user.userID === socket.id;
