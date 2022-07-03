@@ -18,19 +18,19 @@ export default function StartGame (props){
       </div>)}
 
       {startType === 'start' &&
-      (<div>
+      (<div id="start-form">
         <div>Here is your Join Code: <span className="join-code">{startCode}</span></div>
         <br/>
         <div className="margin-bottom-20">Send this Code to your friend!</div>
+        <br/>
         <a className="grn-btn" onClick={()=>handleStart(startCode)}>START GAME</a>
       </div>)}
 
       {startType === 'join' &&
-      (<div>
+      (<div id="join-form">
         <input className="join-input" placeHolder="Enter Join Code Here" value={joinCode} onChange={(e)=>handleJoinCode(e)} type="text"/>
         <a className="grn-btn" onClick={()=>handleStart(+joinCode)}>JOIN GAME</a>
       </div>)}
-
     </div>
   );
 }

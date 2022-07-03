@@ -2455,15 +2455,14 @@ var App = /*#__PURE__*/function (_React$Component) {
       }
 
       return handleSubmit;
-    }() //update this so it renders the first board for both players
-
+    }()
   }, {
     key: "handleStart",
     value: function handleStart(code) {
+      //this will have to check if joining and if the room exists
       this.setState({
         gameID: code
-      }); //connect to socket.. don't really care who they are so long as 2 and only 2 join a room/gameID
-
+      });
       _socket__WEBPACK_IMPORTED_MODULE_25__["default"].auth = {
         gameID: code,
         userID: this.state.user.name
@@ -2544,9 +2543,7 @@ var AuthForm = function AuthForm(props) {
   var name = props.name,
       handleAuthClick = props.handleAuthClick,
       handleSubmit = props.handleSubmit,
-      error = props.error; //place errors on top.. (from state.user.error)
-  //this form is used for login, signup (and maybe update.)
-
+      error = props.error;
   var formName = 'Log in';
   var description = "Don't have an account yet?";
   var option = 'Sign up';
@@ -2597,7 +2594,7 @@ var AuthForm = function AuthForm(props) {
     type: "button",
     className: "nav-btn",
     onClick: handleAuthClick
-  }, option))), error && error.response && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", null, " ", error.response.data, " ")));
+  }, option))), error && error.response && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", null, error.response.data)));
 };
 
 /***/ }),
@@ -2765,7 +2762,7 @@ function ConnectGame(props) {
       gamePlayer = _useState6[0],
       setGamePlayer = _useState6[1];
 
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_16__.useState)('Waiting for player to join'),
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_16__.useState)(''),
       _useState8 = _slicedToArray(_useState7, 2),
       opponent = _useState8[0],
       setOpponent = _useState8[1];
@@ -2792,44 +2789,42 @@ function ConnectGame(props) {
       if (content.message) setMessage(content.message);
       if (content.gameData) setGameData(content.gameData);
       if (content.userName) setOpponent(content.userName);
-    } //create game data on first start
-    // if(!gameData.length && gamePlayer === 'r'){
-    //   console.log('startNewGame called by ', userName);
-    //   startNewGame();
-    //   console.log('gameData not yet on state after startNewGAme', gameData);
-    // }
-
+    }
 
     if (!gameData.length && gamePlayer === 'y') {
       startNewGame();
-    } // socket.on('send_game', ()=>{
-    //   if(gamePlayer === 'r'){
-    //     //send current game state to y
-    //     const data = gameData;
-    //     console.log("send game called by Y - state object sent ", data);
-    //     socket.emit("drop_chip", data);
-    //   }
-    // });
+    }
 
+    if (opponent === '' && gamePlayer === 'y') {
+      console.log("getting opponent name");
+      getOpponent();
+    }
+
+    if (opponent === '' && gamePlayer === 'r') {
+      setOpponent('...waiting');
+    }
 
     _socket__WEBPACK_IMPORTED_MODULE_17__["default"].on('move', function (content) {
       console.log("content received on move ", content);
       handleGameChange(content);
     });
-    _socket__WEBPACK_IMPORTED_MODULE_17__["default"].on('joined', function (name) {
-      if (name !== userName) {
-        setOpponent(name);
-      }
+    _socket__WEBPACK_IMPORTED_MODULE_17__["default"].on("send_name", function () {
+      _socket__WEBPACK_IMPORTED_MODULE_17__["default"].emit("sending_name", userName);
+    });
+    _socket__WEBPACK_IMPORTED_MODULE_17__["default"].on("opponent_name", function (name) {
+      setOpponent(name);
+    });
+    _socket__WEBPACK_IMPORTED_MODULE_17__["default"].on("connect_error", function (err) {
+      //notify user that server is down
+      console.log("connect_error due to ".concat(err.message));
     });
     return function () {
       _socket__WEBPACK_IMPORTED_MODULE_17__["default"].off('move');
-      _socket__WEBPACK_IMPORTED_MODULE_17__["default"].off('joined'); // socket.off('send_game');
+      _socket__WEBPACK_IMPORTED_MODULE_17__["default"].off('send_name');
+      _socket__WEBPACK_IMPORTED_MODULE_17__["default"].off('opponent_name');
+      _socket__WEBPACK_IMPORTED_MODULE_17__["default"].off("connect_error");
     };
-  }, []); // function newState(){
-  //   const data = {turn: turn, message: message, gameData: gameData, userName: userName}
-  //   console.log("state in newState func, ", data);
-  //   return data;
-  // }
+  }, []);
 
   function sendGameState(game) {
     _socket__WEBPACK_IMPORTED_MODULE_17__["default"].emit("drop_chip", {
@@ -2838,11 +2833,11 @@ function ConnectGame(props) {
       gameData: game.gameData,
       userName: game.userName
     });
-  } //get game from starting user
-  // function getGame(){
-  //   socket.emit("get_game");
-  // }
-  //starts a new game in same room / gameID
+  }
+
+  function getOpponent() {
+    _socket__WEBPACK_IMPORTED_MODULE_17__["default"].emit("get_opponent");
+  } //starts a new game in same room / gameID
 
 
   function startNewGame() {
@@ -3026,13 +3021,20 @@ function ConnectGame(props) {
     }
   }
 
+  var otherPlayer = gamePlayer === 'r' ? 'y' : 'r';
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_16__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_16__.createElement("div", {
     className: "game-info"
-  }, !gameData.length && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_16__.createElement("div", null, "Join Code: ", roomID), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_16__.createElement("div", null, "You're playing: ", opponent)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_16__.createElement("div", {
+  }, !gameData.length && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_16__.createElement("div", null, "Join Code: ", roomID)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_16__.createElement("div", {
     className: "gol-body"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_16__.createElement("div", {
     id: "gol-container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_16__.createElement("h1", null, "Connect 4"), gameData.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_16__.createElement(Notice, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_16__.createElement("div", {
+    id: "players"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_16__.createElement("div", {
+    className: gamePlayer
+  }, userName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_16__.createElement("div", null, "VS."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_16__.createElement("div", {
+    className: otherPlayer
+  }, opponent)), gameData.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_16__.createElement(Notice, {
     player: turn,
     message: message
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_16__.createElement(Board, {
@@ -3093,16 +3095,16 @@ var URL = "http://localhost:8080";
 var socket = (0,socket_io_client__WEBPACK_IMPORTED_MODULE_0__.io)({
   URL: URL,
   autoConnect: false
-}); // socket.onAny((event, ...args) => {
-//   //logs client socket events
-//  console.log("client socket event", event, args);
-// });
-//add session data for re-connecting to sockets
-//include game id
+});
+socket.onAny(function (event) {
+  for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+    args[_key - 1] = arguments[_key];
+  }
 
-socket.on("connect_error", function (err) {
-  console.log("connect_error due to ".concat(err.message)); //disconnect socket here?
-}); // socket.on("users", (users) => {
+  //logs client socket events
+  console.log("client socket event", event, args);
+}); //for future chat
+// socket.on("users", (users) => {
 //   users.forEach((user) => {
 //     user.self = user.userID === socket.id;
 //     // initReactiveProperties(user);
@@ -3116,7 +3118,6 @@ socket.on("connect_error", function (err) {
 // });
 // });
 // socket.on("user connected", (user) => {
-//   // initReactiveProperties(user);
 // //use this to notify users of new login
 // });
 
@@ -3158,16 +3159,20 @@ function StartGame(props) {
     onClick: function onClick() {
       return toggleStartType('start');
     }
-  }, "NO"))), startType === 'start' && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Here is your Join Code: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
+  }, "NO"))), startType === 'start' && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    id: "start-form"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Here is your Join Code: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
     className: "join-code"
   }, startCode)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "margin-bottom-20"
-  }, "Send this Code to your friend!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+  }, "Send this Code to your friend!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
     className: "grn-btn",
     onClick: function onClick() {
       return handleStart(startCode);
     }
-  }, "START GAME")), startType === 'join' && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+  }, "START GAME")), startType === 'join' && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    id: "join-form"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
     className: "join-input",
     placeHolder: "Enter Join Code Here",
     value: joinCode,

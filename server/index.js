@@ -60,23 +60,25 @@ const io = require('socket.io')(server);
 
 io.on('connection', (socket) => {
 
-  socket.join(socket.handshake.auth.gameID);
-
   console.log("socket room name on server connection", socket.handshake.auth.gameID);
   console.log("socket user name on server connection", socket.handshake.auth.userID);
   console.log("socket id on server connection", socket.id);
 
   // for future messaging
-  //
+  // const id = socket.handshake.auth.gameID;
+  // const user = socket.handshake.auth.userID;
   // const users = [];
   // for (let [socket] of io.of("/").sockets) {
-  //   users.push({
-  //     userID: socket.userID,
-  //     gameID: socket.gameID,
-  //   });
-  // }
-  //send out all users to all users
-  // socket.emit("users", users);
+  //   // if (socket.gameID === id && socket.userID !== user){
+  //     users.push({
+  //       userID: socket.userID,
+  //       gameID: socket.gameID,
+  //     });
+  //     // }
+  //   }
+
+  const room = socket.handshake.auth.gameID;
+  socket.join(room);
 
   // notify existing users when a new one joins
   // socket.broadcast.emit("user_connected", {
@@ -84,30 +86,25 @@ io.on('connection', (socket) => {
   //   gameID: socket.gameID,
   // });
 
-  //if there is another user on the socket upon joining, emit user info!
-  //when that info is received, if it is different then set it as opponent!
-
-  socket.to(socket.gameID).emit("joined", socket.userID);
-
   //on drop chip send move obj to room
   socket.on('drop_chip', (content)=>{
     console.log("drop_chip called on server sending this, ", content);
     socket.to(socket.gameID).emit("move", content);
-    //send to api to update game data
   });
 
-  socket.on("get_game", ()=>{
-    socket.to(socket.gameID).emit('send_game');
-    console.log("Y is requesting game data")
+  socket.on("get_opponent", ()=>{
+   socket.to(socket.gameID).emit("send_name");
+  });
+
+  socket.on("sending_name", name => {
+    socket.to(socket.gameID).emit("opponent_name", name);
   });
 
   socket.on("disconnect", (reason) => {
     console.log("socket server DISconnection", reason);
   });
-
-
 });
-//
+
 io.use((socket, next) => {
   const gameID = socket.handshake.auth.gameID;
   const userID = socket.handshake.auth.userID;

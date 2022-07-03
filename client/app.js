@@ -63,11 +63,9 @@ class App extends React.Component {
     }
   }
 
-  //update this so it renders the first board for both players
   handleStart(code){
+    //this will have to check if joining and if the room exists
     this.setState({gameID: code});
-
-    //connect to socket.. don't really care who they are so long as 2 and only 2 join a room/gameID
     socket.auth = { gameID: code, userID: this.state.user.name};
     socket.connect();
     //joins room/gameID on the server
@@ -84,7 +82,6 @@ class App extends React.Component {
     const join = evt.target.value;
     this.setState({joinCode: join});
   }
-
 
   render(){
     const isLoggedIn = this.state.user? this.state.user.email: null;

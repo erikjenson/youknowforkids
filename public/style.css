@@ -66,10 +66,6 @@
   cursor: pointer;
 }
 
-.join-input {
-  width: 100px;
-  margin-right: 25px;
-}
 
 .margin-bottom-10{
   margin-bottom: 10px;
@@ -92,10 +88,53 @@
   font-weight: bold;
 }
 .game-info{
-  width: 100%;
+  text-align: center;
 }
 .join-code{
   font-size: 20px;
+}
+
+#players{
+  display: flex;
+  align-items: center;
+}
+#players .r {
+  background-image: url(red.jpg);
+  background-size:cover;
+  height: 100px;
+  width:100px;
+  margin: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+}
+
+#players .y{
+  background-image: url(yellow.png);
+  background-size: cover;
+  height: 100px;
+  width:100px;
+  margin: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+}
+#start-form{
+  text-align: center;
+}
+.join-input {
+  width: 100px;
+  height: 25px;
+}
+
+#join-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 90px;
+  align-items: center;
 }
 
 /* old stylz */

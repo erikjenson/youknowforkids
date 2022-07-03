@@ -3,21 +3,12 @@ import { io } from "socket.io-client";
 const URL = "http://localhost:8080";
 const socket = io({ URL, autoConnect: false });
 
-// socket.onAny((event, ...args) => {
-//   //logs client socket events
-//  console.log("client socket event", event, args);
-// });
-
-
-//add session data for re-connecting to sockets
-//include game id
-
-
-socket.on("connect_error", (err) => {
-  console.log(`connect_error due to ${err.message}`);
-  //disconnect socket here?
+socket.onAny((event, ...args) => {
+  //logs client socket events
+ console.log("client socket event", event, args);
 });
 
+//for future chat
 // socket.on("users", (users) => {
 //   users.forEach((user) => {
 //     user.self = user.userID === socket.id;
@@ -33,7 +24,6 @@ socket.on("connect_error", (err) => {
 // });
 
 // socket.on("user connected", (user) => {
-//   // initReactiveProperties(user);
 // //use this to notify users of new login
 // });
 
