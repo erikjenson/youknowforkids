@@ -24,6 +24,7 @@ class App extends React.Component {
       if(res.data){
         this.setState({user: res.data});
         this.setState({authOption: 'logout'});
+        console.log("user obj from api", res.data);
       }
     } catch (err) {
       console.error(err);
@@ -67,7 +68,7 @@ class App extends React.Component {
     this.setState({gameID: code});
 
     //connect to socket.. don't really care who they are so long as 2 and only 2 join a room/gameID
-    socket.auth = { gameID: code, userID: this.state.user.id};
+    socket.auth = { gameID: code, userID: this.state.user.name};
     socket.connect();
     //joins room/gameID on the server
   }
@@ -99,7 +100,7 @@ class App extends React.Component {
 
      {!hasGameId && isLoggedIn && (<StartGame joinCode={this.state.joinCode} handleJoinCode={this.handleJoinCode} startType={this.state.startType} handleStart={this.handleStart} toggleStartType={this.toggleStartType}/>)}
 
-    {hasGameId && isLoggedIn && (<ConnectGame player={this.state.player} gameID={this.state.gameID} />)}
+    {hasGameId && isLoggedIn && (<ConnectGame name={this.state.user.name} player={this.state.player} gameID={this.state.gameID} />)}
 
     </React.StrictMode>
     </div>

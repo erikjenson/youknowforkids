@@ -60,13 +60,14 @@ const io = require('socket.io')(server);
 
 io.on('connection', (socket) => {
 
-  //on connection, there is a socket id for every client server connection. these ids can be used to send messages to specific users. because connections are dropped and remade, we need to replace the user's socket id that we use for connections. in this example we use a gameID for our room. on a game move we send the new game object to the room and update all state for listeners to the room. to make sure the object is sent to the correct room... join? update socket ids?
-
   socket.join(socket.handshake.auth.gameID);
 
   console.log("socket room name on server connection", socket.handshake.auth.gameID);
+  console.log("socket user name on server connection", socket.handshake.auth.userID);
   console.log("socket id on server connection", socket.id);
-  console.log("socket room on server connection", socket.room);
+
+  // for future messaging
+  //
   // const users = [];
   // for (let [socket] of io.of("/").sockets) {
   //   users.push({
@@ -77,21 +78,27 @@ io.on('connection', (socket) => {
   //send out all users to all users
   // socket.emit("users", users);
 
- //add user to gameID room
-
-
-
   // notify existing users when a new one joins
-  // socket.broadcast.emit("user connected", {
+  // socket.broadcast.emit("user_connected", {
   //   userID: socket.userID,
   //   gameID: socket.gameID,
   // });
 
+  //if there is another user on the socket upon joining, emit user info!
+  //when that info is received, if it is different then set it as opponent!
+
+  socket.to(socket.gameID).emit("joined", socket.userID);
+
   //on drop chip send move obj to room
   socket.on('drop_chip', (content)=>{
-
+    console.log("drop_chip called on server sending this, ", content);
     socket.to(socket.gameID).emit("move", content);
     //send to api to update game data
+  });
+
+  socket.on("get_game", ()=>{
+    socket.to(socket.gameID).emit('send_game');
+    console.log("Y is requesting game data")
   });
 
   socket.on("disconnect", (reason) => {

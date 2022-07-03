@@ -58,9 +58,12 @@ function ConnectGame (props) {
 
   const player = props.player;
   const gameID = props.gameID;
+  const name = props.name;
 
   const [roomID, setRoomID] = useState(gameID);
+  const [userName, setUserName] = useState(name);
   const [gamePlayer, setGamePlayer] = useState(player);
+  const [opponent, setOpponent] = useState('Waiting for player to join');
   const [turn, setTurn] = useState('r');
   const [message, setMessage] = useState('');
   const [gameData, setGameData] = useState([]);
@@ -68,23 +71,65 @@ function ConnectGame (props) {
   useEffect(() => {
     //update local state upon hearing from socket
     function handleGameChange(content) {
-      setTurn(content.turn);
-      setMessage(content.message);
-      setGameData(content.gameData);
+      if(content.turn) setTurn(content.turn);
+      if(content.message) setMessage(content.message);
+      if(content.gameData) setGameData(content.gameData);
+      if(content.userName) setOpponent(content.userName);
     }
 
+    //create game data on first start
+    // if(!gameData.length && gamePlayer === 'r'){
+    //   console.log('startNewGame called by ', userName);
+    //   startNewGame();
+    //   console.log('gameData not yet on state after startNewGAme', gameData);
+    // }
+
+    if(!gameData.length && gamePlayer === 'y'){
+      startNewGame();
+    }
+
+    // socket.on('send_game', ()=>{
+    //   if(gamePlayer === 'r'){
+    //     //send current game state to y
+    //     const data = gameData;
+    //     console.log("send game called by Y - state object sent ", data);
+    //     socket.emit("drop_chip", data);
+    //   }
+    // });
+
     socket.on('move', content => {
+      console.log("content received on move ", content)
       handleGameChange(content);
+    })
+
+    socket.on('joined', name => {
+      if(name !== userName){
+        setOpponent(name);
+      }
     })
 
     return () => {
       socket.off('move');
+      socket.off('joined')
+      // socket.off('send_game');
     }
   }, []);
 
+  // function newState(){
+  //   const data = {turn: turn, message: message, gameData: gameData, userName: userName}
+  //   console.log("state in newState func, ", data);
+  //   return data;
+  // }
+
+
   function sendGameState(game){
-    socket.emit("drop_chip", {turn: game.turn, message: game.message, gameData: game.gameData});
+    socket.emit("drop_chip", {turn: game.turn, message: game.message, gameData: game.gameData, userName: game.userName});
   }
+
+  //get game from starting user
+  // function getGame(){
+  //   socket.emit("get_game");
+  // }
 
   //starts a new game in same room / gameID
   function startNewGame(){
@@ -103,7 +148,8 @@ function ConnectGame (props) {
     const game = {
       turn: turn,
       message: '',
-      gameData: table
+      gameData: table,
+      userName: userName
     }
     setGameData(table);
     setMessage('');
@@ -245,19 +291,26 @@ function ConnectGame (props) {
       const game = {
         turn: nextPlayer,
         message: message,
-        gameData: data
+        gameData: data,
+        userName: userName
       }
       sendGameState(game);
     }
   }
 
   return (
-    <div className="gol-body">
-      <div id="gol-container">
-        <h1>Connect 4</h1>
-        <Notice player={turn} message={message} />
-        <Board boardData={gameData} dropChip={dropChip}/>
-        <StartNew startNewGame={startNewGame} />
+    <div>
+      <div className="game-info">
+      {!gameData.length && (<div>Join Code: {roomID}</div>)}
+        <div>You're playing: {opponent}</div>
+      </div>
+      <div className="gol-body">
+        <div id="gol-container">
+          <h1>Connect 4</h1>
+          {gameData.length > 0 && (<Notice player={turn} message={message} />)}
+          <Board boardData={gameData} dropChip={dropChip}/>
+          {gameData.length > 0 && (<StartNew startNewGame={startNewGame} />)}
+        </div>
       </div>
     </div>
   );

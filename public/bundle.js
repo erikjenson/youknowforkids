@@ -2326,6 +2326,7 @@ var App = /*#__PURE__*/function (_React$Component) {
                   this.setState({
                     authOption: 'logout'
                   });
+                  console.log("user obj from api", res.data);
                 }
 
                 _context.next = 10;
@@ -2465,7 +2466,7 @@ var App = /*#__PURE__*/function (_React$Component) {
 
       _socket__WEBPACK_IMPORTED_MODULE_25__["default"].auth = {
         gameID: code,
-        userID: this.state.user.id
+        userID: this.state.user.name
       };
       _socket__WEBPACK_IMPORTED_MODULE_25__["default"].connect(); //joins room/gameID on the server
     }
@@ -2509,6 +2510,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         handleStart: this.handleStart,
         toggleStartType: this.toggleStartType
       }), hasGameId && isLoggedIn && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_19__.createElement(_connect_game__WEBPACK_IMPORTED_MODULE_24__["default"], {
+        name: this.state.user.name,
         player: this.state.player,
         gameID: this.state.gameID
       })));
@@ -2611,28 +2613,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var core_js_modules_es_array_index_of_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.array.index-of.js */ "./node_modules/core-js/modules/es.array.index-of.js");
-/* harmony import */ var core_js_modules_es_array_index_of_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_index_of_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var core_js_modules_es_array_is_array_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.array.is-array.js */ "./node_modules/core-js/modules/es.array.is-array.js");
-/* harmony import */ var core_js_modules_es_array_is_array_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_is_array_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/es.symbol.js */ "./node_modules/core-js/modules/es.symbol.js");
-/* harmony import */ var core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! core-js/modules/es.symbol.description.js */ "./node_modules/core-js/modules/es.symbol.description.js");
-/* harmony import */ var core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! core-js/modules/es.object.to-string.js */ "./node_modules/core-js/modules/es.object.to-string.js");
-/* harmony import */ var core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var core_js_modules_es_symbol_iterator_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! core-js/modules/es.symbol.iterator.js */ "./node_modules/core-js/modules/es.symbol.iterator.js");
-/* harmony import */ var core_js_modules_es_symbol_iterator_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_iterator_js__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var core_js_modules_es_array_iterator_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! core-js/modules/es.array.iterator.js */ "./node_modules/core-js/modules/es.array.iterator.js");
-/* harmony import */ var core_js_modules_es_array_iterator_js__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_iterator_js__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var core_js_modules_es_string_iterator_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! core-js/modules/es.string.iterator.js */ "./node_modules/core-js/modules/es.string.iterator.js");
-/* harmony import */ var core_js_modules_es_string_iterator_js__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_iterator_js__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! core-js/modules/web.dom-collections.iterator.js */ "./node_modules/core-js/modules/web.dom-collections.iterator.js");
-/* harmony import */ var core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var core_js_modules_es_array_slice_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! core-js/modules/es.array.slice.js */ "./node_modules/core-js/modules/es.array.slice.js");
-/* harmony import */ var core_js_modules_es_array_slice_js__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_slice_js__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var core_js_modules_es_function_name_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! core-js/modules/es.function.name.js */ "./node_modules/core-js/modules/es.function.name.js");
-/* harmony import */ var core_js_modules_es_function_name_js__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_function_name_js__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var core_js_modules_es_function_name_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.function.name.js */ "./node_modules/core-js/modules/es.function.name.js");
+/* harmony import */ var core_js_modules_es_function_name_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_function_name_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var core_js_modules_es_array_index_of_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.array.index-of.js */ "./node_modules/core-js/modules/es.array.index-of.js");
+/* harmony import */ var core_js_modules_es_array_index_of_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_index_of_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var core_js_modules_es_array_is_array_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/es.array.is-array.js */ "./node_modules/core-js/modules/es.array.is-array.js");
+/* harmony import */ var core_js_modules_es_array_is_array_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_is_array_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! core-js/modules/es.symbol.js */ "./node_modules/core-js/modules/es.symbol.js");
+/* harmony import */ var core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! core-js/modules/es.symbol.description.js */ "./node_modules/core-js/modules/es.symbol.description.js");
+/* harmony import */ var core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! core-js/modules/es.object.to-string.js */ "./node_modules/core-js/modules/es.object.to-string.js");
+/* harmony import */ var core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var core_js_modules_es_symbol_iterator_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! core-js/modules/es.symbol.iterator.js */ "./node_modules/core-js/modules/es.symbol.iterator.js");
+/* harmony import */ var core_js_modules_es_symbol_iterator_js__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_iterator_js__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var core_js_modules_es_array_iterator_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! core-js/modules/es.array.iterator.js */ "./node_modules/core-js/modules/es.array.iterator.js");
+/* harmony import */ var core_js_modules_es_array_iterator_js__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_iterator_js__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var core_js_modules_es_string_iterator_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! core-js/modules/es.string.iterator.js */ "./node_modules/core-js/modules/es.string.iterator.js");
+/* harmony import */ var core_js_modules_es_string_iterator_js__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_iterator_js__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! core-js/modules/web.dom-collections.iterator.js */ "./node_modules/core-js/modules/web.dom-collections.iterator.js");
+/* harmony import */ var core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var core_js_modules_es_array_slice_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! core-js/modules/es.array.slice.js */ "./node_modules/core-js/modules/es.array.slice.js");
+/* harmony import */ var core_js_modules_es_array_slice_js__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_slice_js__WEBPACK_IMPORTED_MODULE_10__);
 /* harmony import */ var core_js_modules_es_array_from_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! core-js/modules/es.array.from.js */ "./node_modules/core-js/modules/es.array.from.js");
 /* harmony import */ var core_js_modules_es_array_from_js__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_from_js__WEBPACK_IMPORTED_MODULE_11__);
 /* harmony import */ var core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! core-js/modules/es.regexp.exec.js */ "./node_modules/core-js/modules/es.regexp.exec.js");
@@ -2645,23 +2647,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var core_js_modules_es_error_to_string_js__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_error_to_string_js__WEBPACK_IMPORTED_MODULE_15__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _socket__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./socket */ "./client/socket.js");
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -2673,6 +2658,22 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
  // import Game from './connect';
 
@@ -2747,55 +2748,101 @@ var StartNew = function StartNew(props) {
 function ConnectGame(props) {
   var player = props.player;
   var gameID = props.gameID;
+  var name = props.name;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_16__.useState)(gameID),
       _useState2 = _slicedToArray(_useState, 2),
       roomID = _useState2[0],
       setRoomID = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_16__.useState)(player),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_16__.useState)(name),
       _useState4 = _slicedToArray(_useState3, 2),
-      gamePlayer = _useState4[0],
-      setGamePlayer = _useState4[1];
+      userName = _useState4[0],
+      setUserName = _useState4[1];
 
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_16__.useState)('r'),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_16__.useState)(player),
       _useState6 = _slicedToArray(_useState5, 2),
-      turn = _useState6[0],
-      setTurn = _useState6[1];
+      gamePlayer = _useState6[0],
+      setGamePlayer = _useState6[1];
 
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_16__.useState)(''),
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_16__.useState)('Waiting for player to join'),
       _useState8 = _slicedToArray(_useState7, 2),
-      message = _useState8[0],
-      setMessage = _useState8[1];
+      opponent = _useState8[0],
+      setOpponent = _useState8[1];
 
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_16__.useState)([]),
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_16__.useState)('r'),
       _useState10 = _slicedToArray(_useState9, 2),
-      gameData = _useState10[0],
-      setGameData = _useState10[1];
+      turn = _useState10[0],
+      setTurn = _useState10[1];
+
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_16__.useState)(''),
+      _useState12 = _slicedToArray(_useState11, 2),
+      message = _useState12[0],
+      setMessage = _useState12[1];
+
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_16__.useState)([]),
+      _useState14 = _slicedToArray(_useState13, 2),
+      gameData = _useState14[0],
+      setGameData = _useState14[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_16__.useEffect)(function () {
     //update local state upon hearing from socket
     function handleGameChange(content) {
-      setTurn(content.turn);
-      setMessage(content.message);
-      setGameData(content.gameData);
-    }
+      if (content.turn) setTurn(content.turn);
+      if (content.message) setMessage(content.message);
+      if (content.gameData) setGameData(content.gameData);
+      if (content.userName) setOpponent(content.userName);
+    } //create game data on first start
+    // if(!gameData.length && gamePlayer === 'r'){
+    //   console.log('startNewGame called by ', userName);
+    //   startNewGame();
+    //   console.log('gameData not yet on state after startNewGAme', gameData);
+    // }
+
+
+    if (!gameData.length && gamePlayer === 'y') {
+      startNewGame();
+    } // socket.on('send_game', ()=>{
+    //   if(gamePlayer === 'r'){
+    //     //send current game state to y
+    //     const data = gameData;
+    //     console.log("send game called by Y - state object sent ", data);
+    //     socket.emit("drop_chip", data);
+    //   }
+    // });
+
 
     _socket__WEBPACK_IMPORTED_MODULE_17__["default"].on('move', function (content) {
+      console.log("content received on move ", content);
       handleGameChange(content);
+    });
+    _socket__WEBPACK_IMPORTED_MODULE_17__["default"].on('joined', function (name) {
+      if (name !== userName) {
+        setOpponent(name);
+      }
     });
     return function () {
       _socket__WEBPACK_IMPORTED_MODULE_17__["default"].off('move');
+      _socket__WEBPACK_IMPORTED_MODULE_17__["default"].off('joined'); // socket.off('send_game');
     };
-  }, []);
+  }, []); // function newState(){
+  //   const data = {turn: turn, message: message, gameData: gameData, userName: userName}
+  //   console.log("state in newState func, ", data);
+  //   return data;
+  // }
 
   function sendGameState(game) {
     _socket__WEBPACK_IMPORTED_MODULE_17__["default"].emit("drop_chip", {
       turn: game.turn,
       message: game.message,
-      gameData: game.gameData
+      gameData: game.gameData,
+      userName: game.userName
     });
-  } //starts a new game in same room / gameID
+  } //get game from starting user
+  // function getGame(){
+  //   socket.emit("get_game");
+  // }
+  //starts a new game in same room / gameID
 
 
   function startNewGame() {
@@ -2816,7 +2863,8 @@ function ConnectGame(props) {
     var game = {
       turn: turn,
       message: '',
-      gameData: table
+      gameData: table,
+      userName: userName
     };
     setGameData(table);
     setMessage('');
@@ -2971,25 +3019,28 @@ function ConnectGame(props) {
       var game = {
         turn: nextPlayer,
         message: _message,
-        gameData: data
+        gameData: data,
+        userName: userName
       };
       sendGameState(game);
     }
   }
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_16__.createElement("div", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_16__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_16__.createElement("div", {
+    className: "game-info"
+  }, !gameData.length && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_16__.createElement("div", null, "Join Code: ", roomID), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_16__.createElement("div", null, "You're playing: ", opponent)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_16__.createElement("div", {
     className: "gol-body"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_16__.createElement("div", {
     id: "gol-container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_16__.createElement("h1", null, "Connect 4"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_16__.createElement(Notice, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_16__.createElement("h1", null, "Connect 4"), gameData.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_16__.createElement(Notice, {
     player: turn,
     message: message
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_16__.createElement(Board, {
     boardData: gameData,
     dropChip: dropChip
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_16__.createElement(StartNew, {
+  }), gameData.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_16__.createElement(StartNew, {
     startNewGame: startNewGame
-  })));
+  }))));
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ConnectGame);
@@ -3093,29 +3144,43 @@ function StartGame(props) {
       handleStart = props.handleStart,
       toggleStartType = props.toggleStartType;
   var startCode = Math.floor(Math.random() * 9999);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
-    onClick: function onClick() {
-      return toggleStartType('start');
-    }
-  }, "Start a Game"), " or ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, !startType && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "margin-bottom-10"
+  }, "Do you have a Join Code?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "start-btns"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+    className: "grn-btn",
     onClick: function onClick() {
       return toggleStartType('join');
     }
-  }, "Join a Game")), startType === 'start' && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Here is your game code: ", startCode, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Give the game code to your friend so they can join!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+  }, "YES"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+    className: "grn-btn",
+    onClick: function onClick() {
+      return toggleStartType('start');
+    }
+  }, "NO"))), startType === 'start' && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Here is your Join Code: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
+    className: "join-code"
+  }, startCode)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "margin-bottom-20"
+  }, "Send this Code to your friend!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+    className: "grn-btn",
     onClick: function onClick() {
       return handleStart(startCode);
     }
-  }, "Play")), startType === 'join' && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Enter your game code:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+  }, "START GAME")), startType === 'join' && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+    className: "join-input",
+    placeHolder: "Enter Join Code Here",
     value: joinCode,
     onChange: function onChange(e) {
       return handleJoinCode(e);
     },
     type: "text"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+    className: "grn-btn",
     onClick: function onClick() {
       return handleStart(+joinCode);
     }
-  }, "Play")));
+  }, "JOIN GAME")));
 }
 
 /***/ }),
