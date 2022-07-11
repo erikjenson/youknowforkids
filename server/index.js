@@ -62,6 +62,7 @@ io.on('connection', (socket) => {
 
   console.log("socket room name on server connection", socket.handshake.auth.gameID);
   console.log("socket user name on server connection", socket.handshake.auth.userID);
+  console.log("socket user type on server connection", socket.handshake.auth.type);
   console.log("socket id on server connection", socket.id);
 
   // for future messaging
@@ -78,8 +79,36 @@ io.on('connection', (socket) => {
   //   }
 
   const room = socket.handshake.auth.gameID;
-  socket.join(room);
+  const type = socket.handshake.auth.type;
 
+  const rooms = io.of("/").adapter.rooms;
+
+  socket.join(room);
+  // if(type === 'start'){
+  //   socket.join(room);
+  //   //io.in(socket.id, "joined", true);
+  //   //not working
+  // }
+
+  // if(type === 'join'){
+  //   let joined = false;
+  //   for (const [r] of rooms){
+  //     console.log("r---> ", r);
+  //     if(r === room){
+  //       socket.join(room);
+  //       joined = true;
+  //       break;
+  //     }
+  //   }
+  //   if(!joined){
+  //     //tell joiner this is not a room
+  //     io.in(socket.id, "joined", joined);
+  //   }
+  // }
+
+  console.log("rooms: ", rooms);
+
+  // for future messaging
   // notify existing users when a new one joins
   // socket.broadcast.emit("user_connected", {
   //   userID: socket.userID,
@@ -96,8 +125,8 @@ io.on('connection', (socket) => {
    socket.to(socket.gameID).emit("send_name");
   });
 
-  socket.on("sending_name", name => {
-    socket.to(socket.gameID).emit("opponent_name", name);
+  socket.on("sending_name", data => {
+    socket.to(socket.gameID).emit("opponent_info", data);
   });
 
   socket.on("disconnect", (reason) => {

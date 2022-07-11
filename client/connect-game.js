@@ -39,7 +39,7 @@ const Notice = (props) => {
   }
   return(
     <div>
-      <h1>{message}</h1>
+      <div id="message">{message}</div>
     </div>
   )
 }
@@ -77,17 +77,22 @@ function ConnectGame (props) {
       if(content.userName) setOpponent(content.userName);
     }
 
-    if(!gameData.length && gamePlayer === 'y'){
+    //removed && gamePlayer === 'y'
+    if(!gameData.length){
       startNewGame();
+      console.log("called startNewGame!")
     }
 
-    if(opponent === '' && gamePlayer === 'y'){
+    //removed && gamePlayer === 'y'
+    //these two functions grab opponent info in a room if the other has joined already
+    if(opponent === '' ){
       console.log("getting opponent name")
       getOpponent();
     }
 
-    if(opponent === '' && gamePlayer === 'r'){
-      setOpponent('...waiting');
+    //removed && gamePlayer === 'r'
+    if(opponent === '' ){
+      setOpponent('...');
     }
 
     socket.on('move', content => {
@@ -95,13 +100,19 @@ function ConnectGame (props) {
       handleGameChange(content);
     })
 
+    //when a user joins but no opponent data is available, this is requested and sent:
     socket.on("send_name", ()=>{
-      socket.emit("sending_name", userName);
+      socket.emit("sending_name", {userName, gameData});
     })
 
-    socket.on("opponent_name", (name)=>{
-      setOpponent(name);
+    //name and game data received from opponent
+    socket.on("opponent_info", (data)=>{
+      setOpponent(data.userName);
+      //data is an empty array for some reason.
+      // setGameData(data.gameData);
+      console.log("got opponent data: ", data)
     })
+
 
     socket.on("connect_error", (err) => {
       //notify user that server is down
@@ -115,6 +126,7 @@ function ConnectGame (props) {
       socket.off("connect_error");
     }
   }, []);
+  //read more about this array
 
   function sendGameState(game){
     socket.emit("drop_chip", {turn: game.turn, message: game.message, gameData: game.gameData, userName: game.userName});
@@ -174,7 +186,7 @@ function ConnectGame (props) {
         return
       };
 
-      //Helper functions to check board for win
+      //Helper functions to check board for win. These check entire board on each move and would be more efficient to just check last move.
       function getCell(row, col) {
         //this returns a value for the cell and 0 if invalid
         if (row < 0 || row > data.length - 1) {
@@ -269,7 +281,7 @@ function ConnectGame (props) {
 
       if(result === "Win"){
         message = turn === 'y'? 'Yellow Wins!' : 'Red Wins!';
-        setMessage(message);
+        //setMessage(message);
       }else{
         nextPlayer = turn === 'r' ? 'y' : 'r';
         message = '';
@@ -296,7 +308,7 @@ function ConnectGame (props) {
   return (
     <div>
       <div className="game-info">
-      {!gameData.length && (<div>Join Code: {roomID}</div>)}
+      {opponent === '...' && gamePlayer === 'r' && (<div>Join Code: {roomID}</div>)}
       </div>
       <div className="gol-body">
         <div id="gol-container">

@@ -28,7 +28,7 @@ export default function StartGame (props){
 
       {startType === 'join' &&
       (<div id="join-form">
-        <input className="join-input" placeHolder="Enter Join Code Here" value={joinCode} onChange={(e)=>handleJoinCode(e)} type="text"/>
+        <input className="join-input" placeholder="Enter Join Code Here" value={joinCode} onChange={(e)=>handleJoinCode(e)} type="text"/>
         <a className="grn-btn" onClick={()=>handleStart(+joinCode)}>JOIN GAME</a>
       </div>)}
     </div>

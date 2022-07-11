@@ -9,12 +9,24 @@ import socket from './socket';
 class App extends React.Component {
   constructor(props){
     super(props);
-    this.state = {user: {}, player: '', joinCode: '', startType: '', gameID: 0, authOption: 'login'};
+    this.state = {user: {}, error: '', player: '', joinCode: '', startType: '', gameID: 0, authOption: 'login'};
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleAuthClick = this.handleAuthClick.bind(this);
     this.handleStart = this.handleStart.bind(this);
     this.toggleStartType = this.toggleStartType.bind(this);
     this.handleJoinCode = this.handleJoinCode.bind(this);
+
+   // this.socket = socket;
+    // this.socket.on("joined", (val)=>{
+    //   if(val){
+    //     this.setState({gameID: code});
+    //     this.setState({error: ''});
+    //   }
+    //   else{
+    //     this.setState({error: "Oh No! That Join Code Did Not Work!"});
+    //   }
+    // });
+
   }
 
   //grabs user from session on mount
@@ -65,10 +77,20 @@ class App extends React.Component {
 
   handleStart(code){
     //this will have to check if joining and if the room exists
-    this.setState({gameID: code});
-    socket.auth = { gameID: code, userID: this.state.user.name};
+
+    socket.auth = { gameID: code, userID: this.state.user.name, type: this.state.startType};
     socket.connect();
-    //joins room/gameID on the server
+
+    //not working probs because a listener can't live here in react. probs need useEffect
+    // socket.on("joined", (val)=>{
+    //   if(val){
+        this.setState({gameID: code});
+    //     this.setState({error: ''});
+    //   }
+    //   else{
+    //     this.setState({error: "Oh No! That Join Code Did Not Work!"});
+    //   }
+    // });
   }
 
   toggleStartType(type){
@@ -95,7 +117,7 @@ class App extends React.Component {
 
      {!isLoggedIn && (<AuthForm name={this.state.authOption} handleAuthClick={this.handleAuthClick} handleSubmit={this.handleSubmit} />)}
 
-     {!hasGameId && isLoggedIn && (<StartGame joinCode={this.state.joinCode} handleJoinCode={this.handleJoinCode} startType={this.state.startType} handleStart={this.handleStart} toggleStartType={this.toggleStartType}/>)}
+     {!hasGameId && isLoggedIn && (<div><div>{this.state.error}</div><StartGame joinCode={this.state.joinCode} handleJoinCode={this.handleJoinCode} startType={this.state.startType} handleStart={this.handleStart} toggleStartType={this.toggleStartType}/></div>)}
 
     {hasGameId && isLoggedIn && (<ConnectGame name={this.state.user.name} player={this.state.player} gameID={this.state.gameID} />)}
 

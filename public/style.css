@@ -55,7 +55,6 @@
 #loginOrSignup form .auth-btns .auth-option {
   display: flex;
   align-items: flex-end;
-
 }
 
 #loginOrSignup form .submit {
@@ -65,7 +64,6 @@
   padding: 8px;
   cursor: pointer;
 }
-
 
 .margin-bottom-10{
   margin-bottom: 10px;
@@ -87,17 +85,26 @@
   border-radius: 5px;
   font-weight: bold;
 }
+
 .game-info{
   text-align: center;
 }
+
 .join-code{
   font-size: 20px;
+}
+
+#message{
+  font-size: 25px;
 }
 
 #players{
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  width: 400px;
 }
+
 #players .r {
   background-image: url(red.jpg);
   background-size:cover;
@@ -121,9 +128,11 @@
   align-items: center;
   font-size: 25px;
 }
+
 #start-form{
   text-align: center;
 }
+
 .join-input {
   width: 100px;
   height: 25px;
@@ -191,6 +200,14 @@ img {
 }
 
 @media (max-width: 625px) {
+  #players {
+    flex-direction: column;
+  }
+
+  #nav-container {
+    margin-bottom: 20px;
+  }
+
   #connect td {
     width: 40px;
     height: 40px;
