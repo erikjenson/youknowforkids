@@ -4,7 +4,7 @@ import socket from './socket';
 
 //board component
 function Board (props) {
-
+  console.log("props on BOARD component--> ", props);
   const boardData = props.boardData;
   let table = [];
   //draw a new board from game array
@@ -31,6 +31,8 @@ function Board (props) {
 // message component
 const Notice = (props) => {
   //display whose turn it is or another message
+  //when props updates
+  console.log("props on notice component--> ", props);
   let message = "Red's Turn";
   if(props.message.length){
     message = props.message;
@@ -56,13 +58,17 @@ const StartNew = (props) => {
 //connect 4 functional game component with state
 function ConnectGame (props) {
 
-  const player = props.player;
-  const gameID = props.gameID;
-  const name = props.name;
+  // const player = props.player;
+  // const gameID = props.gameID;
+  // const name = props.name;
 
-  const [roomID, setRoomID] = useState(gameID);
-  const [userName, setUserName] = useState(name);
-  const [gamePlayer, setGamePlayer] = useState(player);
+  const gamePlayer = props.player;
+  const roomID = props.gameID;
+  const userName = props.name;
+
+  // const [roomID, setRoomID] = useState(gameID);
+  // const [userName, setUserName] = useState(name);
+  // const [gamePlayer, setGamePlayer] = useState(player);
   const [opponent, setOpponent] = useState('');
   const [turn, setTurn] = useState('r');
   const [message, setMessage] = useState('');
@@ -71,8 +77,9 @@ function ConnectGame (props) {
   useEffect(() => {
     //update local state upon hearing from socket
     function handleGameChange(content) {
+      console.log("handleGameChange was called")
+      setMessage(content.message);
       if(content.turn) setTurn(content.turn);
-      if(content.message) setMessage(content.message);
       if(content.gameData) setGameData(content.gameData);
       if(content.userName) setOpponent(content.userName);
     }
@@ -96,6 +103,7 @@ function ConnectGame (props) {
     }
 
     socket.on('move', content => {
+      //showing empty msg string in content
       console.log("content received on move ", content)
       handleGameChange(content);
     })
@@ -129,6 +137,7 @@ function ConnectGame (props) {
   //read more about this array
 
   function sendGameState(game){
+    console.log("sendGameState-->", game)
     socket.emit("drop_chip", {turn: game.turn, message: game.message, gameData: game.gameData, userName: game.userName});
   }
 
@@ -287,7 +296,7 @@ function ConnectGame (props) {
         message = '';
       }
 
-      //update local state
+      //update local state..should be done in useEffect?
       setMessage(message)
       setTurn(nextPlayer);
       setGameData(data);
@@ -308,7 +317,7 @@ function ConnectGame (props) {
   return (
     <div>
       <div className="game-info">
-      {opponent === '...' && gamePlayer === 'r' && (<div>Join Code: {roomID}</div>)}
+      {opponent === '...' && gamePlayer === 'r' && (<div><div>Send this to your friend!</div><div>Join Code: {roomID}</div></div>)}
       </div>
       <div className="gol-body">
         <div id="gol-container">

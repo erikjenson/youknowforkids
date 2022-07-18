@@ -4,7 +4,7 @@ export default function StartGame (props){
 
   const {startType, joinCode, handleJoinCode, handleStart, toggleStartType} = props;
 
-  let startCode = Math.floor(Math.random()*9999);
+  // let startCode = Math.floor(Math.random()*9999);
 
   return(
     <div>
@@ -17,14 +17,14 @@ export default function StartGame (props){
         </div>
       </div>)}
 
-      {startType === 'start' &&
+      {/* {startType === 'start' &&
       (<div id="start-form">
-        <div>Here is your Join Code: <span className="join-code">{startCode}</span></div>
+        <div>Here's your Join Code: <span className="join-code">{startCode}</span></div>
         <br/>
-        <div className="margin-bottom-20">Send this Code to your friend!</div>
+        <div className="margin-bottom-20">Send this to your friend!</div>
         <br/>
         <a className="grn-btn" onClick={()=>handleStart(startCode)}>START GAME</a>
-      </div>)}
+      </div>)} */}
 
       {startType === 'join' &&
       (<div id="join-form">

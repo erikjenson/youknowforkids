@@ -58,6 +58,7 @@ const server = app.listen(PORT, () => {
 
 const io = require('socket.io')(server);
 
+// eslint-disable-next-line max-statements, complexity
 io.on('connection', (socket) => {
 
   console.log("socket room name on server connection", socket.handshake.auth.gameID);
@@ -80,31 +81,47 @@ io.on('connection', (socket) => {
 
   const room = socket.handshake.auth.gameID;
   const type = socket.handshake.auth.type;
-
   const rooms = io.of("/").adapter.rooms;
+  let roomSize = 0;
 
-  socket.join(room);
-  // if(type === 'start'){
-  //   socket.join(room);
-  //   //io.in(socket.id, "joined", true);
-  //   //not working
+  //these statements run on connect() and are called once
+
+  //a room exists if count > 0;
+  for (const [r] of rooms){
+    console.log("r---> ", rooms.get(r).size);
+    if(r === room){
+
+      roomSize = rooms.get(r).size;;
+      break;
+    }
+  }
+  //fix -  if count == 0, reset code
+  //this needs to be checked back when the join code is defined
+
+  // see how many users are in the room set
+  // if(count === 1){
+  //   roomSize = room.size;
+  //   console.log("room size--> ", roomSize);
   // }
 
-  // if(type === 'join'){
-  //   let joined = false;
-  //   for (const [r] of rooms){
-  //     console.log("r---> ", r);
-  //     if(r === room){
-  //       socket.join(room);
-  //       joined = true;
-  //       break;
-  //     }
-  //   }
-  //   if(!joined){
-  //     //tell joiner this is not a room
-  //     io.in(socket.id, "joined", joined);
-  //   }
-  // }
+  if(type === 'start'){
+    socket.join(room);
+    io.in(socket.id).emit("joined", {room: room, joined: true});
+  }
+
+  if(type === 'join'){
+    //this should also check if < 2 users are in teh room.. make sure room is occupied when one user gets a join code.
+    //how do we handle the situation when a starter hasn't started? We should auto start them as soon as they hit "NO."
+
+    console.log("ROOMSIZE -> ", roomSize);
+    if(roomSize === 1){
+      socket.join(room);
+      io.in(socket.id).emit("joined", {room: room, joined: true});
+    }else{
+      io.in(socket.id).emit("joined", {room: room, joined: false});
+      socket.disconnect();
+    }
+  }
 
   console.log("rooms: ", rooms);
 

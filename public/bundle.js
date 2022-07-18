@@ -2174,53 +2174,63 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var regenerator_runtime_runtime_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! regenerator-runtime/runtime.js */ "./node_modules/regenerator-runtime/runtime.js");
-/* harmony import */ var regenerator_runtime_runtime_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(regenerator_runtime_runtime_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var core_js_modules_es_function_bind_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.function.bind.js */ "./node_modules/core-js/modules/es.function.bind.js");
-/* harmony import */ var core_js_modules_es_function_bind_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_function_bind_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var core_js_modules_es_function_name_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/es.function.name.js */ "./node_modules/core-js/modules/es.function.name.js");
-/* harmony import */ var core_js_modules_es_function_name_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_function_name_js__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var core_js_modules_es_object_set_prototype_of_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! core-js/modules/es.object.set-prototype-of.js */ "./node_modules/core-js/modules/es.object.set-prototype-of.js");
-/* harmony import */ var core_js_modules_es_object_set_prototype_of_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_set_prototype_of_js__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var core_js_modules_es_object_get_prototype_of_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! core-js/modules/es.object.get-prototype-of.js */ "./node_modules/core-js/modules/es.object.get-prototype-of.js");
-/* harmony import */ var core_js_modules_es_object_get_prototype_of_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_get_prototype_of_js__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! core-js/modules/es.object.to-string.js */ "./node_modules/core-js/modules/es.object.to-string.js");
-/* harmony import */ var core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var core_js_modules_es_reflect_to_string_tag_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! core-js/modules/es.reflect.to-string-tag.js */ "./node_modules/core-js/modules/es.reflect.to-string-tag.js");
-/* harmony import */ var core_js_modules_es_reflect_to_string_tag_js__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_reflect_to_string_tag_js__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var core_js_modules_es_reflect_construct_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! core-js/modules/es.reflect.construct.js */ "./node_modules/core-js/modules/es.reflect.construct.js");
-/* harmony import */ var core_js_modules_es_reflect_construct_js__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_reflect_construct_js__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var core_js_modules_es_error_cause_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! core-js/modules/es.error.cause.js */ "./node_modules/core-js/modules/es.error.cause.js");
-/* harmony import */ var core_js_modules_es_error_cause_js__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_error_cause_js__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var core_js_modules_es_error_to_string_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! core-js/modules/es.error.to-string.js */ "./node_modules/core-js/modules/es.error.to-string.js");
-/* harmony import */ var core_js_modules_es_error_to_string_js__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_error_to_string_js__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var core_js_modules_es_object_create_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! core-js/modules/es.object.create.js */ "./node_modules/core-js/modules/es.object.create.js");
-/* harmony import */ var core_js_modules_es_object_create_js__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_create_js__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var core_js_modules_es_object_define_property_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! core-js/modules/es.object.define-property.js */ "./node_modules/core-js/modules/es.object.define-property.js");
-/* harmony import */ var core_js_modules_es_object_define_property_js__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_define_property_js__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var core_js_modules_es_promise_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! core-js/modules/es.promise.js */ "./node_modules/core-js/modules/es.promise.js");
-/* harmony import */ var core_js_modules_es_promise_js__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_promise_js__WEBPACK_IMPORTED_MODULE_12__);
-/* harmony import */ var core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! core-js/modules/es.symbol.js */ "./node_modules/core-js/modules/es.symbol.js");
-/* harmony import */ var core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_13__);
-/* harmony import */ var core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! core-js/modules/es.symbol.description.js */ "./node_modules/core-js/modules/es.symbol.description.js");
-/* harmony import */ var core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_14__);
-/* harmony import */ var core_js_modules_es_symbol_iterator_js__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! core-js/modules/es.symbol.iterator.js */ "./node_modules/core-js/modules/es.symbol.iterator.js");
-/* harmony import */ var core_js_modules_es_symbol_iterator_js__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_iterator_js__WEBPACK_IMPORTED_MODULE_15__);
-/* harmony import */ var core_js_modules_es_array_iterator_js__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! core-js/modules/es.array.iterator.js */ "./node_modules/core-js/modules/es.array.iterator.js");
-/* harmony import */ var core_js_modules_es_array_iterator_js__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_iterator_js__WEBPACK_IMPORTED_MODULE_16__);
-/* harmony import */ var core_js_modules_es_string_iterator_js__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! core-js/modules/es.string.iterator.js */ "./node_modules/core-js/modules/es.string.iterator.js");
-/* harmony import */ var core_js_modules_es_string_iterator_js__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_iterator_js__WEBPACK_IMPORTED_MODULE_17__);
-/* harmony import */ var core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! core-js/modules/web.dom-collections.iterator.js */ "./node_modules/core-js/modules/web.dom-collections.iterator.js");
-/* harmony import */ var core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_18___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_18__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_20___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_20__);
-/* harmony import */ var _auth_form__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./auth-form */ "./client/auth-form.js");
-/* harmony import */ var _navbar__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./navbar */ "./client/navbar.js");
-/* harmony import */ var _start_game__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./start-game */ "./client/start-game.js");
-/* harmony import */ var _connect_game__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./connect-game */ "./client/connect-game.js");
-/* harmony import */ var _socket__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./socket */ "./client/socket.js");
-function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+/* harmony import */ var core_js_modules_es_function_name_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.function.name.js */ "./node_modules/core-js/modules/es.function.name.js");
+/* harmony import */ var core_js_modules_es_function_name_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_function_name_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var core_js_modules_es_array_is_array_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.array.is-array.js */ "./node_modules/core-js/modules/es.array.is-array.js");
+/* harmony import */ var core_js_modules_es_array_is_array_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_is_array_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/es.symbol.js */ "./node_modules/core-js/modules/es.symbol.js");
+/* harmony import */ var core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! core-js/modules/es.symbol.description.js */ "./node_modules/core-js/modules/es.symbol.description.js");
+/* harmony import */ var core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! core-js/modules/es.object.to-string.js */ "./node_modules/core-js/modules/es.object.to-string.js");
+/* harmony import */ var core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var core_js_modules_es_symbol_iterator_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! core-js/modules/es.symbol.iterator.js */ "./node_modules/core-js/modules/es.symbol.iterator.js");
+/* harmony import */ var core_js_modules_es_symbol_iterator_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_iterator_js__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var core_js_modules_es_array_iterator_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! core-js/modules/es.array.iterator.js */ "./node_modules/core-js/modules/es.array.iterator.js");
+/* harmony import */ var core_js_modules_es_array_iterator_js__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_iterator_js__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var core_js_modules_es_string_iterator_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! core-js/modules/es.string.iterator.js */ "./node_modules/core-js/modules/es.string.iterator.js");
+/* harmony import */ var core_js_modules_es_string_iterator_js__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_iterator_js__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! core-js/modules/web.dom-collections.iterator.js */ "./node_modules/core-js/modules/web.dom-collections.iterator.js");
+/* harmony import */ var core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var core_js_modules_es_array_slice_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! core-js/modules/es.array.slice.js */ "./node_modules/core-js/modules/es.array.slice.js");
+/* harmony import */ var core_js_modules_es_array_slice_js__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_slice_js__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var core_js_modules_es_array_from_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! core-js/modules/es.array.from.js */ "./node_modules/core-js/modules/es.array.from.js");
+/* harmony import */ var core_js_modules_es_array_from_js__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_from_js__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! core-js/modules/es.regexp.exec.js */ "./node_modules/core-js/modules/es.regexp.exec.js");
+/* harmony import */ var core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var core_js_modules_es_regexp_test_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! core-js/modules/es.regexp.test.js */ "./node_modules/core-js/modules/es.regexp.test.js");
+/* harmony import */ var core_js_modules_es_regexp_test_js__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_regexp_test_js__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var core_js_modules_es_error_cause_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! core-js/modules/es.error.cause.js */ "./node_modules/core-js/modules/es.error.cause.js");
+/* harmony import */ var core_js_modules_es_error_cause_js__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_error_cause_js__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony import */ var core_js_modules_es_error_to_string_js__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! core-js/modules/es.error.to-string.js */ "./node_modules/core-js/modules/es.error.to-string.js");
+/* harmony import */ var core_js_modules_es_error_to_string_js__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_error_to_string_js__WEBPACK_IMPORTED_MODULE_14__);
+/* harmony import */ var core_js_modules_es_promise_js__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! core-js/modules/es.promise.js */ "./node_modules/core-js/modules/es.promise.js");
+/* harmony import */ var core_js_modules_es_promise_js__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_promise_js__WEBPACK_IMPORTED_MODULE_15__);
+/* harmony import */ var regenerator_runtime_runtime_js__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! regenerator-runtime/runtime.js */ "./node_modules/regenerator-runtime/runtime.js");
+/* harmony import */ var regenerator_runtime_runtime_js__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(regenerator_runtime_runtime_js__WEBPACK_IMPORTED_MODULE_16__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_18___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_18__);
+/* harmony import */ var _auth_form__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./auth-form */ "./client/auth-form.js");
+/* harmony import */ var _navbar__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./navbar */ "./client/navbar.js");
+/* harmony import */ var _start_game__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./start-game */ "./client/start-game.js");
+/* harmony import */ var _connect_game__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./connect-game */ "./client/connect-game.js");
+/* harmony import */ var _socket__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./socket */ "./client/socket.js");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2228,6 +2238,17 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
@@ -2237,87 +2258,51 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
+function App() {
+  // this.state = {user: {}, error: '', player: '', joinCode: '', startType: '', gameID: 0, authOption: 'login'};
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_17__.useState)({}),
+      _useState2 = _slicedToArray(_useState, 2),
+      user = _useState2[0],
+      setUser = _useState2[1];
 
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_17__.useState)(''),
+      _useState4 = _slicedToArray(_useState3, 2),
+      error = _useState4[0],
+      setError = _useState4[1];
 
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_17__.useState)(''),
+      _useState6 = _slicedToArray(_useState5, 2),
+      player = _useState6[0],
+      setPlayer = _useState6[1];
 
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_17__.useState)(''),
+      _useState8 = _slicedToArray(_useState7, 2),
+      joinCode = _useState8[0],
+      setJoinCode = _useState8[1];
 
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_17__.useState)(''),
+      _useState10 = _slicedToArray(_useState9, 2),
+      startType = _useState10[0],
+      setStartType = _useState10[1];
 
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_17__.useState)(0),
+      _useState12 = _slicedToArray(_useState11, 2),
+      gameID = _useState12[0],
+      setGameID = _useState12[1];
 
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_17__.useState)('login'),
+      _useState14 = _slicedToArray(_useState13, 2),
+      authOption = _useState14[0],
+      setAuthOption = _useState14[1];
 
+  (0,react__WEBPACK_IMPORTED_MODULE_17__.useEffect)(function () {
+    //grabs user from session on mount
+    function getUser() {
+      return _getUser.apply(this, arguments);
+    }
 
-
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-
-
-
-
-
-
-
-
-var App = /*#__PURE__*/function (_React$Component) {
-  _inherits(App, _React$Component);
-
-  var _super = _createSuper(App);
-
-  function App(props) {
-    var _this;
-
-    _classCallCheck(this, App);
-
-    _this = _super.call(this, props);
-    _this.state = {
-      user: {},
-      error: '',
-      player: '',
-      joinCode: '',
-      startType: '',
-      gameID: 0,
-      authOption: 'login'
-    };
-    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
-    _this.handleAuthClick = _this.handleAuthClick.bind(_assertThisInitialized(_this));
-    _this.handleStart = _this.handleStart.bind(_assertThisInitialized(_this));
-    _this.toggleStartType = _this.toggleStartType.bind(_assertThisInitialized(_this));
-    _this.handleJoinCode = _this.handleJoinCode.bind(_assertThisInitialized(_this)); // this.socket = socket;
-    // this.socket.on("joined", (val)=>{
-    //   if(val){
-    //     this.setState({gameID: code});
-    //     this.setState({error: ''});
-    //   }
-    //   else{
-    //     this.setState({error: "Oh No! That Join Code Did Not Work!"});
-    //   }
-    // });
-
-    return _this;
-  } //grabs user from session on mount
-
-
-  _createClass(App, [{
-    key: "componentDidMount",
-    value: function () {
-      var _componentDidMount = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+    function _getUser() {
+      _getUser = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
         var res;
         return regeneratorRuntime.wrap(function _callee$(_context) {
           while (1) {
@@ -2325,18 +2310,14 @@ var App = /*#__PURE__*/function (_React$Component) {
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_20___default().get('/auth/me');
+                return axios__WEBPACK_IMPORTED_MODULE_18___default().get('/auth/me');
 
               case 3:
                 res = _context.sent;
 
                 if (res.data) {
-                  this.setState({
-                    user: res.data
-                  });
-                  this.setState({
-                    authOption: 'logout'
-                  });
+                  setUser(res.data);
+                  setAuthOption('logout');
                   console.log("user obj from api", res.data);
                 }
 
@@ -2353,191 +2334,176 @@ var App = /*#__PURE__*/function (_React$Component) {
                 return _context.stop();
             }
           }
-        }, _callee, this, [[0, 7]]);
+        }, _callee, null, [[0, 7]]);
       }));
+      return _getUser.apply(this, arguments);
+    }
 
-      function componentDidMount() {
-        return _componentDidMount.apply(this, arguments);
+    if (!user.email) {
+      getUser();
+    }
+
+    _socket__WEBPACK_IMPORTED_MODULE_23__["default"].on("joined", function (val) {
+      if (val.joined) {
+        console.log("here's the join code: ", val.room); //code is a good one so send it in!
+
+        setGameID(val.room);
+        setError('You Joined The Room!');
+      } else {
+        setError("Oh No! ".concat(val.room, " Didn't Work!"));
       }
+    });
+    return function () {
+      _socket__WEBPACK_IMPORTED_MODULE_23__["default"].off('joined');
+    };
+  }, []); //logout api call - toggles login/logout option
 
-      return componentDidMount;
-    }() //logout api call - toggles login/logout option
+  function handleAuthClick() {
+    return _handleAuthClick.apply(this, arguments);
+  } //sign-up / login api call
 
-  }, {
-    key: "handleAuthClick",
-    value: function () {
-      var _handleAuthClick = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-        return regeneratorRuntime.wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                if (this.state.user.id) {
-                  _context2.next = 4;
-                  break;
-                }
 
-                this.state.authOption === 'login' ? this.setState({
-                  authOption: 'signup'
-                }) : this.setState({
-                  authOption: 'login'
-                });
-                _context2.next = 14;
+  function _handleAuthClick() {
+    _handleAuthClick = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+      return regeneratorRuntime.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              if (user.id) {
+                _context2.next = 4;
                 break;
+              }
 
-              case 4:
-                _context2.prev = 4;
-                _context2.next = 7;
-                return axios__WEBPACK_IMPORTED_MODULE_20___default().post('/auth/logout');
+              authOption === 'login' ? setAuthOption('signup') : setAuthOption('login');
+              _context2.next = 14;
+              break;
 
-              case 7:
-                this.setState({
-                  user: {}
-                });
-                this.setState({
-                  authOption: 'login'
-                });
-                _context2.next = 14;
-                break;
+            case 4:
+              _context2.prev = 4;
+              _context2.next = 7;
+              return axios__WEBPACK_IMPORTED_MODULE_18___default().post('/auth/logout');
 
-              case 11:
-                _context2.prev = 11;
-                _context2.t0 = _context2["catch"](4);
-                console.error(_context2.t0);
+            case 7:
+              setUser({});
+              setAuthOption('login');
+              _context2.next = 14;
+              break;
 
-              case 14:
-              case "end":
-                return _context2.stop();
-            }
+            case 11:
+              _context2.prev = 11;
+              _context2.t0 = _context2["catch"](4);
+              console.error(_context2.t0);
+
+            case 14:
+            case "end":
+              return _context2.stop();
           }
-        }, _callee2, this, [[4, 11]]);
-      }));
+        }
+      }, _callee2, null, [[4, 11]]);
+    }));
+    return _handleAuthClick.apply(this, arguments);
+  }
 
-      function handleAuthClick() {
-        return _handleAuthClick.apply(this, arguments);
-      }
+  function handleSubmit(_x) {
+    return _handleSubmit.apply(this, arguments);
+  } //join room, first check if joining and if room exists
 
-      return handleAuthClick;
-    }() //sign-up / login api call
 
-  }, {
-    key: "handleSubmit",
-    value: function () {
-      var _handleSubmit = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(evt) {
-        var formName, name, email, password, res;
-        return regeneratorRuntime.wrap(function _callee3$(_context3) {
-          while (1) {
-            switch (_context3.prev = _context3.next) {
-              case 0:
-                evt.preventDefault();
-                formName = evt.target.name;
-                name = evt.target.uname ? evt.target.uname.value : null;
-                email = evt.target.email.value;
-                password = evt.target.password.value;
-                _context3.next = 7;
-                return axios__WEBPACK_IMPORTED_MODULE_20___default().post("auth/".concat(formName), {
-                  email: email,
-                  password: password,
-                  name: name
-                });
+  function _handleSubmit() {
+    _handleSubmit = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(evt) {
+      var formName, name, email, password, res;
+      return regeneratorRuntime.wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              evt.preventDefault();
+              formName = evt.target.name;
+              name = evt.target.uname ? evt.target.uname.value : null;
+              email = evt.target.email.value;
+              password = evt.target.password.value;
+              _context3.next = 7;
+              return axios__WEBPACK_IMPORTED_MODULE_18___default().post("auth/".concat(formName), {
+                email: email,
+                password: password,
+                name: name
+              });
 
-              case 7:
-                res = _context3.sent;
+            case 7:
+              res = _context3.sent;
 
-                if (res.data) {
-                  this.setState({
-                    user: res.data
-                  });
-                  this.setState({
-                    authOption: 'logout'
-                  });
-                  evt.target.reset();
-                }
+              if (res.data) {
+                setUser(res.data);
+                setAuthOption('logout');
+                evt.target.reset();
+              }
 
-              case 9:
-              case "end":
-                return _context3.stop();
-            }
+            case 9:
+            case "end":
+              return _context3.stop();
           }
-        }, _callee3, this);
-      }));
+        }
+      }, _callee3);
+    }));
+    return _handleSubmit.apply(this, arguments);
+  }
 
-      function handleSubmit(_x) {
-        return _handleSubmit.apply(this, arguments);
-      }
+  function handleStart(code) {
+    var type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+    console.log("called handleStart--> ", code);
+    console.log("called handleStart / startType--> ", type);
+    setJoinCode(code); //when type = 'start' it will be passed in, otherwise it is on state
 
-      return handleSubmit;
-    }()
-  }, {
-    key: "handleStart",
-    value: function handleStart(code) {
-      //this will have to check if joining and if the room exists
-      _socket__WEBPACK_IMPORTED_MODULE_25__["default"].auth = {
-        gameID: code,
-        userID: this.state.user.name,
-        type: this.state.startType
-      };
-      _socket__WEBPACK_IMPORTED_MODULE_25__["default"].connect(); //not working probs because a listener can't live here in react. probs need useEffect
-      // socket.on("joined", (val)=>{
-      //   if(val){
+    if (!type) type = startType;
+    _socket__WEBPACK_IMPORTED_MODULE_23__["default"].auth = {
+      gameID: code,
+      userID: user.name,
+      type: type
+    };
+    _socket__WEBPACK_IMPORTED_MODULE_23__["default"].connect();
+  }
 
-      this.setState({
-        gameID: code
-      }); //     this.setState({error: ''});
-      //   }
-      //   else{
-      //     this.setState({error: "Oh No! That Join Code Did Not Work!"});
-      //   }
-      // });
-    }
-  }, {
-    key: "toggleStartType",
-    value: function toggleStartType(type) {
-      this.setState({
-        startType: type
-      });
-      var player = type === 'start' ? 'r' : 'y';
-      this.setState({
-        player: player
-      });
-    }
-  }, {
-    key: "handleJoinCode",
-    value: function handleJoinCode(evt) {
-      var join = evt.target.value;
-      this.setState({
-        joinCode: join
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var isLoggedIn = this.state.user ? this.state.user.email : null;
-      var hasGameId = this.state.gameID ? this.state.gameID : null;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_19__.createElement("div", {
-        id: "main"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_19__.createElement(react__WEBPACK_IMPORTED_MODULE_19__.StrictMode, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_19__.createElement(_navbar__WEBPACK_IMPORTED_MODULE_22__["default"], {
-        handleAuthClick: this.handleAuthClick,
-        authOption: this.state.authOption
-      }), !isLoggedIn && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_19__.createElement(_auth_form__WEBPACK_IMPORTED_MODULE_21__.AuthForm, {
-        name: this.state.authOption,
-        handleAuthClick: this.handleAuthClick,
-        handleSubmit: this.handleSubmit
-      }), !hasGameId && isLoggedIn && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_19__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_19__.createElement("div", null, this.state.error), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_19__.createElement(_start_game__WEBPACK_IMPORTED_MODULE_23__["default"], {
-        joinCode: this.state.joinCode,
-        handleJoinCode: this.handleJoinCode,
-        startType: this.state.startType,
-        handleStart: this.handleStart,
-        toggleStartType: this.toggleStartType
-      })), hasGameId && isLoggedIn && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_19__.createElement(_connect_game__WEBPACK_IMPORTED_MODULE_24__["default"], {
-        name: this.state.user.name,
-        player: this.state.player,
-        gameID: this.state.gameID
-      })));
-    }
-  }]);
+  function toggleStartType(type) {
+    setStartType(type);
+    var color = type === 'start' ? 'r' : 'y';
+    setPlayer(color);
 
-  return App;
-}(react__WEBPACK_IMPORTED_MODULE_19__.Component);
+    if (type === 'start') {
+      //immediately create and join the room
+      var code = Math.floor(Math.random() * 9999);
+      handleStart(code, type); //connect and return code in a socket listener
+    }
+  }
+
+  function handleJoinCode(evt) {
+    var jCode = evt.target.value;
+    setJoinCode(jCode);
+  } // const isLoggedIn = user? user.email: null;
+  // const hasGameId = gameID? gameID: null;
+
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_17__.createElement("div", {
+    id: "main"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_17__.createElement(react__WEBPACK_IMPORTED_MODULE_17__.StrictMode, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_17__.createElement(_navbar__WEBPACK_IMPORTED_MODULE_20__["default"], {
+    handleAuthClick: handleAuthClick,
+    authOption: authOption
+  }), !user.email && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_17__.createElement(_auth_form__WEBPACK_IMPORTED_MODULE_19__.AuthForm, {
+    name: authOption,
+    handleAuthClick: handleAuthClick,
+    handleSubmit: handleSubmit
+  }), !gameID && user.email && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_17__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_17__.createElement("div", {
+    id: "join-error"
+  }, error), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_17__.createElement(_start_game__WEBPACK_IMPORTED_MODULE_21__["default"], {
+    joinCode: joinCode,
+    handleJoinCode: handleJoinCode,
+    startType: startType,
+    handleStart: handleStart,
+    toggleStartType: toggleStartType
+  })), gameID > 0 && user.email && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_17__.createElement(_connect_game__WEBPACK_IMPORTED_MODULE_22__["default"], {
+    name: user.name,
+    player: player,
+    gameID: gameID
+  })));
+}
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);
 
@@ -2697,6 +2663,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
  //board component
 
 function Board(props) {
+  console.log("props on BOARD component--> ", props);
   var boardData = props.boardData;
   var table = []; //draw a new board from game array
 
@@ -2738,6 +2705,8 @@ function Board(props) {
 
 var Notice = function Notice(props) {
   //display whose turn it is or another message
+  //when props updates
+  console.log("props on notice component--> ", props);
   var message = "Red's Turn";
 
   if (props.message.length) {
@@ -2765,50 +2734,41 @@ var StartNew = function StartNew(props) {
 
 
 function ConnectGame(props) {
-  var player = props.player;
-  var gameID = props.gameID;
-  var name = props.name;
+  // const player = props.player;
+  // const gameID = props.gameID;
+  // const name = props.name;
+  var gamePlayer = props.player;
+  var roomID = props.gameID;
+  var userName = props.name; // const [roomID, setRoomID] = useState(gameID);
+  // const [userName, setUserName] = useState(name);
+  // const [gamePlayer, setGamePlayer] = useState(player);
 
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_16__.useState)(gameID),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_16__.useState)(''),
       _useState2 = _slicedToArray(_useState, 2),
-      roomID = _useState2[0],
-      setRoomID = _useState2[1];
+      opponent = _useState2[0],
+      setOpponent = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_16__.useState)(name),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_16__.useState)('r'),
       _useState4 = _slicedToArray(_useState3, 2),
-      userName = _useState4[0],
-      setUserName = _useState4[1];
+      turn = _useState4[0],
+      setTurn = _useState4[1];
 
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_16__.useState)(player),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_16__.useState)(''),
       _useState6 = _slicedToArray(_useState5, 2),
-      gamePlayer = _useState6[0],
-      setGamePlayer = _useState6[1];
+      message = _useState6[0],
+      setMessage = _useState6[1];
 
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_16__.useState)(''),
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_16__.useState)([]),
       _useState8 = _slicedToArray(_useState7, 2),
-      opponent = _useState8[0],
-      setOpponent = _useState8[1];
-
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_16__.useState)('r'),
-      _useState10 = _slicedToArray(_useState9, 2),
-      turn = _useState10[0],
-      setTurn = _useState10[1];
-
-  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_16__.useState)(''),
-      _useState12 = _slicedToArray(_useState11, 2),
-      message = _useState12[0],
-      setMessage = _useState12[1];
-
-  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_16__.useState)([]),
-      _useState14 = _slicedToArray(_useState13, 2),
-      gameData = _useState14[0],
-      setGameData = _useState14[1];
+      gameData = _useState8[0],
+      setGameData = _useState8[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_16__.useEffect)(function () {
     //update local state upon hearing from socket
     function handleGameChange(content) {
+      console.log("handleGameChange was called");
+      setMessage(content.message);
       if (content.turn) setTurn(content.turn);
-      if (content.message) setMessage(content.message);
       if (content.gameData) setGameData(content.gameData);
       if (content.userName) setOpponent(content.userName);
     } //removed && gamePlayer === 'y'
@@ -2832,6 +2792,7 @@ function ConnectGame(props) {
     }
 
     _socket__WEBPACK_IMPORTED_MODULE_17__["default"].on('move', function (content) {
+      //showing empty msg string in content
       console.log("content received on move ", content);
       handleGameChange(content);
     }); //when a user joins but no opponent data is available, this is requested and sent:
@@ -2862,6 +2823,7 @@ function ConnectGame(props) {
   }, []); //read more about this array
 
   function sendGameState(game) {
+    console.log("sendGameState-->", game);
     _socket__WEBPACK_IMPORTED_MODULE_17__["default"].emit("drop_chip", {
       turn: game.turn,
       message: game.message,
@@ -3038,7 +3000,7 @@ function ConnectGame(props) {
       } else {
         nextPlayer = turn === 'r' ? 'y' : 'r';
         _message = '';
-      } //update local state
+      } //update local state..should be done in useEffect?
 
 
       setMessage(_message);
@@ -3058,7 +3020,7 @@ function ConnectGame(props) {
   var otherPlayer = gamePlayer === 'r' ? 'y' : 'r';
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_16__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_16__.createElement("div", {
     className: "game-info"
-  }, opponent === '...' && gamePlayer === 'r' && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_16__.createElement("div", null, "Join Code: ", roomID)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_16__.createElement("div", {
+  }, opponent === '...' && gamePlayer === 'r' && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_16__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_16__.createElement("div", null, "Send this to your friend!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_16__.createElement("div", null, "Join Code: ", roomID))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_16__.createElement("div", {
     className: "gol-body"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_16__.createElement("div", {
     id: "gol-container"
@@ -3177,8 +3139,8 @@ function StartGame(props) {
       joinCode = props.joinCode,
       handleJoinCode = props.handleJoinCode,
       handleStart = props.handleStart,
-      toggleStartType = props.toggleStartType;
-  var startCode = Math.floor(Math.random() * 9999);
+      toggleStartType = props.toggleStartType; // let startCode = Math.floor(Math.random()*9999);
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, !startType && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "margin-bottom-10"
   }, "Do you have a Join Code?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -3193,18 +3155,7 @@ function StartGame(props) {
     onClick: function onClick() {
       return toggleStartType('start');
     }
-  }, "NO"))), startType === 'start' && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    id: "start-form"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Here is your Join Code: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
-    className: "join-code"
-  }, startCode)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "margin-bottom-20"
-  }, "Send this Code to your friend!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
-    className: "grn-btn",
-    onClick: function onClick() {
-      return handleStart(startCode);
-    }
-  }, "START GAME")), startType === 'join' && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, "NO"))), startType === 'join' && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     id: "join-form"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
     className: "join-input",
@@ -4523,51 +4474,6 @@ module.exports = !fails(function () {
   // eslint-disable-next-line no-prototype-builtins -- safe
   return typeof test != 'function' || test.hasOwnProperty('prototype');
 });
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/function-bind.js":
-/*!*********************************************************!*\
-  !*** ./node_modules/core-js/internals/function-bind.js ***!
-  \*********************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-"use strict";
-
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
-var uncurryThis = __webpack_require__(/*! ../internals/function-uncurry-this */ "./node_modules/core-js/internals/function-uncurry-this.js");
-var aCallable = __webpack_require__(/*! ../internals/a-callable */ "./node_modules/core-js/internals/a-callable.js");
-var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
-var hasOwn = __webpack_require__(/*! ../internals/has-own-property */ "./node_modules/core-js/internals/has-own-property.js");
-var arraySlice = __webpack_require__(/*! ../internals/array-slice */ "./node_modules/core-js/internals/array-slice.js");
-var NATIVE_BIND = __webpack_require__(/*! ../internals/function-bind-native */ "./node_modules/core-js/internals/function-bind-native.js");
-
-var Function = global.Function;
-var concat = uncurryThis([].concat);
-var join = uncurryThis([].join);
-var factories = {};
-
-var construct = function (C, argsLength, args) {
-  if (!hasOwn(factories, argsLength)) {
-    for (var list = [], i = 0; i < argsLength; i++) list[i] = 'a[' + i + ']';
-    factories[argsLength] = Function('C,a', 'return new C(' + join(list, ',') + ')');
-  } return factories[argsLength](C, args);
-};
-
-// `Function.prototype.bind` method implementation
-// https://tc39.es/ecma262/#sec-function.prototype.bind
-module.exports = NATIVE_BIND ? Function.bind : function bind(that /* , ...args */) {
-  var F = aCallable(this);
-  var Prototype = F.prototype;
-  var partArgs = arraySlice(arguments, 1);
-  var boundFunction = function bound(/* args... */) {
-    var args = concat(partArgs, arraySlice(arguments));
-    return this instanceof boundFunction ? construct(F, args.length, args) : F.apply(that, args);
-  };
-  if (isObject(Prototype)) boundFunction.prototype = Prototype;
-  return boundFunction;
-};
 
 
 /***/ }),
@@ -7531,24 +7437,6 @@ if (ErrorPrototype.toString !== errorToString) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/modules/es.function.bind.js":
-/*!**********************************************************!*\
-  !*** ./node_modules/core-js/modules/es.function.bind.js ***!
-  \**********************************************************/
-/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
-
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
-var bind = __webpack_require__(/*! ../internals/function-bind */ "./node_modules/core-js/internals/function-bind.js");
-
-// `Function.prototype.bind` method
-// https://tc39.es/ecma262/#sec-function.prototype.bind
-$({ target: 'Function', proto: true, forced: Function.bind !== bind }, {
-  bind: bind
-});
-
-
-/***/ }),
-
 /***/ "./node_modules/core-js/modules/es.function.name.js":
 /*!**********************************************************!*\
   !*** ./node_modules/core-js/modules/es.function.name.js ***!
@@ -7580,89 +7468,6 @@ if (DESCRIPTORS && !FUNCTION_NAME_EXISTS) {
     }
   });
 }
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/modules/es.object.create.js":
-/*!**********************************************************!*\
-  !*** ./node_modules/core-js/modules/es.object.create.js ***!
-  \**********************************************************/
-/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
-
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
-var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
-var create = __webpack_require__(/*! ../internals/object-create */ "./node_modules/core-js/internals/object-create.js");
-
-// `Object.create` method
-// https://tc39.es/ecma262/#sec-object.create
-$({ target: 'Object', stat: true, sham: !DESCRIPTORS }, {
-  create: create
-});
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/modules/es.object.define-property.js":
-/*!*******************************************************************!*\
-  !*** ./node_modules/core-js/modules/es.object.define-property.js ***!
-  \*******************************************************************/
-/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
-
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
-var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
-var defineProperty = (__webpack_require__(/*! ../internals/object-define-property */ "./node_modules/core-js/internals/object-define-property.js").f);
-
-// `Object.defineProperty` method
-// https://tc39.es/ecma262/#sec-object.defineproperty
-// eslint-disable-next-line es/no-object-defineproperty -- safe
-$({ target: 'Object', stat: true, forced: Object.defineProperty !== defineProperty, sham: !DESCRIPTORS }, {
-  defineProperty: defineProperty
-});
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/modules/es.object.get-prototype-of.js":
-/*!********************************************************************!*\
-  !*** ./node_modules/core-js/modules/es.object.get-prototype-of.js ***!
-  \********************************************************************/
-/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
-
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
-var toObject = __webpack_require__(/*! ../internals/to-object */ "./node_modules/core-js/internals/to-object.js");
-var nativeGetPrototypeOf = __webpack_require__(/*! ../internals/object-get-prototype-of */ "./node_modules/core-js/internals/object-get-prototype-of.js");
-var CORRECT_PROTOTYPE_GETTER = __webpack_require__(/*! ../internals/correct-prototype-getter */ "./node_modules/core-js/internals/correct-prototype-getter.js");
-
-var FAILS_ON_PRIMITIVES = fails(function () { nativeGetPrototypeOf(1); });
-
-// `Object.getPrototypeOf` method
-// https://tc39.es/ecma262/#sec-object.getprototypeof
-$({ target: 'Object', stat: true, forced: FAILS_ON_PRIMITIVES, sham: !CORRECT_PROTOTYPE_GETTER }, {
-  getPrototypeOf: function getPrototypeOf(it) {
-    return nativeGetPrototypeOf(toObject(it));
-  }
-});
-
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/modules/es.object.set-prototype-of.js":
-/*!********************************************************************!*\
-  !*** ./node_modules/core-js/modules/es.object.set-prototype-of.js ***!
-  \********************************************************************/
-/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
-
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
-var setPrototypeOf = __webpack_require__(/*! ../internals/object-set-prototype-of */ "./node_modules/core-js/internals/object-set-prototype-of.js");
-
-// `Object.setPrototypeOf` method
-// https://tc39.es/ecma262/#sec-object.setprototypeof
-$({ target: 'Object', stat: true }, {
-  setPrototypeOf: setPrototypeOf
-});
 
 
 /***/ }),
@@ -8095,91 +7900,6 @@ $({ target: PROMISE, stat: true, forced: INCORRECT_ITERATION }, {
     return capability.promise;
   }
 });
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/modules/es.reflect.construct.js":
-/*!**************************************************************!*\
-  !*** ./node_modules/core-js/modules/es.reflect.construct.js ***!
-  \**************************************************************/
-/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
-
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
-var getBuiltIn = __webpack_require__(/*! ../internals/get-built-in */ "./node_modules/core-js/internals/get-built-in.js");
-var apply = __webpack_require__(/*! ../internals/function-apply */ "./node_modules/core-js/internals/function-apply.js");
-var bind = __webpack_require__(/*! ../internals/function-bind */ "./node_modules/core-js/internals/function-bind.js");
-var aConstructor = __webpack_require__(/*! ../internals/a-constructor */ "./node_modules/core-js/internals/a-constructor.js");
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
-var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
-var create = __webpack_require__(/*! ../internals/object-create */ "./node_modules/core-js/internals/object-create.js");
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
-
-var nativeConstruct = getBuiltIn('Reflect', 'construct');
-var ObjectPrototype = Object.prototype;
-var push = [].push;
-
-// `Reflect.construct` method
-// https://tc39.es/ecma262/#sec-reflect.construct
-// MS Edge supports only 2 arguments and argumentsList argument is optional
-// FF Nightly sets third argument as `new.target`, but does not create `this` from it
-var NEW_TARGET_BUG = fails(function () {
-  function F() { /* empty */ }
-  return !(nativeConstruct(function () { /* empty */ }, [], F) instanceof F);
-});
-
-var ARGS_BUG = !fails(function () {
-  nativeConstruct(function () { /* empty */ });
-});
-
-var FORCED = NEW_TARGET_BUG || ARGS_BUG;
-
-$({ target: 'Reflect', stat: true, forced: FORCED, sham: FORCED }, {
-  construct: function construct(Target, args /* , newTarget */) {
-    aConstructor(Target);
-    anObject(args);
-    var newTarget = arguments.length < 3 ? Target : aConstructor(arguments[2]);
-    if (ARGS_BUG && !NEW_TARGET_BUG) return nativeConstruct(Target, args, newTarget);
-    if (Target == newTarget) {
-      // w/o altered newTarget, optimization for 0-4 arguments
-      switch (args.length) {
-        case 0: return new Target();
-        case 1: return new Target(args[0]);
-        case 2: return new Target(args[0], args[1]);
-        case 3: return new Target(args[0], args[1], args[2]);
-        case 4: return new Target(args[0], args[1], args[2], args[3]);
-      }
-      // w/o altered newTarget, lot of arguments case
-      var $args = [null];
-      apply(push, $args, args);
-      return new (apply(bind, Target, $args))();
-    }
-    // with altered newTarget, not support built-in constructors
-    var proto = newTarget.prototype;
-    var instance = create(isObject(proto) ? proto : ObjectPrototype);
-    var result = apply(Target, instance, args);
-    return isObject(result) ? result : instance;
-  }
-});
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/modules/es.reflect.to-string-tag.js":
-/*!******************************************************************!*\
-  !*** ./node_modules/core-js/modules/es.reflect.to-string-tag.js ***!
-  \******************************************************************/
-/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
-
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
-var setToStringTag = __webpack_require__(/*! ../internals/set-to-string-tag */ "./node_modules/core-js/internals/set-to-string-tag.js");
-
-$({ global: true }, { Reflect: {} });
-
-// Reflect[@@toStringTag] property
-// https://tc39.es/ecma262/#sec-reflect-@@tostringtag
-setToStringTag(global.Reflect, 'Reflect', true);
 
 
 /***/ }),
