@@ -4,46 +4,43 @@ export const AuthForm = props => {
 
   const {name, handleAuthClick, handleSubmit, error} = props;
 
-  let formName = 'Log in';
+  let formName = 'Log In';
   let description = "Don't have an account yet?";
-  let option = 'Sign up';
+  let option = 'Sign Up';
 
   if (name === 'signup'){
-    formName = 'Sign up';
+    formName = 'Sign Up';
     description = 'Already have an account?';
-    option = 'Log in';
+    option = 'Log In';
   }
   return (
-    <div id="loginOrSignup">
-      <form onSubmit={handleSubmit} name={name}>
+    <div>
+     <div className='auth-title'>{formName}</div>
+     <div className='auth-error'>{error}</div>
+      <div id="loginOrSignup">
+        <form onSubmit={handleSubmit} name={name}>
+          {name === 'signup' &&
+          (<div className='field'>
+            <input placeholder="Username" name="uname" type="text" />
+          </div>)}
 
-        {name === 'signup' &&
-        (<div className='field'>
-          <label htmlFor="uname"><strong>Name</strong></label>
-          <input name="uname" type="text" />
-        </div>)}
-
-        <div className='field'>
-          <label htmlFor="email"><strong>Email</strong></label>
-          <input name="email" type="text" />
-        </div>
-
-        <div className='field'>
-          <label htmlFor="password"><strong>Password</strong></label>
-          <input name="password" type="password" />
-        </div>
-
-        <div className='auth-btns'>
-          <button className='submit' type="submit">{formName}</button>
-          <div className='auth-option'>
-            <label htmlFor="switch">{description}</label>
-            <a name='switch' type='button' className='nav-btn' onClick={handleAuthClick}>{option}</a>
+          <div className='field'>
+            <input placeholder="Email" name="email" type="text" />
           </div>
-        </div>
 
-        {error && error.response &&
-        <div>{error.response.data}</div>}
-      </form>
+          <div className='field'>
+            <input placeholder="Password"  name="password" type="password" />
+          </div>
+
+          <div className='auth-btns'>
+            <button className='submit' type="submit">{formName}</button>
+            <div className='auth-option'>
+              <label htmlFor="switch">{description}</label>
+              <a name='switch' type='button' className='nav-btn' onClick={handleAuthClick}>{option}</a>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

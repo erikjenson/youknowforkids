@@ -7,7 +7,7 @@ router.post('/login', async (req, res, next) => {
 
     if (!user){
       console.log('No such user found:', req.body.email);
-      res.status(401).send('Wrong username and/or password');
+      res.sendStatus(404).send('Wrong username and/or password');
     }else if (!user.confirmPwd(req.body.password)) {
       console.log('Incorrect password for user:', req.body.email);
       res.status(401).send('Wrong username and/or password');
@@ -41,7 +41,7 @@ router.post('/logout', (req, res) => {
   res.redirect('/');
 });
 
-//used to see if a session is open for a user. {createdAd, email, id, name, updatedAt}
+//used to see if a session is open for a user. {createdAt, email, id, name, updatedAt}
 router.get('/me', (req, res) => {
   res.json(req.user);
 });

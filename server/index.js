@@ -8,7 +8,6 @@ const session = require('express-session');
 const passport = require('passport');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const sessionStore = new SequelizeStore({db});
-//const {Game} = require("/connect");
 
 //set up passport functions
 passport.serializeUser((user, done) => done(null, user.id));
@@ -38,6 +37,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/auth', require('./auth'));
+app.use('/session', require('./session'));
 //app.use('/api', require('./api'));
 
 app.use(express.static(path.join(__dirname, '..', 'public')));
@@ -61,10 +61,10 @@ const io = require('socket.io')(server);
 // eslint-disable-next-line max-statements, complexity
 io.on('connection', (socket) => {
 
-  console.log("socket room name on server connection", socket.handshake.auth.gameID);
-  console.log("socket user name on server connection", socket.handshake.auth.userID);
-  console.log("socket user type on server connection", socket.handshake.auth.type);
-  console.log("socket id on server connection", socket.id);
+  // console.log("socket room name on server connection", socket.handshake.auth.roomID);
+  // console.log("socket user name on server connection", socket.handshake.auth.userName);
+  // console.log("socket user type on server connection", socket.handshake.auth.player);
+  // console.log("socket id on server connection", socket.id);
 
   // for future messaging
   // const id = socket.handshake.auth.gameID;
@@ -79,8 +79,9 @@ io.on('connection', (socket) => {
   //     // }
   //   }
 
-  const room = socket.handshake.auth.gameID;
-  const type = socket.handshake.auth.type;
+  const room = socket.handshake.auth.roomID;
+  const player = socket.handshake.auth.player;
+  const reJoin = socket.handshake.auth.reJoin;
   const rooms = io.of("/").adapter.rooms;
   let roomSize = 0;
 
@@ -88,42 +89,32 @@ io.on('connection', (socket) => {
 
   //a room exists if count > 0;
   for (const [r] of rooms){
-    console.log("r---> ", rooms.get(r).size);
+    //console.log("r---> ", rooms.get(r).size);
     if(r === room){
-
       roomSize = rooms.get(r).size;;
       break;
     }
   }
-  //fix -  if count == 0, reset code
-  //this needs to be checked back when the join code is defined
 
-  // see how many users are in the room set
-  // if(count === 1){
-  //   roomSize = room.size;
-  //   console.log("room size--> ", roomSize);
-  // }
-
-  if(type === 'start'){
+  if(player === 'r' || reJoin){
     socket.join(room);
     io.in(socket.id).emit("joined", {room: room, joined: true});
+    socket.to(socket.roomID).emit("opponent_name", socket.userName);
   }
 
-  if(type === 'join'){
-    //this should also check if < 2 users are in teh room.. make sure room is occupied when one user gets a join code.
-    //how do we handle the situation when a starter hasn't started? We should auto start them as soon as they hit "NO."
-
-    console.log("ROOMSIZE -> ", roomSize);
-    if(roomSize === 1){
+  if(player === 'y'){
+    //console.log("ROOMSIZE -> ", roomSize);
+    if(roomSize > 0 && roomSize < 2){
       socket.join(room);
       io.in(socket.id).emit("joined", {room: room, joined: true});
+      socket.to(socket.roomID).emit("opponent_name", socket.userName);
     }else{
       io.in(socket.id).emit("joined", {room: room, joined: false});
       socket.disconnect();
     }
   }
 
-  console.log("rooms: ", rooms);
+  // console.log("rooms: ", rooms);
 
   // for future messaging
   // notify existing users when a new one joins
@@ -134,31 +125,38 @@ io.on('connection', (socket) => {
 
   //on drop chip send move obj to room
   socket.on('drop_chip', (content)=>{
-    console.log("drop_chip called on server sending this, ", content);
-    socket.to(socket.gameID).emit("move", content);
+    socket.to(socket.roomID).emit("move", content);
   });
 
-  socket.on("get_opponent", ()=>{
-   socket.to(socket.gameID).emit("send_name");
+  socket.on("get_opponent_name", ()=>{
+   socket.to(socket.roomID).emit("send_name");
   });
 
-  socket.on("sending_name", data => {
-    socket.to(socket.gameID).emit("opponent_info", data);
+  socket.on("sending_name", name => {
+    socket.to(socket.roomID).emit("opponent_name", name);
+  });
+
+  socket.on("player_piecing_out", (name) => {
+    socket.to(socket.roomID).emit("player_pieced_out", name);
   });
 
   socket.on("disconnect", (reason) => {
+    //emit a notification to users on disconnection
     console.log("socket server DISconnection", reason);
   });
 });
 
 io.use((socket, next) => {
-  const gameID = socket.handshake.auth.gameID;
-  const userID = socket.handshake.auth.userID;
-  if (!gameID || !userID) {
+  const roomID = socket.handshake.auth.roomID;
+  const userName = socket.handshake.auth.userName;
+  const reJoin = socket.handshake.auth.userName;
+  if (!roomID || !userName) {
     return next(new Error("missing game code"));
   }
-  socket.gameID = gameID;
-  socket.userID = userID;
+
+  socket.roomID = roomID;
+  socket.userName = userName;
+  socket.reJoin = reJoin;
   next();
 });
 

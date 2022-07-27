@@ -6,6 +6,17 @@
   align-items: center;
 }
 
+.auth-title {
+  text-align: center;
+  font-size: 50px;
+}
+.auth-error {
+  padding-top: 20px;
+  width: 100%;
+  text-align: center;
+  font-size: 16px;
+  color: red;
+}
 
 #main a {
   cursor: pointer;
@@ -25,8 +36,7 @@
 
 #loginOrSignup {
   max-width: 400px;
-  width: 90%;
-  margin-top: 100px;
+  margin-top: 50px;
   border: 0.5rem outset pink;
   border-radius: 20px;
 }
@@ -35,9 +45,9 @@
   width: 250px;
 }
 
-#loginOrSignup form label {
+/* #loginOrSignup form label {
   padding-right: 6px;
-}
+} */
 
 #loginOrSignup form .field {
   padding: 10px;
@@ -55,6 +65,7 @@
 #loginOrSignup form .auth-btns .auth-option {
   display: flex;
   align-items: flex-end;
+  flex-direction: column;
 }
 
 #loginOrSignup form .submit {
@@ -133,8 +144,13 @@
   text-align: center;
 }
 
-#join-error{
+#join-message{
   margin-bottom: 15px;
+}
+
+#start-message{
+  font-size: 25px;
+  padding: 20px;
 }
 
 .join-input {

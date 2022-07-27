@@ -1,10 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import App from './app';
+import ConnectGame from './connect-game';
+
+// const root = ReactDOM.createRoot(
+//   document.getElementById("app")
+// );
+
+// root.render(
+// <BrowserRouter>
+//   <App />
+// </BrowserRouter>);
 
 ReactDOM.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
+  <App />
   , document.getElementById('app'));

@@ -3,10 +3,10 @@ import { io } from "socket.io-client";
 const URL = "http://localhost:8080";
 const socket = io({ URL, autoConnect: false });
 
-socket.onAny((event, ...args) => {
-  //logs client socket events
- console.log("client socket event", event, args);
-});
+// socket.onAny((event, ...args) => {
+//   //logs all client socket events
+//  console.log("client socket event", event, args);
+// });
 
 //for future chat
 // socket.on("users", (users) => {

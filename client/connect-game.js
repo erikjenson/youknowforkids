@@ -1,10 +1,9 @@
+import axios from 'axios';
 import React, {useEffect, useState} from 'react';
-// import Game from './connect';
 import socket from './socket';
 
 //board component
 function Board (props) {
-  console.log("props on BOARD component--> ", props);
   const boardData = props.boardData;
   let table = [];
   //draw a new board from game array
@@ -30,9 +29,6 @@ function Board (props) {
 
 // message component
 const Notice = (props) => {
-  //display whose turn it is or another message
-  //when props updates
-  console.log("props on notice component--> ", props);
   let message = "Red's Turn";
   if(props.message.length){
     message = props.message;
@@ -58,91 +54,102 @@ const StartNew = (props) => {
 //connect 4 functional game component with state
 function ConnectGame (props) {
 
-  // const player = props.player;
-  // const gameID = props.gameID;
-  // const name = props.name;
-
   const gamePlayer = props.player;
-  const roomID = props.gameID;
+  const roomID = props.room;
   const userName = props.name;
+  const game = props.game;
+  const otherPlayer = props.opponent;
+  const move = props.turn;
+  const notice = props.message
 
-  // const [roomID, setRoomID] = useState(gameID);
-  // const [userName, setUserName] = useState(name);
-  // const [gamePlayer, setGamePlayer] = useState(player);
-  const [opponent, setOpponent] = useState('');
-  const [turn, setTurn] = useState('r');
-  const [message, setMessage] = useState('');
-  const [gameData, setGameData] = useState([]);
+  const [opponent, setOpponent] = useState(otherPlayer);
+  const [turn, setTurn] = useState(move);
+  const [message, setMessage] = useState(notice);
+  const [gameData, setGameData] = useState(game);
 
   useEffect(() => {
     //update local state upon hearing from socket
     function handleGameChange(content) {
-      console.log("handleGameChange was called")
       setMessage(content.message);
-      if(content.turn) setTurn(content.turn);
-      if(content.gameData) setGameData(content.gameData);
-      if(content.userName) setOpponent(content.userName);
+      setTurn(content.turn);
+      setGameData(content.gameData);
+      setOpponent(content.userName);
     }
 
-    //removed && gamePlayer === 'y'
-    if(!gameData.length){
-      startNewGame();
-      console.log("called startNewGame!")
+    socket.on("opponent_name", data => {
+      setOpponent(data);
+    });
+
+    if(opponent === "..."){
+      socket.emit("get_opponent_name");
     }
 
-    //removed && gamePlayer === 'y'
-    //these two functions grab opponent info in a room if the other has joined already
-    if(opponent === '' ){
-      console.log("getting opponent name")
-      getOpponent();
-    }
+    socket.on("send_name", () => {
+      socket.emit("sending_name", userName);
+    });
 
-    //removed && gamePlayer === 'r'
-    if(opponent === '' ){
+    socket.on("player_pieced_out", (name) => {
+      //stop game
+      const preventMove = gamePlayer === 'r'? 'y' : 'r';
+      setTurn(preventMove);
+      setMessage(`${name} left the room!`);
       setOpponent('...');
+    });
+
+    if(!gameData.length){
+      startNewGame()
+    }
+
+    //set game on session
+    async function setGameSession(game) {
+      //game is the object from socket move from other player
+      const gameSession = {
+        roomID: roomID,
+        opponent: game.userName,
+        player : gamePlayer,
+        userName : userName,
+        turn : game.turn,
+        gameData : game.gameData,
+      };
+
+      try {
+        await axios.post('/session', gameSession);
+      } catch (err) {
+        console.error(err);
+      }
     }
 
     socket.on('move', content => {
-      //showing empty msg string in content
-      console.log("content received on move ", content)
       handleGameChange(content);
+      setGameSession(content);
     })
-
-    //when a user joins but no opponent data is available, this is requested and sent:
-    socket.on("send_name", ()=>{
-      socket.emit("sending_name", {userName, gameData});
-    })
-
-    //name and game data received from opponent
-    socket.on("opponent_info", (data)=>{
-      setOpponent(data.userName);
-      //data is an empty array for some reason.
-      // setGameData(data.gameData);
-      console.log("got opponent data: ", data)
-    })
-
 
     socket.on("connect_error", (err) => {
-      //notify user that server is down
+      //test setting a msg when socket is down and clearing it after join
       console.log(`connect_error due to ${err.message}`);
     });
 
     return () => {
       socket.off('move');
       socket.off('send_name');
-      socket.off('opponent_name');
+      socket.off('opponent_data');
       socket.off("connect_error");
     }
   }, []);
   //read more about this array
 
-  function sendGameState(game){
-    console.log("sendGameState-->", game)
+  async function sendGameState(game){
     socket.emit("drop_chip", {turn: game.turn, message: game.message, gameData: game.gameData, userName: game.userName});
-  }
 
-  function getOpponent(){
-    socket.emit("get_opponent");
+    //update session
+    game['roomID'] = roomID;
+    game['opponent'] = opponent;
+    game['player'] = gamePlayer;
+    try {
+      await axios.post('/session', game);
+    } catch (err) {
+      console.error(err);
+    }
   }
 
   //starts a new game in same room / gameID
@@ -165,17 +172,20 @@ function ConnectGame (props) {
       gameData: table,
       userName: userName
     }
+
+    //send out to other user and session if there is already a gameBoard and a new game is being started
+    if(gameData.length){
+      sendGameState(game);
+    }
+
     setGameData(table);
     setMessage('');
-
-    sendGameState(game);
   }
 
   //called when a move is made
   function dropChip(elem) {
-
-    //not if out of turn or if someone already won
-    if(gamePlayer === turn && message.indexOf('W') < 0){
+    //not if out of turn or if someone already won or if there is no opponent
+    if(gamePlayer === turn && message.indexOf('W') < 0 && opponent !=="..."){
 
       const column = elem.dataset.c;
       let data = gameData;
@@ -195,7 +205,7 @@ function ConnectGame (props) {
         return
       };
 
-      //Helper functions to check board for win. These check entire board on each move and would be more efficient to just check last move.
+      //Helper functions to check board for win. These check entire board on each move and should just check last move instead.
       function getCell(row, col) {
         //this returns a value for the cell and 0 if invalid
         if (row < 0 || row > data.length - 1) {
@@ -290,13 +300,12 @@ function ConnectGame (props) {
 
       if(result === "Win"){
         message = turn === 'y'? 'Yellow Wins!' : 'Red Wins!';
-        //setMessage(message);
       }else{
         nextPlayer = turn === 'r' ? 'y' : 'r';
         message = '';
       }
 
-      //update local state..should be done in useEffect?
+      //update local state
       setMessage(message)
       setTurn(nextPlayer);
       setGameData(data);
@@ -312,19 +321,19 @@ function ConnectGame (props) {
     }
   }
 
-  const otherPlayer = gamePlayer === 'r'? 'y': 'r';
+  const chipColor = gamePlayer === 'r'? 'y': 'r';
 
   return (
     <div>
       <div className="game-info">
-      {opponent === '...' && gamePlayer === 'r' && (<div><div>Send this to your friend!</div><div>Join Code: {roomID}</div></div>)}
+      {opponent === '...' && gamePlayer === 'r' && (<div id='start-message'><div>Waiting for someone to join with this code: {roomID}</div></div>)}
       </div>
       <div className="gol-body">
         <div id="gol-container">
           <div id='players'>
             <div className={gamePlayer}>{userName}</div>
             <div>VS.</div>
-            <div className={otherPlayer}>{opponent}</div>
+            <div className={chipColor}>{opponent}</div>
           </div>
           {gameData.length > 0 && (<Notice player={turn} message={message} />)}
           <Board boardData={gameData} dropChip={dropChip}/>

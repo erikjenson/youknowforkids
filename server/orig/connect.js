@@ -91,14 +91,9 @@ class Game {
         if(this.board[i][j] === val){
           let left = this.searchDiagLeft(val, 1, i, j);
           let right = this.searchDiagRight(val, 1, i, j);
-          console.log('left--->', left);
-          console.log('right--->', right);
           if(left === "Win" || right === "Win"){
             return "Win";
           }
-          // return this.searchDiagLeft(val, 1, i, j) === "Win" ? "Win"
-          // : this.searchDiagRight(val, 1, i, j) === "Win" ? "Win"
-          // : null;
         }
       }
     }
@@ -109,9 +104,7 @@ class Game {
       return 'Win';
     }
     if(this.getCell(i+1, j-1) === val){
-      console.log('weMadeIt-->', this.board[i+1][j-1]);
       count++;
-      console.log('1st D left-->', count);
       return this.searchDiagLeft(val, count, i+1, j-1);
     }
   }
