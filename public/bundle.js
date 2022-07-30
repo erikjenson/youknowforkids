@@ -2258,6 +2258,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 function App() {
   //rename state to be more specific
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_17__.useState)({}),
@@ -43286,8 +43287,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app */ "./client/app.js");
-/* harmony import */ var _connect_game__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./connect-game */ "./client/connect-game.js");
-
 
 
 

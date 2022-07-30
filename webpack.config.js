@@ -11,7 +11,7 @@ module.exports = {
     express: 'express'
   },
 
-  mode: 'development',
+  // mode: 'development',
   context: __dirname,
   devtool: 'source-map',
 

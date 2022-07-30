@@ -5,6 +5,7 @@ import Navbar from './navbar';
 import StartGame from './start-game';
 import ConnectGame from './connect-game';
 import socket from './socket';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
 

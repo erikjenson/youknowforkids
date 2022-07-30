@@ -4,7 +4,8 @@
   "description": "stuff for my kids",
   "main": "index.js",
   "scripts": {
-    "build-client-watch": "webpack -w",
+    "build-client-watch": "webpack -w --mode=development",
+    "start-prod": "webpack --mode=production && node server",
     "start": "nodemon server",
     "start-dev": "NODE_ENV='development' npm run build-client-watch & NODE_ENV='development' npm run start-server",
     "start-server": "nodemon server -e html,js,scss --ignore public --ignore client",
